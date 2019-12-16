@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% set nav = "preferences" %}
+{% block body %}
+        <div class="page-content">
+            <article class="default-section">
+
+                {% include "Settings/panel.html" %}
+
+                <h3 class="aside-title">Mijn voorkeuren</h3>
+                <form action="settings/preferences/validate" method="post">
+                    {% if player.rank > 2 %}
+                    <label class="switch-label" for="hide_staff-target">
+                        <span class="switch-container rounded-radio purple">
+                            <input class="settings" type="checkbox" data-id="hide_staff" id="hide_staff-target" {% if data.hide_staff == 0 %}checked{% endif %}>
+                            <span class="switch-button"></span>
+                        </span>
+                        <h4 class="label-title">Staff instellingen</h4>
+                        <span class="label-description">Wil je zichtbaar staan op de Staff pagina?</span>
+                    </label>
+                    {% endif %}
+
+                    <label class="switch-label" for="hide_home-target">
+                        <span class="switch-container rounded-radio purple">
+                            <input class="settings" type="checkbox" data-id="hide_home" id="hide_home-target" {% if data.hide_home == 0 %}checked{% endif %}>
+                            <span class="switch-button"></span>
+                        </span>
+                        <h4 class="label-title">Leet Profiel</h4>
+                        <span class="label-description">Mogen andere Leet's jouw profiel bekijken?</span>
+                    </label>
+
+                    <label class="switch-label" for="allow-friends-target">
+                        <span class="switch-container rounded-radio purple">
+                            <input class="settings" type="checkbox" data-id="allow_friend_requests" id="allow-friends-target" {% if data.allow_friend_requests == 1 %}checked{% endif %}>
+                            <span class="switch-button"></span>
+                        </span>
+                        <h4 class="label-title">Vriendenverzoeken</h4>
+                        <span class="label-description">Vriendschap verzoeken toestaan?</span>
+                    </label>
+                    <label class="switch-label" for="allow_friend_alerts-target">
+                        <span class="switch-container rounded-radio purple">
+                            <input class="settings" type="checkbox" data-id="allow_friend_alerts" id="allow_friend_alerts-target" {% if data.allow_friend_alerts == 1 %}checked{% endif %}>
+                            <span class="switch-button"></span>
+                        </span>
+                        <h4 class="label-title">Vrienden melding</h4>
+                        <span class="label-description">Melding ontvangen wanneer een van je vrienden online komt?</span>
+                    </label>
+                 <label class="switch-label" for="hide_last_online-target">
+                        <span class="switch-container rounded-radio purple">
+                            <input class="settings" type="checkbox" data-id="hide_last_online" id="hide_last_online-target" {% if data.hide_last_online == 0 %}checked{% endif %}>
+                            <span class="switch-button"></span>
+                        </span>
+                        <h4 class="label-title">Laatst online</h4>
+                        <span class="label-description">Leet's kunnen zien wanneer je voor het laatst online bent geweest?</span>
+                    </label>
+                    <label class="switch-label" for="online-status-target">
+                        <span class="switch-container rounded-radio purple">
+                            <input class="settings" type="checkbox" data-id="hide_online" id="online-status-target" {% if data.hide_online == 0 %}checked{% endif %}>
+                            <span class="switch-button"></span>
+                        </span>
+                        <h4 class="label-title">Online Status</h4>
+                        <span class="label-description">Mogen Leet's zien dat je online bent?</span>
+                    </label>
+                    <label class="switch-label" for="allow_mimic-target">
+                        <span class="switch-container rounded-radio purple">
+                            <input class="settings" type="checkbox" data-id="allow_mimic" id="allow_mimic-target" {% if data.allow_mimic == 1 %}checked{% endif %}>
+                            <span class="switch-button"></span>
+                        </span>
+                        <h4 class="label-title">Steel instellingen</h4>
+                        <span class="label-description">Mogen andere Leet's jouw uiterlijk stelen door middel van :steel?</span>
+                    </label>
+                    <label class="switch-label" for="allow_follow-target">
+                        <span class="switch-container rounded-radio purple">
+                            <input class="settings" type="checkbox" data-id="allow_follow" id="allow_follow-target" {% if data.allow_follow == 1 %}checked{% endif %}>
+                            <span class="switch-button"></span>
+                        </span>
+                        <h4 class="label-title">Volgfunctie - wie mogen je volgen?</h4>
+                        <span class="label-description">Leet's mogen je volgen in de kamers van Leet?</span>
+                    </label>
+                    <label class="switch-label" for="trade-target">
+                        <span class="switch-container rounded-radio purple">
+                            <input class="settings" type="checkbox" data-id="allow_trade" id="trade-target" {% if data.allow_trade == 1 %}checked{% endif %}>
+                            <span class="switch-button"></span>
+                        </span>
+                        <h4 class="label-title">Ruil instellingen</h4>
+                        <span class="label-description">Iedereen kan een ruil met me starten</span>
+                    </label>
+                     <label class="switch-label" for="allow_whisper-target">
+                        <span class="switch-container rounded-radio purple">
+                            <input class="settings" type="checkbox" data-id="allow_whisper" id="allow_whisper-target" {% if data.allow_whisper == 1 %}checked{% endif %}>
+                            <span class="switch-button"></span>
+                        </span>
+                        <h4 class="label-title">Fluister instellingen</h4>
+                        <span class="label-description">Wil je dat Leet's tegen je kunnen fluisteren?</span>
+                    </label>
+                </form>
+            </article>
+        </div>
+{% endblock %}
+

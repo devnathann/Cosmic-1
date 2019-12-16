@@ -1,0 +1,55 @@
+<?php
+namespace App\Models;
+
+use PDO;
+use QueryBuilder;
+
+class Permission
+{
+    public static function get($rank)
+    {
+        return QueryBuilder::table('website_permissions_ranks')->select('website_permissions.*')->select('website_permissions_ranks.*')->
+                    select(QueryBuilder::raw('website_permissions_ranks.id as idp'))->setFetchMode(PDO::FETCH_CLASS, get_called_class())
+                ->join('website_permissions', 'website_permissions_ranks.permission_id', '=', 'website_permissions.id')->where('website_permissions_ranks.rank_id', $rank)->get();
+    }
+
+    public static function permissionExists($role, $permission)
+    {
+        return queryBuilder::table('website_permissions_ranks')->where('rank_id', $role)->where('permission_id', $permission)->count();
+    }
+
+    public static function create($role, $permission)
+    {
+        $data = array(
+            'rank_id' => $role,
+            'permission_id'  => $permission,
+        );
+
+        return QueryBuilder::table('website_permissions_ranks')->insert($data);
+    }
+
+    public static function delete($permission, $rank)
+    {
+        return QueryBuilder::table('website_permissions_ranks')->where('permission_id', $rank)->where('rank_id', $permission)->delete();
+    }
+
+    public static function getPermissions($string = null)
+    {
+        return QueryBuilder::table('website_permissions')->select('website_permissions.id')->select('website_permissions.permission')->orderBy('id', 'desc')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->where('website_permissions.permission', 'LIKE ', '%' . $string . '%')->get();
+    }
+
+    public static function getRanks($allRanks = false)
+    {
+        if($allRanks) {
+            return QueryBuilder::table('permissions')->orderBy('id', 'desc')->get();
+        }
+
+        return QueryBuilder::table('permissions')->where('id', '!=', 1)->where('id', '!=', 2)->orderBy('id', 'desc')->get();
+    }
+
+    public static function getRoles($string = null)
+    {
+        return QueryBuilder::table('permissions')->select('rank_name')->select('id')->orderBy('id', 'desc')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->where('rank_name', 'LIKE ', '%' . $string . '%')->get();
+    }
+
+}

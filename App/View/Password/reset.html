@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block body %}
+        <div class="page-content">
+            <article class="default-section">
+               <div class="aside-title-content">Wachtwoord veranderen</div>
+                <div class="aside-content">
+                    <form action="password/reset/validate" method="post">
+                        <h4 class="form-subcategory">Nieuw wachtwoord</h4>
+                        <div class="row">
+                            <div class="column-2">
+                                <input type="password" name="new_password" class="rounded-input darkblue-active" placeholder="Vul je nieuwe wachtwoord in..." autocomplete="off" maxlength="32" autofocus required>
+                            </div>
+                            <div class="column-2">
+                                <input type="password" name="repeated_password" class="rounded-input darkblue-active" placeholder="Vul nogmaals je wachtwoord in..." autocomplete="off" maxlength="32" required>
+                            </div>
+
+                            <input type="hidden" name="token" value="{{token}}">
+
+                        </div>
+                        <p class="submit-button"><button type="submit" class="rounded-button darkblue">Wijzig wachtwoord</button></p>
+                    </form>
+                </div>
+            </article>
+        </div>
+{% endblock %}

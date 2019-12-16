@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% set nav = "verification" %}
+{% block body %}
+        <div class="page-content">
+            <article class="default-section">
+                
+                {% include "Settings/panel.html" %}
+                
+                <h3 class="aside-title">Beveilig jouw account</h3>
+                <form action="" method="post" class="default-prevent">
+                    <input type="hidden" id="verification_enabled" value="{% if auth_enabled %}{% if player.secret_key is not null %}app{% endif %}{% if player.pincode is not null %}pincode{% endif %}{% else %}{% endif %}">
+                    <p>Deze controle verhoogt de beveiliging van uw account. Wanneer u inlogt, moet u, afhankelijk van uw voorkeuren, de beveiligingsvragen beantwoorden die u hebt gedefinieerd of een code invoeren die door uw toepassing is gegenereerd.</p>
+
+                    <h4>Vul je wachtwoord in</h4>
+                    <div class="row" style="margin-bottom: 30px;">
+                        <div class="column-2">
+                            <input type="password" name="current_password" class="rounded-input purple-active">
+                        </div>
+                    </div>
+
+                    <label class="switch-label" for="enable-verification-target">
+                        <span class="switch-container rounded-radio purple">
+                            <input type="checkbox" name="enable_verification" id="enable-verification-target" value="{% if auth_enabled %}1{% else %}0{% endif %}" {% if auth_enabled %}checked{% endif %}>
+                            <span class="switch-button"></span>
+                        </span>
+                        <h4 class="label-title">Twee- staps verificatie</h4>
+                        <span class="label-description">Ik wil twee-staps verificatie {% if auth_enabled %}uitschakelen{% else %}inschakelen{% endif %}</span>
+                    </label>
+                  
+                    <div class="verification-container" style="display:none;">
+                        <div class="verification-select">
+                            <h4>Verificatie methode</h4>
+                            <select name="twosteps_login_type" class="selectric type-select">
+                                <option>Kies jouw verificatie middel...</option>
+                                <option value="pincode">Ik wil een pincode instellen</option>
+                                <option value="app">Ik wil Google 2FA gebruiken</option>
+                            </select>
+                        </div>
+                        <div class="verification-selected" data-method="pincode" style="display:none;">
+                           <h4>Pincode beveiliging</h4>
+                            <p>Zet een pincode op je account als extra beveiliging, hiermee zorg je voor een betere beveiliging van jouw account tegen hackers.</p>
+                            <div class="row">
+                                <div class="column-2">
+                                    <input type="password" name="twosteps_login_pincode" class="rounded-input purple-active" placeholder="Vul je pincode in">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="verification-selected" data-method="app" style="display: none">
+                            <h4>Code generen door 2FA</h4>
+                            <p>Deze methode is het meest betrouwbaar. Het koppelt uw {{shortname}}-account aan een authenticatietoepassing (Google Authenticator) op uw telefoon. Wanneer u zich aanmeldt, hoeft u alleen de code in te voeren die door uw app is gegenereerd</p>
+                            <h5>Koppel je account</h5>
+                            <p>Om uw account te koppelen, moet u deze QR-code eenvoudig met uw toepassing scannen en vervolgens op <b> Opslaan </ b> klikken om deze wijziging te valideren.</p>
+                            <p style="text-align: center;">
+                                <input type="hidden" id="twosteps_login_data_code" value="{{token}}">
+                                 
+                                <img src="https://chart.googleapis.com/chart?chs=200x200&chld=M|0&cht=qr&chl=otpauth%3A%2F%2Ftotp%2F{{shortname}}%3A{{player.username}}%3Fsecret%3D{{token}}%26issuer%3D{{shortname}}" alt="{{shortname}}">
+                            </p>
+                        </div>
+                    </div>
+                    <p class="submit-button"><button type="submit" class="rounded-button purple">Opslaan</button></p>
+                </form>
+            </article>
+        </div>
+{% endblock %}

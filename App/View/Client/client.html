@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Hotel - Leet Hotel</title>
+
+    <link rel="icon" href="{{path}}/assets/images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="{{path}}/assets/css/hotel/hotel.css?v={{revision}}">
+    <link rel="stylesheet" type="text/css" href="{{path}}/assets/css/hotel/hotelview.css?v={{revision}}">
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="{{path}}/assets/js/hotel/swfobject.js?v={{revision}}"></script>
+
+    <script type="text/javascript">
+       var flashvars = {
+          "client.allow.cross.domain": "1",
+          "client.notify.cross.domain": "0",
+          "connection.info.host": "46.105.247.163",
+          "connection.info.port": "3000",
+          "site.url": "{{path}}",
+          "url.prefix": "{{path}}",
+          "client.reload.url": "{{path}}/home",
+          "client.fatal.error.url": "{{path}}/home",
+          "client.connection.failed.url": "{{path}}/home",
+          "external.override.texts.txt": "{{cpath}}/library/gamedata/external_flash_override_texts.txt?v={{revision}}",
+          "external.override.variables.txt": "{{cpath}}/library/gamedata/external_override_variables.txt?v={{revision}}",
+          "external.variables.txt": "{{cpath}}/library/gamedata/external_variables.txt?v={{revision}}",
+          "external.texts.txt": "{{cpath}}/library/gamedata/external_flash_texts.txt?v={{revision}}",
+          "external.figurepartlist.txt": "{{cpath}}/library/gamedata/figuredata.xml?v={{revision}}",
+          "flash.dynamic.avatar.download.configuration": "{{cpath}}/library/gamedata/figuremap.xml?v={{revision}}",
+          "productdata.load.url": "{{cpath}}/library/gamedata/productdata.txt?v={{revision}}",
+          "furnidata.load.url": "{{cpath}}/library/gamedata/furnidata.xml?v={{revision}}",
+          "sso.ticket": "{{data.auth_ticket}}",
+          "account_id": "{{player.id}}",
+          "ads.domain": "",
+          "processlog.enabled": "1",
+          "client.starting": "Frank brengt je koffers naar je hotelkamer!",
+          "flash.client.url": "{{cpath}}/library/",
+          "flash.client.origin": "popup"
+        };
+    </script>
+    <script type="text/javascript" src="{{path}}/assets/js/hotel/hotelapi.js?v={{revision}}"></script>
+    <script type="text/javascript">
+        var params = {
+            "base": "{{cpath}}/library/",
+            "allowScriptAccess": "always",
+            "menu": "false",
+            "wmode": "opaque"
+        };
+
+        window.FlashExternalInterface.logout = function() {
+            var signoutUrl = "{{path}}/logout";
+
+            if (window.opener)
+            {
+                window.opener.location = signoutUrl;
+                window.close();
+            } else
+                window.location = signoutUrl;
+        };
+
+        swfobject.embedSWF('{{cpath}}/library/prodc6.swf?v=150', 'flash-container', '100%', '100%', '11.1.0', '{{path}}/assets/flash/expressInstall.swf', flashvars, params, null, null);
+    </script>
+
+    <style>body{margin:0;background:#000;color:#7ecaee;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;font-family:Ubuntu,"Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;font-size:16px;font-variant-ligatures:common-ligatures;line-height:1.4;min-height:100vh;}.client-error{max-width:480px;}.client-error__title{text-align:center;}.client-error__flash{background-image:url('/web/client/flash/flashplayer.png');display:inline-block;height:39px;margin:12px 12px 0;width:158px;}h1,h2,h3,h4,h5,h6{color:#fff;font-family:"Ubuntu Condensed","Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;font-weight:400;margin:.6em 0;line-height:1.2;}h1,h2,h3,h4,h5{text-transform:uppercase;}p{margin:.75em 0;}a{color:#fff;cursor:pointer;outline:0;text-decoration:none;}</style>
+</head>
+
+<body id="client" class="flashclient">
+<div id="client-ui">
+    <div id="flash-wrapper">
+        <div id="flash-container">
+            <div id="content" style="width: 45%;margin: 0px auto 0px;display: none">
+                <div class="client-error">
+                    <div style="margin-top:170px;">
+                        <div class="client-error__background-frank" ng-if="!ClientErrorController.mobile">
+                            <span class="client-error__text-contents">
+                                <h1 class="client-error__title" translate="CLIENT_ERROR_TITLE">Je bent bijna in Leet!</h1>
+                                <p translate="CLIENT_ERROR_FLASH"><b>LET OP GOOGLE CHROME USERS</b>! Voordat je Leet speelt, zul je Flash Player handmatig moeten aanzetten in de instellingen van je browser. <a href="{{path}}/article/90-activeer-flash-player-in-google-chrome" target="_blank">Lees ons recente nieuwsbericht</a> om te zien hoe je dit precies moet doen.  Nadat Flash is ingeschakeld, klik je op de gele Hotel knop hieronder en vervolgens klik je op "Flash uitvoeren" waarneer hier om gevraagd wordt!</p>
+                            </span>
+                            <div class="client-error__hotel-button-div">
+                                <a ng-href="http://www.adobe.com/go/getflashplayer" target="_blank" rel="noopener noreferrer" class="hotel-button" href="http://www.adobe.com/go/getflashplayer">
+                                    <span class="hotel-button__text" translate="NAVIGATION_HOTEL">Hotel</span>
+                                </a>
+                            </div>
+                            <div class="client-error__mobile">
+                                <p translate="CLIENT_ERROR_MOBILE">Als je op een iPad, iPhone of een Android-apparaat bent, kun je <a href="https://itunes.apple.com/nl/app/puffin-web-browser/id472937654?mt=8">Puffin</a> downloaden in de App Store of <a href="https://play.google.com/store/apps/details?id=com.cloudmosa.puffinFree&hl=nl">Puffin</a> op Google Play.</p>
+
+                                <div class="client-error__downloads">
+                                    <a ng-href="https://itunes.apple.com/nl/app/puffin-web-browser/id472937654?mt=8" target="_blank" rel="noopener noreferrer" class="client-error__appstore" href="https://itunes.apple.com/nl/app/puffin-web-browser/id472937654?mt=8"></a>
+                                    <a ng-href="https://play.google.com/store/apps/details?id=com.cloudmosa.puffinFree&hl=nl" target="_blank" rel="noopener noreferrer" class="client-error__googleplay" href="https://play.google.com/store/apps/details?id=com.cloudmosa.puffinFree&hl=nl"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $('#content').show();
+            </script>
+        </div>
+    </div>
+
+    <iframe id="page-content" class="hidden" allowtransparency="true" frameBorder="0" src="about:blank"></iframe>
+</div>
+</body>
+</html>
