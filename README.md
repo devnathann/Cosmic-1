@@ -13,7 +13,7 @@
 
 > Under development: R1.
 
-> For issues tell me on my discord: Raizer#001, or create a issue in this Github.
+> For issues tell me on my discord: Raizer#0001, or create an issue in this Github.
 
 # <img src="https://raw.githubusercontent.com/Wulles/eyethatseeseverything/master/pwrup_pins.gif"> SWF:
 ```
