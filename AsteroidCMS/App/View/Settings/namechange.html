@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% set nav = "namechange" %}
+{% block body %}
+<div class="page-content">
+    <article class="default-section">
+
+        {% include "Settings/panel.html" %}
+
+        <h3 class="aside-title">{{shortname}}naam veranderen</h3>
+        <div class="form-help">
+            Wil jij je {{shortname}}naam veranderen? Dat kan! Dit kost <strong>{{price}} {{currency}}</strong> en zullen meteen na je verzoek afgeschreven worden. 
+            Wanneer je naam eenmaal is veranderd kunnen wij dit niet meer terugdraaien! Zorg dus dat je goed na denkt over je besluit!
+        </div>
+
+        <form action="settings/namechange/validate" method="post">
+            <div class="row">
+                <div class="column-2">
+                    <input type="text" name="username" class="rounded-input purple-active newpin" id="username" placeholder="{{shortname}}naam..." maxlength="15" autocomplete="off" required>
+                </div>
+                <div class="column-1">
+                    <p class="submit-button"><button type="submit" id="changeButton" class="rounded-button purple submit-password" disabled>Aanvragen</button></p>
+                </div>
+            </div>
+        </form>
+    </article>
+</div>
+{% endblock %}

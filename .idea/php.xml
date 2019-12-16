@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/geoip2/geoip2" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/symfony/polyfill-php56" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/jeremeamia/superclosure" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/mollie/mollie-api-php" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/symfony/polyfill-iconv" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/symfony/polyfill-util" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/rakit/validation" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/php-di/invoker" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/php-di/phpdoc-reader" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/php-di/php-di" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/composer" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/pecee/simple-router" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/maxmind/web-service-common" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/chriskonnertz/bbcode" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/facebook/graph-sdk" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/usmanhalalit/viocon" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/usmanhalalit/pixie" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/jenssegers/date" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/sonata-project/google-authenticator" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/twig/extensions" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/maxmind-db/reader" />
+      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/egulias/email-validator" />
+    </include_path>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7" />
+</project>
