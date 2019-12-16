@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block body %}
+        <div class="page-content">
+            <div class="photos-container">
+                {% for photo in data %}
+                <div class="photo-container">
+                    <div class="photo-content">
+                        <a href="{{photo.url}}" class="photo-picture" target="_blank" style="background-image: url({{photo.url}});" data-id="{{photo.id}}" data-title="{{photo.timestamp}} door {{photo.author}}"></a>
+                        <a href="#" class="photo-meta flex-container flex-vertical-center">
+                            <div class="photo-meta-left-side"><img src="{{fpath}}/avatarimage?figure={{photo.figure}}&gesture=sml&headonly=1" alt="{{photo.author}}" class="pixelated"></div>
+                            <div class="photo-meta-right-side">
+                                <div class="creator-name">{{photo.author}}</div>
+                                <div class="published-date">{{photo.timestamp}}</div>
+                                <span class="likes-count fc-like" data-id="{{photo.id}}">{{photo.likes}}</span> <i class="fa fa-heart" data-id="{{photo.id}}" style="color: #D67979;"></i></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="load-more-button">
+                <button class="rounded-button">Bekijk meer foto's</button>
+            </div>
+        </div>
+{% endblock %}

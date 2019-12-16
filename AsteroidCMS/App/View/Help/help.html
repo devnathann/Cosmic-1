@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block body %}
+        <div class="page-content">
+            <div class="left-side">
+                <article class="default-section">
+                  
+                    <div class="aside-title-content">FAQ</div>
+                    <div class="aside-desc-content">Vind hier alle antwoorden over jou vragen!</div>
+                  
+                    <div class="aside-content">
+                        <img src="/assets/images/web/pages/help/frank.gif" style="float:right">
+                        {% if data.help %}
+                          <h4>{{data.help.title}}</h4>
+                          <p>
+                              {{data.help.desc|raw}}
+                          </p>
+                        {% else %}
+                          {% for category in data.categories %}
+                          {% if category.faq is not empty %}
+                          <h5>{{category.category}}</h5>
+
+                          {% for item in category.faq %}
+                          <a href="{{path}}/help/{{item.id}}-{{item.slug}}">{{item.title}}</a><br>
+                          {% endfor %}
+                          {% endif %}
+                          {% endfor %}
+                        {% endif %}
+                    </div>
+                </article>
+            </div>
+            <div class="right-side">
+                <aside class="default-section">
+                    <div class="aside-title-content">Andere vragen</div>
+                    <div class="aside-content">
+                        <p>Het antwoord op jouw vraag niet gevonden? Aarzel dan niet om contact op te nemen met onze klantenservice zodat we meer informatie kunnen geven.</p>
+                        <p style="text-align: center;"><a href="{{path}}/help/requests/new" class="rounded-button blue">Contact opnemen</a></p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+{% endblock %}

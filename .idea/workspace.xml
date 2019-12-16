@@ -14,6 +14,11 @@
     </execution>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Raizer" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="MERGE" />
   </component>
@@ -95,7 +100,7 @@
       <option name="presentableId" value="Default" />
       <updated>1576532691993</updated>
       <workItem from="1576532697805" duration="1513000" />
-      <workItem from="1576534340701" duration="1705000" />
+      <workItem from="1576534340701" duration="2059000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1576535189129</created>
@@ -111,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576535454932</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="init">
+      <created>1576536413391</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1576536413391</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,10 +139,10 @@
       <screen x="0" y="0" width="1200" height="860" />
     </state>
     <state x="192" y="87" key="#Composer/0.0.1200.860@0.0.1200.860" timestamp="1576532996278" />
-    <state x="193" y="23" key="CommitChangelistDialog2" timestamp="1576535449417">
+    <state x="56" y="28" key="CommitChangelistDialog2" timestamp="1576536402150">
       <screen x="0" y="0" width="1200" height="860" />
     </state>
-    <state x="193" y="23" key="CommitChangelistDialog2/0.0.1200.860@0.0.1200.860" timestamp="1576535449417" />
+    <state x="56" y="28" key="CommitChangelistDialog2/0.0.1200.860@0.0.1200.860" timestamp="1576536402150" />
     <state x="377" y="312" width="446" height="390" key="ComposerInitDialogKey" timestamp="1576533646924">
       <screen x="0" y="0" width="1200" height="860" />
     </state>
@@ -147,10 +159,10 @@
       <screen x="0" y="0" width="1200" height="860" />
     </state>
     <state x="101" y="60" key="SettingsEditor/0.0.1200.860@0.0.1200.860" timestamp="1576534010120" />
-    <state x="192" y="161" key="Vcs.Push.Dialog.v2" timestamp="1576535459907">
+    <state x="192" y="161" key="Vcs.Push.Dialog.v2" timestamp="1576536420828">
       <screen x="0" y="0" width="1200" height="860" />
     </state>
-    <state x="192" y="161" key="Vcs.Push.Dialog.v2/0.0.1200.860@0.0.1200.860" timestamp="1576535459907" />
+    <state x="192" y="161" key="Vcs.Push.Dialog.v2/0.0.1200.860@0.0.1200.860" timestamp="1576536420828" />
     <state x="301" y="252" key="com.intellij.ide.util.TipDialog" timestamp="1576534340951">
       <screen x="0" y="0" width="1200" height="860" />
     </state>

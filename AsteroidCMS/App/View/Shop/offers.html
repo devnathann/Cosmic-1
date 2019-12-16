@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="page-content shop-offer">
+    <input type="hidden" id="offer-id" value="{{data.offer.offer_id}}">
+    <input type="hidden" id="offer-amount" value="{{data.offer.amount}}">
+    <input type="hidden" id="offer-country" value="{{data.offer.lang|lower}}">
+    <h2>
+        <a href="{{path}}/shop" class="rounded-button">Terug</a>
+        Betaalmethodes - {{data.offer.amount}} {{data.offer.currency}} voor €{{data.offer.price}} of lager
+    </h2>
+    <article class="default-section loading-solutions">
+        De betaalmethodes worden geladen...
+    </article>
+</div>
+{% endblock %}

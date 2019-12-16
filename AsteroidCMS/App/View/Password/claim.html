@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block body %}
+        <div class="page-content">
+            <article class="default-section left-side">
+                <div class="aside-title-content">Wachtwoord vergeten?</div>
+                <div class="aside-content">
+                    Vul hieronder je Leetnaam en e-mailadres in en we sturen je een link per e-mail om je wachtwoord te veranderen. <strong>Doe dit niet als iemand je vraagt om dit te doen!</strong></strong><br><br>
+                    <form action="password/claim/validate" method="post" autocomplete="off" class="password_claim-form">
+                        <h4 class="form-subcategory">Leetnaam</h4>
+                        <div class="row">
+                            <input type="text" name="username" class="rounded-input darkblue-active" maxlength="32" autofocus required>
+                        </div>
+
+                        <h4 class="form-subcategory">E-mailadres</h4>
+                        <div class="row">
+                            <input type="email" name="email" class="rounded-input darkblue-active" required>
+                        </div>
+                        <p class="submit-button"><button type="submit" class="rounded-button darkblue submit-form default-prevent" id="password_claim-recaptcha" disabled>Verstuur e-mail</button></p>
+                    </form>
+                </div>
+            </article>
+
+            <article class="default-section right-side">
+                <div class="aside-title-content">Vals alarm!</div>
+                <div class="aside-content">
+                    <p>Als je je wachtwoord wel weer weet - of hier per ongeluk bent beland - kun je de link hieronder gebruiken om terug te gaan naar de homepage.</p>
+                    <p><a href="{{path}}">Terug naar de homepage</a></p>
+                </div>
+            </article>
+        </div>
+{% endblock %}
