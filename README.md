@@ -1,4 +1,4 @@
-# AACMS // Asteroid ArcutursCMS. <img src="https://habborator.org/archive/icons/medium/v22_1.gif">
+# Asteroid CMS. <img src="https://habborator.org/archive/icons/medium/v22_1.gif">
 
 * [What is Asteroid](#).
 * [How to Install](#).
