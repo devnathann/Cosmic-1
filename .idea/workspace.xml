@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d780a1c1-1206-42c2-8d11-08d6786424ff" name="Default Changelist" comment="" />
+    <list default="true" id="d780a1c1-1206-42c2-8d11-08d6786424ff" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/AsteroidCMS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AsteroidCMS.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AsteroidCMS/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/AsteroidCMS/composer.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,10 +15,16 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/AsteroidCMS/composer.json</pharConfigPath>
     <execution>
-      <executable />
+      <executable path="composer" />
     </execution>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="devraizer &lt;46655802+devraizer@users.noreply.github.com&gt;" />
+        <option value="Raizer" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="MERGE" />
   </component>
@@ -21,13 +32,11 @@
     <include_path>
       <path value="$PROJECT_DIR$/AsteroidCMS/vendor/doctrine/lexer" />
       <path value="$PROJECT_DIR$/AsteroidCMS/vendor/geoip2/geoip2" />
-      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/ralouphie/getallheaders" />
       <path value="$PROJECT_DIR$/AsteroidCMS/vendor/symfony/polyfill-ctype" />
       <path value="$PROJECT_DIR$/AsteroidCMS/vendor/symfony/polyfill-mbstring" />
       <path value="$PROJECT_DIR$/AsteroidCMS/vendor/symfony/polyfill-php56" />
       <path value="$PROJECT_DIR$/AsteroidCMS/vendor/jeremeamia/superclosure" />
       <path value="$PROJECT_DIR$/AsteroidCMS/vendor/symfony/polyfill-intl-idn" />
-      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/mollie/mollie-api-php" />
       <path value="$PROJECT_DIR$/AsteroidCMS/vendor/symfony/polyfill-iconv" />
       <path value="$PROJECT_DIR$/AsteroidCMS/vendor/symfony/translation-contracts" />
       <path value="$PROJECT_DIR$/AsteroidCMS/vendor/symfony/polyfill-util" />
@@ -35,19 +44,14 @@
       <path value="$PROJECT_DIR$/AsteroidCMS/vendor/symfony/translation" />
       <path value="$PROJECT_DIR$/AsteroidCMS/vendor/rakit/validation" />
       <path value="$PROJECT_DIR$/AsteroidCMS/vendor/php-di/invoker" />
-      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/guzzlehttp/promises" />
       <path value="$PROJECT_DIR$/AsteroidCMS/vendor/php-di/phpdoc-reader" />
-      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/guzzlehttp/psr7" />
       <path value="$PROJECT_DIR$/AsteroidCMS/vendor/php-di/php-di" />
       <path value="$PROJECT_DIR$/AsteroidCMS/vendor/composer" />
-      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/guzzlehttp/guzzle" />
       <path value="$PROJECT_DIR$/AsteroidCMS/vendor/pecee/simple-router" />
       <path value="$PROJECT_DIR$/AsteroidCMS/vendor/psr/container" />
-      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/psr/http-message" />
       <path value="$PROJECT_DIR$/AsteroidCMS/vendor/nesbot/carbon" />
       <path value="$PROJECT_DIR$/AsteroidCMS/vendor/maxmind/web-service-common" />
       <path value="$PROJECT_DIR$/AsteroidCMS/vendor/chriskonnertz/bbcode" />
-      <path value="$PROJECT_DIR$/AsteroidCMS/vendor/facebook/graph-sdk" />
       <path value="$PROJECT_DIR$/AsteroidCMS/vendor/usmanhalalit/viocon" />
       <path value="$PROJECT_DIR$/AsteroidCMS/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/AsteroidCMS/vendor/swiftmailer/swiftmailer" />
@@ -70,6 +74,9 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="ServiceViewManager">
@@ -95,7 +102,8 @@
       <option name="presentableId" value="Default" />
       <updated>1576532691993</updated>
       <workItem from="1576532697805" duration="1513000" />
-      <workItem from="1576534340701" duration="1705000" />
+      <workItem from="1576534340701" duration="2438000" />
+      <workItem from="1576536893025" duration="2265000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1576535189129</created>
@@ -111,7 +119,21 @@
       <option name="project" value="LOCAL" />
       <updated>1576535454932</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="init">
+      <created>1576536413391</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1576536413391</updated>
+    </task>
+    <task id="LOCAL-00004" summary="init">
+      <created>1576536506347</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1576536506347</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,14 +149,14 @@
       <screen x="0" y="0" width="1200" height="860" />
     </state>
     <state x="192" y="87" key="#Composer/0.0.1200.860@0.0.1200.860" timestamp="1576532996278" />
-    <state x="193" y="23" key="CommitChangelistDialog2" timestamp="1576535449417">
+    <state x="56" y="28" key="CommitChangelistDialog2" timestamp="1576714071685">
       <screen x="0" y="0" width="1200" height="860" />
     </state>
-    <state x="193" y="23" key="CommitChangelistDialog2/0.0.1200.860@0.0.1200.860" timestamp="1576535449417" />
-    <state x="377" y="312" width="446" height="390" key="ComposerInitDialogKey" timestamp="1576533646924">
+    <state x="56" y="28" key="CommitChangelistDialog2/0.0.1200.860@0.0.1200.860" timestamp="1576714071685" />
+    <state x="377" y="312" width="446" height="390" key="ComposerInitDialogKey" timestamp="1576537429541">
       <screen x="0" y="0" width="1200" height="860" />
     </state>
-    <state x="377" y="312" width="446" height="390" key="ComposerInitDialogKey/0.0.1200.860@0.0.1200.860" timestamp="1576533646924" />
+    <state x="377" y="312" width="446" height="390" key="ComposerInitDialogKey/0.0.1200.860@0.0.1200.860" timestamp="1576537429541" />
     <state x="422" y="344" key="Github.CreateGistDialog" timestamp="1576534137544">
       <screen x="0" y="0" width="1200" height="860" />
     </state>
@@ -147,14 +169,14 @@
       <screen x="0" y="0" width="1200" height="860" />
     </state>
     <state x="101" y="60" key="SettingsEditor/0.0.1200.860@0.0.1200.860" timestamp="1576534010120" />
-    <state x="192" y="161" key="Vcs.Push.Dialog.v2" timestamp="1576535459907">
+    <state x="192" y="161" key="Vcs.Push.Dialog.v2" timestamp="1576536516521">
       <screen x="0" y="0" width="1200" height="860" />
     </state>
-    <state x="192" y="161" key="Vcs.Push.Dialog.v2/0.0.1200.860@0.0.1200.860" timestamp="1576535459907" />
-    <state x="301" y="252" key="com.intellij.ide.util.TipDialog" timestamp="1576534340951">
+    <state x="192" y="161" key="Vcs.Push.Dialog.v2/0.0.1200.860@0.0.1200.860" timestamp="1576536516521" />
+    <state x="301" y="252" key="com.intellij.ide.util.TipDialog" timestamp="1576537394682">
       <screen x="0" y="0" width="1200" height="860" />
     </state>
-    <state x="301" y="252" key="com.intellij.ide.util.TipDialog/0.0.1200.860@0.0.1200.860" timestamp="1576534340951" />
+    <state x="301" y="252" key="com.intellij.ide.util.TipDialog/0.0.1200.860@0.0.1200.860" timestamp="1576537394682" />
     <state x="409" y="345" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1576536144532">
       <screen x="0" y="0" width="1200" height="860" />
     </state>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <title>Asteroid | Installation</title>
+      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      <meta content="" name="keywords">
+      <meta content="" name="description">
+      <link href="img/favicon.png" rel="icon">
+      <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,500,600,700,700i|Montserrat:300,400,500,600,700" rel="stylesheet">
+      <link href="../install/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <link href="../install/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+      <link href="../install/lib/animate/animate.min.css" rel="stylesheet">
+      <link href="../install/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+      <link href="../install/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+      <link href="../install/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.css" media="screen">
+      <link href="../install/css/style.css" rel="stylesheet">
+      <link href="https://codeseven.github.io/toastr/build/toastr.min.css" rel="stylesheet" type="text/css" />
+   </head>
+   <body>
+      <header id="header">
+         <div class="container">
+            <div class="logo float-left">
+               <h1 class="text-light"><a href="#database" class="scrollto"><span>Asteroid</span></a></h1>
+            </div>
+         </div>
+      </header>
+      <section id="intro" class="clearfix">
+         <div class="container d-flex h-100">
+            <div class="row justify-content-center align-self-center">
+               <div class="col-md-6 intro-info order-md-first order-last">
+                  <h2>Asteroid CMS<br>Your <span>Arcturus CMS!</span></h2>
+                  <div>
+                     <a href="{% if step == 'connectionSuccess' or step is empty %}#database{% endif %}{% if step == 'tablesNotExists' %}#database{% endif %}{% if step == 'tablesExists' %}#usersettings{% endif %}" class="btn-get-started scrollto">Start installation</a>
+                  </div>
+               </div>
+               <div class="col-md-6 intro-img order-md-last order-first">
+                  <img src="https://retohercules.com/images/habbo-hotel-png-2.png" style="margin-left: 170px" class="img-fluid">
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- #intro -->
+      <main id="main">
+      <!--==========================
+         About Us Section
+         ============================-->
+      <section id="database" class="section-bg" style="{% if step == 'createTables' or step == 'tablesExists' %}display:none{% endif %}">
+         <div class="container">
+            <header class="section-header">
+               <h3>Database settings</h3>
+            </header>
+            <div class="col-xs-1">
+               <div class="iconbox">
+                  <div class="featureinfo" id="dbconnection">
+                     <p>
+                     <fieldset>
+                        <div class="form-group">
+                           <label for="exampleInputEmail1">Hostname</label>
+                           <input type="text" class="form-control" name="host" value="localhost">
+                        </div>
+                        <div class="form-group">
+                           <label for="exampleInputPassword1">Username</label>
+                           <input type="text" class="form-control" name="username" value="">
+                        </div>
+                        <div class="form-group">
+                           <label for="exampleInputPassword1">Database</label>
+                           <input type="text" class="form-control" name="database" value="">
+                        </div>
+                        <div class="form-group">
+                           <label for="exampleInputPassword1">Password</label>
+                           <input type="password" class="form-control" name="password" value="">
+                        </div>
+                        <div class="form-group">
+                           <label for="exampleSelect1">Type</label>
+                           <select class="form-control" id="exampleSelect1">
+                              <option>MySQL</option>
+                           </select>
+                        </div>
+                        <button type="submit" id="connectionCheck"  class="btn btn-primary">Test connection</button>
+                        <button type="submit" id="createTables"  class="btn btn-success" style="display:none">OK! Create tables?</button>
+                     </fieldset>
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section id="usersettings" class="section-bg" style="{% if step == 'tablesExists' %}{% else %}display:none{% endif %}">
+         <div class="container">
+            <header class="section-header">
+               <h3>Create User</h3>
+            </header>
+            <div class="col-xs-1">
+               <div class="iconbox">
+                  <div class="featureinfo">
+                     <p>
+                     <fieldset>
+                        <div class="form-group">
+                           <label for="exampleInputEmail1">Username</label>
+                           <input type="text" class="form-control" name="username">
+                        </div>
+                        <div class="form-group">
+                           <label for="exampleInputPassword1">Password</label>
+                           <input type="password" class="form-control" name="password">
+                        </div>
+                        <div class="form-group">
+                           <label for="exampleInputPassword1">Repeat password</label>
+                           <input type="password" class="form-control" name="password_repeat">
+                        </div>
+                        <div class="form-group">
+                           <label for="exampleInputPassword1">Email</label>
+                           <input type="email" class="form-control" name="mail">
+                        </div>
+                        <button type="submit" id="{% if step == 'tablesExists' %}createFromNull{% else %}createUser{% endif %}" class="btn btn-primary">Create</button>
+                     </fieldset>
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section id="settings" class="section-bg" style="display: none;">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="iconbox">
+                     <div class="featureinfo" id="webSettings">
+                        <p>
+                        <fieldset>
+                         <div class="form-group">
+                              <label for="exampleInputEmail1">Secret token</label>
+                              <input type="text" class="form-control" name="SECRET_TOKEN" readonly>
+                           </div>
+                           <div class="form-group">
+                              <label for="exampleInputEmail1">Website</label>
+                              <input type="text" class="form-control" name="domain" readonly>
+                           </div>
+                           <div class="form-group">
+                              <label for="exampleInputPassword1">Domain</label>
+                              <input type="text" class="form-control" name="path" readonly>
+                           </div>
+                           <div class="form-group">
+                              <label for="exampleInputPassword1">Image path</label>
+                              <input type="text" class="form-control" name="imgPath">
+                              <small>Site where the swf is hosted</small>
+                           </div>
+                           <div class="form-group">
+                              <label for="exampleInputPassword1">Figure path</label>
+                              <input type="text" class="form-control" name="figurePath">
+                             <small>Site where habbo/badges imaging is hosted</small>
+                           </div>
+                           <div class="form-group row">
+                              <label for="example-text-input" class="col-1 col-form-label">Host</label>
+                              <div class="col-lg-7">
+                                 <input type="text" class="form-control" name="clientHost">
+                                <small>Hotel connection</small>
+                              </div>
+                              <label for="example-text-input" class="col-1 col-form-label">Port</label>
+                              <div class="col-lg-3">
+                                 <input type="number" class="form-control" name="clientPort">
+                              </div>
+                           </div>
+                           <div class="form-group row">
+                              <label for="example-text-input" class="col-1 col-form-label">Rcon</label>
+                              <div class="col-lg-7">
+                                 <input type="text" class="form-control" name="apiHost">
+                                  <small>RCON API</small>
+                              </div>
+                              <label for="example-text-input" class="col-1 col-form-label">Port</label>
+                              <div class="col-lg-3">
+                                 <input type="number" class="form-control" name="apiPort">
+                              </div>
+                           </div>
+                           <br />
+                        </fieldset>
+                        </p>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="iconbox">
+                     <div class="featureinfo" id="webSettings">
+                        <p>
+                        <fieldset>
+                           <div class="form-group">
+                              <label for="exampleInputEmail1">Hotelname</label>
+                              <input type="text" class="form-control" name="siteName">
+                           </div>
+                           <div class="form-group">
+                              <label for="exampleInputPassword1">Shortname</label>
+                              <input type="text" class="form-control" name="shortName">
+                           </div>
+                           <div class="form-group">
+                              <label for="exampleInputPassword1">Currencys</label>
+                              <input type="text" class="form-control" value='{"duckets":0,"diamonds":5,"belcredits":103}' name="currencys">
+                           </div>
+                           <div class="form-group row">
+                              <label for="example-text-input" class="col-3 col-form-label">Pay currency</label>
+                              <div class="col-lg-3">
+                                 <input type="number" class="form-control" value="103" name="payCurrency">
+                              </div>
+                              <label for="example-text-input" class="col-3 col-form-label">Credits</label>
+                              <div class="col-lg-3">
+                                 <input type="number" class="form-control" value="1000" name="credits">
+                              </div>
+                           </div>
+                           <div class="form-group row">
+                              <label for="example-text-input" class="col-3 col-form-label">Points</label>
+                              <div class="col-lg-3">
+                                 <input type="number" class="form-control" value="1000" name="points">
+                              </div>
+                              <label for="example-text-input" class="col-3 col-form-label">Pixels</label>
+                              <div class="col-lg-3">
+                                 <input type="number" class="form-control" value="1000"name="pixels">
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label for="exampleInputPassword1">Recaptcha public key</label>
+                              <input type="text" class="form-control" name="publicKey">
+                              <small><a href="https://www.google.com/recaptcha/admin" target="_blank">Create</a> Google Recaptcha V2</small>
+                           </div>
+                           <div class="form-group">
+                              <label for="exampleInputPassword1">Recaptcha secret key</label>
+                              <input type="text" class="form-control" name="secretKey">
+                              <small>If you leave this blank, users cant register at your CMS.</small>
+                           </div>
+                           <button type="submit" id="complete" class="btn btn-primary">Complete installation</button>
+                        </fieldset>
+                        </p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         </div>
+      </section>
+      <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+      <script src="../install/lib/jquery/jquery.min.js"></script>
+      <script src="../install/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="../install/lib/easing/easing.min.js"></script>
+      <script src="../install/lib/mobile-nav/mobile-nav.js"></script>
+      <script src="../install/lib/wow/wow.min.js"></script>
+      <script src="../install/js/main.js"></script>
+      <script src="../install/js/install.js"></script>
+      <script src="https://codeseven.github.io/toastr/build/toastr.min.js"></script>
+   </body>
+</html>

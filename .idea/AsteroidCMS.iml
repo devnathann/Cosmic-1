@@ -11,16 +11,11 @@
       <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/doctrine/lexer" />
       <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/egulias/email-validator" />
-      <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/facebook/graph-sdk" />
       <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/geoip2/geoip2" />
-      <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/guzzlehttp/guzzle" />
-      <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/guzzlehttp/promises" />
-      <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/guzzlehttp/psr7" />
       <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/jenssegers/date" />
       <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/jeremeamia/superclosure" />
       <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/maxmind-db/reader" />
       <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/maxmind/web-service-common" />
-      <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/mollie/mollie-api-php" />
       <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/nesbot/carbon" />
       <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/nikic/php-parser" />
       <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/pecee/simple-router" />
@@ -28,9 +23,7 @@
       <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/php-di/php-di" />
       <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/php-di/phpdoc-reader" />
       <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/psr/container" />
-      <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/psr/http-message" />
       <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/rakit/validation" />
-      <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/ralouphie/getallheaders" />
       <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/sonata-project/google-authenticator" />
       <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/swiftmailer/swiftmailer" />
       <excludeFolder url="file://$MODULE_DIR$/AsteroidCMS/vendor/symfony/polyfill-ctype" />
