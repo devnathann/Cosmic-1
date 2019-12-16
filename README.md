@@ -1,4 +1,4 @@
-# Asteroid CMS. <img src="https://habborator.org/archive/icons/medium/v22_1.gif">
+# <img src="https://habborator.org/archive/icons/medium/v22_1.gif"> Asteroid CMS:
 
 * [What is Asteroid](#).
 * [How to Install](#).
@@ -9,7 +9,7 @@
 
 > Currently work Since Arcturus 1.12.
 
-> [Last beta: 0.8](#).
+> [Last beta: 0.1](#).
 
 > Under development: R1.
 
