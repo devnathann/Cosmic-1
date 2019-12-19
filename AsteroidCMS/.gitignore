@@ -1,6 +1,3 @@
-App/Config.php
-App/Hash.php
-public/web.config
 public/tmp/*
 public/uploads/*
 

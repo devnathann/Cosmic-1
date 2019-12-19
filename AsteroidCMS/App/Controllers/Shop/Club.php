@@ -24,7 +24,10 @@ class Club
                 $this->data->type = $value;
         }
       
-        $this->data->price = Player::getCurrencys(request()->player->id)[Config::payCurrency]->amount;
+        $currenycs = Player::getCurrencys(request()->player->id)[Config::payCurrency];
+        if($currenycs) {
+            $this->data->price = $currenycs->amount;
+        }
 
         View::renderTemplate('Shop/club.html', [
             'title' => Locale::get('core/title/shop/club'),
@@ -34,7 +37,13 @@ class Club
     }
 
     public function buy() {
-        if(Player::getCurrencys(request()->player->id)[Config::payCurrency]->amount < Config::vipPrice) {
+        $currency = Player::getCurrencys(request()->player->id)[Config::payCurrency];
+        if(!$currency) {
+            echo '{"status":"error","message":"Je moet eerst ingelogd zijn binnen het hotel om dit te kunnen kopen!"}';
+            exit;
+        }
+      
+        if($currency->amount < Config::vipPrice) {
             echo '{"status":"error","message":"'.Locale::get('core/notification/not_enough_belcredits').'"}';
             exit;
         }

@@ -5,6 +5,10 @@ use QueryBuilder;
 
 class Shop
 {
+    public function getOrdersByOrderId($order_id)
+    {
+        return QueryBuilder::table('website_shop_orders')->where('order_id', $offer_id)->first();
+    }
 
     public static function getOffers($lang = 'NL')
     {

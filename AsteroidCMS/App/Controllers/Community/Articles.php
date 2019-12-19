@@ -64,6 +64,7 @@ class Articles
         foreach ($latest_news as $item) {
             $item->timestamp = \App\Core::timediff($item->timestamp);
         }
+      
 
         View::renderTemplate('Community/article.html', [
             'title'         => $article->title,

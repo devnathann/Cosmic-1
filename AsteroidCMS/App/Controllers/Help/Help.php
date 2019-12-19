@@ -32,6 +32,7 @@ class Help
     {
         $category = \App\Models\Help::getCategories();
         if($category == null) {
+            echo '{"status":"error","message":"We hebben helaas nog geen FAQ\'s voor je klaarstaan!"}';
             exit;
         }
 

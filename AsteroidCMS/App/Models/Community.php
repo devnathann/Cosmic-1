@@ -14,6 +14,11 @@ class Community
     {
         return QueryBuilder::table('camera_web')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->offset($offset)->limit($limit)->orderBy('id', 'desc')->get();
     }
+  
+    public static function getPhotoById($id)
+    {
+        return QueryBuilder::table('camera_web')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->where('id', $id)->first();
+    }
 
     public static function getPhotosLikes($photoid)
     {
@@ -28,6 +33,14 @@ class Community
     public static function getCurrencyHighscores($type, $limit) 
     {
         return QueryBuilder::table('users_currency')->selectDistinct(array('user_id', 'amount', 'type'))->setFetchMode(PDO::FETCH_CLASS, get_called_class())->where('type', $type)->orderBy('amount', 'DESC')->limit($limit)->get();
+    }
+
+    /*
+     * Get campaigns queries
+     */
+    public static function getCampaigns($limit = 10)
+    {
+        return QueryBuilder::table('website_campaigns')->where('enabled', '1')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->orderBy('timestamp', 'desc')->limit($limit)->get();
     }
 
     /*
@@ -52,6 +65,11 @@ class Community
     public static function getLastArticle()
     {
         return QueryBuilder::table('website_news')->select('id')->select('slug')->orderBy('id', 'desc')->first();
+    }
+  
+    public static function latestArticleReaction($news_id)
+    {
+        return QueryBuilder::table('website_news_reactions')->where('news_id', $news_id)->where('hidden', '0')->orderBy('timestamp', 'desc')->first();
     }
   
     public static function addNewsReaction($news_id, $player_id, $message)

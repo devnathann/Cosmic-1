@@ -54,6 +54,21 @@ class Admin
         return QueryBuilder::table('users')->where('online', '1')->OrderBy('id', 'desc')->limit($limit)->get();
     }
 
+    public static function getStaffOnlineCount()
+    {
+        return QueryBuilder::table('users')->where('online', '1')->where('rank', '>=', Config::minRank)->get();
+    }
+
+    public static function getStaffOnline()
+    {
+        return QueryBuilder::table('users')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->where('online', '1')->where('rank', '>=', Config::minRank)->get();
+    }
+
+    public static function getHotelTicketCount()
+    {
+        return QueryBuilder::table('moderation_help_tickets')->where('state', 'OPEN')->get();
+    }
+
     /**
      * Alert queries
      */
@@ -97,6 +112,34 @@ class Admin
         return QueryBuilder::table('website_ban_types')->where('id', $id)->first();
     }
 
+    public static function createBan($type, $ban_data, $reason, $added_by, $expire)
+    {
+        $data = array(
+            'type' => $type,
+            'data' => $ban_data,
+            'reason' => $reason,
+            'added_by' => $added_by,
+            'added_date' => time(),
+            'expire' => $expire + time()
+        );
+
+        return QueryBuilder::table('bans')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->insert($data);
+    }
+
+    public static function editBan($id, $type, $ban_data, $reason, $added_by, $expire)
+    {
+        $data = array(
+            'type' => $type,
+            'data' => $ban_data,
+            'reason' => $reason,
+            'added_by' => $added_by,
+            'added_date' => time(),
+            'expire' => $expire + time()
+        );
+
+        return QueryBuilder::table('bans')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->where('id', $id)->update($data);
+    }
+
     public static function deleteBan($data)
     {
         return QueryBuilder::table('bans')->where('data', $data)->delete();
@@ -105,6 +148,21 @@ class Admin
     /**
      * Logs queries
      */
+
+    public static function getAllLogs($limit = 500)
+    {
+        return QueryBuilder::table('logs')->OrderBy('id', 'desc')->limit($limit)->get();
+    }
+  
+    public static function getAllLogsByUserid($player_id, $limit = 2000)
+    {
+        return QueryBuilder::table('chatlogs_room')->where('user_from_id', $player_id)->OrderBy('timestamp', 'desc')->limit($limit)->get();
+    }
+  
+    public static function getAccessLogById($id)
+    {
+        return QueryBuilder::table('player_access')->find($id);
+    }
 
     public static function getAllMessengerLogs($limit = 500)
     {
@@ -129,6 +187,11 @@ class Admin
     public static function getStaffLogs($limit = 100)
     {
         return QueryBuilder::table('website_staff_logs')->OrderBy('id', 'desc')->limit($limit)->get();
+    }
+
+    public static function getStaffLogsByUser($username, $userid, $limit = 500)
+    {
+        return QueryBuilder::table('staff_logs')->where('target', $username)->orWhere('target', $userid)->OrderBy('id', 'desc')->limit($limit)->get();
     }
 
     public static function getClones($last_ip, $reg_ip, $limit = 1000)
@@ -196,6 +259,11 @@ class Admin
     public static function getNewsById($id)
     {
         return QueryBuilder::table('website_news')->select('id')->select('title')->select('category')->select('short_story')->select('full_story')->select('images')->select('header')->select('timestamp')->select('author')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->where('id', $id)->orderBy('id', 'desc')->first();
+    }
+
+    public static function getNewsCategory()
+    {
+        return QueryBuilder::table('website_news_categories')->get();
     }
 
     public static function getNewsCategoryById($id)
@@ -273,6 +341,15 @@ class Admin
         return QueryBuilder::table('website_reports')->where('id', $itemid)->update($data);
     }
 
+    public static function updateReactionHide($slug, $itemid, $hidden)
+    {
+        $data = array(
+            'is_hidden' => $hidden
+        );
+
+        return QueryBuilder::table($slug)->where('id', $itemid)->update($data);
+    }
+
     /*
      * Player queries
      */
@@ -294,6 +371,11 @@ class Admin
         return QueryBuilder::table('users')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->where('id', $user_id)->update($data);
     }
 
+    public static function resetRelationships($id)
+    {
+        return QueryBuilder::table('player_relationships')->where('player_id', $id)->orWhere('partner', $id)->delete();
+    }
+
     public static function getPopularRooms($limit = 100)
     {
         return QueryBuilder::table('rooms')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->orderBy('users', 'desc')->limit($limit)->get();
@@ -303,6 +385,56 @@ class Admin
     {
         return QueryBuilder::table('rooms')->select('name')->select('id')->select('owner_name')->select('users')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->where('name', 'LIKE', $string . '%')->orderBy('users', 'desc')->limit($limit)->get();
     }
+
+    public static function getPlayersByIp($ip)
+    {
+        return QueryBuilder::table('users')->select('id')->select('username')->select('ip_current')->select('ip_register')
+            ->select('last_login')->select('online')->where('ip_current', $ip)->orWhere('ip_register', $ip)->get();
+    }
+
+    /*
+     * Reports queries
+     */
+    public static function getReportByType($type, $limit = 350)
+    {
+        return QueryBuilder::table('website_reports')->where('type', $type)->where('closed', 'open')->limit($limit)->get();
+    }
+
+    public static function deleteReport($id)
+    {
+        return QueryBuilder::table('website_reports')->where('id', $id)->delete();
+    }
+
+    public static function getReportByTypeId($type, $userid, $action)
+    {
+        return QueryBuilder::table('website_reports')->where('abuser_id', $userid)->where('type', $type)->where('closed', $action)->get();
+    }
+
+    public static function getReactionByUserId($id)
+    {
+        return QueryBuilder::table('website_news_reactions')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->where('id', $id)->first();
+    }
+
+    public static function getFeedsByFeedId($feedid)
+    {
+        return QueryBuilder::table('website_feeds')->where('id', $feedid)->first();
+    }
+
+    public static function getFeedReactionById($id)
+    {
+        return QueryBuilder::table('website_feeds_reactions')->where('id', $id)->first();
+    }
+
+    public static function getPhotoById($id)
+    {
+        return QueryBuilder::table('photos')->where('id', $id)->first();
+    }
+
+    public static function deletePhoto($id)
+    {
+        return QueryBuilder::table('photos')->where('id', $id)->delete();
+    }
+
 
     /*
      * Helptool queries
@@ -316,6 +448,11 @@ class Admin
                     ->select('website_helptool_requests.timestamp')->select('website_helptool_requests.status')
                     ->join('users', 'users.id', '=', 'website_helptool_requests.player_id')
                     ->whereNotNull('website_helptool_requests.player_id')->orderBy('website_helptool_requests.id', 'desc')->limit(350)->get();
+    }
+
+    public static function getHelpTicketCount()
+    {
+        return QueryBuilder::table('website_helptool_requests')->where('status', 'open')->whereNotNull('player_id')->orderBy('timestamp', 'desc')->get();
     }
 
     public static function getHelpTicketById($id)
@@ -357,6 +494,119 @@ class Admin
     public static function getLatestChangeStatus(int $id)
     {
         return QueryBuilder::table('website_helptool_logs')->where('target', $id)->orderBy('id', 'desc')->first();
+    }
+
+    /*
+     * Value queries
+     */
+
+    public static function getValues()
+    {
+        return QueryBuilder::table('rare_values')
+            ->select('rare_values.*')
+            ->select(QueryBuilder::raw('rare_categories.id as cat_id'))
+            ->select(QueryBuilder::raw('rare_categories.name as cat_name'))
+            ->join('rare_categories', 'rare_values.category', '=', 'rare_categories.id')->orderBy('swf', 'asc')->get();
+    }
+
+    public static function getValueCategories()
+    {
+        return QueryBuilder::table('rare_categories')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->orderBy('id', 'asc')->get();
+    }
+
+    public static function getValuesByCategory(int $category)
+    {
+        return QueryBuilder::table('rare_values')->where('category', $category)->orderBy('price_ss', 'asc')->get();
+    }
+
+    public static function getValueBySwf($swf)
+    {
+        return QueryBuilder::table('rare_values')->where('swf', $swf)->first();
+    }
+
+    public static function getValueById($id)
+    {
+        return QueryBuilder::table('rare_values')->find($id);
+    }
+
+    public static function addValue(String $name, String $swf, int $category, int $price_bc, int $price_ss, $rate, int $player_id)
+    {
+        $data = array(
+            'name' => $name,
+            'swf' => $swf,
+            'category' => $category,
+            'price_bc' => $price_bc,
+            'price_ss' => $price_ss,
+            'rate' => $rate,
+            'author' => $player_id,
+            'timestamp' => time()
+        );
+
+        return QueryBuilder::table('rare_values')->insert($data);
+    }
+
+    public static function editValue(String $name, String $swf, int $category, int $price_bc, int $price_ss, $rate, int $player_id)
+    {
+        $data = array(
+            'name' => $name,
+            'category' => $category,
+            'price_bc' => $price_bc,
+            'price_ss' => $price_ss,
+            'rate' => $rate,
+            'author' => $player_id,
+            'timestamp' => time()
+        );
+
+        return QueryBuilder::table('rare_values')->where('swf', $swf)->update($data);
+    }
+
+    public static function getValueCategoryById(int $id)
+    {
+        return QueryBuilder::table('rare_categories')->where('id', $id)->first();
+    }
+
+    public static function getValueCategoryByName(String $name)
+    {
+        return QueryBuilder::table('rare_categories')->where('name', $name)->first();
+    }
+
+    public static function addValueCategory(String $name, $hidden)
+    {
+        $data = array(
+            'name' => $name,
+            'slug' => \App\Core::convertSlug($name),
+            'hidden' => $hidden
+        );
+
+        return QueryBuilder::table('rare_categories')->insert($data);
+    }
+
+    public static function hideValueCategory($name)
+    {
+        $data = array(
+            'hidden' => '1'
+        );
+
+        return QueryBuilder::table('rare_categories')->where('name', $name)->update($data);
+    }
+
+    public static function showValueCategory($name)
+    {
+        $data = array(
+            'hidden' => '0'
+        );
+
+        return QueryBuilder::table('rare_categories')->where('name', $name)->update($data);
+    }
+
+    public static function removeValueCategory(int $id)
+    {
+        return QueryBuilder::table('rare_categories')->where('id', $id)->delete();
+    }
+
+    public static function removeValue($id)
+    {
+        return QueryBuilder::table('rare_values')->where('id', $id)->delete();
     }
 
     /*
@@ -445,6 +695,26 @@ class Admin
         return QueryBuilder::table('website_helptool_categories')->where('id', $id)->delete();
     }
 
+
+    /*
+     * Namechange queries
+     */
+
+    public static function getNamechangeRequests()
+    {
+        return QueryBuilder::table('website_namechange_requests')->where('status', 'open')->get();
+    }
+
+    public static function getNamechangeById($id)
+    {
+        return QueryBuilder::table('website_namechange_requests')->find($id);
+    }
+
+    public static function updateNamechangeStatus($id, $action)
+    {
+        return QueryBuilder::table('website_namechange_requests')->where('id' , $id)->update(array('status' => "{$action}"));
+    }
+
     /*
      * Shop Logs
      */
@@ -457,6 +727,21 @@ class Admin
     public static function getPurchaseLogs($limit = 1000)
     {
         return QueryBuilder::table('player_purchases')->orderby('id', 'desc')->limit($limit)->get();
+    }
+
+    public static function getPaysafecardLogs()
+    {
+        return QueryBuilder::table('website_shop_paysafecard')->where('status','new')->orderby('id', 'asc')->get();
+    }
+
+    public static function getPaysafecardLogsById($id)
+    {
+        return QueryBuilder::table('website_shop_paysafecard')->find($id);
+    }
+
+    public static function updatePaysafecardStatus($id, $value)
+    {
+        return QueryBuilder::table('website_shop_paysafecard')->where('id', $id)->update(array('status' => $value));
     }
 
     /*
@@ -553,6 +838,22 @@ class Admin
         return QueryBuilder::table('permissions')->select('rank_name')->select('id')->where('id', '!=', 1)->where('id', '!=', 2)->where('id', '!=', 8)->orderBy('id', 'desc')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->where('name', 'LIKE ', '%' . $string . '%')->get();
     }
 
+    public static function getPermissions($string = null)
+    {
+        return QueryBuilder::table('website_permissions')->select('website_permissions.id')->select('website_permissions.permission')->orderBy('id', 'desc')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->where('website_permissions.permission', 'LIKE ', '%' . $string . '%')->get();
+    }
+
+    public static function getPermissionsRank($rank)
+    {
+        return QueryBuilder::table('website_permissions_ranks')->select('website_permissions_ranks.id')->select('website_permissions.description')
+            ->select('website_permissions.permission')->setFetchMode(PDO::FETCH_CLASS, get_called_class())
+            ->join('website_permissions', 'website_permissions_ranks.permission_id', '=', 'website_permissions.id')->where('website_permissions_ranks.rank_id', $rank)->get();
+    }
+  
+    public static function getPermissionCommands($rank) {
+        return QueryBuilder::table('permission_commands')->where('minimum_rank', $rank)->get();
+    }
+
     public static function addRank($commands, $permissions)
     {
         $rankId = QueryBuilder::table('permissions')->insert((array)$commands);
@@ -565,6 +866,15 @@ class Admin
     public static function changeMinimumRank($command, $rank)
     {
         return QueryBuilder::table('permission_commands')->where('command_id', $command)->update(array('minimum_rank' => $rank));
+    }
+
+    public static function editRank($id, $name)
+    {
+        $data = array(
+            'name' => $name
+        );
+
+        return QueryBuilder::table('permissions')->where('id', $id)->update($data);
     }
 
     public static function createPermission($role, $permission)
@@ -582,9 +892,18 @@ class Admin
         return QueryBuilder::table('website_permissions_ranks')->where('id', $permission)->delete();
     }
 
+    public static function permissionExists($role, $permission)
+    {
+        return queryBuilder::table('website_permissions_ranks')->where('rank_id', $role)->where('permission_id', $permission)->first();
+    }
+
     public static function roleExists($role, $permission)
     {
         return QueryBuilder::table('website_permissions_ranks')->where('permission_id', $permission)->where('rank_id', $role)->count();
+    }
+
+    public static function setOrderPosition($table, $key, $value, $user_id, $where) {
+        return QueryBuilder::table($table)->where($where, $user_id)->update(array($key => $value));
     }
 
     public static function getBanLogByUserId($user_id){

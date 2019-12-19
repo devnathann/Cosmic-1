@@ -16,7 +16,7 @@ class Ranking
         $currencys = array();
         foreach(Config::currencys as $currency => $type) 
         {
-            $highscores = Community::getCurrencyHighscores($type, 5);
+            $highscores = Community::getCurrencyHighscores($type, 7);
             $type = $currency;
           
             foreach($highscores as $highscore) {

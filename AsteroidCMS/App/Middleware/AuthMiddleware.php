@@ -1,6 +1,7 @@
 <?php
 namespace App\Middleware;
 
+use App\Config;
 use App\Core;
 use App\Models\Player;
 
@@ -11,8 +12,13 @@ use Pecee\Http\Request;
 
 class AuthMiddleware implements IMiddleware
 {
+  
     public function handle(Request $request) : void
     {
+        if(Config::installation) {
+            redirect('/installation');
+        }
+        
         if(!Session::exists('player_id')) {
             return;
         }

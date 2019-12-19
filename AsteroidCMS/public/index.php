@@ -10,7 +10,7 @@ if (file_exists(__DIR__ . '/../vendor/usmanhalalit/') && file_exists(__DIR__ . '
 
     require_once __DIR__ . '/../vendor/autoload.php';
 } else {
-    echo 'Please install and update composer before installer wil starts!';
+    echo 'Please update composer, vendors are missing!';
     exit;
 }
 

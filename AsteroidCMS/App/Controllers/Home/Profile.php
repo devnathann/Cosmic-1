@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers\Home;
 
+use App\Config;
 use App\Core;
 
 use App\Models\Community;
