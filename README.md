@@ -7,13 +7,13 @@
 
 # <img src="https://habborator.org/archive/icons/medium/go_arrow.gif"> About:
 
-> Currently work Since Arcturus 1.12.
+> Only for Arcturus Morningstar.
 
-> [Last beta: 0.1](#).
+> [Last beta: 0.1.1](#).
 
 > Under development: R1.
 
-> For issues tell me on my discord: Raizer#001, or create a issue in this Github.
+> For issues tell me on my discord: Raizer#0001, or create an issue in this Github.
 
 # <img src="https://raw.githubusercontent.com/Wulles/eyethatseeseverything/master/pwrup_pins.gif"> SWF:
 ```
