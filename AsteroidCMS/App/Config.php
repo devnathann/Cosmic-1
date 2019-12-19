@@ -5,36 +5,36 @@ class Config
 {
     /* DB config */
     const driver = 'mysql';
-    const host = 'localhost';
-    const username = 'root';
-    const password = 'HDSUFUDSYF&*hukwj3rY';
-    const database = 'asteroidcms_arcturus';
+    const host = '';
+    const username = '';
+    const password = '';
+    const database = '';
     const charset = 'utf8';
     const collation = 'collation';
     const prefix = '';
 
-    const installation = false;
-  
+    const installation = true;
+
     /* Web config */
     const debug = true;
     const vpnBlock = true;
     const vpnLocation = '/../../../ASN.mmdb';
 
-    const shortName = 'Asteroid';
-    const siteName = 'AsteroidCMS';
+    const shortName = '';
+    const siteName = '';
     const language = 'NL';
-    
-    const clientHost = '46.105.247.163';
-    const clientPort = 3000;
 
-    const domain = 'asteroidcms.online';
-    const path = 'http://asteroidcms.online';
-    const imgPath = 'http://images.asteroidcms.online';
-    const figurePath = 'https://cdn.leet.ws/leet-imaging';
+    const clientHost = '';
+    const clientPort = 0;
 
-    const view = 'App/View';
+    const domain = '';
+    const path = '';
+    const imgPath = '';
+    const figurePath = '';
 
-    const SECRET_TOKEN = 'ASTEROID-nm3jivnnjktekocxn1z4c';
+    const view = 'Library/Installation/Views';
+
+    const SECRET_TOKEN = '';
 
     /* Admin settings */
     const minRank = 5;
@@ -47,8 +47,8 @@ class Config
     const cacheTime = 3600;
 
     /* Captcha */
-    const publicKey = '6LepDKsUAAAAAEnPxCPVJ7KxazzQ7TIvZkjF2ssb';
-    const secretKey = '6LepDKsUAAAAAJMgACYrxoTpranj9bzMk7rRAtIJ';
+    const publicKey = '';
+    const secretKey = '';
 
     /* Google Auth config */
     const authEnabled = false;
@@ -61,17 +61,14 @@ class Config
     const mailPort      = null;
 
     /* Register settings */
-    const credits = 1000;
-    const pixels = 1000;
-    const points = 1000;
-  
+    const credits = 0;
+    const pixels = 0;
+    const points = 0;
+
     /* Currency settings */
-    const currencys = array( 'duckets' => 0,
-'diamonds' => 5,
-'belcredits' => 103
-);
-    const payCurrency = 103;
-  
+    const currencys = 0;
+    const payCurrency = 0;
+
     const homeRoom = 0;
 
     const look = array(
@@ -89,10 +86,10 @@ class Config
         'hr-545-45.hd-600-14.ch-650-76.lg-696-64.sh-907-76.he-1602-1408.wa-3210-1408-1408',
         'hr-890-42.hd-625-14.ch-3113-75-64.lg-720-64.sh-3115-75-64.he-1605-74'
     );
-    
+
 
     /* Asteroid Api */
-    const apiHost = '46.105.247.163';
-    const apiPort = 3001;
+    const apiHost = '';
+    const apiPort = 0;
     const apiEnabled = true;
 }
