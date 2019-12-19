@@ -944,6 +944,13 @@ INSERT INTO `website_news` (`id`, `slug`, `title`, `short_story`, `full_story`, 
               if ($conn->query($qeqewwe) !== true) {
                   self::rollback($conn->error);
               }
+        $qeqewwe = "
+      ALTER TABLE `users`
+        `pincode` varchar(6) DEFAULT NULL,
+        `secret_key` varchar(16) DEFAULT NULL";
+        if ($conn->query($qeqewwe) !== true) {
+            self::rollback($conn->error);
+        }
         return true;
     }
 }

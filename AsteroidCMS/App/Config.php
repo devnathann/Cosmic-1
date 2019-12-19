@@ -5,36 +5,36 @@ class Config
 {
     /* DB config */
     const driver = 'mysql';
-    const host = '';
-    const username = '';
-    const password = '';
-    const database = '';
+    const host = 'localhost';
+    const username = 'root';
+    const password = 'HDSUFUDSYF&*hukwj3rY';
+    const database = 'asteroidcms_arcturus';
     const charset = 'utf8';
     const collation = 'collation';
     const prefix = '';
 
-    const installation = true;
+    const installation = false;
   
     /* Web config */
     const debug = true;
     const vpnBlock = true;
     const vpnLocation = '/../../../ASN.mmdb';
 
-    const shortName = '';
-    const siteName = '';
+    const shortName = 'Asteroid';
+    const siteName = 'AsteroidCMS';
     const language = 'NL';
     
-    const clientHost = '';
-    const clientPort = 0;
+    const clientHost = '46.105.247.163';
+    const clientPort = 3000;
 
-    const domain = '';
-    const path = '';
-    const imgPath = '';
-    const figurePath = '';
+    const domain = 'asteroidcms.online';
+    const path = 'http://asteroidcms.online';
+    const imgPath = 'http://images.asteroidcms.online';
+    const figurePath = 'https://cdn.leet.ws/leet-imaging';
 
-    const view = 'Library/Installation/Views';
+    const view = 'App/View';
 
-    const SECRET_TOKEN = '';
+    const SECRET_TOKEN = 'ASTEROID-nm3jivnnjktekocxn1z4c';
 
     /* Admin settings */
     const minRank = 5;
@@ -47,8 +47,8 @@ class Config
     const cacheTime = 3600;
 
     /* Captcha */
-    const publicKey = '';
-    const secretKey = '';
+    const publicKey = '6LepDKsUAAAAAEnPxCPVJ7KxazzQ7TIvZkjF2ssb';
+    const secretKey = '6LepDKsUAAAAAJMgACYrxoTpranj9bzMk7rRAtIJ';
 
     /* Google Auth config */
     const authEnabled = false;
@@ -61,13 +61,16 @@ class Config
     const mailPort      = null;
 
     /* Register settings */
-    const credits = 0;
-    const pixels = 0;
-    const points = 0;
+    const credits = 1000;
+    const pixels = 1000;
+    const points = 1000;
   
     /* Currency settings */
-    const currencys = 0;
-    const payCurrency = 0;
+    const currencys = array( 'duckets' => 0,
+'diamonds' => 5,
+'belcredits' => 103
+);
+    const payCurrency = 103;
   
     const homeRoom = 0;
 
@@ -89,7 +92,7 @@ class Config
     
 
     /* Asteroid Api */
-    const apiHost = '';
-    const apiPort = 0;
+    const apiHost = '46.105.247.163';
+    const apiPort = 3001;
     const apiEnabled = true;
 }
