@@ -17,16 +17,12 @@ class Club
     {
         $this->data = new \stdClass();
       
+        $this->data->price = Config::vipPrice;
         $this->data->vip = Player::getDataByRank(Config::vipRank, 5);
 
         foreach(Config::currencys as $value => $key) {
             if($key == Config::payCurrency) 
                 $this->data->type = $value;
-        }
-      
-        $currenycs = Player::getCurrencys(request()->player->id)[Config::payCurrency];
-        if($currenycs) {
-            $this->data->price = $currenycs->amount;
         }
 
         View::renderTemplate('Shop/club.html', [

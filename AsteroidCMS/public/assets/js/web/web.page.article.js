@@ -33,7 +33,9 @@ function WebPageArticleInterface(main_page)
 
         this.reaction_tmp = [
             '<div class="ac-item" style="border-radius: 10px;">\n' +
-            '   <div style="float:left; background: url(' + Site.url + '/imaging/avatarimage?figure={{figure}}&amp;head_direction=3&amp;headonly=1&amp;size=s); height: 30px; width: 27px;"></div>\n' +
+            '   <div style="float: left; vertical-align: middle; ">\n' +
+            '         <img style="margin-top: -30px; margin-bottom: -60px;" src="' + Site.url + '/avatarimage?figure={{post.author.look}}&direction=2&head_direction=3&gesture=sml&size=b&headonly=1" alt="">\n' +
+            '    </div>\n' +
             '   <strong> <a href="' + Site.url + '/profile/' + User.username + '">' + User.username + '</a></strong>: {{message}} \n' +
             '</div>'
         ].join("");   

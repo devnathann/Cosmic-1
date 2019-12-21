@@ -106,7 +106,7 @@ class Player
             'password'  => $password_hash,
         );
 
-        return QueryBuilder::table('players')->where('id', $player_id)->update($data);
+        return QueryBuilder::table('users')->where('id', $player_id)->update($data);
     }
 
     /* Get queries */
@@ -128,7 +128,7 @@ class Player
 
     public static function getOnlineFriends($player_id, $limit = 100)
     {
-        return QueryBuilder::query('SELECT DISTINCT m.user_two_id, p.username, p.figure FROM messenger_friendships m LEFT JOIN players p ON p.id = m.user_two_id LEFT JOIN player_settings ps ON ps.player_id = p.id WHERE user_one_id = "'.$player_id.'" AND p.online = "1" AND ps.hide_online = "0" ORDER BY RAND() LIMIT  ' . $limit)->get();
+        return QueryBuilder::query('SELECT DISTINCT m.user_two_id, p.username, p.figure FROM messenger_friendships m LEFT JOIN users p ON p.id = m.user_two_id LEFT JOIN player_settings ps ON ps.player_id = p.id WHERE user_one_id = "'.$player_id.'" AND p.online = "1" AND ps.hide_online = "0" ORDER BY RAND() LIMIT  ' . $limit)->get();
     }
 
     public static function getGroups($user_id, $limit = 5)
@@ -166,7 +166,6 @@ class Player
             'ip'                => $getIpAddress,
             'timestamp'         => time()
         );
-
         return QueryBuilder::table('website_namechange_requests')->insert($data);
     }
   
