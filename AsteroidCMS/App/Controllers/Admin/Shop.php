@@ -63,9 +63,7 @@ class Shop
     public function view()
     {
         $offers = Admin::getOffers();
-        if ($offers == null) {
-            exit;
-        }
+   
 
         View::renderTemplate('Admin/Management/shop.html', ['permission' => 'housekeeping_shop_control', 'offers' => $offers]);
     }

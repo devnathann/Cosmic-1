@@ -250,6 +250,13 @@ class Install {
         if ($conn->query($webForumCat) !== true) {
             self::rollback($conn->error);
         }
+        $webForumIndexInsert = "
+            INSERT INTO `website_forum_categories` (`id`, `name`, `description`, `position`) VALUES
+            (1, 'AsteroidCMS', 'Welcome to Asteroid!', 1)
+        ";
+        if ($conn->query($webForumIndexInsert) !== true) {
+            self::rollback($conn->error);
+        }
         $webForumIndex = "
             CREATE TABLE `website_forum_index` (
               `id` int(11) UNSIGNED NOT NULL,
@@ -268,19 +275,7 @@ class Install {
         }
         $webForumIndexInsert = "
             INSERT INTO `website_forum_index` (`id`, `title`, `description`, `created_at`, `updated_at`, `image`, `cat_id`, `slug`, `position`, `max_rank`) VALUES
-            (1, 'Algemene Regels', 'De regels van Asteroid zijn speciaal ontworpen om een gezellige sfeer te maken en te behouden, ieder lid dient deze regels te volgen.', 1523703600, NULL, 'notice.gif', 1, 'algemene-regels', 0, NULL),
-            (2, 'Klachten, feedback en vragen', 'Heb je een klacht, of wil je ons een tip geven? Dat kan hier, in de klachten en feedback sectie!', 1523703600, NULL, 'lightbulb.gif', 1, 'klachten-feedback-en-vragen', 1, NULL),
-            (4, 'Stel jezelf voor', 'Ben je nieuw op Leet of heb je je nog niet voorgesteld? Dan kan je dat nu doen.', 1523703600, NULL, 'hand.gif', 1, 'stel-jezelf-voor', 2, NULL),
-            (5, 'De kletshoek', 'Hier kun je over vanalles en nog wat praten.', 1523703600, NULL, 'newspapertext.gif', 2, NULL, 4, NULL),
-            (6, 'Actualiteiten & Serieuze discussies', 'Hier kan je praten over alles dat actueel is', 1523703600, NULL, 'event.gif', 2, NULL, 0, NULL),
-            (7, 'Webdevelopment', 'Alles m.b.t. webdevelopment vind je hier.', 1523703600, NULL, 'event.gif', 3, NULL, 0, NULL),
-            (8, 'PHP Forum', 'Alles mbt PHP kan je hier plaatsen en vinden.', 1523703600, NULL, 'phone.gif', 3, NULL, 0, NULL),
-            (9, 'Project Showcase & Releases', 'Heb jij een fantastisch project gemaakt en wil je die aan iedereen laten zien? Dan kan je dat hier doen!', 1523703600, NULL, 'camera.gif', 3, NULL, 0, NULL),
-            (10, 'Development Overige', 'Mist er iets binnen de Development sectie, waar jij toevallig iets wilt over plaatsen? Geen vrees, dat kan hier!', 1523703600, NULL, 'sunglass.gif', 3, NULL, 0, NULL),
-            (11, 'School en studies', 'Ben jij ook de docent wiskunde beu? Of wil je eerder praten over je lievelingsvak?', 1523703600, NULL, 'ufoeffect.gif', 4, NULL, 0, NULL),
-            (12, 'Muziek, films, series...', 'Wat is jouw favoriete serie/film? Wat voor genre muziek beluister jij graag?', 1523703600, NULL, 'event.gif', 4, NULL, 0, NULL),
-            (13, 'Forum spelletjes', 'Hier vind je de algemene forumspelletjes, zoals het Teltopic e.d.', 1523703600, NULL, 'forum-games.gif', 4, NULL, 0, NULL),
-            (14, 'Overige', 'Alles wat niet in een ander forum past kan hier worden geplaatst', 1523703600, NULL, 'newspapertext.gif', 4, NULL, 0, NULL)
+            (1, 'My first forum', 'This is your first forum!', 1523703600, NULL, 'notice.gif', 1, 'my-first-forum', 0, NULL)  
         ";
         if ($conn->query($webForumIndexInsert) !== true) {
             self::rollback($conn->error);
@@ -641,6 +636,12 @@ class Install {
               if ($conn->query($aaa) !== true) {
                   self::rollback($conn->error);
               }
+               $aaa = "
+      ALTER TABLE `website_forum_index`
+        ADD PRIMARY KEY (`id`) USING BTREE";
+              if ($conn->query($aaa) !== true) {
+                  self::rollback($conn->error);
+              }
               $bbb = "
       ALTER TABLE `website_feeds_reactions`
         ADD PRIMARY KEY (`id`) USING BTREE";
@@ -814,6 +815,12 @@ class Install {
               }
               $qeqewwe = "
       ALTER TABLE `website_feeds_likes`
+        MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0";
+              if ($conn->query($qeqewwe) !== true) {
+                  self::rollback($conn->error);
+              }
+              $qeqewwe = "
+      ALTER TABLE `website_forum_index`
         MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0";
               if ($conn->query($qeqewwe) !== true) {
                   self::rollback($conn->error);

@@ -14,16 +14,11 @@ class Preferences
     public function validate()
     {
         $inArray = array(
-            'allow_friend_requests',
-            'allow_friend_alerts',
-            'hide_home',
-            'hide_online',
-            'hide_last_online',
-            'hide_staff',
-            'allow_trade',
-            'allow_mimic',
-            'allow_follow',
-            'allow_whisper'
+            'block_following',
+            'block_friendrequests',
+            'block_roominvites',
+            'old_chat',
+            'block_alerts'
         );
 
         $column = input()->post('post')->value;
@@ -34,10 +29,10 @@ class Preferences
             exit;
         }
 
-        Player::updateSettings(request()->player->id, $column, $type);
-
         if (Config::apiEnabled && request()->player->online) {
-            HotelApi::player(request()->player->id, 'reload');
+            HotelApi::execute('updateuser', array('user_id' => request()->player->id, $column => $type));
+        } else {
+            Player::updateSettings(request()->player->id, $column, $type);
         }
 
         echo '{"status":"success","message":"' . Locale::get('settings/preferences_saved') . '"}';

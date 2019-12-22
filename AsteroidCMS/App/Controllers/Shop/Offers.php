@@ -59,9 +59,9 @@ class Offers
             exit;
         }
 
-        $currencyType =  Config::currencys[$offer->currency];
+        $currencyType =  Config::currencys[$offer->currency];      
         $amount = Player::getCurrencys(request()->player->id)[$currencyType]->amount;
-
+  
         if (Config::apiEnabled) {
             if(request()->player->online) {
                 HotelApi::execute('givepoints', array('user_id' => request()->player->id, 'points' => $offer->amount, 'type' => $currencyType));

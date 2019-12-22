@@ -1,5 +1,10 @@
 <?php
 $GLOBALS['language'] = array(
+    'website' => array (
+        'setting_preferences' => array (
+            'title' => 'Mijn voorkeuren'
+        ),
+    ),
     'core' => array(
         'belcredits' => 'Bel-Credits',
         'hotelapi' => array(

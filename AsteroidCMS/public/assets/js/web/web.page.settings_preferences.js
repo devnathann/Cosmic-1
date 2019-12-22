@@ -20,7 +20,6 @@ function WebPageSettingsInterface(main_page)
 			if(jQuery.inArray(post, array) !== -1) {
 				type = type ? false : true;
 			}
-		
             var dataString = {post: post, type: type};
 
             self.send_data(dataString);

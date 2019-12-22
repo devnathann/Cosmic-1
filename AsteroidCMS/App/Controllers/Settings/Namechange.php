@@ -94,17 +94,11 @@ class Namechange
     {
         $currency = array_flip(Config::currencys);
 
-        $request = Player::getNamechangeRequest(request()->player->id);
-        if($request) {
-            $request->request_name = Player::getDataById($request->player_id_request, array('username'))->username;
-        }
-
         View::renderTemplate('Settings/namechange.html', [
             'title' => Locale::get('core/title/settings/namechange'),
             'page'  => 'settings_namechange',
             'currency' => $currency[Config::payCurrency],
-            'price' => 50,
-            'data'  => $request
+            'price' => 50
         ]);
     }
 }

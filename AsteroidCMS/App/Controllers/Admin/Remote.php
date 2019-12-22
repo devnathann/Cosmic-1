@@ -512,9 +512,17 @@ class Remote
 
         if (Admin::changePlayerSettings($email ?? $player->mail, $rank ?? $player->rank, $motto, $credits, $pin_code, $player->id)) {
 
+            if(!empty($rank)) {
+                if (Config::apiEnabled && $player->id) {
+                    HotelApi::execute('setrank', array('user_id' => $player->id, 'rank_id' => $rank));
+                } else {
+                    Player::update('rank', $rank, $player->id);
+                }
+            }
+          
             foreach($currencys as $currency) {
                 if($currency) {
-                    if (Config::apiEnabled && request()->player->online) {
+                    if (Config::apiEnabled && $player->id) {
                         HotelApi::execute('givepoints', array('user_id' => $player->id, 'points' => -$currency->oldamount, 'type' => $currency->type));
                         HotelApi::execute('givepoints', array('user_id' => $player->id, 'points' => $currency->amount, 'type' => $currency->type));
                     } else {

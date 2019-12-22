@@ -57,11 +57,7 @@ class Player
     }
 
     public static function updateSettings($player_id, $column, $type){
-        return QueryBuilder::table('player_settings')->where('player_id', $player_id)->update(array($column => "$type"));
-    }
-
-    public static function updateStats($player_id, $key, $value){
-        return QueryBuilder::table('player_stats')->where('player_id', $player_id)->update(array($key => $value));
+        return QueryBuilder::table('users_settings')->where('user_id', $player_id)->update(array($column => "$type"));
     }
   
     public static function updateNotification($player_id, $notification_id)
@@ -150,23 +146,6 @@ class Player
     public static function getHotelRank($rank_id)
     {
         return QueryBuilder::table('permissions')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->find($rank_id);
-    }
-
-    public static function getNamechangeRequest($playerid)
-    {
-        return QueryBuilder::table('website_namechange_requests')->where('status', 'open')->find($playerid, 'player_id');
-    }
-
-    public static function insertNamechangeRequest($user_id, $request_id, $username, $getIpAddress)
-    {
-        $data = array(
-            'player_id'         => $user_id,
-            'player_id_request' => $request_id,
-            'username'          => $username,
-            'ip'                => $getIpAddress,
-            'timestamp'         => time()
-        );
-        return QueryBuilder::table('website_namechange_requests')->insert($data);
     }
   
     public static function giveBadge($user_id, $badge)
