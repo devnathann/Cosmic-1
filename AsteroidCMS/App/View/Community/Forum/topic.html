@@ -15,10 +15,10 @@
   
     <div class="aside-toolbar-content">
         <div style="float: left; margin-top: 8px">
-              <button class="btn btn-success replybtn" data-status="{% if topic.is_closed %}closed{% endif %}">Reageren</button>
+              <button class="btn btn-success replybtn" data-status="{% if topic.is_closed %}closed{% endif %}">{{locale.topic_react}}</button>
               {% if 'housekeeping_moderation_tools' in permissions %}
               <button class="btn btn-primary btn-func" data-id="{{topic.id}}" data-status="sticky">{% if topic.is_sticky == 0 %}Sticky{% else %}Unsticky{% endif %}</button>
-              <button class="btn btn-error btn-func" data-id="{{topic.id}}" data-staus="close">{% if topic.is_closed == 0 %}Sluiten{% else %}Heropenen{% endif %}</button>
+              <button class="btn btn-error btn-func" data-id="{{topic.id}}" data-staus="close">{% if topic.is_closed == 0 %}{{locale.topic_close}}{% else %}{{locale.topic_reopen}}{% endif %}</button>
               {% endif %}
           </div>
         <ul id="pagination" class="pagination"></ul>
@@ -45,8 +45,8 @@
                       <div style="background: url({{fpath}}/avatarimage?figure={{post.author.look}}&amp;head_direction=3&amp;headonly=1) no-repeat center; width: 48px; height: 62px;"></div>
                    </div>
                 </div>
-                <div class="hidden-sm hidden-xs" style="text-align: left;"><strong>Sinds:</strong> {{post.author.account_created|time_diff}}</div>
-                <div class="hidden-sm hidden-xs" style="text-align: left;"><strong>Posts:</strong> {{data.requests.ctickets}}</div>
+                <div class="hidden-sm hidden-xs" style="text-align: left;"><strong>{{locale.topic_since}}</strong> {{post.author.account_created|time_diff}}</div>
+                <div class="hidden-sm hidden-xs" style="text-align: left;"><strong>{{locale.topic_posts}}</strong> {{data.requests.ctickets}}</div>
                 <div style="text-align: right;"><img src="{{path}}/assets/images/web/pages/forum/{% if player.online %}online.gif{% else %}offline.gif{% endif %}"></div>
              </div>
              <div class="forum-content">
@@ -54,7 +54,7 @@
                     {% if topic.is_sticky == 1 %}<img src="{{path}}/assets/images/web/pages/forum/sticky_icon.gif" data-toggle="tooltip" title="Dit topic is een sticky">{% endif %}
                     {% if topic.is_closed == 1 %}<img src="{{path}}/assets/images/web/pages/forum/locked_icon.gif" data-toggle="tooltip" title="Dit topic is een sticky">{% endif %}
                 <strong>
-                     {% if loop.first %}Topic:{% else %}Reactie:{% endif %} {{topic.title}}
+                     {% if loop.first %}{{locale.topic_topic}}{% else %}{{locale.topic_reaction}}{% endif %} {{topic.title}}
                 </strong>
                 <span class="forum-timestamp"> - {{post.created_at}}</span>
                 </div>
@@ -68,7 +68,7 @@
                             {% if topic.is_closed == 1 and currentpage < 2 %}
                             <div class="forum-closed">
                                 <span class="fas fa-times-circle"></span>
-                                Let op! Dit topic is gesloten, ben je het hier niet mee eens? Neem dan contact op via de <a href="{{path}}/help">helptool</a>!
+                                {{locale.topic_closed}} <a href="{{path}}/help">{{locale.topic_helptool}}</a>!
                             </div>
                             {% endif %}
                         {% endif %}
@@ -82,12 +82,11 @@
                            <strong><a href="/profile/{{likes.user.username}}" id="{{post.id}}" class="like">{{likes.user.username}}</a></strong>,
                         {% endfor %}
                             {% if post.likes|length > 3 %}
-                                en {{count}} anderen vinden dit leuk!
+                                {{locale.topic_and}} {{count}} {{locale.topic_likes_1}}
                             {% elseif post.likes|length == 1 %}
-                                vindt dit leuk!
+                                {{locale.topic_likes_2}}
                             {% else %}
-                                vinden 
-                          dit leuk!
+                                {{locale.topic_likes_3}}
                         {% endif %}
                         </div>
                     </div>
@@ -119,7 +118,7 @@
                     <textarea name="message" id="editor" class="rounded-textarea blue-active"></textarea>
                 </div>
                 <input type="hidden" name="topic_id" value="{{topic.id}}" />
-                <p style="text-align: center; margin-top: 30px;"><button type="submit" class="rounded-button blue">Reageren</button></p>
+                <p style="text-align: center; margin-top: 30px;"><button type="submit" class="rounded-button blue">{{locale.topic_react}}</button></p>
             </form>
         </div>
       </article>

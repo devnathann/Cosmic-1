@@ -3,94 +3,94 @@
 {% block body %}
 <div class="page-content">
     <article class="default-section job-offer-apply">
-        <h3 class="aside-title">Reageer op de vacture</h3>
-        Bedankt voor je interesse in Leet Hotel en voor het reageren op de vacature.
+        <h3 class="aside-title">{{locale.title}}</h3>
+        {{locale.content_1}}
         <br><br>
-        Probeer de vragenlijst zo nauwkeurig mogelijk te beantwoorden.
+        {{locale.content_2}}
         <hr>
-        <h4>Taakomschrijving</h4>
+        <h4>{{locale.description}}</h4>
         - test<br />
         <hr>
         <form action="jobs/apply" method="post" autocomplete="off">
-            <h5>Hoe heet je?</h5>
+            <h5>{{locale.question_name}}</h5>
             <input type="text" class="rounded-input" name="wf0gs-36">
 
-            <h5>Hoe oud ben je?</h5>
+            <h5>{{locale.question_age}}</h5>
             <input type="text" class="rounded-input" name="wf0gs-37">
 
-            <h5>Waarom denk je dat je geschikt zou kunnen zijn?</h5>
+            <h5>{{locale.question_why}}</h5>
             <textarea name="wf0gs-41" class="rounded-textarea"></textarea>
 
-            <h5>Hoeveel uur ben je online?</h5>
-            <div class="form-help">Geef ons door hoeveel uur je per dag online bent op Leet Hotel.</div>
+            <h5>{{locale.question_time}}</h5>
+            <div class="form-help">{{locale.question_time_help}}</div>
 
             <div class="schedules-container">
                 <div class="schedule-container">
                     <div class="day">
-                        Maandag
+                        {{locale.monday}}
                     </div>
                     <div class="schedule">
-                        <input type="text" class="rounded-input" name="wf0gs-43-0" placeholder="van X tot Y uur">
+                        <input type="text" class="rounded-input" name="wf0gs-43-0" placeholder="{{locale.time_to_time}}">
                     </div>
                 </div>
 
                 <div class="schedule-container">
                     <div class="day">
-                        Dinsdag
+                        {{locale.tuesday}}
                     </div>
                     <div class="schedule">
-                        <input type="text" class="rounded-input" name="wf0gs-43-1" placeholder="van X tot Y uur">
+                        <input type="text" class="rounded-input" name="wf0gs-43-1" placeholder="{{locale.time_to_time}}">
                     </div>
                 </div>
 
                 <div class="schedule-container">
                     <div class="day">
-                        Woensdag
+                        {{locale.wednesday}}
                     </div>
                     <div class="schedule">
-                        <input type="text" class="rounded-input" name="wf0gs-43-2" placeholder="van X tot Y uur">
+                        <input type="text" class="rounded-input" name="wf0gs-43-2" placeholder="{{locale.time_to_time}}">
                     </div>
                 </div>
 
                 <div class="schedule-container">
                     <div class="day">
-                        Donderdag
+                        {{locale.thursday}}
                     </div>
                     <div class="schedule">
-                        <input type="text" class="rounded-input" name="wf0gs-43-3" placeholder="van X tot Y uur">
+                        <input type="text" class="rounded-input" name="wf0gs-43-3" placeholder="{{locale.time_to_time}}">
                     </div>
                 </div>
 
                 <div class="schedule-container">
                     <div class="day">
-                        Vrijdag
+                        {{locale.friday}}
                     </div>
                     <div class="schedule">
-                        <input type="text" class="rounded-input" name="wf0gs-43-4" placeholder="van X tot Y uur">
+                        <input type="text" class="rounded-input" name="wf0gs-43-4" placeholder="{{locale.time_to_time}}">
                     </div>
                 </div>
 
                 <div class="schedule-container">
                     <div class="day">
-                        Zaterdag
+                        {{locale.saturday}}
                     </div>
                     <div class="schedule">
-                        <input type="text" class="rounded-input" name="wf0gs-43-5" placeholder="van X tot Y uur">
+                        <input type="text" class="rounded-input" name="wf0gs-43-5" placeholder="{{locale.time_to_time}}">
                     </div>
                 </div>
 
                 <div class="schedule-container">
                     <div class="day">
-                        Zondag
+                        {{locale.sunday}}
                     </div>
                     <div class="schedule">
-                        <input type="text" class="rounded-input" name="wf0gs-43-6" placeholder="van X tot Y uur">
+                        <input type="text" class="rounded-input" name="wf0gs-43-6" placeholder="{{locale.time_to_time}}">
                     </div>
                 </div>
             </div>
 
             <p class="submit-button">
-                <button type="submit" class="rounded-button brown">Stuur mijn sollicitatie</button>
+                <button type="submit" class="rounded-button brown">{{locale.send}}</button>
             </p>
         </form>
     </article>

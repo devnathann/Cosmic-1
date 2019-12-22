@@ -5,32 +5,32 @@
                     <form action="home/registration/request" method="post" class="registration-form">
                     <div class="sides-container">
                         <div class="content-side" style="padding: 18px">
-                            <div class="aside-title-content" style="padding: 0px;padding-bottom: 15px;">Vul je gegevens in!</div>
+                            <div class="aside-title-content" style="padding: 0px;padding-bottom: 15px;">{{locale.title}}</div>
                             <div class="row">
-                                <h5>E-mailadres</h5>
-                                <input type="email" name="email" class="rounded-input blue-active" placeholder="Vul hier je e-mailadres in..." autocomplete="off" autofocus required>
+                                <h5>{{locale.email}}</h5>
+                                <input type="email" name="email" class="rounded-input blue-active" placeholder="{{locale.email_fill}}" autocomplete="off" autofocus required>
                             </div>
                             <div class="row space-bottom">
-                                <div class="form-help">We zullen deze informatie nodig hebben om je account te herstellen voor het geval je de toegang verliest.</div>
+                                <div class="form-help">{{locale.email_help}}</div>
                             </div>
                             <div class="row">
                                 <div class="column-2">
-                                    <h5>Wachtwoord</h5>
-                                    <input type="password" name="password" class="rounded-input blue-active" placeholder="Wachtwoord..." maxlength="32" autocomplete="off" required>
+                                    <h5>{{locale.password}}</h5>
+                                    <input type="password" name="password" class="rounded-input blue-active" placeholder="{{locale.password_fill}}" maxlength="32" autocomplete="off" required>
                                 </div>
                                 <div class="column-2">
-                                    <h5>Wachtwoord nogmaals</h5>
-                                    <input type="password" name="password_repeat" class="rounded-input blue-active" placeholder="Herhaal wachtwoord..." maxlength="32" autocomplete="off" required>
+                                    <h5>{{locale.password_repeat}}</h5>
+                                    <input type="password" name="password_repeat" class="rounded-input blue-active" placeholder="{{locale.password_repeat_fill}}" maxlength="32" autocomplete="off" required>
                                 </div>
                             </div>
                             <div class="row space-bottom">
-                                <div class="form-help">Je wachtwoord moet minimaal 6 tekens lang zijn en letters en cijfers bevatten. <strong>Zorg dat je wachtwoord anders is dan op andere website's!</strong></div>
+                                <div class="form-help">{{locale.password_help_1}} <strong>{{locale.password_help_2}}</strong></div>
                             </div>
                             <div class="row">
-                                <h5>Geboortedatum</h5>
+                                <h5>{{locale.birthdate}}</h5>
                                 <div class="birthdate-small">
                                     <select name="birthdate_day" class="selectric">
-                                        <option disabled selected>Dag</option>
+                                        <option disabled selected>{{locale.day}}</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="birthdate-big">
                                     <select name="birthdate_month" class="selectric">
-                                        <option disabled selected>Maand</option>
+                                        <option disabled selected>{{locale.month}}</option>
                                         <option value="1">Januari</option>
                                         <option value="2">Februari</option>
                                         <option value="3">Maart</option>
@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="birthdate-small">
                                     <select name="birthdate_year" class="selectric">
-                                        <option disabled selected>Jaar</option>
+                                        <option disabled selected>{{locale.year}}</option>
                                         <option value="2011">2011</option>
                                         <option value="2010">2010</option>
                                         <option value="2009">2009</option>
@@ -150,34 +150,34 @@
                                 </div>
                             </div>
                             <div class="row space-bottom">
-                                <div class="form-help">We zullen deze informatie nodig hebben om je account te herstellen voor het geval je de toegang verliest.</div>
+                                <div class="form-help">{{locale.birthdate_help}}</div>
                             </div>
                             <div class="row">
-                                <h5>Hoe heb je Leet Hotel gevonden?</h5>
+                                <h5>{{locale.found}}</h5>
                                 <select name="how_know_us" class="selectric">
-                                    <option disabled selected>Maak een keuze...</option>
-                                    <option value="1">Google</option>
-                                    <option value="2">Door een vriend(in)</option>
-                                    <option value="3">Door een ander spel</option>
-                                    <option value="4">Door Facebook</option>
-                                    <option value="5">Anders</option>
+                                    <option disabled selected>{{locale.found_choose}}</option>
+                                    <option value="1">{{locale.found_choose_1}}</option>
+                                    <option value="2">{{locale.found_choose_2}}</option>
+                                    <option value="3">{{locale.found_choose_3}}</option>
+                                    <option value="4">{{locale.found_choose_4}}</option>
+                                    <option value="5">{{locale.found_choose_5}}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="content-side" style="padding: 18px;">
-                            <div class="aside-title-content" style="padding: 0px;padding-bottom: 15px;">Maak je {{shortname}}!</div>
+                            <div class="aside-title-content" style="padding: 0px;padding-bottom: 15px;">{{locale.create_user}}</div>
                             <div class="row">
-                                <h5>Leetnaam</h5>
-                                <input type="text" name="username" class="rounded-input blue-active username" placeholder="Leetnaam..." maxlength="15" autocomplete="off" required>
+                                <h5>{{locale.username}}</h5>
+                                <input type="text" name="username" class="rounded-input blue-active username" placeholder="{{locale.username_fill}}" maxlength="15" autocomplete="off" required>
                             </div>
                             <div class="row space-bottom">
-                                <div class="form-help">Jouw unieke naam in Leet Hotel.</div>
+                                <div class="form-help">{{locale.username_help}}</div>
                             </div>
                             <div class="row">
-                                <h5>Geslacht</h5>
+                                <h5>{{locale.sex}}</h5>
                                 <select name="gender" class="selectric">
-                                    <option value="male">Jongen</option>
-                                    <option value="female">Meisje</option>
+                                    <option value="male">{{locale.male}}</option>
+                                    <option value="female">{{locale.female}}</option>
                                 </select>
                             </div>
                             <div class="avatars-container">
@@ -207,7 +207,7 @@
                             </div>
                         </div>
                     </div>
-                    <p style="text-align: center; margin-top: 30px;"><button type="submit" class="rounded-button blue plain submit-form default-prevent" id="registration-recaptcha">Registreer</button></p>
+                    <p style="text-align: center; margin-top: 30px; padding-bottom: 30px;"><button type="submit" class="rounded-button blue plain submit-form default-prevent" id="registration-recaptcha">{{locale.register}}</button></p>
                 </form>
             </article>
 

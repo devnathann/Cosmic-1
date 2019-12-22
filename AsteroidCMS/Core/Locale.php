@@ -21,7 +21,8 @@ class Locale
             $path = explode('/', $path);
 
             if($all) {
-                return $locale[$path[0]][$path[1]];
+                if(isset($locale[$path[0]][$path[1]]))
+                    return $locale[$path[0]][$path[1]];
             }
 
             foreach ($path as $bit) {

@@ -5,14 +5,14 @@
 <div class="page-content">
     <div class="left-side">
         <article class="default-section">
-            <div class="aside-title-content">Kies een product</div>
+            <div class="aside-title-content">{{locale.title}}</div>
             <div class="filter-container">
                 <div class="filter-content">
-                    <span>Land:</span>
+                    <span>{{locale.country}}</span>
                     <div class="select-container">
                         <select class="selectric">
-                            <option value="nl" {% if data.lang == "nl" %}selected{% endif %}>Nederland</option>
-                            <option value="be" {% if data.lang == "be" %}selected{% endif %}>België</option>
+                            <option value="nl" {% if data.lang == "nl" %}selected{% endif %}>{{locale.netherlands}}</option>
+                            <option value="be" {% if data.lang == "be" %}selected{% endif %}>{{locale.belgium}}</option>
                         </select>
                     </div>
                     <!-- <button class="rounded-button blue">Filter</button> -->
@@ -24,7 +24,7 @@
                 <div class="offer-container">
                     <a href="{{path}}/shop/offers/{{offer.offer_id}}" class="offer-content pixelated">
                         <div class="offer-label">{{offer.currency}}</div>
-                        {% if offer.amount >= 500 %}<div class="offer-label">+ Super Zeldzaam</div>{% endif %}
+                        {% if offer.amount >= 500 %}<div class="offer-label">+ {{locale.super_rare}}</div>{% endif %}
                         <div class="offer-value"><br>{{offer.amount}}</div>
                         <div class="offer-amount">€{{offer.price}}</div>
                         <div class="credits-sprite credits-sprite-shop_icon_1" style="background-image: url(/assets/images/web/pages/shop/{{offer.image}}?)"></div>
@@ -50,9 +50,9 @@
             </div>
         </div>
         <aside class="default-section">
-            <div class="aside-title-content">Meer informatie</div>
+            <div class="aside-title-content">{{locale.more_information}}</div>
             <div class="aside-content">
-                <p>Heb je een vraag of probleem met <b>een aankoop</b>? Aarzel niet om contact op te nemen met de klantenservice via de  <a href="{{path}}/help/requests/new">Leet Help Tool</a>.</p>
+                <p>{{locale.content_1}} {{locale.content_2}} <a href="{{path}}/help/requests/new">{{locale.help_tool}}</a>.</p>
             </div>
         </aside>
     </div>
@@ -61,14 +61,14 @@
 <div class="page-content">
     <div class="left-side">
         <article class="default-section">
-            <h3 class="aside-title">Oeps! Je bent niet ingelogd.</h3>
-            Om de Leet Winkel te bezoeken moet je ingelogd zijn. <a href="#" class="login-dialog-button">Klik hier</a> om in te loggen.
+            <h3 class="aside-title">{{locale.not_logged}}</h3>
+            {{locale.have_to_login}} <a href="#" class="login-dialog-button">{{locale.click_here}}</a> {{locale.to_login}}
         </article>
     </div>
     <div class="right-side">
         <aside class="default-section">
-            <h3 class="aside-title">Meer informatie</h3>
-            <p>Heb je een vraag of probleem met <b>een aankoop</b>? Aarzel niet om contact op te nemen met de klantenservice via de  <a href="{{path}}/help/requests/new">Leet Help Tool</a>.</p>
+            <h3 class="aside-title">{{locale.more_information}}</h3>
+            <p>{{locale.content_1}} {{locale.content_2}} <a href="{{path}}/help/requests/new">{{locale.help_tool}}</a>.</p>
         </aside>
     </div>
 </div>

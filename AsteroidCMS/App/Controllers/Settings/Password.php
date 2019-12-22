@@ -46,7 +46,7 @@ class Password
     {
         View::renderTemplate('Settings/password.html', [
             'title' => Locale::get('core/title/settings/password'),
-            'page'  => 'settings_preferences',
+            'page'  => 'settings_password',
             'data'  => $this->data
         ]);
     }

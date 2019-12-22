@@ -4,7 +4,7 @@
     <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
     <div class="overlay-content">
         <form action="profile/search">
-            <input type="text" placeholder="Wie zoek je?" name="search">
+            <input type="text" placeholder="{{locale.overlay_search}}" name="search">
             <button type="submit" onclick="closeSearch()"><i class="fa fa-search"></i></button>
         </form>
     </div>
@@ -23,15 +23,15 @@
             </div>
             <div class="aside-content">
                 <div class="profile-content">
-                    <div class="details-container register">{{shortname}} sinds <b>{{data.player.account_created|time_diff}}</b></div>
+                    <div class="details-container register">{{shortname}} {{locale.since}} <b>{{data.player.account_created|time_diff}}</b></div>
                     {% if data.player.settings.hide_online == 0 or 'housekeeping' in permissions %}
-                        <div class="details-container status">Momenteel <strong class="{% if data.player.online == 0 %}offline{% set status = 'offline' %}{% else %}online{% set status = 'online' %}{% endif %}">{{status}}</strong></div>
+                        <div class="details-container status">{{locale.currently}} <strong class="{% if data.player.online == 0 %}offline{% set status = 'offline' %}{% else %}online{% set status = 'online' %}{% endif %}">{{status}}</strong></div>
                     {% else %}
-                        <div class="details-container status">Momenteel <strong class="offline">offline</strong></div>
+                        <div class="details-container status">{{locale.currently}} <strong class="offline">offline</strong></div>
                     {% endif %}
 
                     {% if data.player.settings.hide_last_online == 0 or 'housekeeping' in permissions %}
-                    <div class="details-container last_login">{% if data.player.last_online == 0 %}Nog niet online geweest{% else %}Laatste bezoek <strong>{{data.player.last_online}}</strong>{% endif %}</div>
+                    <div class="details-container last_login">{% if data.player.last_online == 0 %}{{locale.never_online}}{% else %}{{locale.last_visit}} <strong>{{data.player.last_online}}</strong>{% endif %}</div>
                     {% endif %}
                 </div>
             </div>
@@ -40,13 +40,13 @@
         <div class="guestbook"></div>
         <article class="default-section">
             <div class="aside-title-content">
-                Gastenboek
+                {{locale.guestbook_title}}
             </div>
-            <div class="aside-desc-content">Laat jij wacht achter?</div>
+            <div class="aside-desc-content">{{locale.guestbook_label}}</div>
             <div class="aside-content">
             {% if player %}
             <div class="form-group has-feedback">
-                <input type="text"  class="rounded-input blue-active addfeedreaction" placeholder="{% if data.player.username == player.username %}Wat ben je aan het doen, {{data.player.username}}? {% else %}Wat wil je {{data.player.username}} laten weten?{% endif %}" maxlength="50">
+                <input type="text"  class="rounded-input blue-active addfeedreaction" placeholder="{% if data.player.username == player.username %}{{locale.guestbook_input}} {{data.player.username}}? {% else %}{{locale.guestbook_input_1}} {{data.player.username}} {{locale.guestbook_input_2}}{% endif %}" maxlength="50">
                 <!--<span class="fas fa-camera feedback" aria-hidden="true"></span>!-->
             </div>
             {% endif %}
@@ -89,7 +89,7 @@
             <input type="hidden" name="userid" value="{{data.player.id}}">
             {% if data.player.feeds|length >= 4 %}
             <div class="load-more-button" style="margin: 0 auto;">
-                <button class="rounded-button" data-id="{{data.player.id}}">Meer berichten laden</button>
+                <button class="rounded-button" data-id="{{data.player.id}}">{{locale.load_more}}</button>
             </div>
             {% endif %}
           </div>
@@ -100,9 +100,9 @@
         <div class="badges"></div>
         <article class="default-section" data-section="badges">
             <div class="aside-title-content">
-                Badges
+                {{locale.badges_title}}
             </div>
-            <div class="aside-desc-content">Laat jij wacht achter?</div>
+            <div class="aside-desc-content">{{locale.badges_label}}</div>
             <div class="aside-content">
                 <div class="items-container">
                     {% if data.player.badges %}
@@ -112,7 +112,7 @@
                         </div>
                         {% endfor %}
                     {% else %}
-                        <p>Heeft nog geen badges ingesteld</p>
+                        <p>{{locale.badges_empty}}</p>
                     {% endif %}
                 </div>
             </div>
@@ -121,9 +121,9 @@
         <div class="friends"></div>
         <article class="default-section" data-section="friends">
               <div class="aside-title-content">
-                Vrienden
+                {{locale.friends_title}}
             </div>
-            <div class="aside-desc-content">Willekeurige vrienden in mjin lijst</div>
+            <div class="aside-desc-content">{{locale.friends_label}}</div>
             <div class="aside-content">
                 <div class="items-container">
                     {% if data.player.friends %}
@@ -134,7 +134,7 @@
                         </a>
                         {% endfor %}
                     {% else %}
-                        <p>Heeft nog geen vrienden gemaakt</p>
+                        <p>{{locale.friends_empty}}</p>
                     {% endif %}
                 </div>
             </div>
@@ -143,9 +143,9 @@
         <div class="groups"></div>
         <article class="default-section" data-section="groups">
             <div class="aside-title-content">
-                Groepen
+                {{locale.groups_title}}
             </div>
-            <div class="aside-desc-content">Zie waar ik van houdt!</div>
+            <div class="aside-desc-content">{{locale.groups_label}}</div>
             <div class="aside-content">
                 <div class="items-container">
                     {% if data.player.groups %}
@@ -156,7 +156,7 @@
                         </a>
                         {% endfor %}
                     {% else %}
-                        <p>Heeft zich nog niet aangesloten bij onze groepen</p>
+                        <p>{{locale.groups_empty}}</p>
                     {% endif %}
                 </div>
             </div>
@@ -165,9 +165,9 @@
         <div class="rooms"></div>
         <article class="default-section" data-section="rooms">
             <div class="aside-title-content">
-                Kamers
+                {{locale.rooms_title}}
             </div>
-            <div class="aside-desc-content">Mijn laatst aangemaakte kamers</div>
+            <div class="aside-desc-content">{{locale.rooms_label}}</div>
             <div class="aside-content">
                 <div class="items-container">
                     {% if data.player.rooms %}
@@ -178,7 +178,7 @@
                         </a>
                         {% endfor %}
                     {% else %}
-                        <p>Heeft nog geen kamers aangemaakt</p>
+                        <p>{{locale.rooms_empty}}</p>
                     {% endif %}
                 </div>
             </div>
@@ -187,9 +187,9 @@
         <div class="photos"></div>
         <article class="default-section" data-section="photos">
             <div class="aside-title-content">
-                Foto's
+                {{locale.photos_title}}
             </div>
-            <div class="aside-desc-content">Kom jij met mij op de foto?</div>
+            <div class="aside-desc-content">{{locale.photos_label}}</div>
                 <div class="aside-content">
                 <div class="items-container">
                     {% if data.player.photos %}
@@ -199,7 +199,7 @@
                         </a>
                         {% endfor %}
                     {% else %}
-                        <p>Heeft nog geen foto's gemaakt</p>
+                        <p>{{locale.photos_empty}}</p>
                     {% endif %}
                 </div>
             </div>

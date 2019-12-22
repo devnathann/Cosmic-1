@@ -13,8 +13,8 @@
                             <input class="settings" type="checkbox" data-id="block_following" id="block_following-target" {% if data.block_following == 1 %}checked{% endif %}>
                             <span class="switch-button"></span>
                         </span>
-                        <h4 class="label-title">Volgfunctie - wie mogen je volgen?</h4>
-                        <span class="label-description">Ik wil dat {{shortname}}'s mij niet mogen volgen</span>
+                        <h4 class="label-title">{{locale.follow_title}}</h4>
+                        <span class="label-description">{{locale.follow_label}}</span>
                     </label>
 
                     <label class="switch-label" for="block_friendrequests-target">
@@ -22,32 +22,32 @@
                             <input class="settings" type="checkbox" data-id="block_friendrequests" id="block_friendrequests-target" {% if data.block_friendrequests == 1 %}checked{% endif %}>
                             <span class="switch-button"></span>
                         </span>
-                        <h4 class="label-title">Vriendenverzoeken</h4>
-                        <span class="label-description">Vriendschap verzoeken toestaan?</span>
+                        <h4 class="label-title">{{locale.friends_title}}</h4>
+                        <span class="label-description">{{locale.friends_label}}</span>
                     </label>
                  <label class="switch-label" for="block_roominvites-target">
                         <span class="switch-container rounded-radio purple">
                             <input class="settings" type="checkbox" data-id="block_roominvites" id="block_roominvites-target" {% if data.block_roominvites == 1 %}checked{% endif %}>
                             <span class="switch-button"></span>
                         </span>
-                        <h4 class="label-title">Room invites</h4>
-                        <span class="label-description">Ik wil niet uitgenodigd worden voor room invites</span>
+                        <h4 class="label-title">{{locale.room_title}}</h4>
+                        <span class="label-description">{{locale.room_label}}</span>
                     </label>
                     <label class="switch-label" for="block_alerts-target">
                         <span class="switch-container rounded-radio purple">
                             <input class="settings" type="checkbox" data-id="block_alerts" id="block_alerts-target" {% if data.block_alerts == 1 %}checked{% endif %}>
                             <span class="switch-button"></span>
                         </span>
-                        <h4 class="label-title">Hotel alerts</h4>
-                        <span class="label-description">Ik wil geen hotelmeldingen ontvangen</span>
+                        <h4 class="label-title">{{locale.hotelalerts_title}}</h4>
+                        <span class="label-description">{{locale.hotelalerts_label}}</span>
                     </label>
                     <label class="switch-label" for="old_chat-target">
                         <span class="switch-container rounded-radio purple">
                             <input class="settings" type="checkbox" data-id="old_chat" id="old_chat-target" {% if data.old_chat == 0 %}checked{% endif %}>
                             <span class="switch-button"></span>
                         </span>
-                        <h4 class="label-title">Chat instellingen</h4>
-                        <span class="label-description">Ik wil gebruik maken van de oude chat</span>
+                        <h4 class="label-title">{{locale.chat_title}}</h4>
+                        <span class="label-description">{{locale.chat_label}}</span>
                     </label>
                 </form>
             </article>

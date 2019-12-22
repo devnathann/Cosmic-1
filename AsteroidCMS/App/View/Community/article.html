@@ -36,7 +36,7 @@
     <div class="right-side">
 
        <aside class="default-section">
-            <div class="aside-title-content">Reacties</div>
+            <div class="aside-title-content">{{locale.reactions}}</div>
             <div class="aside-content">
             <div class="nano has-scrollbar related-articles-container" style="height: 250px;">
                 <div class="nano-content" tabindex="0">
@@ -45,7 +45,7 @@
                     </div>
                     {% if posts == null  %}
                     <p class="nopost">
-                        Er zijn nog geen reacties.
+                        {{locale.reactions_empty}}
                     </p>
                     {% endif %}
                     {% for post in posts %}
@@ -85,16 +85,16 @@
             </div>
             {% if player %}
             <div class="input-group reaction-reply">
-                <input type="text" class="form-control" id="reply-message" placeholder="Typ hier je bericht.." required>
+                <input type="text" class="form-control" id="reply-message" placeholder="{{locale.reactions_fill}}" required>
                 <span class="input-group-btn">
-                    <button type="submit" class="btn btn-primary article-reply" data-id="{{article.id}}" style="width:64px">Plaats</button>
+                    <button type="submit" class="btn btn-primary article-reply" data-id="{{article.id}}" style="width:64px">{{locale.reactions_post}}</button>
                 </span>
             </div>
             {% endif %}
         </aside>
 
         <aside class="default-section">
-            <div class="aside-title-content">Laatste nieuws</div>
+            <div class="aside-title-content">{{locale.latest_news}}</div>
             <div class="aside-content">
                 <div class="related-articles-container">
                     {% for item in latest_news %}

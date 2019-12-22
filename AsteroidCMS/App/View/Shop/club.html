@@ -4,7 +4,7 @@
 <div class="page-content">
     <div class="left-side">
         <article class="default-section">
-            <div class="aside-title-content">{{shortname}} Club voordelen</div>
+            <div class="aside-title-content">{{shortname}} {{locale.club_benefits}}</div>
             <div class="aside-content">
                 <ul>
                     <li>Je krijgt <b>50 Bel-Credits</b> en <b>1000 Diamanten</b>.</li>
@@ -55,23 +55,23 @@
         </div>
 
         <aside class="default-section">
-            <div class="aside-title-content">Koop {{shortname}} Club</div>
+            <div class="aside-title-content">{{locale.club_buy}}</div>
             <div class="aside-content">
                 <form action="shop/club/buy">
-                    <center><button class="rounded-button blue">Onbeperkt ({{data.price}} {{data.type}})</button></center>
+                    <center><button class="rounded-button blue">{{locale.unlimited}} ({{data.price}} {{data.type}})</button></center>
                 </form>
             </div>
         </aside>
 
         <aside class="default-section">
-            <div class="aside-title-content">Meer inforamtie</div>
+            <div class="aside-title-content">{{locale.more_information}}</div>
             <div class="aside-content">
-                <p>Heb je een vraag of probleem met <b>een aankoop</b>? Aarzel niet om contact op te nemen met de klantenservice via de  <a href="{{path}}/help/requests/new">{{shortname}} Help Tool</a>.</p>
+                <p>{{locale.content_1}} {{locale.content_2}} <a href="{{path}}/help/requests/new">{{locale.help_tool}}</a>.</p>
             </div>
         </aside>
 
         <aside class="default-section">
-            <div class="aside-title-content">Willekeurige {{shortname}} Club leden</div>
+            <div class="aside-title-content">{{locale.random_club_users}}</div>
             <div class="aside-content">
                 <div class="members-container">
                     {% for player in data.vip %}

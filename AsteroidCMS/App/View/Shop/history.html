@@ -4,14 +4,14 @@
 <div class="page-content">
     <div class="left-side">
         <article class="default-section">
-            <div class="aside-title-content">Aankoopgeschiedenis</div>
+            <div class="aside-title-content">{{locale.buy_history}}</div>
             <div class="aside-content">
                 {% if history is not empty %}
                 <table class="default-table">
                     <thead>
                         <tr>
-                            <th>Product</th>
-                            <th>Datum</th>
+                            <th>{{locale.product}}</th>
+                            <th>{{locale.date}}</th>
                         </tr>
                     </thead>
 
@@ -25,16 +25,16 @@
                     </tbody>
                 </table>
                 {% else %}
-                Je hebt nog geen aankoopgeschiedenis.
+                {{locale.buy_history_empty}}
                 {% endif %}
             </div>
         </article>
     </div>
     <div class="right-side">
         <aside class="default-section">
-            <div class="aside-title-content">Koop Leet Club</div>
+            <div class="aside-title-content">{{locale.buy_club}}</div>
             <div class="aside-content">
-                <p>Heb je een vraag of probleem met <b>een aankoop</b>? Aarzel niet om contact op te nemen met de klantenservice via de  <a href="{{path}}/help/requests/new">Leet Help Tool</a>.</p>
+                <p>{{locale.content_1}} {{locale.content_2}} <a href="{{path}}/help/requests/new">{{locale.help_tool}}</a>.</p>
             </div>
         </aside>
     </div>

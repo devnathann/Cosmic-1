@@ -12,9 +12,9 @@
                 <table class="default-table ranking-content">
                     <thead>
                     <tr>
-                        <th colspan="2">Onderwerp</th>
-                        <th>Topics</th>
-                        <th>Laatste topic</th>
+                        <th colspan="2">{{locale.index_subject}}</th>
+                        <th>{{locale.index_topics}}</th>
+                        <th>{{locale.index_latest_topic}}</th>
                     </tr>
                     </thead>
 
@@ -26,7 +26,7 @@
                         <td class="count">{{forum.count_topics}}</td>
                         <td>
                             {% if forum.count_topics == 0 %}
-                                Geen topics
+                                {{locale.index_empty}}
                             {% else %}
                                 <a href="{{path}}/forum/thread/{{forum.latest_topic.id}}-{{forum.latest_topic.slug}}">{{forum.latest_topic.title}}</a><br />
                                 {{forum.latest_topic.author.username}}, <span>{{forum.latest_topic.created_at}}</span>
@@ -44,15 +44,15 @@
     <div class="right-side">
       
         <article class="default-section">
-            <div class="aside-title-content">Laatste activiateiten</div>
+            <div class="aside-title-content">{{locale.index_latest_activities}}</div>
             <div class="aside-content">
                 <div class="related-articles-container">
                     {% for post in latestposts %}
                     <a href="{{path}}/forum/thread/{{post.topic_id}}-{{post.slug}}" class="related-article-container">
-                        <div class="related-article-thumbnail" style="background-image: url(https://www.habbo.com/habbo-imaging/avatarimage?hb=image&figure={{post.author.look}}&headonly=1&direction=2&head_direction=2&action=&gesture=&size=m); margin-top: -5px;" class="pixelated small-head"></div>
+                        <div class="related-article-thumbnail" style="background-image: url({{fpath}}/avatarimage?hb=image&figure={{post.author.look}}&headonly=1&direction=2&head_direction=2&action=&gesture=&size=m); margin-top: -5px;" class="pixelated small-head"></div>
                         <div class="related-article-details">
                             <div class="related-article-title">{{post.title}}</div>
-                            <div class="related-article-date">{{post.created_at|time_diff}} door <b>{{post.author.username}}</b></div>
+                            <div class="related-article-date">{{post.created_at|time_diff}} {{locale.index_by}} <b>{{post.author.username}}</b></div>
                         </div>
                     </a>
                     {% endfor %}

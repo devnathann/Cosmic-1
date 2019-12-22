@@ -3,17 +3,17 @@
 {% block body %}
 <div class="page-content job">
     <div class="tabs-container">
-        <span class="tab selected">Lijst vacatures</span>
-        <a href="{{path}}/jobs/applications" class="tab">Mijn sollicitaties</a>
+        <span class="tab selected">{{locale.title}}</span>
+        <a href="{{path}}/jobs/applications" class="tab">{{locale.applications}}</a>
     </div>
-    <h2>Beschikbare vacatures</h2>
+    <h2>{{locale.available_applications}}</h2>
     <article class="default-section job-offer flex-container flex-vertical-center">
         <div class="offer-description">
-            <h4>Bouwteam</h4>
-            Ze zijn verantwoordelijk voor het bouwen van (event/officiele) kamers.
+            <h4>{{locale.buildteam}}</h4>
+            {{locale.buildteam_desc}}
         </div>
         <div class="offer-button">
-            <a href="{{path}}/jobs/apply" class="rounded-button brown">Reageren</a>
+            <a href="{{path}}/jobs/apply" class="rounded-button brown">{{locale.react}}</a>
         </div>
     </article>
 </div>

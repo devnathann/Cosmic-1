@@ -6,20 +6,20 @@
 
                 {% include "Settings/panel.html" %}
 
-                <h3 class="aside-title">E-mail veranderen</h3>
+                <h3 class="aside-title">{{locale.title}}</h3>
                 <form action="settings/email/validate" method="post">
-                    <h4 class="form-subcategory">E-mailadres</h4>
+                    <h4 class="form-subcategory">{{locale.email_title}}</h4>
                     <div class="row">
                         <input type="email" name="email" class="rounded-input purple-active" value="{{player.email}}" maxlength="72" autofocus required>
                     </div>
-                    <div class="form-help">Je e-mailadres is nodig om je account te herstellen voor het geval je de toegang verliest.</div>
+                    <div class="form-help">{{locale.email_label}}</div>
 
-                    <h4 class="form-subcategory">Huidig wachtwoord</h4>
+                    <h4 class="form-subcategory">{{locale.password_title}}</h4>
                     <div class="row">
-                        <input type="password" name="current_password" class="rounded-input purple-active" placeholder="Vul je huidige wachtwoord in..." maxlength="32" autocomplete="off" required>
+                        <input type="password" name="current_password" class="rounded-input purple-active" placeholder="{{locale.fill_password}}" maxlength="32" autocomplete="off" required>
                     </div>
 
-                    <p class="submit-button"><button type="submit" class="rounded-button purple">Opslaan</button></p>
+                    <p class="submit-button"><button type="submit" class="rounded-button purple">{{locale.save}}</button></p>
                 </form>
             </article>
         </div>

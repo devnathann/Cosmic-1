@@ -6,11 +6,11 @@
     <input type="hidden" id="offer-amount" value="{{data.offer.amount}}">
     <input type="hidden" id="offer-country" value="{{data.offer.lang|lower}}">
     <h2>
-        <a href="{{path}}/shop" class="rounded-button">Terug</a>
-        Betaalmethodes - {{data.offer.amount}} {{data.offer.currency}} voor €{{data.offer.price}} of lager
+        <a href="{{path}}/shop" class="rounded-button">{{locale.back}}</a>
+        {{locale.buymethods}} - {{data.offer.amount}} {{data.offer.currency}} {{locale.for}} €{{data.offer.price}} {{locale.or_lower}}
     </h2>
     <article class="default-section loading-solutions">
-        De betaalmethodes worden geladen...
+        {{locale.loading_methods}}
     </article>
 </div>
 {% endblock %}

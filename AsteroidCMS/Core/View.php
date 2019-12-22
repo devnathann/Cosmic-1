@@ -74,7 +74,7 @@ class View
             $twig->addGlobal('sitename', Config::siteName);
 
             $twig->addGlobal('publicKey', Config::publicKey);
-            $twig->addGlobal('locale', Locale::get('website/setting_preferences', true));
+            $twig->addGlobal('locale', Locale::get('website/' . (isset($args['page']) ? $args['page'] : null), true));
 
             if (request()->player !== null) {
                 $twig->addGlobal('player', request()->player);

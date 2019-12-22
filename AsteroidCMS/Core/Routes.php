@@ -100,7 +100,6 @@ class Routes extends Router
                 Router::get('/article/{slug}', 'Community\Articles@index', ['defaultParameterRegex' => '[\w\-]+']);
 
                 Router::get('/community/team', 'Community\Team@index');
-                Router::get('/community', 'Community\Community@index');
                 Router::get('/community/photos', 'Community\Photos@index');
                 Router::get('/community/staff', 'Community\Staff@index');
 

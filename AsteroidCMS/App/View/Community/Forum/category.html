@@ -4,7 +4,7 @@
 <div class="page-content">
   
      <!-- jquery data -->
-    <input type="hidden" name="totalpages" value="{{forums.total}}">
+    <input type="hidden" name="totalpages" value="{% if forums.total == 0 %}1{% else %}{{forums.total}}{% endif %}">
     <input type="hidden" name="currentpage" value="{{currentpage}}">
     <input type="hidden" name="page_url" value="{{path}}/forum/{{forums.id}}-{{forums.slug}}">
     <!-- end jquery data -->
@@ -16,22 +16,23 @@
     <div class="aside-toolbar-content">
         {% if player and player.rank >= forums.max_rank %}
         <div style="float: left; margin-top: 8px">
-            <button class="btn btn-success pull-left new-thread">New thread</button>
-            <button class="btn btn-success pull-left redo-reply" style="display: none">Terug</button>
+            <button class="btn btn-success pull-left new-thread">{{locale.category_new_topic}}</button>
+            <button class="btn btn-success pull-left redo-reply" style="display: none">{{locale.category_back}}</button>
         </div>
         {% endif %}
         <ul id="pagination" class="pagination"></ul>
     </div>
   
+    {% if forums.topics is not empty %}
     <article id="forum-category" class="default-section">
         <div class="aside-content">
                 <table class="default-table ranking-content" style="padding-top:10px">
                     <thead>
                     <tr>
                         <th></th>
-                        <th>Topics</th>
-                        <th>Posts</th>
-                        <th>Laatste reacites</th>
+                        <th>{{locale.category_topics}}</th>
+                        <th>{{locale.category_posts}}</th>
+                        <th>{{locale.category_latest_reacts}}</th>
                     </tr>
                     </thead>
 
@@ -48,7 +49,7 @@
                         <td class="count">{{topic.totalposts}}</td>
                         <td>
                             {% if topic.latest_post is empty %}
-                                Geen reacties
+                                {{locale.category_no_reacts}}
                             {% else %}
                                 Laatste reactie door <a href="{{path}}/profile/{{topic.latest_post.author.username}}">{{topic.latest_post.author.username}}</a>,<br />
                                 {{topic.latest_post.created_at|time_diff}}
@@ -60,21 +61,22 @@
                 </table>
         </div>
     </article>
+    {% endif %}
 
     <article id="thread-content" class="default-section" style="display: none">
-        <div class="aside-title-content">Maak nieuw topic</div>
+        <div class="aside-title-content">{{locale.category_create_topic}}</div>
         <div class="aside-content">
             <form action="community/forum/create" method="post">
                 <div class="row space-bottom">
-                    <h5>Onderwerp</h5>
+                    <h5>{{locale.category_subject}}</h5>
                     <input type="text" name="title" class="rounded-input blue-active">
                 </div>
                 <div class="row space-bottom">
-                    <h5>Beschrijving</h5>
+                    <h5>{{locale.category_description}}</h5>
                     <textarea name="message" id="editor" class="rounded-textarea blue-active"></textarea>
                 </div>
                 <input type="hidden" name="cat_id" value="{{forums.id}}" />
-                <p style="text-align: center; margin-top: 30px;"><button type="submit" class="rounded-button blue">Maak topic</button> of <a href="#" id="redo-reply">annuleren</a></p>
+                <p style="text-align: center; margin-top: 30px;"><button type="submit" class="rounded-button blue">{{locale.category_create_button}}</button> {{locale.category_or}} <a href="#" id="redo-reply">{{locale.category_cancel}}</a></p>
             </form>
         </div>
     </article>
