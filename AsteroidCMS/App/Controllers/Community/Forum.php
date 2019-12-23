@@ -46,7 +46,7 @@ class Forum
     {
         $forums = Forums::getForumById($this->slug($slug));
       
-        if(!$forums) {
+        if(!$forums || request()->player->rank < $forums->min_rank) {
             redirect('/forum');
         }
       
@@ -145,12 +145,12 @@ class Forum
         $slug     = Core::convertSlug($title);
         $forums   = Forums::getForumById($cat_id);
       
-        if (request()->player === null || $forums != null) {
+        if (request()->player === null || empty($forums)) {
             echo '{"status":"error","message":"'.Locale::get('core/notification/something_wrong').'"}';
             exit;
         }
-      
-        if ($forums->max_rank >= request()->player->rank) {
+        
+        if (request()->player->rank < $forums->min_rank) {
             echo '{"status":"error","message":"'.Locale::get('core/notification/something_wrong').'"}';
             exit;
         }   

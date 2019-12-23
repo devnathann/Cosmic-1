@@ -5,6 +5,7 @@
 <div class="page-content">
     <div class="left-side">
         {% for category in forums %}
+        {% if player.rank >= category.min_rank %}
         <article class="default-section">
             <div class="aside-title-content">{{category.name}}</div>
             <div class="aside-desc-content">{{category.description}}</div>
@@ -20,6 +21,7 @@
 
                     <tbody>
                     {% for forum in category.forum %}
+                    {% if player.rank >= forum.min_rank %}
                     <tr>
                         <td><img src="{{path}}/assets/images/web/pages/forum/{{forum.image}}" class="pixelated"></td>
                         <td><a href="{{path}}/forum/{{forum.id}}-{{forum.slug}}">{{forum.title}}</a><br /><small><div style="width: 265px;">{{forum.description}}</small></div></td>
@@ -33,11 +35,13 @@
                             {% endif %}
                         </td>
                     </tr>
+                    {% endif %}
                     {% endfor %}
                     </tbody>
                 </table>
             </div>
         </article>
+        {% endif %}
         {% endfor %}
     </div>
 

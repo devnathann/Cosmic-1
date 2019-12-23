@@ -16,7 +16,7 @@
                     <tbody>
                     {% for user in currency %}
                     <tr>
-                        <td><img src="{{fpath}}/avatarimage?figure={{user.player.look}}&gesture=sml&headonly=1" alt="{{user.player.look}}" class="pixelated"></td>
+                        <td><img src="{{fpath}}/avatarimage?figure={{user.player.look}}&gesture=sml&headonly=1" alt="{{user.player.look}}" class="pixelated small-head"></td>
                         <td><a href="{{path}}/profile/{{user.player.username}}">{{user.player.username}}</a></td>
                         <td><span>{{user.amount}}</span></td>
                     </tr>
