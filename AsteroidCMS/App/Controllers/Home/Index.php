@@ -25,9 +25,6 @@ class Index
         $rooms = \App\Models\Community::getPopularRooms(10);
         $groups = \App\Models\Community::getPopularGroups(7);
         
-        print_r($news);
-        exit;
-        
         View::renderTemplate('Home/home.html', [
             'title'     => !request()->player ? Locale::get('core/title/home') : request()->player->username,
             'page'      => 'home',
