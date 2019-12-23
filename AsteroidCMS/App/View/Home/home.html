@@ -94,7 +94,7 @@
           
           
             <div class="left-side">
-                <aside class="default-section" style="min-height: 230px;">
+                <aside class="default-section">
                   
                     <div class="aside-title-content">{{locale.popular_rooms}}</div>
                     <div class="aside-desc-content">{{locale.popular_rooms_label}}</div>
@@ -157,30 +157,39 @@
                     </style>
                   
                     {% if rooms is empty %}
-                        {{locale.popular_no_rooms}}
+                        <div class="aside-content">
+                            {{locale.popular_no_rooms}}
+                        </div>
                     {% endif %}
                   
-                    <table class="rooms table table-striped">
-                        <tbody>
-                            {% for row in rooms %}
-                                {% if row.users_now >= 25 %}
-                                    {% set number = 5 %}
-                                {% elseif row.users_now >= 15 %}
-                                    {% set number = 4 %}
-                                {% elseif row.users_now >= 10 %}
-                                    {% set number = 3 %}
-                                {% else %}
-                                    {% set number = 1 %}
-                                {% endif %}
-                            <tr>
-                                <td style="text-align: center;"><img src="{{path}}/assets/images/web/pages/community/rooms/room_icon_{{number}}.gif"></td>
-                                <td style="text-align: justify;word-break: break-word;">{{row.name}}<br><i style="font-size: 11px;word-break: break-word;"></i></td>
-                                <td><img src="{{path}}/assets/images/web/pages/community/rooms/visitors.gif"> <b>{{row.users_now}}</b></td>
-                                <td style="width: 150px;padding-left: 20px"><a href="{{path}}/hotel?room={{row.id}}" class="button">{{locale.goto_room}}</a></td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+                    {% if rooms is not empty %}
+                    <div class="aside-content">
+                        <table class="rooms table table-striped">
+                            <tbody>
+                                {% for row in rooms %}
+                                    {% if row.users >= 25 %}
+                                        {% set number = 5 %}
+                                    {% elseif row.users >= 15 %}
+                                        {% set number = 4 %}
+                                    {% elseif row.users >= 10 %}
+                                        {% set number = 3 %}
+                                    {% elseif row.users >= 1 %}
+                                        {% set number = 2 %}
+                                    {% else %}
+                                        {% set number = 1 %}
+                                    {% endif %}
+                                <tr>
+                                    <td style="text-align: center;"><img src="{{path}}/assets/images/web/pages/community/rooms/room_icon_{{number}}.gif"></td>
+                                    <td style="text-align: justify;word-break: break-word;">{{row.name}}<br><i style="font-size: 11px;word-break: break-word;"></i></td>
+                                    <td><img src="{{path}}/assets/images/web/pages/community/rooms/visitors.gif"> <b>{{row.users}}</b></td>
+                                    <td style="width: 150px;padding-left: 20px"><a href="{{path}}/hotel?room={{row.id}}" class="button">{{locale.goto_room}}</a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% endif %}
+                    
                 </aside>
             </div>
             <div class="right-side" style="margin-bottom: 7px;">
@@ -189,13 +198,6 @@
                     <div class="aside-desc-content">{{locale.popular_groups_label}}</div>
 
                     <style>
-                        .h-main {
-                            padding: 15px;
-                            background: #FFF;
-                            border-radius: 0 0 5px 5px;
-                            overflow: hidden;
-                        }
-
                         #popularGroups {
                             width: 100%;
                             height: 100%;
@@ -217,7 +219,7 @@
                             height: 14px;
                             line-height: 14px;
                             background: url({{path}}/assets/images/web/pages/community/groups/members.png) 0% 50% no-repeat;
-                            padding-left: 15px;
+                            padding-left: 20px;
                             font-size: 11px;
                         }
 
@@ -232,7 +234,7 @@
                             overflow: hidden;
                         }
                     </style>
-                    <div class="h-main">
+                    <div class="aside-content">
                         {% if groups is empty %}
                             {{locale.popular_no_groups}}
                         {% endif %}
