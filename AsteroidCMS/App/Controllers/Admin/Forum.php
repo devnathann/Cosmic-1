@@ -18,10 +18,6 @@ use stdClass;
 
 class Forum
 {
-    public function __contruct() {
-        $this->data = new \stdClass();
-    }
-  
     public function deleteForum()
     {
         $validate = request()->validator->validate([

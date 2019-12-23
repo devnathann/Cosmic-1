@@ -807,7 +807,7 @@ class Admin
     public static function getRanks($allRanks = false)
     {
         if($allRanks) {
-            return QueryBuilder::table('permissions')->orderBy('id', 'asc')->get();
+            return QueryBuilder::table('permissions')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->orderBy('id', 'asc')->get();
         }
 
         return QueryBuilder::table('permissions')->where('id', '!=', 1)->where('id', '!=', 2)->orderBy('id', 'asc')->get();
@@ -909,5 +909,79 @@ class Admin
         return QueryBuilder::table('bans')->select('bans.*')->select('users.username')
                     ->join('users', 'bans.user_id', '=', 'users.id')->where('bans.user_id', $user_id)->get();
     }
+  
+    public static function getForums()
+    {
+        return QueryBuilder::table('website_forum_index')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->orderBy('position', 'asc')->get();
+    }
+  
+    public static function getCategoryById($id)
+    {
+        return QueryBuilder::table('website_forum_categories')->where('id', $id)->orderBy('position', 'asc')->first();
+    }
+  
+    public static function createCategory($title, $description, $min_rank, $position)
+    {
+        $data = array(
+            'name'        => $topicid,
+            'description' => $content,
+            'min_rank'    => time(),
+            'position'    => $userid
+        );
+      
+        return QueryBuilder::table('website_forum_categories')->insert($data);
+    } 
+  
+   public static function editCategory($id, $title, $description, $min_rank, $position)
+   {
+        $data = array(
+            'name'        => $topicid,
+            'description' => $content,
+            'min_rank'    => time(),
+            'position'    => $userid
+        );
+      
+        return QueryBuilder::table('website_forum_categories')-where('id', $id)->update();
+    } 
+  
+     public static function createForum($title, $description, $category, $imagePath, $min_rank, $position, $slug)
+    {
+        $data = array(
+            'title'         => $title,
+            'description'   => $description,
+            'cat_id'        => $category,
+            'image'         => $imagePath,
+            'min_rank'      => $min_rank,
+            'position'      => $position, 
+            'slug'          => $slug
+        );
+      
+        return QueryBuilder::table('website_forum_index')->insert($data);
+    } 
+  
+   public static function editForum($id, $title, $description, $category, $imagePath, $min_rank, $position, $slug)
+   {
+        $data = array(
+            'title'         => $title,
+            'description'   => $description,
+            'cat_id'        => $category,
+            'image'         => $imagePath,
+            'min_rank'      => $min_rank,
+            'position'      => $position, 
+            'slug'          => $slug
+        );
+      
+        return QueryBuilder::table('website_forum_index')-where('id', $id)->update();
+    }
+  
+    public static function deleteForum($id)
+    {
+        return QueryBuilder::table('website_forum_index')->where('id', $id)->delete();
+    }
 
+    public static function deleteCategory($id)
+    {
+        return QueryBuilder::table('website_forum_categories')->where('id', $id)->delete();
+    }
+  
 }

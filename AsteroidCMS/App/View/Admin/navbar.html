@@ -91,6 +91,12 @@
               <i class="kt-menu__link-icon flaticon2-rectangular"></i><span class="kt-menu__link-text">Feed manage</span></a>
           </li>
           {% endif %}
+          {% if 'housekeeping_website_forum' in permissions %}
+          <li class="kt-menu__item ajaxLoading" aria-haspopup="true" >
+              <a  href="{{path}}/housekeeping/forum/manage" class="kt-menu__link ">
+              <i class="kt-menu__link-icon flaticon2-rectangular"></i><span class="kt-menu__link-text">Forum manage</span></a>
+          </li>
+          {% endif %}
           {% if 'housekeeping_website_news' in permissions %}
           <li class="kt-menu__item ajaxLoading" aria-haspopup="true" >
               <a  href="{{path}}/housekeeping/news/manage" class="kt-menu__link ">
