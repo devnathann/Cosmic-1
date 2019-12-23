@@ -820,6 +820,12 @@ class Install {
                   self::rollback($conn->error);
               }
               $qeqewwe = "
+      ALTER TABLE `website_forum_categories`
+        MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0";
+              if ($conn->query($qeqewwe) !== true) {
+                  self::rollback($conn->error);
+              }
+              $qeqewwe = "
       ALTER TABLE `website_forum_index`
         MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0";
               if ($conn->query($qeqewwe) !== true) {
@@ -834,6 +840,12 @@ class Install {
               $qeqewwe = "
       ALTER TABLE `website_forum_likes`
         MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0";
+              if ($conn->query($qeqewwe) !== true) {
+                  self::rollback($conn->error);
+              }
+              $qeqewwe = "
+      ALTER TABLE `website_forum_categories`
+        MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0";
               if ($conn->query($qeqewwe) !== true) {
                   self::rollback($conn->error);
               }
