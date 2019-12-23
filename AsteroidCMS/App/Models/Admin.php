@@ -358,11 +358,10 @@ class Admin
         return QueryBuilder::table('users')->select('username')->select('id')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->where('username', 'LIKE', $string . '%')->limit($limit)->get();
     }
 
-    public static function changePlayerSettings($email, $rank, $motto, $credits, $pin_code, $user_id)
+    public static function changePlayerSettings($email, $motto, $credits, $pin_code, $user_id)
     {
         $data = array(
             'mail'         => $email,
-            'rank'          => $rank,
             'motto'         => $motto,
             'credits'       => $credits,
             'pincode'       => $pin_code
