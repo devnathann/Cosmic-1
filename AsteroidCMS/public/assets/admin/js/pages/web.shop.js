@@ -28,7 +28,7 @@ var shop = function() {
                 self.ajax_manager.post("/housekeeping/api/shop/getofferbyid", {post: id}, function (result) {
                     $('[name=shopId]').val(result.id);
                   
-                    $("[name=currencys] option[name='" + result.currency + "']").prop('selected', true);
+                    $("[name=currencys] option[value='" + result.currency + "']").prop('selected', true);
                     $("[name=lang] option[value='" + result.lang + "']").prop('selected', true);
                   
                     $('[name=amount]').val(result.amount);

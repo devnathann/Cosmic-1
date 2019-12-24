@@ -17,7 +17,7 @@ class Shop
     public function editcreate()
     {
         $validate = request()->validator->validate([
-            'currencys' => 'required|numeric',
+            'currencys' => 'required',
             'amount'    => 'required|numeric',
             'price'     => 'required|numeric',
             'lang'      => 'required',

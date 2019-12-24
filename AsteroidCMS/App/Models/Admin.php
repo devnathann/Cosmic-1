@@ -941,7 +941,7 @@ class Admin
             'position'    => $userid
         );
       
-        return QueryBuilder::table('website_forum_categories')-where('id', $id)->update();
+        return QueryBuilder::table('website_forum_categories')-where('id', $id)->update($data);
     } 
   
    public static function createForum($title, $description, $category, $imagePath, $min_rank, $position, $slug)
@@ -971,7 +971,7 @@ class Admin
             'slug'          => $slug
         );
       
-        return QueryBuilder::table('website_forum_index')-where('id', $id)->update();
+        return QueryBuilder::table('website_forum_index')-where('id', $id)->update($data);
     }
   
     public static function deleteForum($id)
@@ -1009,7 +1009,7 @@ class Admin
             'lang'            => $lang
         );
       
-        return QueryBuilder::table('website_shop_offers')-where('id', $id)->update();
+        return QueryBuilder::table('website_shop_offers')->where('id', $id)->update($data);
     }
   
 }
