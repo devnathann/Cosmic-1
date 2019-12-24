@@ -29,7 +29,7 @@ class Logs
 
     public function getchatlogs()
     {
-        $chat_logs = Admin::getAllMessengerLogs(1000);
+        $chat_logs = Admin::getAllLogs(1000);
 
         foreach ($chat_logs as $row) {
             $row->user_from_id = Player::getDataById($row->user_from_id, 'username')->username;

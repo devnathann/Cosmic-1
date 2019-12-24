@@ -151,7 +151,7 @@ class Admin
 
     public static function getAllLogs($limit = 500)
     {
-        return QueryBuilder::table('logs')->OrderBy('id', 'desc')->limit($limit)->get();
+        return QueryBuilder::table('chatlogs_room')->limit($limit)->get();
     }
   
     public static function getAllLogsByUserid($player_id, $limit = 2000)
@@ -944,7 +944,7 @@ class Admin
         return QueryBuilder::table('website_forum_categories')-where('id', $id)->update();
     } 
   
-     public static function createForum($title, $description, $category, $imagePath, $min_rank, $position, $slug)
+   public static function createForum($title, $description, $category, $imagePath, $min_rank, $position, $slug)
     {
         $data = array(
             'title'         => $title,
@@ -982,6 +982,34 @@ class Admin
     public static function deleteCategory($id)
     {
         return QueryBuilder::table('website_forum_categories')->where('id', $id)->delete();
+    }
+  
+   public static function offerCreate($currencys, $amount, $price, $lang, $offer_id, $private_key)
+    {
+        $data = array(
+            'currency'        => $currencys,
+            'amount'          => $amount,
+            'price'           => $price,
+            'offer_id'        => $offer_id,
+            'private_key'     => $private_key,
+            'lang'            => $lang
+        );
+      
+        return QueryBuilder::table('website_shop_offers')->insert($data);
+    } 
+  
+   public static function offerEdit($id, $currencys, $amount, $price, $lang, $offer_id, $private_key)
+   {
+        $data = array(
+            'currency'        => $currencys,
+            'amount'          => $amount,
+            'price'           => $price,
+            'offer_id'        => $offer_id,
+            'private_key'     => $private_key,
+            'lang'            => $lang
+        );
+      
+        return QueryBuilder::table('website_shop_offers')-where('id', $id)->update();
     }
   
 }

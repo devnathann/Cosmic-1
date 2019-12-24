@@ -3,7 +3,78 @@
 {% block jsfile %}shop{% endblock %}
 {% block body %}
 <div class="row">
-   <div class="col-xl-12">
+      <div class="col-xl-12" id="offerManage" style="display: none">
+        <div class="kt-portlet">
+            <form method="post" action="shop/create">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <span class="kt-portlet__head-icon">
+                            <i class="flaticon2-graph"></i>
+                        </span>
+
+                        <h3 class="kt-portlet__head-title titleEdit">
+                            Offer Manage
+                        </h3>
+                    </div>
+                    <div class="kt-subheader__wrapper kt-margin-t-10">
+                       <a id="goBack" class="btn btn-clean btn-icon-sm" style="">
+                       <i class="la la-long-arrow-left"></i>Back
+                       </a>
+                    </div>
+                </div>
+
+                <div class="kt-portlet__body">
+                    <div class="form-group row">
+                        <div class="col-lg-3">
+                            <label>Currencys</label>
+                            <select class="form-control" name="currencys">
+                                {% for value,key in currency %}
+                                   <option value="{{key}}" name="{{value}}">{{value}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Amount</label>
+                            <input type="number" name="amount" class="form-control">
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Price</label>
+                            <input type="text" name="price" class="form-control" value="3.00">
+                        </div>
+                      <div class="col-lg-3">
+                            <label>Lang</label>
+                            <select class="form-control" name="lang">
+                                <option value="NL">NL</option>
+                                <option value="BE">BE</option>
+                            </select>
+                        </div>
+                    </div>
+                      <div class="form-group">
+                            <label>Offer ID (dedipass)</label>
+                            <input type="text" class="form-control" name="offer_id">
+                        </div>
+                        <div class="form-group">
+                            <label>Private key (dedipass)</label>
+                            <input type="text" class="form-control" name="private_key">
+                        </div>
+                </div>
+
+                <div class="kt-portlet__foot">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 m--valign-middle">
+                            Action:
+                        </div>
+
+                        <div class="col-lg-6 kt-align-right">
+                            <input type="hidden" name="shopId">
+                            <button type="submit" class="btn btn-brand addCategory">Create offer</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+   <div class="col-xl-12" id="offers">
       <div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile ">
          <div class="kt-portlet__head kt-portlet__head--lg">
             <div class="kt-portlet__head-label">
@@ -25,13 +96,6 @@
                      </div>
                   </div>
                   &nbsp;
-                  <div class="col-md-3 kt-tablet-and-mobile">
-                     <div class="kt-form__group kt-form__group--inline">
-                        <div class="kt-form__label">
-                           <button class="btn btn-secondary" type="button" id="kt_datatable_catalog_reload">Reload</button>
-                        </div>
-                     </div>
-                  </div>
                   <div class="dropdown dropdown-inline">
                      <button type="button" class="btn btn-hover-brand btn-elevate-hover btn-icon btn-sm btn-icon-md btn-circle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                      <i class="flaticon-more-1"></i>
@@ -45,6 +109,12 @@
                               <a class="kt-nav__link">
                               <i class="kt-nav__link-icon flaticon2-plus"></i>
                               <span class="kt-nav__link-text giveOffer" data-toggle="modal" data-target="#giveOffer">Give Offer</span>
+                              </a>
+                           </li>
+                            <li class="kt-nav__item">
+                              <a class="kt-nav__link">
+                              <i class="kt-nav__link-icon flaticon2-plus"></i>
+                              <span class="kt-nav__link-text createOffer">Create Offer</span>
                               </a>
                            </li>
                         </ul>

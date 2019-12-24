@@ -4,13 +4,52 @@ var shop = function() {
         init: function () {
             shop.initDatatable();
           
-            $('#viewPaysafe').on('show.bs.modal', function (event) {
-                shop.paysafeView();
-            });
-          
             $('#giveOffer').on('show.bs.modal', function (event) {
                 shop.giveOffer();
             });
+          
+            $(".createOffer").click(function () {
+                shop.editOffer(null);
+            });
+          
+            $("#goBack").unbind().click(function () {
+                shop.goBack();
+            });
+        },
+      
+        editOffer: function (id) {
+            var self = this;
+            this.ajax_manager = new WebPostInterface.init();
+          
+            $("#offerManage").show();
+            $("#offers").hide();
+          
+            if(id != null) {
+                self.ajax_manager.post("/housekeeping/api/shop/getofferbyid", {post: id}, function (result) {
+                    $('[name=shopId]').val(result.id);
+                  
+                    $("[name=currencys] option[name='" + result.currency + "']").prop('selected', true);
+                    $("[name=lang] option[value='" + result.lang + "']").prop('selected', true);
+                  
+                    $('[name=amount]').val(result.amount);
+                    $('[name=price]').val(result.price);
+                    $('[name=private_key]').val(result.private_key);
+                    $('[name=offer_id]').val(result.offer_id);
+                });
+            } else {
+                $('[name=shopId]').val(0);
+                $('[name=amount]').val("")
+                $('[name=price]').val("");
+                $('[name=private_key]').val("");
+                $('[name=offer_id]').val("");    
+            }
+        },
+      
+        goBack: function() {
+            $("#kt_datatable_shop").KTDatatable("reload")
+          
+            $("#offerManage").hide();
+            $("#offers").show();
         },
 
         initDatatable: function () {
@@ -27,7 +66,7 @@ var shop = function() {
                         type: 'remote',
                         source: {
                             read: {
-                                url: '/housekeeping/api/shop/getpurchaselogs',
+                                url: '/housekeeping/api/shop/getOffers',
                                 headers: {
                                     'Authorization': 'housekeeping_shop_control'
                                 }
@@ -49,20 +88,31 @@ var shop = function() {
                         title: "#",
                         type: "number",
                         width: 75,
-                        sortable: "desc",
-                        template: function (data) {
-                            return '<span class="kt-font">' + data.id + '</span>';
+                        sortable: "desc"
+                    }, {
+                        field: "currency",
+                        title: "Currency",
+                    }, {
+                        field: "amount",
+                        title: "Amount"
+                    }, {
+                        field: "price",
+                        title: "Price"
+                    }, {
+                        field: "lang",
+                        title: "Language",
+                        sortable: "desc"
+                    }, {
+                        field: "Action",
+                        title: "Action",
+                        sortable: !1,
+                        width: 110,  
+                        overflow: "visible",
+                        textAlign: "left",
+                        autoHide: !1,
+                        template: function(data) {
+                            return '<a class="btn btn-sm btn-clean btn-icon btn-icon-sm" id="editOffer" title="Edit"><i class="flaticon2-edit"></i></a> <a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-sm deleteOffer" data-toggle="modal" data-target="#confirm-delete" title="Delete"><i class="la la-trash"></i></a>'
                         }
-                    }, {
-                        field: "player_id",
-                        title: "Username",
-                    }, {
-                        field: "data",
-                        title: "Data",
-                        sortable: "asc",
-                    }, {
-                        field: "timestamp",
-                        title: "Timestamp",
                     }]
                 });
 
@@ -71,104 +121,24 @@ var shop = function() {
                 });
             };
 
-            $("#kt_datatable_shop").unbind().on("click", "#editFaq, #deleteFaq", function (e) {
+            $("#kt_datatable_shop").unbind().on("click", "#editOffer, .deleteOffer", function (e) {
                 e.preventDefault();
+             
                 let id = $(e.target).closest('.kt-datatable__row').find('[data-field="id"]').text();
-                let title = $(e.target).closest('.kt-datatable__row').find('[data-field="title"]').text();
+        
+                if ($(this).attr("id") == "editOffer") {
+                    shop.editOffer(id);
+                } else {
+                    $('#confirm-delete').on('show.bs.modal', function (e) {
+                        $(".modal-title").html("Delete this offer?");
+                        $(".btn-ok").unbind().click(function () {
+                            shop.deleteOffer(id);
+                        });
+                    });
+                }
             });
 
             datatableShop();
-        },
-      
-          paysafeView: function () {
-
-             $("#paysafeModal").KTDatatable({
-                   data: {
-                  type: 'remote',
-                  source: {
-                      read: {
-                          url: '/housekeeping/api/shop/getpaysafelogs',
-                          headers: {
-                              'Authorization': 'housekeeping_shop_control'
-                          }
-                      }
-                  },
-                      pageSize: 10,
-                      serverPaging: !0,
-                      serverFiltering: !0,
-                      serverSorting: !0
-                  },
-                  layout: {
-                      scroll: !0,
-                      footer: !1
-                  },
-                  sortable: !0,
-                  pagination: !0,
-                  columns: [{
-                      field: "id",
-                      title: "#",
-                      type: "number"
-                  }, {
-                      field: "player_id",
-                      title: "Username"
-                  }, {
-                      field: "amount",
-                      title: "Amount",
-                  }, {
-                      field: "code",
-                      title: "Code"
-                  }, {
-                      field: "Actions",
-                      title: "Actions",
-                      sortable: !1,
-                      overflow: "visible",
-                      autoHide: !1,
-                      template: function() {
-                          return '\t\t\t\t\t\t\t<div class="dropdown">\t\t\t\t\t\t\t\t<a href="javascript:;" id="" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown">\t                                <i class="la la-ellipsis-h"></i>\t                            </a>\t\t\t\t\t\t\t    <div class="dropdown-menu dropdown-menu-right">\t\t\t\t\t\t\t        <a class="dropdown-item" href="#"><i class="la la-edit"></i> Edit Details</a>\t\t\t\t\t\t\t        <a class="dropdown-item" href="#"><i class="la la-leaf"></i> Update Status</a>\t\t\t\t\t\t\t        <a class="dropdown-item" href="#"><i class="la la-print"></i> Generate Report</a>\t\t\t\t\t\t\t    </div>\t\t\t\t\t\t\t</div>\t\t\t\t\t\t\t<a href="javascript:;" class="btn btn-sm btn-clean btn-icon btn-icon-md acceptPaysafeReq" id="acceptPaysafeReq" title="Edit details">\t\t\t\t\t\t\t\t<i class="la la-check"></i>\t\t\t\t\t\t\t</a>\t\t\t\t\t\t\t<a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md declinePaysafeReq" title="Delete">\t\t\t\t\t\t\t\t<i class="la la-trash"></i>\t\t\t\t\t\t\t</a>\t\t\t\t\t\t'
-                      }
-                  }]
-              });
-            
-              $("#viewPaysafe").unbind().on("click", ".declinePaysafeReq, .acceptPaysafeReq", function(e) {
-                  e.preventDefault();
-                  let id = $(e.target).closest('.kt-datatable__row').find('[data-field="id"]').text();
-                
-                  if($(this).attr('id') == "acceptPaysafeReq") {
-                      shop.acceptPaysafeReq(id);
-                  } else {
-                      shop.declinePaysafeReq(id);
-                  }
-              });
-        },
-      
-        acceptPaysafeReq: function(id) {
-            var self = this;
-            this.ajax_manager = new WebPostInterface.init();
-
-            self.ajax_manager.post("/housekeeping/api/shop/accept", {
-                post: id
-            }, function (result) {
-                if (result.status == "success") {
-                    $("#paysafeModal").KTDatatable("reload");
-                }
-            });
-        },
-      
-        declinePaysafeReq: function(id) {
-            var self = this;
-            this.ajax_manager = new WebPostInterface.init();
-
-            self.ajax_manager.post("/housekeeping/api/shop/decline", {
-                post: id
-            }, function (result) {
-                if (result.status == "success") {
-                    $("#paysafeModal").KTDatatable("reload");
-                }
-            });
-        },
-      
-        giveOffer: function() {
-            console.log(1)
         }
     }
 }();

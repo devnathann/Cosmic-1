@@ -52,7 +52,7 @@ var forums = function() {
                    title: "Title"
                }, {
                    field: "position",
-                   title: "Postion"
+                   title: "Position"
                }, {
                    field: "min_rank",
                    title: "Min rank"
