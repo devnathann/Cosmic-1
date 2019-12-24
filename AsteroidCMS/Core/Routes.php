@@ -40,6 +40,10 @@ class Routes extends Router
             Router::get('/profile/{user}', 'Home\Profile@profile', ['defaultParameterRegex' => '[a-zA-Z0-9\d\-_=\?!@:\.,]+']);
           
             Router::post('/profile/search', 'Home\Profile@search');
+          
+            Router::get('/assets/js/web/web.locale.js', function () {
+                return 'var Locale = ' . json_encode(Locale::get('website/javascript', true), true) . '';
+            });
 
             /**
              *  When user is not logged in

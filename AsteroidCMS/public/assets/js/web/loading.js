@@ -16,7 +16,8 @@ function SiteLoadingInterface()
         "web.ajax",
         "web.notifications",
         "web.dialog",
-        "web.hotel",
+        "web.hotel",  
+        "web.locale",
         "web.customforms",
         "web.page.article",
         "web.page.settings_preferences",
@@ -58,6 +59,7 @@ function SiteLoadingInterface()
         this.cache_id = (new Date().getTime() + Math.floor((Math.random() * 10000) + 1)).toString(16);
     };
 
+  
     this.load_file = function (file_id)
     {
         var self = this;

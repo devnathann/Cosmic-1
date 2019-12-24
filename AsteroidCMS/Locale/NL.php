@@ -1,8 +1,14 @@
 <?php
 $GLOBALS['language'] = array (
     'website' => array (
-        /*     App/View/Client     */
-        
+      
+        'base' => array(
+            'nav_shop' => 'Winkel'
+        ),
+      
+        'javascript' => array(
+            'nav_shop' => 'Winkel'
+        ),
         
         /*     App/View/Community     */
         'article' => array (
