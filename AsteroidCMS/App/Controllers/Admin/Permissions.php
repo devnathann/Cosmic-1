@@ -10,6 +10,7 @@ use Core\View;
 use Library\Json;
 
 use stdClass;
+use QueryBuilder;
 
 class Permissions
 {
@@ -58,7 +59,7 @@ class Permissions
             }
         }
 
-        if (in_array($this->data->name, array_column(Admin::getRanks(true), 'name'))) {
+        if (in_array($this->data->rank_name, array_column(Admin::getRanks(true), 'name'))) {
             echo '{"status":"error","message":"Rank name is already in use!"}';
             exit;
         }
@@ -136,6 +137,6 @@ class Permissions
 
     public function view()
     {
-        View::renderTemplate('Admin/Management/permissions.html', ['permission' => 'housekeeping_permissions']);
+        View::renderTemplate('Admin/Management/permissions.html', ['permission' => 'housekeeping_permissions', 'permission_columns' => Permission::getAllColumns()]);
     }
 }
