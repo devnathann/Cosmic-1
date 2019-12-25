@@ -94,7 +94,7 @@ function WebPageCommunityPhotosInterface(main_page) {
                     }
                 });
             } else {
-                Web.notifications_manager.create("error", "Je moet ingelogd zijn om foto's te kunnen liken!", "Uitgelogd :(");
+                Web.notifications_manager.create("error", Locale.web_page_community_photos_login, Locale.web_page_community_photos_loggedout);
             }
         }
     };

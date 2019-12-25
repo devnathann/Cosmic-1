@@ -21,16 +21,16 @@ function WebPageSettingsNamechangeInterface(main_page)
                 Web.ajax_manager.post("/settings/namechange/availability", {username: givenString}, function (result) {
                     if(givenString !== User.username) {
                         if (result.status !== "unavailable") {
-                            button.removeAttr('disabled', 'disabled').html('Aanvragen');
+                            button.removeAttr('disabled', 'disabled').html(Locale.web_page_settings_namechange_request);
                         } else {
-                            button.attr('disabled', 'disabled').html('Niet beschikbaar');
+                            button.attr('disabled', 'disabled').html(Locale.web_page_settings_namechange_not_available);
                         }
                     } else {
-                        button.attr('disabled', 'disabled').html('Niet beschikbaar');
+                        button.attr('disabled', 'disabled').html(Locale.web_page_settings_namechange_not_available);
                     }
                 });
             } else {
-                button.attr('disabled', 'disabled').html('Kies Leetnaam');
+                button.attr('disabled', 'disabled').html(Locale.web_page_settings_namechange_choose_name);
             }
         });
 

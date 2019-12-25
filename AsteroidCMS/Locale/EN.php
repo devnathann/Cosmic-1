@@ -1,8 +1,152 @@
 <?php
 $GLOBALS['language'] = array (
     'website' => array (
-        /*     App/View/Client     */
+        /*     App/View/base.html     */
+        'base' => array(
+            'nav_home'              => 'Home',
+            
+            'nav_community'         => 'Community',
+            'nav_news'              => 'News',
+            'nav_photos'            => 'Photos',
+            'nav_staff'             => 'Staff',
+            
+            'nav_shop'              => 'shop',
+            'nav_buy_points'        => 'Purchase GOTW-Points',
+            'nav_buy_club'          => 'Purchase Leet Club',
+            'nav_purchasehistory'   => 'Purchase history',
+            'nav_changename'        => 'Change Leetname',
+            
+            'nav_highscores'        => 'Highscores',
+          
+            'nav_forum'             => 'Forum',
+          
+            'nav_helptool'          => 'Help Tool',
+            'nav_helptickets'       => 'Help Tickets',
+            
+            'nav_housekeeping'      => 'Housekeeping',
+            
+            'close'                 => 'Close',
+            'cookies'               => 'uses its own and third-party cookies to provide a better service and also ensures that the advertisements better match your preferences. If you use our website you agree with our cookie policy.',
+            'read_more'             => 'Read more',
+            'thanks_for_playing'    => 'Thank you for playing',
+            'made_with_love'        => 'was made with a lot of love',
+            'credits'               => 'Thanks to Raizer and Metus',
+            'and_all'               => 'And all',
+            
+            'login_name'            => 'name',
+            'login_password'        => 'Password',
+            'login_save_data'       => 'Remember my data',
+            'login_lost_password'   => 'Lost your password/name?',
+            
+            'report_message'        => 'Report this message',
+            'report_certainty'      => 'You are about to report this message. Are you sure you want to report this message?',
+            'report_inappropriate'  => 'Yes, this is inappropriate!',
+            
+            'user_to'               => 'To',
+            'user_profile'          => 'My profile',
+            'user_settings'         => 'settings',
+            'user_logout'           => 'Log out',
+            
+            'header_slogan'         => 'Virtual world for young people!',
+            'header_slogan2'        => 'Join our community and make new friends',
+            'header_login'          => 'Login',
+            'header_register'       => 'Register for free!',
+            'header_to'             => 'To',
+            
+            'footer_helptool'       => 'Help Tool',
+            'footer_rules'          => 'The Leet Rules',
+            'footer_terms'          => 'Terms and Conditions',
+            'footer_privacy'        => 'Privacy declaration',
+            'footer_cookies'        => 'Cookie policy',
+            'footer_guide'          => 'Parents guide'
+        ),
         
+        /*     public/assets/js/web     */
+        'javascript' => array(
+            'web_customforms_markedfields'                  => 'All fields marked with an * are mandatory.',
+            'web_customforms_loadingform'                   => 'Loading form...',
+            'web_customforms_next'                          => 'Next',
+            'web_customforms_close'                         => 'Close',
+            'web_customforms_participation'                 => 'Thanks for your participation!',
+            'web_customforms_sent'                          => 'Your answers have been sent and will be analyzed by the person who starts this form.',
+            'web_customforms_answer'                        => 'Your answer',
+            
+            'web_dialog_cancel'                             => 'Cancel',
+            'web_dialog_validate'                           => 'Validate',
+            'web_dialog_confirm'                            => 'Confirm your choice',
+            
+            'web_hotel_backto'                              => 'Back to Leet Hotel',
+            
+            'web_fill_pincode'                              => 'Enter the pin code that you specified when creating the extra security on your account. Well, I forgot this one? Then contact us via the Leet Help Tool',
+            'web_twostep'                                   => 'Two-step authorization!',
+            'web_login'                                     => 'You must be logged in to report this message!',
+            'web_loggedout'                                 => 'Logged out :(',
+            
+            'web_notifications_success'                     => 'Success!',
+            'web_notifications_error'                       => 'Error!',
+            'web_notifications_info'                        => 'Information!',
+            
+            'web_page_article_login'                        => 'You must be logged in to post a comment!',
+            
+            'web_page_community_photos_login'               => 'You must be logged in to like photos!',
+            'web_page_community_photos_loggedout'           => 'Logged out :(',
+            
+            'web_page_forum_change'                         => 'Change',
+            'web_page_forum_cancel'                         => 'Cancel',
+            'web_page_forum_oops'                           => 'Oops...',
+            'web_page_forum_topic_closed'                   => 'This topic is closed and you can no longer respond.',
+            'web_page_forum_login_toreact'                  => 'In order to respond, you need to be logged in!',
+            'web_page_forum_login_tolike'                   => 'You must be logged in to like this post!',
+            'web_page_forum_loggedout'                      => 'Logged out :(',
+            
+            'web_page_profile_login'                        => 'You must be logged in to like photos!',
+            'web_page_profile_loggedout'                    => 'Logged out :(',
+            
+            'web_page_settings_namechange_request'          => 'Request',
+            'web_page_settings_namechange_not_available'    => 'Not available',
+            'web_page_settings_namechange_choose_name'      => 'Choose Leetname',
+            
+            'web_page_settings_verification_oops'           => 'Oops...',
+            'web_page_settings_verification_fill_password'  => 'Enter your password!',
+            'web_page_settings_verification_2fa_on'         => 'Google Authentication is currently set on your account. To use another verification method, you must first remove your old verification!',
+            'web_page_settings_verification_2fa_secretkey'  => 'Have you scanned the QR code on your mobile? Then enter the secret key to confirm your account!',
+            'web_page_settings_verification_2fa_authcode'   => 'Authentication code',
+            'web_page_settings_verification_pincode_on'     => 'You currently have a pin code set on your account. To use another verification method you first have to remove your old verification!',
+            'web_page_settings_verification_2fa_off'        => 'To disable Google Authentication we ask you to enter the secret code from the generator.',
+            'web_page_settings_verification_pincode_off'    => 'To disable the pincode authentication we ask you to enter your pincode.',
+            'web_page_settings_verification_pincode'        => 'Pincode code',
+            'web_page_settings_verification_switch'         => 'Select the switch button to enable an authentication method!',
+            
+            'web_page_shop_offers_neosurf_name'             => 'Neosurf',
+            'web_page_shop_offers_neosurf_description'      => 'Pay easily with Paypal and your GOTW-Points will be topped up immediately.',
+            'web_page_shop_offers_neosurf_dialog'           => 'Enter your Paypal e-mailaddress below to continue.',
+            'web_page_shop_offers_paypal_name'              => 'Paypal',
+            'web_page_shop_offers_paypal_description'       => 'Pay easily with Paypal and your GOTW-Points will be topped up immediately.',
+            'web_page_shop_offers_paypal_dialog'            => 'Enter your Paypal e-mailaddress below to continue.',
+            'web_page_shop_offers_sms_name'                 => 'SMS',
+            'web_page_shop_offers_sms_description'          => 'Send a code by SMS and receive a GOTW-Points code.',
+            'web_page_shop_offers_sms_dialog'               => 'Send the code below in an SMS to get a GOTW-Points code.',
+            'web_page_shop_offers_audiotel_name'            => 'Audiotel',
+            'web_page_shop_offers_audiotel_description'     => 'Call a number one or more times to get a GOTW-Points code.',
+            'web_page_shop_offers_audiotel_dialog'          => 'Call the number below to get a GOTW-Points code.',
+            'web_page_shop_offers_pay_with'                 => 'Pay with',
+            'web_page_shop_offers_points_for'               => 'GOTW-Points for',
+            'web_page_shop_offers_get_code'                 => 'Get a GOTW-Points code',
+            'web_page_shop_offers_fill_code'                => 'Enter your GOTW-Points code',
+            'web_page_shop_offers_fill_code_desc'           => 'Enter your GOTW-Points code below to receive your GOTW-Points.',
+            'web_page_shop_offers_submit'                   => 'Submit',
+            'web_page_shop_offers_success'                  => 'Purchase successful!',
+            'web_page_shop_offers_received'                 => 'Thank you for your purchase. You got',
+            'web_page_shop_offers_received2'                => 'GOTW-Points.',
+            'web_page_shop_offers_close'                    => 'Close',
+            'web_page_shop_offers_failed'                   => 'Purchase failed!',
+            'web_page_shop_offers_failed_desc'              => 'The purchase failed. Try again or contact us via the Help Tool.',
+            'web_page_shop_offers_back'                     => 'Back',
+            'web_page_shop_offers_no_card'                  => 'If you do not have a Neosurf prepaid card, you can see the',
+            'web_page_shop_offers_no_card2'                 => 'points of sale',
+            'web_page_shop_offers_to'                       => 'to',
+            'web_page_shop_offers_buy_code'                 => 'Purchase access code'
+        ),
         
         /*     App/View/Community     */
         'article' => array (

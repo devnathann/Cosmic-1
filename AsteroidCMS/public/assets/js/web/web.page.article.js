@@ -79,7 +79,7 @@ function WebPageArticleInterface(main_page)
                     }
                 });
             }else{
-                Web.notifications_manager.create("info", "Je dient ingelogd te zijn om een reactie te plaatsen!");
+                Web.notifications_manager.create("info", Locale.web_page_article_login);
             }
         });
     };

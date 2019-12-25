@@ -127,7 +127,7 @@ function WebInterface()
                 if(result.status == "pincode_required")
                 {
                     setTimeout(function(){ 
-                    Web.dialog_manager.create("confirm", "Vul de pincode in die je hebt opgegeven tijdens het aanmaken van de extra beveiliging op jouw account. Ben je deze vergeten? Neem dan contact op met de Leet helptool", "Twee- staps autorisatie!", null, "pincode", function (result)
+                    Web.dialog_manager.create("confirm", Locale.web_fill_pincode, Locale.web_twostep, null, "pincode", function (result)
                     {
                         verification_data.pincode = result.toString();
                         Web.ajax_manager.post("/home/login/request", verification_data);
@@ -169,7 +169,7 @@ function WebInterface()
                 $("#reportForm").attr('action', 'ajax/report/' + action);
                 $('#reportItemid').val($(this).attr("data-id"));
             } else {
-                Web.notifications_manager.create("error", 'Je moet ingelogd zijn om dit bericht te rapporteren!', "Uitgelogd :(");
+                Web.notifications_manager.create("error", Locale.web_login, Locale.web_loggedout);
             }
         }).on("click", ".fa-times-circle", function()
         {

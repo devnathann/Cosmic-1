@@ -6,8 +6,8 @@ function WebPageForumInterface(main_page) {
         '<form action="community/forum/edit" method="post">\n' +
         '<div class="replybox" style="padding-top:20px; border-top: 1px solid #acacac; border-spacing: 15px;">\n' +
             '<textarea name="message" id="editor" class="rounded-textarea blue-active">{{data}}</textarea><br />' +
-            '<input type="submit" class="btn btn-success" value="Aanpassen">' +
-            '<input type="submit" class="btn btn-error" value="Annuleren">' +
+            '<input type="submit" class="btn btn-success" value="'+ Locale.web_page_forum_change +'">' +
+            '<input type="submit" class="btn btn-error" value="'+ Locale.web_page_forum_cancel +'">' +
             '<input type="hidden" name="action" value="edit">' +
             '<input type="hidden" name="id" value="{{id}}">' +
         '</div>'
@@ -43,10 +43,10 @@ function WebPageForumInterface(main_page) {
             }
           
             if($(this).data("status") == "closed") {
-                Web.notifications_manager.create("info", "Dit topic is gesloten en er kan niet gereageerd worden.", "Oeps..");
+                Web.notifications_manager.create("info", Locale.web_page_forum_topic_closed, Locale.web_page_forum_oops);
                 return;
             } else if(User.is_logged == false) {
-                Web.notifications_manager.create("info", "Om te kunnen reageren dien je ingelogd te zijn!", "Oeps..");
+                Web.notifications_manager.create("info", Locale.web_page_forum_login_toreact, Locale.web_page_forum_oops);
                 return;
             }
            
@@ -108,7 +108,7 @@ function WebPageForumInterface(main_page) {
     this.like = function (forum_id)
     {
         if(!User.is_logged){
-            Web.notifications_manager.create("error", "Je moet ingelogd zijn om deze post te kunnen liken!", "Uitgelogd :(");
+            Web.notifications_manager.create("error", Locale.web_page_forum_login_tolike, Locale.web_page_forum_loggedout);
             fail;
         }
       

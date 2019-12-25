@@ -42,7 +42,7 @@ function WebHotelManagerInterface()
 
         var body = $("body");
 
-        body.find(".header-container .header-content .account-container .account-buttons .hotel-button").text("Terug naar Leet Hotel");
+        body.find(".header-container .header-content .account-container .account-buttons .hotel-button").text(Locale.web_hotel_backto);
 
         if (!body.hasClass("hotel-visible"))
         {

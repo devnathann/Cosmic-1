@@ -1,9 +1,9 @@
 function WebNotificationsManagerInterface()
 {
     this.titles_configutation = {
-        success: "Gelukt!",
-        error: "Oeps!",
-        info: "Informatie"
+        success: Locale.web_notifications_success,
+        error: Locale.web_notifications_error,
+        info: Locale.web_notifications_info
     };
     this.notifications = {};
 

@@ -6,28 +6,28 @@ function WebPageShopOffersInterface(main_page)
     this.country = "nl";
     this.payments = {
         "Neosurf": {
-            name: "Neosurf",
-            description: "Betaal gemakkelijk met Paypal en je bel-credits worden direct opgewaardeerd.",
+            name: Locale.web_page_shop_offers_neosurf_name,
+            description: Locale.web_page_shop_offers_neosurf_description,
             class: "neosurf",
-            dialog: "Vul je onderstaande paypal mail adres in om door te gaan."
+            dialog: Locale.web_page_shop_offers_neosurf_dialog
         },
         "Paypal": {
-            name: "Paypal",
-            description: "Betaal gemakkelijk met Paypal en je bel-credits worden direct opgewaardeerd.",
+            name: Locale.web_page_shop_offers_paypal_name,
+            description: Locale.web_page_shop_offers_paypal_description,
             class: "paypal",
-            dialog: "Vul je onderstaande paypal mail adres in om door te gaan."
+            dialog: Locale.web_page_shop_offers_paypal_dialog
         },
         "SMS": {
-            name: "SMS",
-            description: "Stuur een code per sms en ontvang een Bel-Credits code.",
+            name: Locale.web_page_shop_offers_sms_name,
+            description: Locale.web_page_shop_offers_sms_description,
             class: "sms-plus",
-            dialog: "Stuur de onderstaande code in een SMS om een Bel-Credit code te krijgen."
+            dialog: Locale.web_page_shop_offers_sms_dialog
         },
         "Audiotel": {
-            name: "Telefoon",
-            description: "Bel een of meerdere keren een nummer om een Bel-Credit code te krijgen",
+            name: Locale.web_page_shop_offers_audiotel_name,
+            description: Locale.web_page_shop_offers_audiotel_description,
             class: "audiotel",
-            dialog: "Bel naar het onderstaande nummer om een Bel-Credit code te krijgen:"
+            dialog: Locale.web_page_shop_offers_audiotel_dialog
         }
     };
     this.payment_template = [
@@ -107,34 +107,34 @@ function WebPageShopOffersInterface(main_page)
         var template = [
             '<div class="payment-popup zoom-anim-dialog">\n' +
             '    <div class="main-step">' +
-            '        <h3 class="title">Betaal via ' + payment_solution.name + '</h3>' +
-            '        <h5 class="subtitle">' + this.amount + ' Bel-Credits voor €' + number_format(solution.user_price, 2, ",", " ") + '</h5>' +
-            '        <h5>1. Krijg een Bel-Credit code</h5>' +
+            '        <h3 class="title">'+ Locale.web_page_shop_offers_pay_with +' ' + payment_solution.name + '</h3>' +
+            '        <h5 class="subtitle">' + this.amount + ' '+ Locale.web_page_shop_offers_points_for +' €' + number_format(solution.user_price, 2, ",", " ") + '</h5>' +
+            '        <h5>1. '+ Locale.web_page_shop_offers_get_code +'</h5>' +
             '        ' + payment_solution.dialog +
             '        <div class="solution-details"></div>' +
             '        <div class="obtain-code"></div>' +
-            '        <h5>2. Vul je Bel-Credit code in</h5>' +
-            '        Vul hieronder je Bel-Credit code in om je Bel-Credits te ontvangen.' +
+            '        <h5>2. '+ Locale.web_page_shop_offers_fill_code +'</h5>' +
+            '        '+ Locale.web_page_shop_offers_fill_code_desc +'' +
             '        <div class="row">' +
             '            <div class="column-2">' +
             '                <input type="text" class="rounded-input blue-active code" placeholder="Code...">' +
             '            </div>' +
             '            <div class="column-2">' +
-            '                <button class="rounded-button blue plain submit">Bevestigen</button>' +
+            '                <button class="rounded-button blue plain submit">'+ Locale.web_page_shop_offers_submit +'</button>' +
             '            </div>' +
             '        </div>' +
             '    </div>' +
             '    <div class="success-step">' +
-            '        <h3 class="title">Aankoop gelukt!</h3>' +
-            '        Bedankt voor je aankoop. Je hebt <span></span> Bel-Credits ontvangen.' +
-            '        <img src="' + Site.url + '/assets/images/web/pages/shop/credits-success.png" alt="Aankoop gelukt!">' +
-            '        <button class="rounded-button lightgreen plain">Sluit</button>' +
+            '        <h3 class="title">'+ Locale.web_page_shop_offers_success +'</h3>' +
+            '        '+ Locale.web_page_shop_offers_received +' <span></span> '+ Locale.web_page_shop_offers_received2 +'' +
+            '        <img src="' + Site.url + '/assets/images/web/pages/shop/credits-success.png" alt="'+ Locale.web_page_shop_offers_success +'">' +
+            '        <button class="rounded-button lightgreen plain">'+ Locale.web_page_shop_offers_close +'</button>' +
             '    </div>' +
             '    <div class="error-step">' +
-            '        <h3 class="title">Aankoop mislukt...</h3>' +
-            '        De aankoop is mislukt. Probeer het nog eens of neem contact op via de Help Tool.' +
-            '        <img src="' + Site.url + '/assets/images/web/pages/shop/credits-error.png" alt="Aankoop mislukt!">' +
-            '        <button class="rounded-button red plain">Terug</button>' +
+            '        <h3 class="title">'+ Locale.web_page_shop_offers_failed +'</h3>' +
+            '        '+ Locale.web_page_shop_offers_failed_desc +'' +
+            '        <img src="' + Site.url + '/assets/images/web/pages/shop/credits-error.png" alt="'+ Locale.web_page_shop_offers_failed +'">' +
+            '        <button class="rounded-button red plain">'+ Locale.web_page_shop_offers_back +'</button>' +
             '    </div>' +
             '</div>'
         ].join("");
@@ -144,7 +144,7 @@ function WebPageShopOffersInterface(main_page)
         var obtain_template = null;
 
         if (payment_solution.class === "neosurf")
-            details_template = "Als je geen Neosurf-prepaidkaart hebt, kun je de <a href=\"http://www.neosurf.com/fr_FR/application/findcard\" target=\"_blank\">verkoop punten zien</a>.";
+            details_template = Locale.web_page_shop_offers_no_card + " <a href=\"http://www.neosurf.com/fr_FR/application/findcard\" target=\"_blank\">"+ Locale.web_page_shop_offers_no_card2 +"</a>.";
 
         if (details_template !== null)
             dialog.find(".solution-details").html(details_template);
@@ -155,7 +155,7 @@ function WebPageShopOffersInterface(main_page)
         {
             obtain_template = [
                 '<div class="sms-container ' + (this.country === "fr" ? "fr" : "") + '">' +
-                '    <span class="keyword">' + solution.keyword + '</span> naar <span class="shortcode">' + solution.shortcode + '</span>' +
+                '    <span class="keyword">' + solution.keyword + '</span> '+ Locale.web_page_shop_offers_to +' <span class="shortcode">' + solution.shortcode + '</span>' +
                 '    <div class="mention">' + solution.mention + '</div>' +
                 '</div>'
             ].join("");
@@ -172,7 +172,7 @@ function WebPageShopOffersInterface(main_page)
         else if (!isEmpty(solution.link))
         {
             obtain_template = [
-                '<button class="rounded-button blue">Koop toegangscode</button>'
+                '<button class="rounded-button blue">'+ Locale.web_page_shop_offers_buy_code +'</button>'
             ].join("");
         }
 

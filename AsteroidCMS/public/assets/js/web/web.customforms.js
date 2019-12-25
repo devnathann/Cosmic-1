@@ -79,7 +79,7 @@ function WebCustomFormInterface(manager, id, form_container)
 
             if (required_missing)
             {
-                Web.notifications_manager.create("error", "Tous les champs marqués d'un astérisque sont obligatoires.");
+                Web.notifications_manager.create("error", Locale.web_customforms_markedfields);
                 return null;
             }
 
@@ -121,7 +121,7 @@ function WebCustomFormInterface(manager, id, form_container)
             $(this).closest(".customform-container").toggleClass("opened");
         });
 
-        $('<div class="customform-section customform-initialization">Chargement du formulaire...</div>').appendTo(this.form_container);
+        $('<div class="customform-section customform-initialization">'+ Locale.web_customforms_loadingform +'</div>').appendTo(this.form_container);
     };
 
     this.build_section = function (data)
@@ -134,7 +134,7 @@ function WebCustomFormInterface(manager, id, form_container)
         '        <div class="customform-section-description"></div>\n' +
         '        <div class="customform-section-elements"></div>\n' +
         '        <div class="customform-submit-container">\n' +
-        '            <button type="submit" class="customform-submit rounded-button purple">' + (!data.last_section ? 'Suivant' : 'Terminer') + '</button>\n' +
+        '            <button type="submit" class="customform-submit rounded-button purple">' + (!data.last_section ? Locale.web_customforms_next : Locale.web_customforms_close) + '</button>\n' +
         '        </div>\n' +
         '    </form>\n' +
         '</div>'].join("");
@@ -160,8 +160,8 @@ function WebCustomFormInterface(manager, id, form_container)
     this.show_final_message = function ()
     {
         var template = ['<div class="customform-section">\n' +
-        '    <div class="customform-section-title">Merci pour ta participation !</div>\n' +
-        '    <div class="customform-section-description" style="margin-bottom: 0;">Tes réponses ont été envoyées et vont être analysées par la personne à l\'initiative de ce formulaire.<br><br>À bientôt !</div>\n' +
+        '    <div class="customform-section-title">'+ Locale.web_customforms_participation +'</div>\n' +
+        '    <div class="customform-section-description" style="margin-bottom: 0;">'+ Locale.web_customforms_sent +'</div>\n' +
         '</div>'].join("");
 
         this.form_container.find(".customform-section").remove();
@@ -257,9 +257,9 @@ function WebCustomFormElementInterface(form, data)
                 var customform_options = $("<div class=\"customform-answer\" data-required=\"" + data_details[1] + "\"></div>").appendTo(element.find(".customform-element-options"));
 
                 if (this.type === 5)
-                    customform_options.append('<input name="customform-option-' + this.id + '" class="rounded-input purple-active" placeholder="Ta réponse">');
+                    customform_options.append('<input name="customform-option-' + this.id + '" class="rounded-input purple-active" placeholder="'+ Locale.web_customforms_answer +'">');
                 else
-                    customform_options.append('<textarea name="customform-option-' + this.id + '" class="rounded-textarea purple-active" placeholder="Ta réponse"></textarea>');
+                    customform_options.append('<textarea name="customform-option-' + this.id + '" class="rounded-textarea purple-active" placeholder="'+ Locale.web_customforms_answer +'"></textarea>');
 
             }
         }

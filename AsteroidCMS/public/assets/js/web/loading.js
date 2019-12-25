@@ -43,16 +43,9 @@ function SiteLoadingInterface()
     this.init = function ()
     {
         console.log(
-            " |       |-----   |-----    -----\n" +
-            " |       |-----   |-----      |\n" +
-            " |____   |_____   |_____      |\n" +
-            "Leet Hotel NL/BE - Asteroid\n" +
-            "\n" +
-            " Alles wat je hier doet valt onder je eigen verantwoordelijkheid. Geef\n" +
-            "  nooit je code als iemand er om vraagt. Als je hier een code plakt krijg\n" +
-            "  je nooit gratis (Bel)credits of andere items.\n" +
-            "                                                                              \n" +
-            "                                                                   - Leet Dev");
+            "AsteroidCMS - All rights reserved\n\n" +
+            "Everything you do here falls under your own responsibility. Never give your code if someone asks for it. If you paste a code here, you will never get free credits or other items.\n\n" +
+            "- Asteroid Dev");
         this.total_files = this.files.length;
         this.loading_container = $(".loading-container");
         //this.cache_id = Configuration.cache;
@@ -73,7 +66,7 @@ function SiteLoadingInterface()
             var percent = Math.floor(self.loaded_files / self.total_files * 100);
 
             self.loading_container.find(".c100").attr("class", "c100 p" + percent + " center");
-            self.write_bodytext("Laden... " + percent + "%");
+            self.write_bodytext("Loading... " + percent + "%");
 
             if (file_id + 1 < self.total_files)
             {
@@ -91,7 +84,7 @@ function SiteLoadingInterface()
         script.onerror = function ()
         {
             console.log("Oops, file \"" + file_name + "\" not found.");
-            self.write_bodytext("Oeps, er is iets misgegaan. <a href=\"javascript:window.location.reload();\">Herlaad de pagina</a>.");
+            self.write_bodytext("Oops, something went wrong. <a href=\"javascript:window.location.reload();\">Reload the page</a>.");
         };
         script.src = Site.url + "/assets/js/web/" + file_name + ".js?" + this.cache_id;
     };

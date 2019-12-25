@@ -1,13 +1,151 @@
 <?php
 $GLOBALS['language'] = array (
     'website' => array (
-      
+        /*     App/View/base.html     */
         'base' => array(
-            'nav_shop' => 'Winkel'
+            'nav_home'              => 'Home',
+            
+            'nav_community'         => 'Community',
+            'nav_news'              => 'Nieuws',
+            'nav_photos'            => 'Foto\'s',
+            'nav_staff'             => 'Staff',
+            
+            'nav_shop'              => 'winkel',
+            'nav_buy_points'        => 'Bel-Credits kopen',
+            'nav_buy_club'          => 'Leet Club kopen',
+            'nav_purchasehistory'   => 'Aankoopgeschiedenis',
+            'nav_changename'        => 'Leetnaam veranderen',
+            
+            'nav_highscores'        => 'Highscores',
+          
+            'nav_forum'             => 'Forum',
+          
+            'nav_helptool'          => 'Help Tool',
+            'nav_helptickets'       => 'Help Tickets',
+            
+            'nav_housekeeping'      => 'Housekeeping',
+            
+            'close'                 => 'Sluit',
+            'cookies'               => 'maakt gebruik van eigen cookies en die van derden om zo een betere service te kunnen verlenen en zorgt er daarnaast voor dat de advertenties beter bij jouw voorkeuren aansluiten. Als je gebruik maakt van onze website ga je akkoord met ons cookie-beleid.',
+            'read_more'             => 'Lees meer',
+            'thanks_for_playing'    => 'Bedankt voor het spelen van',
+            'made_with_love'        => 'is gemaakt met heel veel liefde',
+            'credits'               => 'Met dank aan Raizer and Metus',
+            'and_all'               => 'En alle',
+            
+            'login_name'            => 'naam',
+            'login_password'        => 'Wachtwoord',
+            'login_save_data'       => 'Onthoud mijn gegevens',
+            'login_lost_password'   => 'Wachtwoord/naam kwijt?',
+            
+            'report_message'        => 'Rapporteer dit bericht',
+            'report_certainty'      => 'Je staat op het punt om dit bericht te rapporteren. Weet je zeker dat je dit bericht wilt rapporteren?',
+            'report_inappropriate'  => 'Ja, dit is ongepast!',
+            
+            'user_to'               => 'Naar',
+            'user_profile'          => 'Mijn profiel',
+            'user_settings'         => 'instellingen',
+            'user_logout'           => 'Log uit',
+            
+            'header_slogan'         => 'Virtuele wereld voor jongeren!',
+            'header_slogan2'        => 'Word lid van onze community en maak nieuwe vrienden',
+            'header_login'          => 'Inloggen',
+            'header_register'       => 'Meld je gratis aan!',
+            'header_to'             => 'Naar',
+            
+            'footer_helptool'       => 'Help Tool',
+            'footer_rules'          => 'De Leet Regels',
+            'footer_terms'          => 'Algemene voorwaarden',
+            'footer_privacy'        => 'Privacyverklaring',
+            'footer_cookies'        => 'Cookie-beleid',
+            'footer_guide'          => 'Gids voor ouders'
         ),
-      
+        
+        /*     public/assets/js/web     */
         'javascript' => array(
-            'nav_shop' => 'Winkel'
+            'web_customforms_markedfields'                  => 'Alle velden gemarkeerd met een * zijn verplicht.',
+            'web_customforms_loadingform'                   => 'Formulier laden...',
+            'web_customforms_next'                          => 'Volgende',
+            'web_customforms_close'                         => 'Sluiten',
+            'web_customforms_participation'                 => 'Bedankt voor uw deelname!',
+            'web_customforms_sent'                          => 'Uw antwoorden zijn verzonden en zullen worden geanalyseerd door de persoon die dit formulier opstart.',
+            'web_customforms_answer'                        => 'Uw antwoord',
+            
+            'web_dialog_cancel'                             => 'Annuleren',
+            'web_dialog_validate'                           => 'Valideren',
+            'web_dialog_confirm'                            => 'Bevestig uw keuze',
+            
+            'web_hotel_backto'                              => 'Terug naar Leet Hotel',
+            
+            'web_fill_pincode'                              => 'Vul de pincode in die je hebt opgegeven tijdens het aanmaken van de extra beveiliging op jouw account. Nou, ik ben deze vergeten? Neem dan contact op via de Leet Help Tool',
+            'web_twostep'                                   => 'Twee-staps autorisatie!',
+            'web_login'                                     => 'Je moet ingelogd zijn om dit bericht te rapporteren!',
+            'web_loggedout'                                 => 'Uitgelogd :(',
+            
+            'web_notifications_success'                     => 'Gelukt!',
+            'web_notifications_error'                       => 'Error!',
+            'web_notifications_info'                        => 'Informatie!',
+            
+            'web_page_article_login'                        => 'Je dient ingelogd te zijn om een reactie te plaatsen!',
+            
+            'web_page_community_photos_login'               => 'Je moet ingelogd zijn om foto\'s te kunnen liken!',
+            'web_page_community_photos_loggedout'           => 'Uitgelogd :(',
+            
+            'web_page_forum_change'                         => 'Aanpassen',
+            'web_page_forum_cancel'                         => 'Annuleren',
+            'web_page_forum_oops'                           => 'Oeps...',
+            'web_page_forum_topic_closed'                   => 'Dit topic is gesloten en er kan niet meer gereageerd worden.',
+            'web_page_forum_login_toreact'                  => 'Om te kunnen reageren dien je ingelogd te zijn!',
+            'web_page_forum_login_tolike'                   => 'Je moet ingelogd zijn om deze post te kunnen liken!',
+            'web_page_forum_loggedout'                      => 'Uitgelold :(',
+            
+            'web_page_profile_login'                        => 'Je moet ingelogd zijn om foto\'s te kunnen liken!',
+            'web_page_profile_loggedout'                    => 'Uitgelogd :(',
+            
+            'web_page_settings_namechange_request'          => 'Aanvragen',
+            'web_page_settings_namechange_not_available'    => 'Niet beschikbaar',
+            'web_page_settings_namechange_choose_name'      => 'Kies Leetnaam',
+            
+            'web_page_settings_verification_oops'           => 'Oeps...',
+            'web_page_settings_verification_fill_password'  => 'Vul je wachtwoord in!',
+            'web_page_settings_verification_2fa_on'         => 'Op dit moment staat Google Authenticatie ingesteld op jouw account. Om een ander verificatie middel te gebruiken dien je eerst je oude verificatie te verwijderen!',
+            'web_page_settings_verification_2fa_secretkey'  => 'Heb je de QR-code gescand op je mobiel? Vul dan de secretkey in om je account te bevestigen!',
+            'web_page_settings_verification_2fa_authcode'   => 'Authenticatie code',
+            'web_page_settings_verification_pincode_on'     => 'Op dit moment heb je een pincode ingesteld op jouw account. Om een ander verificatie middel te gebruiken dien je eerst je oude verificatie te verwijderen!',
+            'web_page_settings_verification_2fa_off'        => 'Om de Google Authenticatie uit te schakelen vragen wij je om de secretcode uit de generator in te vullen.',
+            'web_page_settings_verification_pincode_off'    => 'Om de pincode authenticatie uit te schakelen vragen wij je om je pincode in te vullen.',
+            'web_page_settings_verification_pincode'        => 'Pincode code',
+            'web_page_settings_verification_switch'         => 'Selecteer de switch button om een authenticatie methode in te schakelen!',
+            
+            'web_page_shop_offers_neosurf_name'             => 'Neosurf',
+            'web_page_shop_offers_neosurf_description'      => 'Betaal gemakkelijk met Paypal en je Bel-Credits worden direct opgewaardeerd.',
+            'web_page_shop_offers_neosurf_dialog'           => 'Vul je onderstaande Paypal e-mailadres in om door te gaan.',
+            'web_page_shop_offers_paypal_name'              => 'Paypal',
+            'web_page_shop_offers_paypal_description'       => 'Betaal gemakkelijk met Paypal en je Bel-Credits worden direct opgewaardeerd.',
+            'web_page_shop_offers_paypal_dialog'            => 'Vul je onderstaande Paypal e-mailadres in om door te gaan.',
+            'web_page_shop_offers_sms_name'                 => 'SMS',
+            'web_page_shop_offers_sms_description'          => 'Stuur een code per sms en ontvang een Bel-Credits code.',
+            'web_page_shop_offers_sms_dialog'               => 'Stuur de onderstaande code in een SMS om een Bel-Credits code te krijgen.',
+            'web_page_shop_offers_audiotel_name'            => 'Audiotel',
+            'web_page_shop_offers_audiotel_description'     => 'Bel een of meerdere keren een nummer om een Bel-Credits code te krijgen.',
+            'web_page_shop_offers_audiotel_dialog'          => 'Bel naar het onderstaande nummer om een Bel-Credits code te krijgen.',
+            'web_page_shop_offers_pay_with'                 => 'Betaal via',
+            'web_page_shop_offers_points_for'               => 'Bel-Credits voor',
+            'web_page_shop_offers_get_code'                 => 'Krijg een Bel-Credits code',
+            'web_page_shop_offers_fill_code'                => 'Vul je Bel-Credits code in',
+            'web_page_shop_offers_fill_code_desc'           => 'Vul hieronder je Bel-Credits code in om je Bel-Credits te ontvangen.',
+            'web_page_shop_offers_submit'                   => 'Bevestigen',
+            'web_page_shop_offers_success'                  => 'Aankoop gelukt!',
+            'web_page_shop_offers_received'                 => 'Bedankt voor je aankoop. Je hebt',
+            'web_page_shop_offers_received2'                => 'Bel-Credits ontvangen.',
+            'web_page_shop_offers_close'                    => 'Sluit',
+            'web_page_shop_offers_failed'                   => 'Aankoop mislukt!',
+            'web_page_shop_offers_failed_desc'              => 'De aankoop is mislukt. Probeer het nog eens of neem contact op via de Help Tool.',
+            'web_page_shop_offers_back'                     => 'Terug',
+            'web_page_shop_offers_no_card'                  => 'Als je geen Neosurf-prepaidkaart hebt, kun je de',
+            'web_page_shop_offers_no_card2'                 => 'verkooppunten zien',
+            'web_page_shop_offers_to'                       => 'naar',
+            'web_page_shop_offers_buy_code'                 => 'Koop toegangscode'
         ),
         
         /*     App/View/Community     */

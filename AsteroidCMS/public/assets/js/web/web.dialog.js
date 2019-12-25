@@ -11,8 +11,8 @@ function WebDialogManagerInterface()
     {
         // Reset default
         this.buttons = {
-            cancel: "Annuleren",
-            confirm: "Valideren"
+            cancel: Locale.web_dialog_cancel,
+            confirm: Locale.web_dialog_validate
         };
         this.type = null;
         this.title = null;
@@ -22,7 +22,7 @@ function WebDialogManagerInterface()
       
         // Assign new values
         this.type = type;
-        this.title = title === undefined ? "Confirme ton choix" : title;
+        this.title = title === undefined ? Locale.web_dialog_confirm : title;
         this.content = content;
         this.callback = callback;
         this.input = input;

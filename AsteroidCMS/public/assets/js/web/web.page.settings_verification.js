@@ -46,7 +46,7 @@ function WebPageSettingsVerificationInterface(main_page)
           
             if(isEmpty(verification_data.current_password))
             {
-                Web.notifications_manager.create("error", "Vul je wachtwoord in!", "Oeps..");
+                Web.notifications_manager.create("error", Locale.web_page_settings_verification_fill_password, Locale.web_page_settings_verification_oops);
                 return;
             }
           
@@ -58,7 +58,7 @@ function WebPageSettingsVerificationInterface(main_page)
                 {
                     if (current_verification_type_enabled === "pincode")
                     {
-                        Web.dialog_manager.create("default", "Op dit moment staat Google Authenticatie ingesteld op jouw account.  Om een ander verificatie middel te gebruiken dien je eerst je oude verificatie te verwijderen!", "Oeps..", null, null, function ()
+                        Web.dialog_manager.create("default", Locale.web_page_settings_verification_2fa_on, Locale.web_page_settings_verification_oops, null, null, function ()
                         {
                             app_callback();
                         });
@@ -68,7 +68,7 @@ function WebPageSettingsVerificationInterface(main_page)
 
                     function app_callback ()
                     {
-                        Web.dialog_manager.create("confirm", "Heb je de QR-code gescand op je mobiel? Vul alleen nog even de secretkey in uit de Google Authenticatorom je account te bevestigen!", "Authenticatie code", null, "pincode", function (result)
+                        Web.dialog_manager.create("confirm", Locale.web_page_settings_verification_2fa_secretkey, Locale.web_page_settings_verification_2fa_authcode, null, "pincode", function (result)
                         {
                             verification_data.type = "app";
                             verification_data.data = page_container.find("#twosteps_login_data_code").val();
@@ -83,14 +83,14 @@ function WebPageSettingsVerificationInterface(main_page)
                 {
                     if (current_verification_type_enabled === "app")
                     {
-                        Web.dialog_manager.create("default", "Op dit moment heb je Google Authenticatie ingesteld op jouw account. Om een ander verificatie middel te gebruiken dien je eerst je oude verificatie te verwijderen!", "Oeps..", null, null, function ()
+                        Web.dialog_manager.create("default", Locale.web_page_settings_verification_2fa_on, Locale.web_page_settings_verification_oops, null, null, function ()
                         {
                             questions_callback();
                         });
                     }
                     else if (current_verification_type_enabled === "pincode")
                     {
-                        Web.dialog_manager.create("default", "Op dit moment heb je een pincode ingesteld op jouw account. Om een ander verificatie middel te gebruiken dien je eerst je oude verificatie te verwijderen!", "Oeps..", null, null, function ()
+                        Web.dialog_manager.create("default", Locale.web_page_settings_verification_pincode_on, Locale.web_page_settings_verification_oops, null, null, function ()
                         {
                             questions_callback();
                         });
@@ -117,7 +117,7 @@ function WebPageSettingsVerificationInterface(main_page)
             }
             else if (current_verification_type_enabled == "app")
             {
-                Web.dialog_manager.create("confirm", "Om de Google Authenticatie uit te schakelen vragen wij je om de secretcode uit de generator in te vullen.", "Authenticatie code", null, "pincode", function (result)
+                Web.dialog_manager.create("confirm", Locale.web_page_settings_verification_2fa_off, Locale.web_page_settings_verification_2fa_authcode, null, "pincode", function (result)
                 {
                     verification_data.type = "app";
                     verification_data.enabled = false;
@@ -129,7 +129,7 @@ function WebPageSettingsVerificationInterface(main_page)
             } 
             else if (current_verification_type_enabled == "pincode")
             {
-                Web.dialog_manager.create("confirm", "Om de pincode authenticatie uit te schakelen vragen wij je om je pincode in te vullen.", "Pincode code", null, "pincode", function (result)
+                Web.dialog_manager.create("confirm", Locale.web_page_settings_verification_pincode_off, Locale.web_page_settings_verification_pincode, null, "pincode", function (result)
                 {
                     verification_data.type = "pincode";
                     verification_data.enabled = false;
@@ -140,7 +140,7 @@ function WebPageSettingsVerificationInterface(main_page)
             }
             else
             {
-                Web.notifications_manager.create("error", "Selecteer de switch button om een authenticatie methode in te schakelen!", "Oops..");
+                Web.notifications_manager.create("error", Locale.web_page_settings_verification_switch, Locale.web_page_settings_verification_oops);
             }
         });
     };
