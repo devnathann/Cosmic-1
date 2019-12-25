@@ -1,3 +1,5 @@
+[![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](http://github.com/badges/stability-badges) [![version](https://img.shields.io/badge/version-0.1.1-blue)
+
 # <img src="https://habborator.org/archive/icons/medium/go_arrow.gif"> About:
 
 > Only for Arcturus Morningstar.
@@ -31,4 +33,4 @@ $ composer update
 
 ## Documentation
 
-> Because Asteroid is still in a beta, we will not have any documentation available. We would like to see all bugs fixed before we leave the beta. Please create an issue when you found bug so that we can solve it. If you have problems with the installation, please add me on discord.
+- Because Asteroid is still in a beta, we will not have any documentation available. We would like to see all bugs fixed before we leave the beta. Please create an issue when you found bug so that we can solve it. If you have problems with the installation, please add me on discord.
