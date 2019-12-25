@@ -12,11 +12,6 @@ class Permission
                     select(QueryBuilder::raw('website_permissions_ranks.id as idp'))->setFetchMode(PDO::FETCH_CLASS, get_called_class())
                 ->join('website_permissions', 'website_permissions_ranks.permission_id', '=', 'website_permissions.id')->where('website_permissions_ranks.rank_id', $rank)->get();
     }
-  
-    public static function roleExists($role, $permission)
-    {
-        return QueryBuilder::table('website_permissions_ranks')->where('permission_id', $permission)->where('rank_id', $role)->count();
-    }
 
     public static function permissionExists($role, $permission)
     {

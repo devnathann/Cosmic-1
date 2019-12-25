@@ -34,15 +34,7 @@ class Community
     {
         return QueryBuilder::table('users_currency')->selectDistinct(array('user_id', 'amount', 'type'))->setFetchMode(PDO::FETCH_CLASS, get_called_class())->where('type', $type)->orderBy('amount', 'DESC')->limit($limit)->get();
     }
-
-    /*
-     * Get campaigns queries
-     */
-    public static function getCampaigns($limit = 10)
-    {
-        return QueryBuilder::table('website_campaigns')->where('enabled', '1')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->orderBy('timestamp', 'desc')->limit($limit)->get();
-    }
-
+    
     /*
      * Get news queries
      */

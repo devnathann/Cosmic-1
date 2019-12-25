@@ -123,9 +123,9 @@ var remote = function() {
                        input: $("#generalSearch_chatlogs")
                    },
                    columns: [{
-                       field: "name",
+                       field: "type",
                        title: "Type",
-                       width: 120
+                       width: 75
                    }, {
                        field: "message",
                        title: "Message",
@@ -332,15 +332,6 @@ var remote = function() {
                        input: $("#generalSearch_tradelogs")
                    },
                    columns: [{
-                       field: "id",
-                       title: "#",
-                       type: "number",
-                       width: 75,
-                       sortable: "desc",
-                       template: function(data) {
-                           return '<span class="kt-font">' + data.id + '</span>';
-                       }
-                   }, {
                        field: "user_one",
                        title: "From / To",
                        width: 120,
@@ -350,7 +341,7 @@ var remote = function() {
                    }, {
                        field: "user_one_items",
                        title: "Items 1",
-                       width: 350,
+                       width: 250,
                        template: function(data, i) {
                             var jsonObj = {};
                          

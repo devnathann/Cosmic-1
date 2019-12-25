@@ -99,7 +99,7 @@ var chatlogs = function() {
                         type: 'remote',
                         source: {
                           read: {
-                            url: '/housekeeping/api/remote/getCompareUsersLogs',
+                            url: '/housekeeping/api/logs/getCompareUsersLogs',
                             params: {
                                "element": dataArray
                             },
@@ -118,15 +118,13 @@ var chatlogs = function() {
                         input: $("#generalSearch")
                     },
                    columns: [{
-                       field: "room_id",
-                       title: "Room Id",
-                       type: "number",
-                       width: 75,
-                       sortable: "desc"
-                   }, {
+                        field: "name",
+                        title: "Type",
+                        width: 75
+                    }, {
                        field: "player",
                        title: "Player",
-                       width: 120,
+                       width: 125,
                        template: function(data) {
                           return '<a href="#" class="kt-user-card-v2__name" data-toggle="modal" data-target="#actionModal" data-id="' + data.player + '">' + data.player + '</a>';
                        }
@@ -150,7 +148,7 @@ var chatlogs = function() {
         },
 
         initDatatable: function () {
-            $("#chatlogs .kt-portlet__head-title").html("Messenger logs");
+            $("#chatlogs .kt-portlet__head-title").html("All chatlogs");
           
             var datatableChatLogs = function() {
                 if ($('#kt_datatable_chatlogs').length === 0) {
@@ -179,14 +177,13 @@ var chatlogs = function() {
                         input: $("#generalSearch")
                     },
                     columns: [{
-                        field: "room_id",
-                        title: "Room Id",
-                        type: "number",
+                        field: "type",
+                        title: "Type",
                         width: 75
                     }, {
                         field: "user_from_id",
                         title: "Username",
-                        width: 75,
+                        width: 125,
                         template: function(data) {
                             return '<span class="kt-font"><a href="#" class="kt-user-card-v2__name" data-toggle="modal" data-target="#actionModal"  data-id="' + data.user_from_id + '">' + data.user_from_id + '</a></span>';
                         }
