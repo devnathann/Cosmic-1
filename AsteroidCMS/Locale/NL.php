@@ -208,7 +208,7 @@ $GLOBALS['language'] = array (
         
         /*     App/View/Games     */
         'games_ranking' => array (
-            'username' => 'Leetnaam'
+            'username' => 'naam'
         ),
         
         /*     App/View/Help     */        
