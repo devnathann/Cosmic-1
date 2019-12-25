@@ -107,11 +107,6 @@ class Player
 
     /* Get queries */
 
-    public static function getAccessLogs($player_id, $limit = 100)
-    {
-        return QueryBuilder::table('player_access')->where('player_id', $player_id)->limit($limit)->get();
-    }
-
     public static function getBadges($user_id, $limit = 5)
     {
         return QueryBuilder::table('users_badges')->where('user_id', $user_id)->orderBy('slot_id', 'DESC')->limit($limit)->get();
@@ -120,11 +115,6 @@ class Player
     public static function getFriends($user_id, $limit = 5)
     {
         return QueryBuilder::query('SELECT users.look, users.username FROM messenger_friendships JOIN users ON messenger_friendships.user_one_id = users.id WHERE user_two_id = "' . $user_id .'"  ORDER BY RAND() LIMIT  ' . $limit)->get();
-    }
-
-    public static function getOnlineFriends($player_id, $limit = 100)
-    {
-        return QueryBuilder::query('SELECT DISTINCT m.user_two_id, p.username, p.figure FROM messenger_friendships m LEFT JOIN users p ON p.id = m.user_two_id LEFT JOIN player_settings ps ON ps.player_id = p.id WHERE user_one_id = "'.$player_id.'" AND p.online = "1" AND ps.hide_online = "0" ORDER BY RAND() LIMIT  ' . $limit)->get();
     }
 
     public static function getGroups($user_id, $limit = 5)

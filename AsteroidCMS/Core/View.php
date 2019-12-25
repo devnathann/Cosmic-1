@@ -65,7 +65,6 @@ class View
             $twig->addGlobal('path', Config::path);
             $twig->addGlobal('cpath', Config::imgPath);
             $twig->addGlobal('fpath', Config::figurePath);
-
             $twig->addGlobal('domain', Config::domain);
 
             $twig->addGlobal('clientHost', Config::clientHost);
@@ -79,9 +78,9 @@ class View
             $twig->addGlobal('locale_base', Locale::get('website/base', true));
 
             if (request()->player !== null) {
+              
                 $twig->addGlobal('player', request()->player);
                 $twig->addGlobal('currencys', Player::getCurrencys(request()->player->id));
- 
                 $twig->addGlobal('online_count', Core::getOnlineCount());
 
                 // For all users with housekeeping access

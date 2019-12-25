@@ -17,11 +17,6 @@ class Ban
         return QueryBuilder::table('bans')->where('ban_expire', '>', time())->where('user_id', $user_id)->orWhere('ip', $ip_address)->first();
     }
 
-    public static function getBanByData($data)
-    {
-        return QueryBuilder::table('bans')->where('data', $data)->first();
-    }
-  
     public static function insertBan($user_id, $ip_address, $staff_id, $expire, $reason, $type)
     {
         $data = array(
