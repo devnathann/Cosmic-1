@@ -8,7 +8,7 @@
 
 > Under development: R1.
 
-> For issues tell me on my discord: Raizer#0001, or create an issue in this Github.
+> For issues join our Discord https://discord.gg/r59B4Rs or create an issue at Github.
 
 # <img src="https://raw.githubusercontent.com/Wulles/eyethatseeseverything/master/pwrup_pins.gif"> INSTALLATION:
 
