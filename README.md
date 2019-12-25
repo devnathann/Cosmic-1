@@ -1,4 +1,4 @@
-[![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](http://github.com/badges/stability-badges) [![version](https://img.shields.io/badge/version-0.1.1-blue)
+[![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](http://github.com/badges/stability-badges) ![version](https://img.shields.io/badge/version-0.1.1-blue)
 
 # <img src="https://habborator.org/archive/icons/medium/go_arrow.gif"> About:
 
