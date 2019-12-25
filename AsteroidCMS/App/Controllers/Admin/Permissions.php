@@ -43,6 +43,11 @@ class Permissions
 
     public function createrank()
     {
+        if (empty($this->data->rank_name)) {
+            echo '{"status":"error","message":"Rank can not be empty!"}';
+            exit;
+        }
+      
         $commandsArray = json_decode(input()->post('value')->value);
         $permissionsArray = json_decode(input()->post('post')->value, true);
 

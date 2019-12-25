@@ -55,7 +55,14 @@ var forums = function() {
                    title: "Position"
                }, {
                    field: "min_rank",
-                   title: "Min rank"
+                   title: "Min rank",
+                    template: function(data) {
+                        if(data.min_rank == null) {
+                          return '<span class="kt-font">Everyone</span>'
+                        } else {
+                          return '<span class="kt-font">' + data.cat_name + '</span>'
+                        }
+                    }
               }, {
                   field: "Action",
                   title: "Action",

@@ -51,7 +51,8 @@ class Admin
 
     public static function getOnlinePlayers($limit = 1000)
     {
-        return QueryBuilder::table('users')->where('online', '1')->OrderBy('id', 'desc')->limit($limit)->get();
+        return QueryBuilder::table('users')->select('username')->select('ip_register')->select('ip_current')->select('look')->select('id')
+                                    ->select('mail')->where('online', '1')->OrderBy('id', 'desc')->limit($limit)->get();
     }
 
     public static function getStaffOnlineCount()
@@ -151,12 +152,12 @@ class Admin
 
     public static function getAllLogs($limit = 500)
     {
-        return QueryBuilder::table('chatlogs_room')->limit($limit)->get();
+        return QueryBuilder::query("select user_to_id, user_from_id, message, `timestamp`, 'MESSENGER' as type from chatlogs_private union all  select user_to_id, user_from_id, message, `timestamp`, 'WHISPER' as type from chatlogs_room WHERE user_to_id > 0 AND user_from_id > 0 union all select user_to_id, user_from_id, message, `timestamp`, 'MESSAGE' as type from chatlogs_room WHERE user_to_id = 0 AND user_from_id > 0 Order by `timestamp` DESC LIMIT " . $limit . "")->get();
     }
   
     public static function getAllLogsByUserid($player_id, $limit = 2000)
     {
-        return QueryBuilder::table('chatlogs_room')->where('user_from_id', $player_id)->OrderBy('timestamp', 'desc')->limit($limit)->get();
+        return QueryBuilder::query("select user_to_id, user_from_id, message, `timestamp`, 'MESSENGER' as type from chatlogs_private where user_from_id = '" . $player_id . "' union all  select user_to_id, user_from_id, message, `timestamp`, 'WHISPER' as type from chatlogs_room WHERE user_from_id = '" . $player_id . "' and user_to_id > 0 union all select user_to_id, user_from_id, message, `timestamp`, 'MESSAGE' as type from chatlogs_room WHERE user_from_id = '" . $player_id . "' and user_to_id = 0 Order by `timestamp` DESC LIMIT " . $limit . "")->get();
     }
   
     public static function getAccessLogById($id)
@@ -169,9 +170,9 @@ class Admin
         return QueryBuilder::table('chatlogs_room')->where('user_to_id', 0)->OrderBy('timestamp', 'desc')->limit($limit)->get();
     }
 
-    public static function getChatLogs($user_id, $limit = 500)
+    public static function getChatLogs($player_id, $limit = 500)
     {
-        return QueryBuilder::table('chatlogs_room')->join('rooms', 'chatlogs_room.room_id', '=', 'rooms.id')->select('chatlogs_room.*')->select('rooms.name')->where('user_from_id', $user_id)->OrderBy('timestamp', 'desc')->limit($limit)->get();
+        return QueryBuilder::query("select user_to_id, user_from_id, message, `timestamp`, 'MESSENGER' as type from chatlogs_private where user_from_id = '" . $player_id . "' union all  select user_to_id, user_from_id, message, `timestamp`, 'WHISPER' as type from chatlogs_room WHERE user_from_id = '" . $player_id . "' and user_to_id > 0 union all select user_to_id, user_from_id, message, `timestamp`, 'MESSAGE' as type from chatlogs_room WHERE user_from_id = '" . $player_id . "' and user_to_id = 0 Order by `timestamp` DESC LIMIT " . $limit . "")->get();
     }
 
     public static function getCompareLogs($players, $limit = 2000)

@@ -2,7 +2,9 @@
 namespace App\Controllers\Admin;
 
 use App\Core;
+use App\Config;
 use App\Models\Admin;
+use App\Models\Log;
 
 use App\Models\Player;
 use Library\Json;
@@ -11,6 +13,57 @@ use Core\View;
 
 class Logs
 {
+    public function __construct() {
+        $this->data = new \stdClass();
+    }
+  
+    public function getCompareUsersLogs()
+    {
+        $validate = request()->validator->validate([
+            'element'   => 'required'
+        ]);
+
+        if(!$validate->isSuccess()) {
+            exit;
+        }
+
+        $this->data->users = input()->post('element');
+
+        foreach ($this->data->users as $row) {
+            $player[] = Player::getDataByUsername($row, 'id')->id;
+        }
+
+        $players = join(',', array_map('intval', $player));
+        $this->data->chatlogsall = Admin::getCompareLogs("{$players}");
+
+        foreach ($this->data->chatlogsall as $logs) {
+          
+            $player = Player::getDataById($logs->user_from_id);
+
+            if($player->rank >= request()->player->rank && request()->player->rank != Config::maxRank) {
+                Log::addStaffLog($player->id, 'Manage Multiple Chatlogs (No permission)', 'check');
+                exit;
+            }
+
+            $logs->name = 'MESSAGE';
+            $logs->player = $player->username;
+            $logs->timestamp = date("d-m-Y H:i:s", $logs->timestamp);
+            $this->username[$player->id] = $player->id;
+          
+            if($logs->user_to_id != 0) {
+                $logs->name = 'WHISPER';
+                $logs->message = '<b>' . Player::getDataById($logs->user_to_id, array('username'))->username . '</b>: ' . $logs->message;
+            }
+        }
+
+        foreach ($this->data->users as $row) {
+            Log::addStaffLog(Player::getDataByUsername($row, 'id')->id, 'Manage Multiple Chatlogs', 'check');
+        }
+
+        Json::filter($this->data->chatlogsall, 'desc', 'timestamp');
+    }
+
+  
     public function getbanlogs()
     {
         $ban_logs = Admin::getAllBans();
@@ -30,13 +83,17 @@ class Logs
     public function getchatlogs()
     {
         $chat_logs = Admin::getAllLogs(1000);
-
-        foreach ($chat_logs as $row) {
-            $row->user_from_id = Player::getDataById($row->user_from_id, 'username')->username;
-            $row->timestamp = date("d-M-Y H:i:s", $row->timestamp);
+        foreach ($chat_logs as $logs) 
+        {
+            $logs->timestamp = date("d-m-Y H:i:s", $logs->timestamp);
+            $logs->user_from_id = Player::getDataById($logs->user_from_id, array('username'))->username;
+          
+            if($logs->user_to_id != 0) {
+                $logs->message = '<b>' . Player::getDataById($logs->user_to_id, array('username'))->username . '</b>: ' . $logs->message;
+            }
         }
-
-        Json::filter($chat_logs, 'desc', 'id');
+    
+        Json::filter($chat_logs, 'desc', 'timestamp');
     }
 
     public function getstafflogs()

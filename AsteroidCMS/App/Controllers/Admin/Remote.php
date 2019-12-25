@@ -247,26 +247,6 @@ class Remote
         HotelApi::execute('disconnect', array('user_id' => $player->id));
         echo '{"status":"success","message":"The user ' . $player->username . ' is been banned: ' . $ban_time->message . '"}';
     }
-
-    public function getallchatslogs()
-    {
-        $validate = request()->validator->validate([
-            'user_id'   => 'required'
-        ]);
-
-        if(!$validate->isSuccess()) {
-            exit;
-        }
-        
-        $user_id = Player::getDataByUsername(input()->post('user_id')->value, 'id')->id;
-        $this->getChatLogs($user_id);
-          
-        foreach($this->data->chatlogs as $logs) {
-            $logs->user_from_id = Player::getDataById($logs->user_from_id, 'username')->username;
-        }
-      
-        Json::raw($this->data->chatlogs);
-    }
   
     public function getplayer()
     {
@@ -345,12 +325,10 @@ class Remote
       
         foreach ($this->data->chatlogs as $logs) {
           
-            $logs->name = 'MESSAGE';
             $logs->timestamp = date("d-m-Y H:i:s", $logs->timestamp);
           
             if($logs->user_to_id != 0) {
-                $logs->name = 'WHISPER';
-                $logs->message = Player::getDataById($logs->user_to_id, array('username'))->username . ': ' . $logs->message;
+                $logs->message = '<b>' . Player::getDataById($logs->user_to_id, array('username'))->username . '</b>: ' . $logs->message;
             }
         }
     }
@@ -392,46 +370,6 @@ class Remote
             $ban->user_staff_id = Player::getDataById($ban->user_staff_id, array('username'));
             $ban->ban_expire = date("d-m-Y H:i:s", $ban->ban_expire);
         }
-    }
-
-    public function getCompareUsersLogs()
-    {
-        $validate = request()->validator->validate([
-            'element'   => 'required'
-        ]);
-
-        if(!$validate->isSuccess()) {
-            exit;
-        }
-
-        $this->data->users = input()->post('element');
-
-        foreach ($this->data->users as $row) {
-            $player[] = Player::getDataByUsername($row, 'id')->id;
-        }
-
-        $players = join(',', array_map('intval', $player));
-        $this->data->chatlogsall = Admin::getCompareLogs("{$players}");
-
-        foreach ($this->data->chatlogsall as $logs) {
-          
-            $player = Player::getDataById($logs->user_from_id);
-
-            if($player->rank >= request()->player->rank && request()->player->rank != Config::maxRank) {
-                Log::addStaffLog($player->id, 'Manage Multiple Chatlogs (No permission)', 'check');
-                exit;
-            }
-
-            $logs->player = $player->username;
-            $logs->timestamp = date("d-m-Y H:i:s", $logs->timestamp);
-            $this->username[$player->id] = $player->id;
-        }
-
-        foreach ($this->data->users as $row) {
-            Log::addStaffLog(Player::getDataByUsername($row, 'id')->id, 'Manage Multiple Chatlogs', 'check');
-        }
-
-        Json::filter($this->data->chatlogsall, 'desc', 'id');
     }
 
     public function unban($id)

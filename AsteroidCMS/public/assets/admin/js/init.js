@@ -252,23 +252,23 @@ var showOnlinePlayers = function() {
                         field: "id",
                         title: "#",
                         type: "number",
-                        width: 75,
+                        width: 40,
                         template: function(data) {
                             return '<span class="kt-font">' + data.id + '</span>';
                         }
                     }, {
                         field: "username",
                         title: "Username",
-                        width: 200,
+                        width: 250,
                         template: function(data, i) {
                             var output = '\
                                     <div class="kt-user-card-v2">\
                                         <div class="kt-user-card-v2__pic">\
-                                            <div class="kt-badge kt-badge--xl" style="background: #d8d8d8;"><span class="kt-portlet__head-icon"><img src="' + Site.figure_path + '/imaging/avatarimage?figure=' + Site.figure_url + '/avatarimage?figure=' + data.figure + '&amp;headonly=1&amp;direction=2&amp;head_direction=2&amp;action=&amp;gesture=&amp" alt="image"></span></div>\
+                                            <div class="kt-badge kt-badge--xl" style="background: #d8d8d8;"><span class="kt-portlet__head-icon"><img src="' + Site.figure_url + '/avatarimage?figure=' + data.look + '&amp;headonly=1&amp;direction=2&amp;head_direction=2&amp;action=&amp;gesture=&amp" alt="image"></span></div>\
                                         </div>\
                                         <div class="kt-user-card-v2__details">\
                                             <a href="#" class="kt-user-card-v2__name" data-toggle="modal" data-target="#actionModal" data-id="' + data.username + '">' + data.username + '</a>\
-                                            <span class="kt-user-card-v2__email">' + data.email + '</span>\
+                                            <span class="kt-user-card-v2__email">' + data.mail + '</span>\
                                         </div>\
                                     </div>';
 
@@ -277,9 +277,8 @@ var showOnlinePlayers = function() {
                     }, {
                         field: "lastip",
                         title: "Last / Reg IP",
-                        width: 250,
                         template: function(data) {
-                            return '<span class="kt-font">' + data.last_ip + ' / ' + data.reg_ip + '</span>';
+                            return '<span class="kt-font">' + data.ip_register + ' / ' + data.ip_current + '</span>';
                         }
                     }]
                 });

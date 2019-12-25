@@ -40,7 +40,7 @@ class Dashboard
         $online_users = Admin::getOnlinePlayers();
 
         foreach ($online_users as $row) {
-            $row->ip = Core::convertIp($row->last_ip);
+            $row->ip = Core::convertIp($row->ip_register);
         }
 
         Json::filter($online_users, 'desc', 'id');
