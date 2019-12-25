@@ -44,14 +44,14 @@
                             {% if topic.is_sticky == 1 %}<img src="{{path}}/assets/images/web/pages/forum/sticky_icon.gif" data-toggle="tooltip" title="Dit topic is een sticky">{% endif %}
                             {% if topic.is_closed == 1 %}<img src="{{path}}/assets/images/web/pages/forum/locked_icon.gif" data-toggle="tooltip" title="Dit topic is een sticky">{% endif %}
                             <a href="{{path}}/forum/thread/{{topic.id}}-{{topic.slug}}" data-id="{{topic.id}}" class="topicview">{{topic.title}}</a><br />
-                            Door <a href="{{path}}/profile/{{topic.author.username}}">{{topic.author.username}}</a>, {{topic.created_at|time_diff}}
+                            {{locale.category_topic_by}} <a href="{{path}}/profile/{{topic.author.username}}">{{topic.author.username}}</a>, {{topic.created_at|time_diff}}
                         </td>
                         <td class="count">{{topic.totalposts}}</td>
                         <td>
                             {% if topic.latest_post is empty %}
                                 {{locale.category_no_reacts}}
                             {% else %}
-                                Laatste reactie door <a href="{{path}}/profile/{{topic.latest_post.author.username}}">{{topic.latest_post.author.username}}</a>,<br />
+                                {{locale.category_latest_react_by}} <a href="{{path}}/profile/{{topic.latest_post.author.username}}">{{topic.latest_post.author.username}}</a>,<br />
                                 {{topic.latest_post.created_at|time_diff}}
                             {% endif %}
                         </td>
