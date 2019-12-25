@@ -263,8 +263,9 @@ var install = function() {
                         'points': $("#webSettings [name=points]").val(),
                         'publicKey': $("#webSettings [name=publicKey]").val(),
                         'secretKey': $("#webSettings [name=secretKey]").val(),
+                        'language': $("#webSettings [name=language]").val()
                     };
-                    console.log(configuration)
+
                     self.web.post("/installation/api/home/complete", configuration, function(result) {
                         if(result.status == 'success'){
                             setTimeout(function() { 

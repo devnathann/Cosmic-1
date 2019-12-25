@@ -42,11 +42,15 @@ class Forum
         ]);
     }
   
-    public function category($slug, $page = 1)
+    public function category($slug, $page = 1, $rank = 0)
     {
         $forums = Forums::getForumById($this->slug($slug));
       
-        if(!$forums || request()->player->rank < $forums->min_rank) {
+        if(isset(request()->player->rank)) {
+            $rank = request()->player->rank;
+        }
+      
+        if(!$forums || $rank < $forums->min_rank) {
             redirect('/forum');
         }
       

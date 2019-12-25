@@ -29,11 +29,14 @@ class Install {
     }
   
     public static function rollback($message = false) {
-        $copy = copy(self::$tmp, self::$path);
-        if ($copy) {
-            $message = (!$message) ? self::$exception : $message;
-            echo '{"status":"error","message":"Rollback started: ' . $message . '"}';
-            exit;
+
+        if(self::dropTables()) {
+            $copy = copy(self::$tmp, self::$path);
+            if ($copy) {
+                $message = (!$message) ? self::$exception : $message;
+                echo '{"status":"error","message":"Rollback started: ' . $message . '"}';
+                exit;
+            }
         }
     }
   
@@ -83,6 +86,29 @@ class Install {
 
           return true;
     }
+
+    public static function dropTables() {
+        $conn = self::checkConnection(Config::host, Config::username, Config::database, Config::password);
+        if($result = $conn->query('SHOW TABLES')){
+            while($row = $result->fetch_assoc()){
+                if( strpos($row['Tables_in_' . Config::database],  'website_') !== false) {
+                    $query = "DROP TABLE " . $row['Tables_in_' . Config::database];
+                    if ($conn->query($query) !== true) {
+                        echo $conn->error;
+                    }
+                }
+            }
+            $query = "ALTER TABLE users DROP pincode";
+            if ($conn->query($query) !== true) {
+                return false;
+            }
+            $query = "ALTER TABLE users DROP secret_key";
+            if ($conn->query($query) !== true) {
+                return false;
+            }
+            return true;
+        }
+    }
   
     public static function createTables() {
       
@@ -95,7 +121,7 @@ class Install {
         }
       
          if(mysqli_num_rows(mysqli_query($conn,"SHOW TABLES LIKE 'website_alert_messages'"))) {
-            echo '{"status":"error","message":"Database already exists! Please truncate the database for a fresh install."}';
+            self::rollback();
             exit;
         }
       
@@ -268,7 +294,7 @@ class Install {
               `cat_id` int(11) DEFAULT NULL,
               `slug` varchar(60) DEFAULT NULL,
               `position` int(11) NOT NULL,
-              `max_rank` int(11) DEFAULT NULL
+              `min_rank` int(11) DEFAULT NULL
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC";
         if ($conn->query($webForumIndex) !== true) {
             self::rollback($conn->error);
@@ -490,7 +516,8 @@ class Install {
             (26, 'housekeeping_server', '\r\nPlayer has access to the server category'),
             (27, 'housekeeping_server_catalog', 'Player is able to manage the catalog'),
             (28, 'housekeeping_ranks_extra', 'Player is able to edit the extra rank'),
-            (29, 'housekeeping_staff_logs_menu', 'Player is able to see logs in menu')";
+            (29, 'housekeeping_staff_logs_menu', 'Player is able to see logs in menu'),
+            (30, 'housekeeping_website_forum', 'Player is able to manage forums')";
         if ($conn->query($webPermssionsInsert) !== true) {
             self::rollback($conn->error);
         }
@@ -533,7 +560,8 @@ class Install {
             (26, 26, 7),
             (27, 27, 7),
             (28, 28, 7),
-            (30, 29, 7)";
+            (29, 29, 7),
+            (30, 30, 7)";
         if ($conn->query($webPermssionsInsertRankI) !== true) {
             self::rollback($conn->error);
         }
@@ -632,6 +660,12 @@ class Install {
               }
               $aaa = "
       ALTER TABLE `website_feeds_likes`
+        ADD PRIMARY KEY (`id`) USING BTREE";
+              if ($conn->query($aaa) !== true) {
+                  self::rollback($conn->error);
+              }
+                       $aaa = "
+      ALTER TABLE `website_forum_categories`
         ADD PRIMARY KEY (`id`) USING BTREE";
               if ($conn->query($aaa) !== true) {
                   self::rollback($conn->error);
@@ -840,12 +874,6 @@ class Install {
               $qeqewwe = "
       ALTER TABLE `website_forum_likes`
         MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0";
-              if ($conn->query($qeqewwe) !== true) {
-                  self::rollback($conn->error);
-              }
-              $qeqewwe = "
-      ALTER TABLE `website_forum_categories`
-        MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0";
               if ($conn->query($qeqewwe) !== true) {
                   self::rollback($conn->error);
               }

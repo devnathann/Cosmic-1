@@ -133,7 +133,8 @@ class Home
             'points'            => 'required|numeric',
             'pixels'            => 'required|numeric',
             'publicKey'         => 'required',
-            'secretKey'         => 'required'
+            'secretKey'         => 'required',
+            'language'          => 'required'
         ]);
 
         if (!$validate->isSuccess()) {

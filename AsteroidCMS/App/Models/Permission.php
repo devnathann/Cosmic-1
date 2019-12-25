@@ -71,4 +71,9 @@ class Permission
     {
         return QueryBuilder::table('website_permissions_ranks')->where('permission_id', $id)->get();
     }
+  
+    public static function getAllColumns() 
+    {
+        return QueryBuilder::query("SHOW columns FROM permissions")->get();
+    }
 }
