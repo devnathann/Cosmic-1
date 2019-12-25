@@ -1,10 +1,10 @@
-[![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](http://github.com/badges/stability-badges) ![version](https://img.shields.io/badge/version-0.1.1-blue)
+
 
 # <img src="https://habborator.org/archive/icons/medium/go_arrow.gif"> About:
 
 > Only for Arcturus Morningstar.
 
-> [Last beta: 0.1.1](#).
+> [Last beta:](#) [![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](http://github.com/badges/stability-badges) ![version](https://img.shields.io/badge/version-0.1.1-blue).
 
 > Under development: R1.
 
