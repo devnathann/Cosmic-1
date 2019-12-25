@@ -4,7 +4,7 @@
 
 > Only for Arcturus Morningstar.
 
-> ![version](https://img.shields.io/badge/version-0.1.1-blue) [![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](http://github.com/badges/stability-badges)
+> ![version](https://img.shields.io/badge/beta-0.1.1--dev-green?logo=appveyor&style=flat-square) [![unstable](https://img.shields.io/badge/stability-unstable-red?logo=appveyor&style=flat-square)](http://github.com/badges/stability-badges)
 
 > Under development: R1.
 
