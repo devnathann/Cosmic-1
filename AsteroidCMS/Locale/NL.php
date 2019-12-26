@@ -171,7 +171,9 @@ $GLOBALS['language'] = array (
             'category_topics'           => 'Topics',
             'category_posts'            => 'Posts',
             'category_latest_reacts'    => 'Laatste reacties',
+            'category_topic_by'         => 'Door',
             'category_no_reacts'        => 'Geen reacties',
+            'category_latest_react_by'  => 'Laatste reactie door',
             'category_create_topic'     => 'Maak nieuw topic',
             'category_subject'          => 'Onderwerp',
             'category_description'      => 'Beschrijving',
@@ -206,7 +208,7 @@ $GLOBALS['language'] = array (
         
         /*     App/View/Games     */
         'games_ranking' => array (
-            'username' => 'Leetnaam'
+            'username' => 'naam'
         ),
         
         /*     App/View/Help     */        
