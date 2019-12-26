@@ -2,11 +2,10 @@
 
 # <img src="https://habborator.org/archive/icons/medium/go_arrow.gif"> About:
 
-> Only for Arcturus Morningstar.
 
 > ![version](https://img.shields.io/badge/beta-0.1.1--dev-green?logo=appveyor&style=flat-square) [![unstable](https://img.shields.io/badge/stability-unstable-red?logo=appveyor&style=flat-square)](http://github.com/badges/stability-badges)
 
-> Under development: R1.
+> Only for Arcturus Morningstar.
 
 > For issues join our Discord https://discord.gg/r59B4Rs or create an issue at Github.
 
@@ -30,6 +29,8 @@ $ composer update
 ## Installer
 
 - Because the htaccess and web.config are already included, you do not need to change/add anything. When the repo is cloned and composer installed/updated you can go to your website and run the installer. Please follow the installation steps to install Asteroid.
+
+![](https://i.gyazo.com/375ef46231c76a490a44142f1475d18b.gif)
 
 ## Documentation
 
