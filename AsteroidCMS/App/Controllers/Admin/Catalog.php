@@ -60,7 +60,7 @@ class Catalog
     public function additem()
     {
         $validate = request()->validator->validate([
-            'id'                      => 'numeric',
+            'sprite_id'               => 'numeric',
             'item_name'               => 'required',
             'public_name'             => 'required',
             'width'                   => 'required',
@@ -94,7 +94,7 @@ class Catalog
             exit;
         }
           
-        $query = Admin::updateFurniture(array(
+        if($query = Admin::updateFurniture(array(
             'items_base' => array(
                 'item_name'               => input()->post('item_name')->value,
                 'public_name'             => input()->post('public_name')->value,
@@ -123,16 +123,14 @@ class Catalog
                 'limited_sells'           => input()->post('limited_sells')->value,
                 'limited_stack'           => input()->post('limited_stack')->value
             )
-        ), input()->post('id')->value);
+        ), input()->post('id')->value));
 
-        if($query) {
-            if(Config::apiEnabled) {
-                HotelApi::execute('updatecatalog');
-            }
-
-            echo '{"status":"success","message":"Item is successfully editted!"}';
-            exit;
+        if(Config::apiEnabled) {
+            HotelApi::execute('updatecatalog');
         }
+
+        echo '{"status":"success","message":"Item is successfully editted!"}';
+        exit;
     }
   
     public function getFurnitureById()

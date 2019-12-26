@@ -16,7 +16,7 @@ class Shop
         $this->data = new stdClass();
     }
 
-    public function index($lang = Config::language)
+    public function index($lang = 'NL')
     {
         $this->data->lang = $lang;
         $this->data->shop = \App\Models\Shop::getOffers($this->data->lang);

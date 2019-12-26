@@ -24,7 +24,7 @@
                 <div class="offer-container">
                     <a href="{{path}}/shop/offers/{{offer.offer_id}}" class="offer-content pixelated">
                         <div class="offer-label">{{offer.currency}}</div>
-                        {% if offer.amount >= 500 %}<div class="offer-label">+ {{locale.super_rare}}</div>{% endif %}
+                        {% if offer.amount >= 500 %}<div class="offer-label"></div>{% endif %}
                         <div class="offer-value"><br>{{offer.amount}}</div>
                         <div class="offer-amount">€{{offer.price}}</div>
                         <div class="credits-sprite credits-sprite-shop_icon_1" style="background-image: url(/assets/images/web/pages/shop/{{offer.image}}?)"></div>

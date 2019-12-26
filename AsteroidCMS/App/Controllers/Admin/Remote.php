@@ -67,6 +67,9 @@ class Remote
             Flash::addMessage('You have no permissions!', FLASH::ERROR);
             redirect('/housekeeping');
         }
+      
+        $log = isset($type) && !empty($type) ? $type : 'All user information';
+        Log::addStaffLog($this->user->id, 'Checked ' . $log, 'check');
 
         $this->template();
     }
@@ -452,11 +455,11 @@ class Remote
 
             if (Config::apiEnabled && $player->online) {
                 if($player->rank != $rank) 
-                    HotelApi::execute('setrank', array('user_id' => $player->id, 'rank_id' => $rank));
+                    HotelApi::execute('setrank', array('user_id' => $player->id, 'rank' => $rank));
             } else {
-                Player::update('rank', $rank, $player->id);
+                Player::update($player->id, 'rank', $rank);
             }
-          
+
             foreach($currencys as $currency) {
                 if($currency) {
                     if (Config::apiEnabled && $player->online && $currency->oldamount != $currency->amount) {

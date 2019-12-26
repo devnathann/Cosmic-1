@@ -270,6 +270,7 @@ var catalog = function() {
                 $("#eCatalogPage").hide();
                 $("#eItemPage [name=object]").val('edit');
               
+                $("[name=sprite_id]").val(result.furniture.sprite_id);
                 $("[name=id]").val(result.furniture.id);
                 $("[name=item_name]").val(result.furniture.public_name);
                 $("[name=public_name]").val(result.furniture.item_name);

@@ -524,10 +524,21 @@ class Admin
   
     public static function updateFurniture($object, $furni_id)
     {
+        $lastItemBase = QueryBuilder::table('items_base')->orderBy('id', 'desc')->limit(1)->first();
+        $lastItemCatalog = QueryBuilder::table('catalog_items')->orderBy('id', 'desc')->limit(1)->first();
+      
+        $object['catalog_items']['item_ids'] = $lastItemBase->id + 1;
+        $object['catalog_items']['id'] = $lastItemCatalog->id + 1;
+        $object['items_base']['id'] = $lastItemBase->id + 1;
+      
         $furnidata = self::getFurnitureById($furni_id);
-        if($furnidata) {
+ 
+        if(!empty($furnidata)) {
             QueryBuilder::table('items_base')->where('id', $furni_id)->update($object['items_base']);
             return QueryBuilder::table('catalog_items')->where('id', $furni_id)->update($object['catalog_items']);
+        } else {
+            QueryBuilder::table('items_base')->insert($object['items_base']);
+            return QueryBuilder::table('catalog_items')->insert($object['catalog_items']); 
         }
     }
 
