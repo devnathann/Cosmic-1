@@ -51,8 +51,7 @@ class Articles
         $player = Player::getDataById($article->author, array('username', 'look'));
 
         if ($player != null) {
-            $article->author = $player->username;
-            $article->figure = $player->look;
+            $article->author = $player;
         }
       
         $posts = Community::getPostsArticleById($article->id);
@@ -64,15 +63,14 @@ class Articles
         foreach ($latest_news as $item) {
             $item->timestamp = \App\Core::timediff($item->timestamp);
         }
-      
+    
 
         View::renderTemplate('Community/article.html', [
             'title'         => $article->title,
             'page'          => 'article',
             'latest_news'   => $latest_news,
             'article'       => $article,
-            'posts'         => $posts,
-            'reactions'     => false
+            'posts'         => $posts
         ]);
     }
 }

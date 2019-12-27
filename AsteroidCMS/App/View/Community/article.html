@@ -17,7 +17,7 @@
                         {% if article.author == "0" %}
                         <img src="{{path}}/assets/images/web/avatar-frank.png" alt="Hotel Management">
                         {% else %}
-                        <img src="{{fpath}}/avatarimage?figure={{article.figure}}&gesture=sml&direction=3&headonly=true" alt="{{article.author}}">
+                        <img src="{{fpath}}/avatar/avatarimage?figure={{article.author.look}}&direction=2&head_direction=3&gesture=sml&size=b&headonly=1" alt="{{article.author.username}}">
                         {% endif %}
                     </div>
 
@@ -25,7 +25,7 @@
                         {% if article.author == "0" %}
                         <div class="author-name">Hotel Management</div>
                         {% else %}
-                        <div class="author-name"><a href="{{path}}/profile/{{article.author}}" class="related-article-container">{{article.author}}</a></div>
+                        <div class="author-name"><a href="{{path}}/profile/" class="related-article-container">{{article.author.username}}</a></div>
                         {% endif %}
                     </div>
                 </div>
@@ -52,11 +52,11 @@
                     {% if post.hidden != 1 or player.rank >= 3 %}
                     <div class="ac-item" data-id="{{post.id}}" style="margin-bottom: 5px;border-radius: 10px; {% if post.hidden == 1 %}filter: grayscale(100%);{% endif %}">
                             <div style="float: left; vertical-align: middle; ">
-                                <img style="margin-top: -30px; margin-bottom: -60px;" src="{{fpath}}/avatarimage?figure={{post.author.look}}&direction=2&head_direction=3&gesture=sml&size=b&headonly=1" alt="">
+                                <img style="margin-top: -30px;" src="{{fpath}}/avatar/avatarimage?figure={{post.author.look}}&direction=2&head_direction=3&gesture=sml&size=b&headonly=1" alt="">
                             </div>
                         <strong>
-                            {{post.author.username}}
                             <a href="{{path}}/profile/{{post.username}}">
+                                {{post.author.username}}
                             </a>
                         </strong>: {{post.message|bbcode}}
 

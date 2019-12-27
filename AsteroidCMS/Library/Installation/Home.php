@@ -173,6 +173,7 @@ class Home
         Install::editConfig('currencys = 0', 'currencys = ' . $array);
         Install::editConfig('view = \'Library/Installation/Views\'', 'view = \'App/View\'');
         Install::editConfig('installation = true', 'installation = false');
+        Install::editConfig('debug = true', 'debug = false');
       
         echo '{"status":"success","message":"Install done! Please wait we redirect you!"}';
     }

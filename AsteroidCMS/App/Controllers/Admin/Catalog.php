@@ -66,7 +66,7 @@ class Catalog
             'width'                   => 'required',
             'length'                  => 'required',
             'stack_height'            => 'required',
-            'page_id'                 => 'numeric',
+            'page_id'                 => 'required|numeric',
             'allow_stack'             => 'required|pattern:^(?:1OR0)$',
             'allow_sit'               => 'required|pattern:^(?:1OR0)$',
             'allow_lay'               => 'required|pattern:^(?:1OR0)$',
@@ -80,7 +80,6 @@ class Catalog
             'interaction_type'        => 'required',
             'interaction_modes_count' => 'required',
             'page_id'                 => 'required|numeric',
-            'catalog_name'            => 'required',
             'cost_credits'            => 'required|numeric',
             'cost_points'             => 'required|numeric',
             'points_type'             => 'required|numeric',
@@ -94,8 +93,11 @@ class Catalog
             exit;
         }
           
+        $furni_id = input()->post('furniture_id')->value ?? null;
+      
         if($query = Admin::updateFurniture(array(
             'items_base' => array(
+                'sprite_id'               => input()->post('sprite_id')->value,
                 'item_name'               => input()->post('item_name')->value,
                 'public_name'             => input()->post('public_name')->value,
                 'width'                   => input()->post('width')->value,
@@ -121,13 +123,12 @@ class Catalog
                 'points_type'             => input()->post('points_type')->value,
                 'amount'                  => input()->post('amount')->value,
                 'limited_sells'           => input()->post('limited_sells')->value,
-                'limited_stack'           => input()->post('limited_stack')->value
+                'limited_stack'           => input()->post('limited_stack')->value,
+                'page_id'                 => input()->post('page_id')->value
             )
-        ), input()->post('id')->value));
+        ), $furni_id));
 
-        if(Config::apiEnabled) {
-            HotelApi::execute('updatecatalog');
-        }
+        HotelApi::execute('updatecatalog');
 
         echo '{"status":"success","message":"Item is successfully editted!"}';
         exit;

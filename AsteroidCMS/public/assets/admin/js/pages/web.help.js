@@ -84,7 +84,7 @@ var help = function() {
                '<div class="kt-portlet__head">\n'  +
                   '<div class="kt-portlet__head-label">\n'  +
                      '<span class="kt-portlet__head-icon">\n'  +
-                     '<img src="' + Site.figure_url + '/avatarimage?figure={figurePath}&headonly=1&direction=2&head_direction=2&action=&gesture=&" alt="image" style="margin-bottom: -32px;">\n' +
+                     '<img src="' + Site.figure_url + '/avatar/avatarimage?figure={figurePath}&headonly=1&direction=2&head_direction=2&action=&gesture=&" alt="image">\n' +
                      '</span>\n'  +
                      '<h3 class="kt-portlet__head-title">\n'  +
                         '<a href="#" data-toggle="modal" data-target="#actionModal" data-id="{reporter}">{reporter}</a> - <small>{timestamp}</small>\n'  +
@@ -122,7 +122,7 @@ var help = function() {
                '<div class="kt-portlet__head">\n'  +
                   '<div class="kt-portlet__head-label">\n'  +
                      '<span class="kt-portlet__head-icon">\n'  +
-                     '<img src="' + Site.figure_url + '/avatarimage?figure={figurePath}&headonly=1&direction=2&head_direction=2&action=&gesture=&" alt="image" style="margin-bottom: -32px;">\n' +
+                     '<img src="' + Site.figure_url + '/avatar/avatarimage?figure={figurePath}&headonly=1&direction=2&head_direction=2&action=&gesture=&" alt="image">\n' +
                      '</span>\n'  +
                      '<h3 class="kt-portlet__head-title">\n'  +
                         '<a href="#" data-toggle="modal" data-target="#actionModal" data-id="{reporter}">{reporter}</a> - <small>{timestamp}</small>\n'  +

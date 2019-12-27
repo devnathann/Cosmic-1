@@ -14,7 +14,7 @@
         <aside class="default-section">
             <div class="profile-header">
                 <div class="header-content flex-container flex-vertical-center">
-                    <img src="{{fpath}}/avatarimage?figure={{data.player.look}}&direction=2&gesture=sml&size=l" alt="{{data.player.username}}" class="pixelated">
+                    <img src="{{fpath}}/avatar/avatarimage?figure={{data.player.look}}&direction=2&gesture=sml&size=l" alt="{{data.player.username}}" class="pixelated">
                     <div class="header-details">
                         <div class="header-title">{{data.player.username}}</div>
                         <div class="header-description">{{data.player.motto}}</div>
@@ -151,7 +151,7 @@
                     {% if data.player.groups %}
                         {% for row in data.player.groups %}
                         <a href="{{path}}/hotel?room={{row.room_id}}" class="item-container">
-                            <div class="item-icon pixelated" style="background-image: url({{fpath}}/badge/{{row.badge}}.gif);"></div>
+                            <div class="item-icon pixelated" style="background-image: url({{fpath}}/badge/{{row.badge}});"></div>
                             <div class="item-name">{{row.name}}</div>
                         </a>
                         {% endfor %}

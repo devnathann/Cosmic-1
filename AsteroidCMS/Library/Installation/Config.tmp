@@ -16,7 +16,7 @@ class Config
     const installation = true;
   
     /* Web config */
-    const debug = true;
+    const debug = false;
     const vpnBlock = true;
     const vpnLocation = '/../../../ASN.mmdb';
 

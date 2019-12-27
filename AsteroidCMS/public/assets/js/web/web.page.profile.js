@@ -6,7 +6,7 @@ function WebPageProfileInterface(main_page)
     this.article_template = [
         '<div class="feed-item" data-id="{feed.id}" id="{feed.id}">\n' +
         '   <div class="fi-avatar logo" style="margin-right: 0; height: 60px; margin-top: -7px;">\n' +
-        '       <div style="background: url(' + Site.figure_url + '/imaging/avatarimage?figure={{figure}}&direction=3&headonly=1) no-repeat center; width: 48px; height: 62px;"></div>\n' +
+        '       <div style="background: url(' + Site.figure_url + '/avatar/imaging/avatarimage?figure={{figure}}&direction=3&headonly=1) no-repeat center; width: 48px; height: 62px;"></div>\n' +
         '   </div>\n' +
         '   <div class="fi-content">\n' +
         '   <div class="fc-user">\n' +

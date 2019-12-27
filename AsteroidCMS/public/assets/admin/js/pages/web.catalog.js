@@ -252,6 +252,7 @@ var catalog = function() {
             $("#catalogList").hide();
             $("#eItemPage").show();
             $("#eItemPage [name=object]").val('add');
+            $("#itemForm [name=additem]").html("Add Item");
 
             for (var o = 0; o < jsonObj.length; o++){
                 var pages = jsonObj[o];
@@ -264,6 +265,9 @@ var catalog = function() {
             this.ajax_manager = new WebPostInterface.init();
 
             self.ajax_manager.post("/housekeeping/api/catalog/getFurnitureById", {post: id}, function (result) {
+              
+                $("#itemForm [name=additem]").html("Edit Item");
+              
                 $("html, body").animate({ scrollTop: 0 }, "slow");
 
                 $("#eItemPage").show();
@@ -271,7 +275,7 @@ var catalog = function() {
                 $("#eItemPage [name=object]").val('edit');
               
                 $("[name=sprite_id]").val(result.furniture.sprite_id);
-                $("[name=id]").val(result.furniture.id);
+                $("[name=furniture_id]").val(result.furniture.id);
                 $("[name=item_name]").val(result.furniture.public_name);
                 $("[name=public_name]").val(result.furniture.item_name);
                 $("[name=width]").val(result.furniture.width);

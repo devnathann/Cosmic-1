@@ -11,7 +11,7 @@
                     </div>
                     <div class="profile-content">
                         <div class="header-image">
-                            <img src="{{fpath}}/avatarimage?figure={{player.look}}&gesture=sml&amp;size=l" width="64" height="110" class="figure">
+                            <img src="{{fpath}}/avatar/avatarimage?figure={{player.look}}&gesture=sml&amp;size=l" width="64" height="110" class="figure">
                         </div>
 
                         <div class="stats">
@@ -239,7 +239,7 @@
                             {{locale.popular_no_groups}}
                         {% endif %}
                         {% for row in groups %}
-                            <div id="popularGroups" style="background: url('{{fpath}}/badge/{{row.badge}}.gif') 10px 50% no-repeat;"><div class="countGroupMembers">{{row.count}}</div><div class="groupName">{{row.name}}</div><div class="groupDesc">{{row.description}}</div></div>
+                            <div id="popularGroups" style="background: url('{{fpath}}/badge/{{row.badge}}') 10px 50% no-repeat;"><div class="countGroupMembers">{{row.count}}</div><div class="groupName">{{row.name}}</div><div class="groupDesc">{{row.description}}</div></div>
                         {% endfor %}
                     </div>
                 </aside>

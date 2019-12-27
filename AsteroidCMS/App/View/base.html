@@ -128,6 +128,27 @@
 </div>
 {% endif %}
 
+<header class="header-container pixelated is-small">
+  <div class="header-content">
+      <div class="logo"><a href="{{path}}">{{shortname}} - {{locale_base.header_slogan}}</a></div>
+      <div class="account-container">
+          <div class="account-title">
+              {{locale_base.header_slogan2}}
+          </div>
+
+          <div class="account-buttons">
+              {% if player is empty %}
+              <button class="rounded-button white login-dialog-button">{{locale_base.header_login}}</button>
+              <span>of</span>
+              <a href="{{path}}/registration" class="rounded-button white plain">{{locale_base.header_register}}</a>
+              {% else %}
+              <a href="{{path}}/hotel" class="rounded-button white plain hotel-button">{{locale_base.header_to}} {{sitename}}</a>
+              {% endif %}
+          </div>
+      </div>
+  </div>
+</header>
+  
 <nav class="navigation-container">
     <ul class="navigation-menu flex-container">
         <li class="navigation-item main-link-item">
@@ -177,9 +198,8 @@
 
         {% if player %}
         <li class="navigation-item navigation-right-side-item has-items">
-            <a onclick="openSearch()" style="border: none;color:#000;cursor: pointer;position: fixed;margin-left: -6px;"><i class="fa fa-search"></i></a>
             <a href="#">
-                <div class="account-avatar"><img src="{{fpath}}/avatarimage?figure={{player.look}}&gesture=sml" alt="{{player.username}}" class="pixelated"></div>
+                <div class="account-avatar"><img src="{{fpath}}/avatar/avatarimage?figure={{player.look}}&gesture=sml" alt="{{player.username}}" class="pixelated"></div>
                 <span>{{player.username}}</span>
             </a>
             <ul class="navigation-submenu">
@@ -192,27 +212,6 @@
         {% endif %}
     </ul>
 </nav>
-
-<header class="header-container pixelated is-small">
-  <div class="header-content">
-      <div class="logo"><a href="{{path}}">{{shortname}} - {{locale_base.header_slogan}}</a></div>
-      <div class="account-container">
-          <div class="account-title">
-              {{locale_base.header_slogan2}}
-          </div>
-
-          <div class="account-buttons">
-              {% if player is empty %}
-              <button class="rounded-button white login-dialog-button">{{locale_base.header_login}}</button>
-              <span>of</span>
-              <a href="{{path}}/registration" class="rounded-button white plain">{{locale_base.header_register}}</a>
-              {% else %}
-              <a href="{{path}}/hotel" class="rounded-button white plain hotel-button">{{locale_base.header_to}} {{sitename}}</a>
-              {% endif %}
-          </div>
-      </div>
-  </div>
-</header>
 
 <section class="page-container" data-page="{% if page is empty %}lost{% else %}{{page}}{% endif %}">
     {% block body %} {% endblock %}
