@@ -11,6 +11,13 @@
 
 # <img src="https://raw.githubusercontent.com/Wulles/eyethatseeseverything/master/pwrup_pins.gif"> INSTALLATION:
 
+## Issues
+
+If you using XAMPP, please add the line below in your ``httpd.conf``
+Otherwise your housekeeping won't work!
+
+> SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+
 ## Installation
 
 ### Clone
