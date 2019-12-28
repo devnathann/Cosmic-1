@@ -11,7 +11,7 @@
                     </div>
                     <div class="profile-content">
                         <div class="header-image">
-                            <img src="{{fpath}}/avatar/avatarimage?figure={{player.look}}&gesture=sml&amp;size=l" width="64" height="110" class="figure">
+                            <img src="{{fpath}}/avatarimage?figure={{player.look}}" width="64" height="110" class="figure">
                         </div>
 
                         <div class="stats">
@@ -38,7 +38,7 @@
                         <div class="friends-container">
                             <a href="{{path}}/profile/{{friends.username}}">
                                 <div class="avatar">
-                                    <img src="{{fpath}}/avatarimage?figure={{friends.figure}}&head_direction=2&gesture=sml&headonly=true" alt="{{friends.username}}">
+                                    <img src="{{fpath}}/avatarimage?figure={{friends.look}}&head_direction=2&gesture=sml&headonly=true" alt="{{friends.username}}">
                                 </div>
                             </a>
                             <div class="username">{{friends.username}}</div>
@@ -239,7 +239,7 @@
                             {{locale.popular_no_groups}}
                         {% endif %}
                         {% for row in groups %}
-                            <div id="popularGroups" style="background: url('{{fpath}}/badge/{{row.badge}}') 10px 50% no-repeat;"><div class="countGroupMembers">{{row.count}}</div><div class="groupName">{{row.name}}</div><div class="groupDesc">{{row.description}}</div></div>
+                            <div id="popularGroups" style="background: url('{{fpath}}/badge/?b={{row.badge}}') 10px 50% no-repeat;"><div class="countGroupMembers">{{row.count}}</div><div class="groupName">{{row.name}}</div><div class="groupDesc">{{row.description}}</div></div>
                         {% endfor %}
                     </div>
                 </aside>

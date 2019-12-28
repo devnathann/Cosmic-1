@@ -14,7 +14,7 @@
         <aside class="default-section">
             <div class="profile-header">
                 <div class="header-content flex-container flex-vertical-center">
-                    <img src="{{fpath}}/avatar/avatarimage?figure={{data.player.look}}&direction=2&gesture=sml&size=l" alt="{{data.player.username}}" class="pixelated">
+                    <img src="{{fpath}}/avatar?figure={{data.player.look}}&direction=2&gesture=sml&size=l" alt="{{data.player.username}}" class="pixelated">
                     <div class="header-details">
                         <div class="header-title">{{data.player.username}}</div>
                         <div class="header-description">{{data.player.motto}}</div>
@@ -61,7 +61,7 @@
                     {% for feed in data.player.feeds %}
                     <div class="feed-item" data-id="{{feed.id}}" id="{{feed.id}}">
                         <div class="fi-avatar logo" style="margin-right: 0;height: 60px; margin-top: -7px;">
-                            <div style="background: url({{fpath}}/avatarimage?figure={{feed.look}}.&amp;direction=3&amp;headonly=1) no-repeat center; width: 48px; height: 87px;"></div>
+                            <div style="background: url({{fpath}}/avatar?figure={{feed.look}}.&amp;direction=3&amp;headonly=1) no-repeat center; width: 48px; height: 87px;"></div>
                         </div>
                         <div class="fi-content">
                             <div class="fc-user">

@@ -53,7 +53,7 @@
                 <div class="related-articles-container">
                     {% for post in latestposts %}
                     <a href="{{path}}/forum/thread/{{post.topic_id}}-{{post.slug}}" class="related-article-container">
-                        <div class="related-article-thumbnail" style="background-image: url({{fpath}}/avatar/avatarimage?hb=image&figure={{post.author.look}}&headonly=1&direction=2&head_direction=2&action=&gesture=&size=m); margin-top: -5px;" class="pixelated small-head"></div>
+                        <div class="related-article-thumbnail" style="background-image: url({{fpath}}/avatarimage?figure={{post.author.look}}&headonly=1&direction=2&head_direction=2&action=&gesture=&size=m); margin-top: -5px;" class="pixelated small-head"></div>
                         <div class="related-article-details">
                             <div class="related-article-title">{{post.title}}</div>
                             <div class="related-article-date">{{post.created_at|time_diff}} {{locale.index_by}} <b>{{post.author.username}}</b></div>

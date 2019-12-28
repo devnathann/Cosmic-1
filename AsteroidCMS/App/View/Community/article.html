@@ -17,7 +17,7 @@
                         {% if article.author == "0" %}
                         <img src="{{path}}/assets/images/web/avatar-frank.png" alt="Hotel Management">
                         {% else %}
-                        <img src="{{fpath}}/avatar/avatarimage?figure={{article.author.look}}&direction=2&head_direction=3&gesture=sml&size=b&headonly=1" alt="{{article.author.username}}">
+                        <img src="{{fpath}}/avatarimage?figure={{article.author.look}}&direction=2&head_direction=3&gesture=sml&size=b&headonly=1" alt="{{article.author.username}}">
                         {% endif %}
                     </div>
 
@@ -50,9 +50,9 @@
                     {% endif %}
                     {% for post in posts %}
                     {% if post.hidden != 1 or player.rank >= 3 %}
-                    <div class="ac-item" data-id="{{post.id}}" style="margin-bottom: 5px;border-radius: 10px; {% if post.hidden == 1 %}filter: grayscale(100%);{% endif %}">
+                    <div class="ac-item" data-id="{{post.id}}" style="margin-bottom: 5px;border-radius: 10px; padding: 10px 8px 2px; {% if post.hidden == 1 %}filter: grayscale(100%);{% endif %}">
                             <div style="float: left; vertical-align: middle; ">
-                                <img style="margin-top: -30px;" src="{{fpath}}/avatar/avatarimage?figure={{post.author.look}}&direction=2&head_direction=3&gesture=sml&size=b&headonly=1" alt="">
+                                <img style="margin-top: -5px;" src="{{fpath}}/avatarimage?figure={{post.author.look}}&direction=2&head_direction=3&gesture=sml&size=s&headonly=1" alt="">
                             </div>
                         <strong>
                             <a href="{{path}}/profile/{{post.username}}">
