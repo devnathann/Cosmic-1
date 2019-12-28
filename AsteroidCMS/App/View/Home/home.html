@@ -239,7 +239,7 @@
                             {{locale.popular_no_groups}}
                         {% endif %}
                         {% for row in groups %}
-                            <div id="popularGroups" style="background: url('{{fpath}}/badge/?b={{row.badge}}') 10px 50% no-repeat;"><div class="countGroupMembers">{{row.count}}</div><div class="groupName">{{row.name}}</div><div class="groupDesc">{{row.description}}</div></div>
+                            <div id="popularGroups" style="background: url('{{cpath}}/library/c_images/Badgeparts/generated/{{row.badge}}.png') 10px 50% no-repeat;"><div class="countGroupMembers">{{row.count}}</div><div class="groupName">{{row.name}}</div><div class="groupDesc">{{row.description}}</div></div>
                         {% endfor %}
                     </div>
                 </aside>

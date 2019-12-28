@@ -12,6 +12,11 @@ class HotelApi
             exit;
         }
       
+        if (!function_exists('socket_create')){
+            echo '{"status":"error","message":"Please enable sockets in your php.ini!"}';
+            exit;
+        }
+      
         $rconPort = Config::apiPort;
         $rconHost = Config::apiHost;
       

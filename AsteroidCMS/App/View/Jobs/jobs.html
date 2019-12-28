@@ -7,14 +7,23 @@
         <a href="{{path}}/jobs/applications" class="tab">{{locale.applications}}</a>
     </div>
     <h2>{{locale.available_applications}}</h2>
-    <article class="default-section job-offer flex-container flex-vertical-center">
+    <article class="default-section job-offer flex-container flex-vertical-center" style="padding: 15px">
         <div class="offer-description">
             <h4>{{locale.buildteam}}</h4>
             {{locale.buildteam_desc}}
         </div>
         <div class="offer-button">
             <a href="{{path}}/jobs/apply" class="rounded-button brown">{{locale.react}}</a>
+      </div>
+    </article>
+    <article class="default-section job-offer flex-container flex-vertical-center" style="padding: 15px">
+        <div class="offer-description">
+            <h4>{{locale.buildteam}}</h4>
+            {{locale.buildteam_desc}}
         </div>
+        <div class="offer-button">
+            <a href="{{path}}/jobs/apply" class="rounded-button brown">{{locale.react}}</a>
+      </div>
     </article>
 </div>
 {% endblock %}

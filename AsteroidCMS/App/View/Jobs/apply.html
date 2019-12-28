@@ -3,7 +3,8 @@
 {% block body %}
 <div class="page-content">
     <article class="default-section job-offer-apply">
-        <h3 class="aside-title">{{locale.title}}</h3>
+        <div class="aside-title-content">{{locale.title}}</div>
+        <div class="aside-content">
         {{locale.content_1}}
         <br><br>
         {{locale.content_2}}
@@ -93,6 +94,7 @@
                 <button type="submit" class="rounded-button brown">{{locale.send}}</button>
             </p>
         </form>
+      </div>
     </article>
 </div>
 {% endblock %}

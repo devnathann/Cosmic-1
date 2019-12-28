@@ -25,8 +25,8 @@ class Routes extends Router
 
             Router::get('/assets/js/web/user_settings.js', 'Home\Index@configuration');
 
-            Router::get('/', 'Home\Index@index')->setName('index.home')->addMiddleware(CacheMiddleware::class);
-            Router::get('/home', 'Home\Index@index')->addMiddleware(CacheMiddleware::class);
+            Router::get('/', 'Home\Index@index')->setName('index.home');
+            Router::get('/home', 'Home\Index@index');
             Router::get('/lost', 'Home\Lost@index')->setName('lost');
             Router::get('/disconnect', 'Home\Lost@index')->setName('index.home');
             Router::get('/games/ranking', 'Games\Ranking@index');
@@ -42,6 +42,7 @@ class Routes extends Router
             Router::post('/profile/search', 'Home\Profile@search');
           
             Router::get('/assets/js/web/web.locale.js', function () {
+                header('Content-Type: application/javascript');
                 return 'var Locale = ' . json_encode(Locale::get('website/javascript', true), true) . '';
             });
 
@@ -89,6 +90,7 @@ class Routes extends Router
 
 
                 Router::get('/jobs', 'Jobs\Jobs@index');
+                Router::get('/jobs/apply', 'Jobs\Apply@index');
 
                 Router::get('/api/player/count', 'Client\Client@count');
               
