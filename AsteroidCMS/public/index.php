@@ -1,7 +1,9 @@
 <?php
-date_default_timezone_set('Europe/Amsterdam');
+use App\Config;
+use Core\Routes;
+use Core\QueryBuilder;
 
-if (file_exists(__DIR__ . '/../vendor/usmanhalalit/') && file_exists(__DIR__ . '/../vendor/twig/')) {
+if (file_exists(__DIR__ . '/../vendor/usmanhalalit/') && file_exists(__DIR__ . '/../vendor/twig/') || !file_exists(__DIR__ . '/../App/Config.php')) {
     if (!file_exists(__DIR__ . '/uploads/')) {
         mkdir(__DIR__ . '/uploads/', 0777, true);
     } elseif (!file_exists(__DIR__ . '/tmp/')) {
@@ -16,25 +18,28 @@ if (file_exists(__DIR__ . '/../vendor/usmanhalalit/') && file_exists(__DIR__ . '
 
 include __DIR__ . '/../Core/Helper.php';
 
-use App\Config;
-use Core\Routes;
+if(!file_exists(__DIR__ . '/../App/Config.php')) {
+    $copy = copy(\App\Models\Install::$tmp, \App\Models\Install::$path);
+    if($copy) {
+        redirect('/');
+    }
+}
 
-if(Config::debug)
+if(Config::debug) {
     ini_set("display_errors", 1);
+}
 
 /**
  *  Set session
  */
+
 session_start();
 
 /**
  *  Set QueryBuilder
  */
 
-
-use Core\QueryBuilder;
 new Querybuilder;
-
 new Config;
 
 /**

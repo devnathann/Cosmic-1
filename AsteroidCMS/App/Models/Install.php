@@ -83,6 +83,21 @@ class Install {
           if ($conn->query($query) !== true) {
               echo $conn->error;
           }
+      
+          $query = "INSERT INTO users_currency (user_id, type, amount) VALUES ('" . $inserted_id . "', '0', '1000')";
+          if ($conn->query($query) !== true) {
+              echo $conn->error;
+          }
+      
+          $query = "INSERT INTO users_currency (user_id, type, amount) VALUES ('" . $inserted_id . "', '5', '1000')";
+          if ($conn->query($query) !== true) {
+              echo $conn->error;
+          }
+      
+          $query = "INSERT INTO users_currency (user_id, type, amount) VALUES ('" . $inserted_id . "', '103', '1000')";
+          if ($conn->query($query) !== true) {
+              echo $conn->error;
+          }
 
           return true;
     }
