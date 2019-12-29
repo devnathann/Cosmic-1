@@ -22,7 +22,7 @@ class Config
 
     const shortName = '';
     const siteName = '';
-    const language = 'NL';
+    const language = 'EN';
     
     const clientHost = '';
     const clientPort = 0;
