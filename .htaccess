@@ -1,7 +1,7 @@
 RewriteEngine on
 RewriteCond %{REQUEST_URI} !AsteroidCMS/public/
 
-RewriteCond %{HTTPS} !=on
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTPS} !=off
+RewriteRule ^ http://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 RewriteRule (.*) /AsteroidCMS/public/$1 [L]
