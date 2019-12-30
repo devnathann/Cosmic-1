@@ -12,9 +12,9 @@ $GLOBALS['language'] = array (
             
             'nav_shop'              => 'shop',
             'nav_buy_points'        => 'Purchase GOTW-Points',
-            'nav_buy_club'          => 'Purchase Leet Club',
+            'nav_buy_club'          => 'Purchase Asteroid Club',
             'nav_purchasehistory'   => 'Purchase history',
-            'nav_changename'        => 'Change Leetname',
+            'nav_changename'        => 'Change Asteroidname',
             
             'nav_highscores'        => 'Highscores',
           
@@ -54,7 +54,7 @@ $GLOBALS['language'] = array (
             'header_to'             => 'To',
             
             'footer_helptool'       => 'Help Tool',
-            'footer_rules'          => 'The Leet Rules',
+            'footer_rules'          => 'The Asteroid Rules',
             'footer_terms'          => 'Terms and Conditions',
             'footer_privacy'        => 'Privacy declaration',
             'footer_cookies'        => 'Cookie policy',
@@ -75,9 +75,9 @@ $GLOBALS['language'] = array (
             'web_dialog_validate'                           => 'Validate',
             'web_dialog_confirm'                            => 'Confirm your choice',
             
-            'web_hotel_backto'                              => 'Back to Leet Hotel',
+            'web_hotel_backto'                              => 'Back to Asteroid Hotel',
             
-            'web_fill_pincode'                              => 'Enter the pin code that you specified when creating the extra security on your account. Well, I forgot this one? Then contact us via the Leet Help Tool',
+            'web_fill_pincode'                              => 'Enter the pin code that you specified when creating the extra security on your account. Well, I forgot this one? Then contact us via the Asteroid Help Tool',
             'web_twostep'                                   => 'Two-step authorization!',
             'web_login'                                     => 'You must be logged in to report this message!',
             'web_loggedout'                                 => 'Logged out :(',
@@ -104,7 +104,7 @@ $GLOBALS['language'] = array (
             
             'web_page_settings_namechange_request'          => 'Request',
             'web_page_settings_namechange_not_available'    => 'Not available',
-            'web_page_settings_namechange_choose_name'      => 'Choose Leetname',
+            'web_page_settings_namechange_choose_name'      => 'Choose Asteroidname',
             
             'web_page_settings_verification_oops'           => 'Oops...',
             'web_page_settings_verification_fill_password'  => 'Enter your password!',
@@ -201,8 +201,8 @@ $GLOBALS['language'] = array (
             'load_more'   => 'View more photos'
         ),
         'community_staff' => array (
-            'title'       => 'How do I become a Leet Staff?',
-            'content_1'   => 'Of course everyone dreams of such a place as a Leet Staff member, but unfortunately this is not for everyone. To become a Leet Staff you must apply.',
+            'title'       => 'How do I become a Asteroid Staff?',
+            'content_1'   => 'Of course everyone dreams of such a place as a Asteroid Staff member, but unfortunately this is not for everyone. To become a Asteroid Staff you must apply.',
             'content_2'   => 'This is only possible at times when we have vacancies, when we have this, this is mentioned in the news.'
         ),
         
@@ -228,7 +228,7 @@ $GLOBALS['language'] = array (
             'request_react'             => 'React',
             'request_description'       => 'Description',
             'request_react_on_ticket'   => 'React on ticket',
-            'request_contact'           => 'Contact Leet',
+            'request_contact'           => 'Contact Asteroid',
             'request_contact_help'      => 'You can contact us by opening a new ticket.',
             'request_new_ticket'        => 'New ticket',
             'request_subject'           => 'Subject',
@@ -251,9 +251,9 @@ $GLOBALS['language'] = array (
             'friends_online'         => 'Online friends',
             'now_in'                 => 'Now in',
             'latest_news'            => 'Latest news',
-            'latest_facts'           => 'The latest facts within Leet!',
+            'latest_facts'           => 'The latest facts within Asteroid!',
             'popular_rooms'          => 'Popular rooms',
-            'popular_rooms_label'    => 'Know which rooms are trending within Leet!',
+            'popular_rooms_label'    => 'Know which rooms are trending within Asteroid!',
             'popular_no_rooms'       => 'There is nobody inside our Hotel!!',
             'goto_room'              => 'Goto room',
             'popular_groups'         => 'Popular groups',
@@ -319,17 +319,17 @@ $GLOBALS['language'] = array (
             'month'                 => 'Month',
             'year'                  => 'Year',
             'birthdate_help'        => 'We will need this information to restore your account in case you lose access.',
-            'found'                 => 'How did you find Leet Hotel?',
+            'found'                 => 'How did you find Asteroid Hotel?',
             'found_choose'          => 'Make a choice...',
             'found_choose_1'        => 'Google',
             'found_choose_2'        => 'By a friend',
             'found_choose_3'        => 'By another game',
             'found_choose_4'        => 'By Facebook',
             'found_choose_5'        => 'Other',
-            'create_user'           => 'Create your Leet!',
-            'username'              => 'Leetname',
-            'username_fill'         => 'Leetname...',
-            'username_help'         => 'Your unique name in Leet Hotel.',
+            'create_user'           => 'Create your Asteroid!',
+            'username'              => 'Asteroidname',
+            'username_fill'         => 'Asteroidname...',
+            'username_help'         => 'Your unique name in Asteroid Hotel.',
             'sex'                   => 'Sex',
             'male'                  => 'Boy',
             'female'                => 'Girl',
@@ -339,14 +339,14 @@ $GLOBALS['language'] = array (
         /*     App/View/Jobs     */
         'apply' => array (
             'title'               => 'React on the invoice',
-            'content_1'           => 'Thank you for your interest in Leet Hotel and for responding to the vacancy.',
+            'content_1'           => 'Thank you for your interest in Asteroid Hotel and for responding to the vacancy.',
             'content_2'           => 'Try to answer the questionnaire as accurately as possible.',
             'description'         => 'Job description',
             'question_name'       => 'What\'s your name?',
             'question_age'        => 'How old are you?',
             'question_why'        => 'Why do you think you might be suitable?',
             'question_time'       => 'How many hours are you online?',
-            'question_time_help'  => 'Tell us how many hours you spend online a day at Leet Hotel.',
+            'question_time_help'  => 'Tell us how many hours you spend online a day at Asteroid Hotel.',
             'monday'              => 'Monday',
             'tuesday'             => 'Tuesday',
             'wednesday'           => 'Wednesday',
@@ -369,9 +369,9 @@ $GLOBALS['language'] = array (
         /*     App/View/Password     */
         'password_claim' => array (
             'title'                 => 'Forgot your password?',
-            'content_1'             => 'Enter your Leetname and e-mailaddress below and we will send you a link by e-mail to change your password.',
+            'content_1'             => 'Enter your Asteroidname and e-mailaddress below and we will send you a link by e-mail to change your password.',
             'content_2'             => 'Don\'t do this if someone asks you to do this!',
-            'username'              => 'Leetname',
+            'username'              => 'Asteroidname',
             'email'                 => 'E-mailadress',
             'send'                  => 'Send e-mail',
             'wrong_page'            => 'False alarm!',
@@ -392,7 +392,7 @@ $GLOBALS['language'] = array (
             'password'       => 'Change password',
             'verification'   => 'Set verification',
             'email'          => 'Change e-mailadress',
-            'namechange'     => 'Change Leetname',
+            'namechange'     => 'Change Asteroidname',
             'shop_history'   => 'Purchase history'
         ),
         'settings_email' => array (
@@ -404,10 +404,10 @@ $GLOBALS['language'] = array (
             'save'            => 'Save'
         ),
         'settings_namechange' => array (
-            'title'           => 'Change Leetname',
-            'help_1'          => 'Do you want to change your Leetname? Which can! This costs',
+            'title'           => 'Change Asteroidname',
+            'help_1'          => 'Do you want to change your Asteroidname? Which can! This costs',
             'help_2'          => 'and will be debited immediately after your request. Once your name has been changed we cannot reverse it! So make sure you think carefully about your decision!',
-            'fill_username'   => 'Leetname...',
+            'fill_username'   => 'Asteroidname...',
             'request'         => 'Request'
         ),
         'settings_password' => array (
@@ -423,7 +423,7 @@ $GLOBALS['language'] = array (
         'settings_preferences' => array (
             'title'               => 'My preferences',
             'follow_title'        => 'Follow function - who can follow you?' ,
-            'follow_label'        => 'I don\'t want Leet\'s to follow me',
+            'follow_label'        => 'I don\'t want Asteroid\'s to follow me',
             'friends_title'       => 'Friend requests',
             'friends_label'       => 'Allow friendship requests?',
             'room_title'          => 'Room invites',
@@ -447,7 +447,7 @@ $GLOBALS['language'] = array (
             'pincode_label'         => 'Put a pincode on your account as extra security, with this you ensure better protection of your account against hackers.',
             'fill_pincode'          => 'Enter your pincode',
             'generate_auth'         => 'Code generation by 2FA',
-            'generate_auth_label'   => 'This method is the most reliable. It links your Leet account to an authentication application (Google Authenticator) on your phone. When you sign up, all you have to do is enter the code generated by your app.',
+            'generate_auth_label'   => 'This method is the most reliable. It links your Asteroid account to an authentication application (Google Authenticator) on your phone. When you sign up, all you have to do is enter the code generated by your app.',
             'link_account'          => 'Link your account',
             'link_account_label'    => 'To link your account, simply scan this QR code with your application and then click save to validate this change.',
             'save'                  => 'Save'
@@ -456,23 +456,23 @@ $GLOBALS['language'] = array (
         /*     App/View/Shop     */
         'shop_club' => array (
             'club_benefits'       => 'Club benefits',
-            'club_buy'            => 'Purchase Leet Club',
+            'club_buy'            => 'Purchase Asteroid Club',
             'unlimited'           => 'Unlimited',
             'more_information'    => 'More information',
             'content_1'           => 'Do you have a question or problem with a purchase?',
             'content_2'           => 'Do not hesitate to contact customer service via the',
-            'help_tool'           => 'Leet Help Tool',
-            'random_club_users'   => 'Random Leet Club members'
+            'help_tool'           => 'Asteroid Help Tool',
+            'random_club_users'   => 'Random Asteroid Club members'
         ),
         'shop_history' => array (
             'buy_history'         => 'Purchase history',
             'product'             => 'Product',
             'date'                => 'Date',
             'buy_history_empty'   => 'You do not have a purchase history yet.',
-            'buy_club'            => 'Purchase Leet Club',
+            'buy_club'            => 'Purchase Asteroid Club',
             'content_1'           => 'Do you have a question or problem with a purchase?',
             'content_2'           => 'Do not hesitate to contact customer service via the',
-            'help_tool'           => 'Leet Help Tool'
+            'help_tool'           => 'Asteroid Help Tool'
         ),
         'shop_offers' => array (
             'back'              => 'Back',
@@ -490,9 +490,9 @@ $GLOBALS['language'] = array (
             'more_information'  => 'More information',
             'content_1'         => 'Do you have a question or problem with a purchase?',
             'content_2'         => 'Do not hesitate to contact customer service via the',
-            'help_tool'         => 'Leet Help Tool',
+            'help_tool'         => 'Asteroid Help Tool',
             'not_logged'        => 'Oops! You\'re not logged in.',
-            'have_to_login'     => 'You must be logged in to visit the Leet Shop.',
+            'have_to_login'     => 'You must be logged in to visit the Asteroid Shop.',
             'click_here'        => 'Click here',
             'to_login'          => 'to log in.'
         )
