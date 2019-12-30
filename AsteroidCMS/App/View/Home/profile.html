@@ -108,7 +108,7 @@
                     {% if data.player.badges %}
                         {% for row in data.player.badges %}
                         <div class="item-container">
-                            <div class="item-icon pixelated" style="background-image: url({{cpath}}/library/c_images/album1584/{{row.badge_code}}.gif);"></div>
+                            <div class="item-icon pixelated" style="background-image: url({{cpath}}/c_images/album1584/{{row.badge_code}}.gif);"></div>
                         </div>
                         {% endfor %}
                     {% else %}
@@ -151,7 +151,7 @@
                     {% if data.player.groups %}
                         {% for row in data.player.groups %}
                         <a href="{{path}}/hotel?room={{row.room_id}}" class="item-container">
-                            <div class="item-icon pixelated" style="background-image: url({{fpath}}/badge/{{row.badge}});"></div>
+                            <div class="item-icon pixelated" style="background-image: url({{cpath}}/c_images/Badgeparts/generated/{{row.badge}}.png);"></div>
                             <div class="item-name">{{row.name}}</div>
                         </a>
                         {% endfor %}
@@ -173,7 +173,7 @@
                     {% if data.player.rooms %}
                         {% for row in data.player.rooms %}
                         <a href="{{path}}/hotel?room={{row.id}}" class="item-container">
-                            <div class="item-icon pixelated" style="background-image: url({{cpath}}/library/camera/thumbnails/{{row.id}}.png);"></div>
+                            <div class="item-icon pixelated" style="background-image: url({{cpath}}/camera/thumbnails/{{row.id}}.png);"></div>
                             <div class="item-name">{{row.name}}</div>
                         </a>
                         {% endfor %}

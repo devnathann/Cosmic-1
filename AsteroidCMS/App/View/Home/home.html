@@ -29,7 +29,21 @@
                         </div>
                     </div>
                 </article>
+              {% endif %}
+              
+                {% if player and random is not empty %}
+                <div class="myfriends-online">
+                    {% for user in random %}
+                      <div class="tooltip">
+                      <a href="{{path}}/profile/{{user.username}}">
+                        <img src="{{fpath}}/avatarimage?figure={{user.look}}&amp;size=m&amp;direction=3&amp;head_direction=3&amp;gesture=sml&amp;headonly=1">
+                      </a><span class="tooltip-text">{{user.username}}</span>
+                      </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
 
+              {% if player %}
                 {% if data.friends is not empty %}
                 <article class="default-section">
                     <div class="aside-title-content">{{locale.friends_online}}</div>
@@ -44,27 +58,6 @@
                             <div class="username">{{friends.username}}</div>
                         </div>
                         {% endfor %}
-                    </div>
-                </article>
-                {% endif %}
-
-                {% if data.campaigns is not empty %}
-                <article class="default-section">
-                    <div class="aside-title-content">{{locale.now_in}} {{hotelname}}</div>
-                    <div class="aside-content">
-                        <div class="campaigns">
-                            {% for row in data.campaigns %}
-                            <div class="item">
-                                <a href="{{row.link}}" {% if row.target == "_blank" %} target="{{row.target}}"{% endif %}>
-                                    <div class="img" style="background-image:url({{row.image}})"></div>
-                                    <div class="details">
-                                        <div class="title">{{row.title}}</div>
-                                        <div class="desc">{{row.description}}</div>
-                                    </div>
-                                </a>
-                            </div>
-                            {% endfor %}
-                        </div>
                     </div>
                 </article>
                 {% endif %}
@@ -92,6 +85,58 @@
             </div>
             {% endif %}
           
+            <div class="right-side" style="margin-bottom: 7px;">
+                <aside class="default-section">
+                    <div class="aside-title-content">{{locale.popular_groups}}</div>
+                    <div class="aside-desc-content">{{locale.popular_groups_label}}</div>
+
+                    <style>
+                        #popularGroups {
+                            width: 100%;
+                            height: 100%;
+                            border: 1px solid rgba(0, 0, 0, 0.2);
+                            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+                            border-radius: 5px;
+                            float: left;
+                            margin-bottom: 10px;
+                            padding-left: 60px;
+                            padding-top: 5px;
+                            font-size: 13px;
+                            color: #000;
+                            text-decoration: none;
+                        }
+
+                        #popularGroups .countGroupMembers {
+                            float: right;
+                            width: 50px;
+                            height: 14px;
+                            line-height: 14px;
+                            background: url({{path}}/assets/images/web/pages/community/groups/members.png) 0% 50% no-repeat;
+                            padding-left: 20px;
+                            font-size: 11px;
+                        }
+
+                        #popularGroups .groupName {
+                            font-weight: 400;
+                        }
+
+                        #popularGroups .groupDesc {
+                            color: gray;
+                            font-size: 10px;
+                            height: 29px;
+                            overflow: hidden;
+                        }
+                    </style>
+                    <div class="aside-content">
+                        {% if groups is empty %}
+                            {{locale.popular_no_groups}}
+                        {% endif %}
+                        {% for row in groups %}
+                            <div id="popularGroups" style="background: url('{{cpath}}/c_images/Badgeparts/generated/{{row.badge}}.png') 10px 50% no-repeat;"><div class="countGroupMembers">{{row.Total}}</div><div class="groupName">{{row.name}}</div><div class="groupDesc">{{row.description}}</div></div>
+                        {% endfor %}
+                    </div>
+                </aside>
+            </div>
           
             <div class="left-side">
                 <aside class="default-section">
@@ -189,62 +234,8 @@
                         </table>
                     </div>
                     {% endif %}
-                    
                 </aside>
             </div>
-            <div class="right-side" style="margin-bottom: 7px;">
-                <aside class="default-section">
-                    <div class="aside-title-content">{{locale.popular_groups}}</div>
-                    <div class="aside-desc-content">{{locale.popular_groups_label}}</div>
-
-                    <style>
-                        #popularGroups {
-                            width: 100%;
-                            height: 100%;
-                            border: 1px solid rgba(0, 0, 0, 0.2);
-                            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
-                            border-radius: 5px;
-                            float: left;
-                            margin-bottom: 10px;
-                            padding-left: 60px;
-                            padding-top: 5px;
-                            font-size: 13px;
-                            color: #000;
-                            text-decoration: none;
-                        }
-
-                        #popularGroups .countGroupMembers {
-                            float: right;
-                            width: 50px;
-                            height: 14px;
-                            line-height: 14px;
-                            background: url({{path}}/assets/images/web/pages/community/groups/members.png) 0% 50% no-repeat;
-                            padding-left: 20px;
-                            font-size: 11px;
-                        }
-
-                        #popularGroups .groupName {
-                            font-weight: 400;
-                        }
-
-                        #popularGroups .groupDesc {
-                            color: gray;
-                            font-size: 10px;
-                            height: 29px;
-                            overflow: hidden;
-                        }
-                    </style>
-                    <div class="aside-content">
-                        {% if groups is empty %}
-                            {{locale.popular_no_groups}}
-                        {% endif %}
-                        {% for row in groups %}
-                            <div id="popularGroups" style="background: url('{{cpath}}/library/c_images/Badgeparts/generated/{{row.badge}}.png') 10px 50% no-repeat;"><div class="countGroupMembers">{{row.count}}</div><div class="groupName">{{row.name}}</div><div class="groupDesc">{{row.description}}</div></div>
-                        {% endfor %}
-                    </div>
-                </aside>
-            </div>
-            
             <div class="clear"></div>
             <br />
             {% if player is empty %}

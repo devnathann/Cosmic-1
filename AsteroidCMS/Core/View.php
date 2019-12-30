@@ -55,7 +55,7 @@ class View
         if ($twig === null) {
             $loader = new FilesystemLoader(dirname(__DIR__) . '/' . Config::view);
             $twig = new Environment($loader, array(
-                'debug' => true
+                'debug' => Config::debug
             ));
 
             $twig->addExtension(new DebugExtension());
@@ -63,7 +63,7 @@ class View
             $twig->addExtension(new \Library\Bbcode(new \ChrisKonnertz\BBCode\BBCode()));
 
             $twig->addGlobal('path', Config::path);
-            $twig->addGlobal('cpath', Config::imgPath);
+            $twig->addGlobal('cpath', Config::swfPath);
             $twig->addGlobal('fpath', Config::figurePath);
             $twig->addGlobal('domain', Config::domain);
 
@@ -83,7 +83,6 @@ class View
                 $twig->addGlobal('currencys', Player::getCurrencys(request()->player->id));
                 $twig->addGlobal('online_count', Core::getOnlineCount());
 
-                // For all users with housekeeping access
                 if (request()->player->rank >= Config::minRank) {
 
                     $twig->addGlobal('alert_messages', Admin::getAlertMessages());
@@ -97,7 +96,7 @@ class View
             }
         }
 
-        if(Config::cacheEnabled && static::$cache === null) { 
+        if(static::$cache === null && !empty($cacheTime)) { 
             \App\Middleware\CacheMiddleware::set($template, $args, $cacheTime);
         }
 

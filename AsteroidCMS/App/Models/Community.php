@@ -154,13 +154,18 @@ class Community
         return QueryBuilder::table('website_feeds')->insert($data);
     }
 
-    public static function getPopularRooms(int $limit = 10, $offset = null)
+    public static function getPopularRooms($limit = 10, $offset = null)
     {
         return QueryBuilder::table('rooms')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->offset($offset)->limit($limit)->orderBy('users', 'desc')->get();
     }
 
-    public static function getPopularGroups(int $limit = 10, $offset = null)
+    public static function getPopularGroups($limit = 10, $offset = null)
     {
-        return QueryBuilder::query('SELECT (select id from guilds where id = id) as `id`, (select `name` from guilds where id = id) as `name`, (select `description` from guilds where id = id) as `description`, (select `badge` from guilds where id = id) as `badge` ,count(id) as count FROM guilds_members GROUP BY guild_id ORDER BY count(guild_id) DESC LIMIT '.$limit)->get();
+        return QueryBuilder::query("SELECT guilds.name, guilds.badge, guilds.description, guilds_members.id, COUNT(guild_id) AS Total FROM guilds_members JOIN guilds ON guilds_members.guild_id = guilds.id GROUP BY guilds_members.guild_id ORDER BY Total DESC LIMIT " . $limit)->get();
+    }
+  
+    public static function getRandomUsers($limit)
+    {
+        return QueryBuilder::query('SELECT username, look FROM users ORDER BY RAND() LIMIT  ' . $limit)->get();
     }
 }

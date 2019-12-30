@@ -25,22 +25,20 @@ class Client
     {
         $this->data = new stdClass();
 
-        if(Config::vpnBlock) {
-            $reader = new Reader(__DIR__. Config::vpnLocation);
+        $reader = new Reader(__DIR__. Config::vpnLocation);
 
-            try {
-                $record = $reader->asn(\App\Core::getIpAddress());
-            } catch (AddressNotFoundException $e) {
-            } catch (InvalidDatabaseException $e) {
+        try {
+            $record = $reader->asn(\App\Core::getIpAddress());
+        } catch (AddressNotFoundException $e) {
+        } catch (InvalidDatabaseException $e) {
 
-            }
+        }
 
-            $asn = Ban::getNetworkBanByAsn($record->autonomousSystemNumber);
+        $asn = Ban::getNetworkBanByAsn($record->autonomousSystemNumber);
 
-            if ($asn) {
-                View::renderTemplate('Client/vpn.html', ['asn' => $asn->asn, 'type' => 'vpn']);
-                exit;
-            }
+        if ($asn) {
+            View::renderTemplate('Client/vpn.html', ['asn' => $asn->asn, 'type' => 'vpn']);
+            exit;
         }
 
         $OS = substr($_SERVER['HTTP_USER_AGENT'], -2);

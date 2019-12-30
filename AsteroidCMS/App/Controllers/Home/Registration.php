@@ -47,8 +47,9 @@ class Registration
         $player = Player::getDataByUsername($username, array('id', 'password', 'rank'));
       
         if(Config::currencys) {
-            foreach(Config::currencys as $type) {
-                Player::createCurrencys($player->id, $type);
+            foreach(Config::currencys as $column => $type) {
+                Player::createCurrency($player->id, $type);
+                Player::updateCurrency($player->id, $type, Config::freeCurrency[$column]);
             }
         }
       

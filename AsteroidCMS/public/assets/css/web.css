@@ -6,6 +6,29 @@ openBtn {
     cursor: pointer;
 }
 
+.tooltip {
+  position: relative;
+  display: inline-block;
+  
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+}
+
 .openBtn:hover {
     background: #bbb;
 }
@@ -2223,6 +2246,20 @@ input:-webkit-autofill{
 .page-container[data-page = "home"] .page-content .articles-container .article-container {
     width: 33.33%;
     float: left;
+}
+
+.page-container[data-page ^= "home"] .myfriends-online {
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    padding: 10px 0;
 }
 
 .page-container[data-page = "home"] .page-content .articles-container .article-container .article-content {

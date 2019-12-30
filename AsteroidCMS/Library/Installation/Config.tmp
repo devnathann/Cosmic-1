@@ -3,7 +3,10 @@ namespace App;
 
 class Config
 {
-    /* DB config */
+    /**
+     * Database settings
+     */
+  
     const driver = 'mysql';
     const host = '';
     const username = '';
@@ -13,63 +16,86 @@ class Config
     const collation = 'collation';
     const prefix = '';
 
-    const installation = true;
+    /**
+     * Emulator settings
+     */
   
-    /* Web config */
-    const debug = false;
-    const vpnBlock = true;
-    const vpnLocation = '/../../../ASN.mmdb';
+    const clientHost = '';
+    const clientPort = 0;
+  
+    /**
+     * Website settings
+     */
+
+    const domain = '';
+    const path = '';
+    const swfPath = '';
+    const figurePath = '';
 
     const shortName = '';
     const siteName = '';
     const language = 'EN';
-    
-    const clientHost = '';
-    const clientPort = 0;
-
-    const domain = '';
-    const path = '';
-    const imgPath = '';
-    const figurePath = '';
-
-    const view = 'Library/Installation/Views';
-
+  
     const SECRET_TOKEN = '';
-
-    /* Admin settings */
-    const minRank = 5;
-    const maxRank = 7;
+  
+    /**
+     * SHOP: When users want to buy VIP in our shop.
+     * Controller: Shop/club@index
+     */
+  
     const vipRank = 2;
     const vipPrice = 1000;
 
-    /* Cache config */
-    const cacheEnabled = true;
-    const cacheTime = 3600;
-
-    /* Captcha */
+    /**
+     * recaptcha v2: Create a inisible reCAPTCHA V2 @google website
+     * users can't register when you leave this blank.
+     */
+  
     const publicKey = '';
     const secretKey = '';
 
-    /* Google Auth config */
-    const authEnabled = false;
-
-    /* Mail settings */
+    /**
+     * Mail: For sending emails when someone has forgotten their password
+     */
+  
     const mailHost      = null;
     const mailFrom      = null;
     const mailUser      = null;
     const mailPass      = null;
     const mailPort      = null;
 
-    /* Register settings */
-    const credits = 0;
-    const pixels = 0;
-    const points = 0;
+    /**
+     * Register: Credits that the user receives when creating an account
+     * int @amount
+     */
   
-    /* Currency settings */
-    const currencys = 0;
-    const payCurrency = 0;
+    const credits = 1000;
   
-    const homeRoom = 0;
+    /**
+     * Currencys: Register users currencys type's for arcturus
+     * param @name, int @type
+     */
+  
+    const currencys = null;
+  
+    /**
+     * Currencys: User recieve free currency when register
+     * param @name, int @amount
+     */
+  
+    const freeCurrency = null;
+
+    /**
+     * Currencys: Which currency type user paid for club donation 
+     * param @type
+     */
+      
+    const payCurrency = 103;
+  
+    /**
+     * Register: Basic looks user can choose when they create an account
+     * param @array
+     */
 
     const look = array(
         /* Males */
@@ -88,8 +114,24 @@ class Config
     );
     
 
-    /* Asteroid Api */
+    /**
+     * RCON: Must be enabled! RCON otherwise the housekeeping will not work fully.
+     */
+  
     const apiHost = '';
     const apiPort = 0;
     const apiEnabled = true;
+  
+    /* DONT CHANGE  */
+  
+    const minRank = 5;
+    const maxRank = 7;
+  
+    const debug = true;
+    const view = 'Library/Installation/Views';
+  
+    const installation = true;
+  
+    const vpnLocation = '/../../../ASN.mmdb';
 }
+

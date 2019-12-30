@@ -23,7 +23,6 @@ function WebPageHomeInterface(main_page)
         var self = this;
         var page_container = this.main_page.get_page_container();
         
-        console.log(Locale)
         function mouseoverTitle()
         {
             $('.article-container').mouseenter(function () {

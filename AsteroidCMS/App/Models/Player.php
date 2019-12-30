@@ -73,8 +73,6 @@ class Player
                 'mail' => $data->email,
                 'account_created' => time(),
                 'credits' => Config::credits,
-                'points' => Config::points,
-                'pixels'  => Config::pixels,
                 'look' => $data->figure,
                 'account_day_of_birth' => strtotime($data->birthdate_day . '-' . $data->birthdate_month . '-' . $data->birthdate_year),
                 'gender' => $data->gender == 'male' ? 'M' : 'F',
@@ -84,12 +82,12 @@ class Player
             );
 
             $user_id = QueryBuilder::table('users')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->insert($data);
-            QueryBuilder::table('users_settings')->insert(array('user_id' => $user_id, 'home_room' => Config::homeRoom));
+            QueryBuilder::table('users_settings')->insert(array('user_id' => $user_id, 'home_room' => '0'));
 
             return $user_id;
     }
   
-    public static function createCurrencys($user_id, $type)
+    public static function createCurrency($user_id, $type)
     {
         return QueryBuilder::table('users_currency')->insert(array('user_id' => $user_id, 'type' => $type, 'amount' => 0)); 
     }
@@ -116,11 +114,15 @@ class Player
     {
         return QueryBuilder::query('SELECT users.look, users.username FROM messenger_friendships JOIN users ON messenger_friendships.user_one_id = users.id WHERE user_two_id = "' . $user_id .'"  ORDER BY RAND() LIMIT  ' . $limit)->get();
     }
+  
+    public static function getMyOnlineFriends($user_id)
+    {
+        return QueryBuilder::query('SELECT users.look, users.username FROM messenger_friendships JOIN users ON messenger_friendships.user_one_id = users.id WHERE user_two_id = "' . $user_id .'" AND users.online > "0"')->get();
+    }
 
     public static function getGroups($user_id, $limit = 5)
     {
         return QueryBuilder::query('SELECT * FROM guilds WHERE user_id = "' . $user_id .'"  ORDER BY RAND() LIMIT  ' . $limit)->get();
-
     }
 
     public static function getRooms($player_id, $limit = 5)

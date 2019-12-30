@@ -121,7 +121,7 @@ class Home
             'SECRET_TOKEN'      => 'required|min:10',
             'domain'            => 'required',
             'path'              => 'required',
-            'imgPath'           => 'required',
+            'swfPath'           => 'required',
             'figurePath'        => 'required',
             'clientHost'        => 'required',
             'clientPort'        => 'required|numeric',

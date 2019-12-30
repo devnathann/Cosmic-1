@@ -21,27 +21,27 @@
           "client.reload.url": "{{path}}/home",
           "client.fatal.error.url": "{{path}}/home",
           "client.connection.failed.url": "{{path}}/home",
-          "external.override.texts.txt": "{{cpath}}/library/gamedata/external_flash_override_texts.txt?v={{revision}}",
-          "external.override.variables.txt": "{{cpath}}/library/gamedata/external_override_variables.txt?v={{revision}}",
-          "external.variables.txt": "{{cpath}}/library/gamedata/external_variables.txt?v={{revision}}",
-          "external.texts.txt": "{{cpath}}/library/gamedata/external_flash_texts.txt?v={{revision}}",
-          "external.figurepartlist.txt": "{{cpath}}/library/gamedata/figuredata.xml?v={{revision}}",
-          "flash.dynamic.avatar.download.configuration": "{{cpath}}/library/gamedata/figuremap.xml?v={{revision}}",
-          "productdata.load.url": "{{cpath}}/library/gamedata/productdata.txt?v={{revision}}",
-          "furnidata.load.url": "{{cpath}}/library/gamedata/furnidata.xml?v={{revision}}",
+          "external.override.texts.txt": "{{cpath}}/gamedata/external_flash_override_texts.txt?v={{revision}}",
+          "external.override.variables.txt": "{{cpath}}/gamedata/external_override_variables.txt?v={{revision}}",
+          "external.variables.txt": "{{cpath}}/gamedata/external_variables.txt?v={{revision}}",
+          "external.texts.txt": "{{cpath}}/gamedata/external_flash_texts.txt?v={{revision}}",
+          "external.figurepartlist.txt": "{{cpath}}/gamedata/figuredata.xml?v={{revision}}",
+          "flash.dynamic.avatar.download.configuration": "{{cpath}}/gamedata/figuremap.xml?v={{revision}}",
+          "productdata.load.url": "{{cpath}}/gamedata/productdata.txt?v={{revision}}",
+          "furnidata.load.url": "{{cpath}}/gamedata/furnidata.xml?v={{revision}}",
           "sso.ticket": "{{data.auth_ticket}}",
           "account_id": "{{player.id}}",
           "ads.domain": "",
           "processlog.enabled": "1",
           "client.starting": "Frank brengt je koffers naar je hotelkamer!",
-          "flash.client.url": "{{cpath}}/library/",
+          "flash.client.url": "{{cpath}}/",
           "flash.client.origin": "popup"
         };
     </script>
     <script type="text/javascript" src="{{path}}/assets/js/hotel/hotelapi.js?v={{revision}}"></script>
     <script type="text/javascript">
         var params = {
-            "base": "{{cpath}}/library/",
+            "base": "{{cpath}}/",
             "allowScriptAccess": "always",
             "menu": "false",
             "wmode": "opaque"
@@ -58,7 +58,7 @@
                 window.location = signoutUrl;
         };
 
-        swfobject.embedSWF('{{cpath}}/library/prodc6.swf?v=150', 'flash-container', '100%', '100%', '11.1.0', '{{path}}/assets/flash/expressInstall.swf', flashvars, params, null, null);
+        swfobject.embedSWF('{{cpath}}/prodc6.swf?v=150', 'flash-container', '100%', '100%', '11.1.0', '{{path}}/assets/flash/expressInstall.swf', flashvars, params, null, null);
     </script>
 
     <style>body{margin:0;background:#000;color:#7ecaee;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;font-family:Ubuntu,"Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;font-size:16px;font-variant-ligatures:common-ligatures;line-height:1.4;min-height:100vh;}.client-error{max-width:480px;}.client-error__title{text-align:center;}.client-error__flash{background-image:url('/web/client/flash/flashplayer.png');display:inline-block;height:39px;margin:12px 12px 0;width:158px;}h1,h2,h3,h4,h5,h6{color:#fff;font-family:"Ubuntu Condensed","Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;font-weight:400;margin:.6em 0;line-height:1.2;}h1,h2,h3,h4,h5{text-transform:uppercase;}p{margin:.75em 0;}a{color:#fff;cursor:pointer;outline:0;text-decoration:none;}</style>

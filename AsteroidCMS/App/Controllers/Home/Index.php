@@ -17,20 +17,25 @@ class Index
 {
     public function index()
     {       
-        $news = \App\Models\Community::getNews(6);
+        $news = Community::getNews(6);
         foreach ($news as $item) {
             $item->timestamp = Core::timediff($item->timestamp);
         }
 
-        $rooms = \App\Models\Community::getPopularRooms(10);
-        $groups = \App\Models\Community::getPopularGroups(7);
+        $rooms = Community::getPopularRooms(5);
+        $groups = Community::getPopularGroups(7);
+        
+        if(isset(request()->player)) {
+            $random = Player::getMyOnlineFriends(request()->player->id);
+        }
         
         View::renderTemplate('Home/home.html', [
             'title'     => !request()->player ? Locale::get('core/title/home') : request()->player->username,
             'page'      => 'home',
             'rooms'     => $rooms,
             'groups'    => $groups,
-            'news'      => $news
+            'news'      => $news,
+            'random'    => $random
         ], 10);
 
         return false;
