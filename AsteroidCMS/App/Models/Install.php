@@ -144,7 +144,7 @@ class Install {
             CREATE TABLE `website_alert_messages` (
               `id` int(11) NOT NULL,
               `title` varchar(50) NOT NULL DEFAULT '',
-              `message` varchar(150) NOT NULL DEFAULT 'Onacceptabel voor het Hotel Management'
+              `message` varchar(150) NOT NULL DEFAULT 'Unacceptable for the Hotel Management'
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT";
       
         if ($conn->query($alertMessages) !== true) {
@@ -153,14 +153,14 @@ class Install {
       
         $alertMessagesInsert = "
             INSERT INTO `website_alert_messages` (`id`, `title`, `message`) VALUES
-            (1, 'Taalgebruik', 'Let op je taalgebruik! Bij herhaling zul je worden verbannen.'),
-            (2, 'Voordoen als Leet Staff', 'Het voordoen als Leet Staff is tegen de Leet Regels. Bij herhaling zul je worden verbannen.'),
-            (3, 'Praten over Retro Hotels', 'Praten over Retro Hotels is tegen de Leet Regels! Bij Herhaling zul je worden verbannen.'),
-            (4, 'Vragen/weggeven van persoonlijke gegevens', 'Vragen/weggeven van persoonlijke gegevens is tegen de Leet Regels! Bij herhaling zul je worden verbannen.'),
-            (5, 'Vragen/weggeven van Social Media', 'Vragen/weggeven van snapchat, insta of andere Social Media is tegen de Leet Regels! Bij herhaling zul je worden verbannen.'),
-            (6, 'Lastigvallen / onacceptabel taalgebruik / gedrag', 'Lastigvallen / onacceptabel taalgebruik of gedrag is tegen de Leet Regels! Bij herhaling zul je worden verbannen.'),
-            (7, 'Lastigvallen', 'Val andere Leet\'s niet lastig! Bij herhaling zul je worden verbannen.'),
-            (8, 'Seksuele gesprekken/gedragingen', 'Seksuele gesprekken of gedragingen is tegen de Leet Regels! Bij herhaling zul je worden verbannen.')
+            (1, 'Use of language', 'Watch your language! You will be banned on repeated occasions.'),
+            (2, 'Act as Staff', 'Acting as Staff is against the rules. You will be banned on repeated occasions.'),
+            (3, 'Talking about retro hotels', 'Talking about retro hotels is against the rules! At repetition you will be banned.'),
+            (4, 'Requesting/giving away personal information', 'Asking/giving away personal data is against the rules! You will be banned on repeated occasions.'),
+            (5, 'Ask/give away Social Media', 'Ask/giving away snapchat, insta or other Social Media is against the rules! You will be banned on repeated occasions.'),
+            (6, 'Unacceptable language/behavior', 'Unacceptable language/behavior is against the rules! You will be banned on repeated occasions.'),
+            (7, 'Harassment', 'Don\'t bother other players! You will be banned on repeated occasions.'),
+            (8, 'Sexual conversations/behaviors', 'Sexual conversations or behaviors are against the rules! You will be banned on repeated occasions.')
         ";
         if ($conn->query($alertMessagesInsert) !== true) {
             self::rollback($conn->error);
@@ -179,28 +179,27 @@ class Install {
         $banAsnMessaages = "
             CREATE TABLE `website_ban_messages` (
               `id` int(11) NOT NULL,
-              `message` varchar(75) NOT NULL DEFAULT 'Onacceptabel voor het Hotel Management'
+              `message` varchar(75) NOT NULL DEFAULT 'Unacceptable for the Hotel Management'
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT";
         if ($conn->query($banAsnMessaages) !== true) {
             self::rollback($conn->error);
         }
         $banAsnMessagesInsert = "
             INSERT INTO `website_ban_messages` (`id`, `message`) VALUES
-            (1, 'Adverteren voor Retro Hotels'),
-            (2, 'Oplichten van een of meerdere Leet\'s'),
-            (3, 'Illegale activiteiten'),
-            (4, 'Haatzaaien/discriminatie'),
-            (5, 'Pedofiele activiteiten'),
-            (6, 'Vragen/weggeven van persoonlijke gegevens'),
-            (7, 'Vragen/weggeven van snapchat, insta of andere Social Media'),
-            (8, 'Lastigvallen / onacceptabel taalgebruik of gedrag'),
-            (9, 'Ordeverstoring'),
-            (10, 'Nadrukkelijk seksuele gedragingen'),
-            (11, 'Vragen/aanbieden van webscam seks of seksuele afbeeldingen'),
-            (12, 'Oplichten van een of meerdere Leet\'s'),
-            (13, 'Bedreigen van een of meerdere Leet\'s met ddos/hack/expose'),
-            (14, 'Voordoen als Leet Staff'),
-            (15, 'Leetnaam in strijd met de Leet Regels')
+            (1, 'Advertising for Retro Hotels'),
+            (2, 'Highlight one or more players'),
+            (3, 'Illegal activities'),
+            (4, 'Hate speech/discrimination'),
+            (5, 'Pedophile activities'),
+            (6, 'Requesting/giving away personal information'),
+            (7, 'Ask/giving away snapchat, insta or other Social Media'),
+            (8, 'Harassment/unacceptable language or behavior'),
+            (9, 'Order disturbance'),
+            (10, 'Embarrassing sexual behaviors'),
+            (11, 'Requesting/offering webscam sex or sexual images'),
+            (12, 'Threat of one or more players with ddos/hack/expose'),
+            (13, 'Act as Staff'),
+            (14, 'Username in violation of the rules')
         ";
         if ($conn->query($banAsnMessagesInsert) !== true) {
             self::rollback($conn->error);
@@ -217,15 +216,15 @@ class Install {
         }
         $banTypesInsert = "
             INSERT INTO `website_ban_types` (`id`, `seconds`, `message`, `min_rank`) VALUES
-            (1, 7200, '2 uur', 4),
-            (2, 14400, '4 uur', 4),
-            (3, 28800, '8 uur', 4),
-            (4, 43200, '12 uur', 4),
-            (5, 86400, '1 dag', 6),
-            (6, 259200, '3 dagen', 6),
+            (1, 7200, '2 hours', 4),
+            (2, 14400, '4 hours', 4),
+            (3, 28800, '8 hours', 4),
+            (4, 43200, '12 hours', 4),
+            (5, 86400, '1 day', 6),
+            (6, 259200, '3 days', 6),
             (7, 604800, '1 week', 6),
-            (8, 2629743, '1 maand', 6),
-            (9, 7889231, '3 maanden', 6),
+            (8, 2629743, '1 month', 6),
+            (9, 7889231, '3 months', 6),
             (10, 946707780, 'permanent', 6)
         ";
         if ($conn->query($banTypesInsert) !== true) {
@@ -243,7 +242,7 @@ class Install {
         }
         $webConfigInsert = "
             INSERT INTO `website_config` (`short_name`, `hotel_name`, `maintenance`, `revision`) VALUES
-            ('Leet', 'Leet Hotel', '0', '150')
+            ('Asteroid', 'Asteroid Hotel', '0', '150')
         ";
         if ($conn->query($webConfigInsert) !== true) {
             self::rollback($conn->error);
@@ -435,8 +434,8 @@ class Install {
             self::rollback($conn->error);
         }
         $webForumNewsq = "
-		      	INSERT INTO `website_news` (`id`, `slug`, `title`, `short_story`, `full_story`, `images`, `author`, `header`, `category`, `form`, `timestamp`, `hidden`) VALUES
-			        (1, 'welcome-to-asteroidcms', 'Welcome to AsteroidCMS', 'Curious about AsteroidCMS\'s functions? Then be sure to read this!', '<p>Hey you! Who the hell are you?! Are you using AsteroidCMS?!<br /><br />You managed to get Asteroid working!<br /><br />Our team has worked very hard on Asteroid to keep the installation as easy as possible. Asteroid has been specially developed with a new proprietary written Framework. So it\'s normal that you won\'t know how everything works yet, hence the installation in the beginning!<br /><br />Asteroid offers many functions, all of which are easy to use. Just think of adding currency ids, adding and editing furniture, managing the FAQ, managing and answering help tickets, VPN control, remote control (RCON), and much more!<br /><br />Since Asteroid already has the basic functions, you won\'t have to add anything yourself, but of course you can! Though you will have to learn the Framework first. We have thought about this as well. Our team has provided a documentation that will allow you to write new features in our Framework within minutes/hours/days/weeks! This depends on the skills you already have!<br /><br />Unfortunately Asteroid only works on Arcturus Morningstar, this means that you cannot set Asteroid to Plus Emulator/Comet Server or R63 Emulators. Now the question is, can I also use Asteroid on the normal Arcturus or upcoming Sirius Emulator? We advise you not to do this as some functions may differ between these emulators. If you don\'t want to use Arcturus Morningstar anyway, you\'ll have to convert Asteroid to the emulator you love!<br /><br />Asteroid is composed of about 42% JavaScript, 25.5% PHP, 17% HTML and 15.5% CSS. Now you will think, why is Asteroid almost half made of JavaScript? Asteroid wouldn\'t work without this JavaScript, because we made sure that you only need to load Asteroid once and you can control all functions without refresh! This also ensures that we can use a hotel that can stay open. This makes it easier to switch between website and hotel, but also to control the functions, since we can use notifications without refreshing the page and because of this your data is gone!<br /><br />Asteroid also has a shop and forum! In the shop you can buy call-credits via paypal and/or phone, and you can buy vip with call-credits! This can all be set via housekeeping. Because of the RCON system built into Asteroid, the user who buys call-credits or vip doesn\'t have to leave the hotel or log in. Everything happens automatically and you immediately receive your call-credits and/or vip! After the purchase the user can view their purchase / purchases through the purchase history page. The forum also offers multiple functions. You can create topics, respond to topics, like topics, report topics, pin messages, ... Members can ask questions or offer information that is useful for other members. The categories and so on can all be created/adjusted in the housekeeping.<br /><br />Asteroid also has a photo page. Here you can see all the nice pictures of members taken in the hotel. If you think there is a picture you really like, you can also give it a like. Or maybe a photo that is inappropriate does not belong on the page, you can report it and the team will delete it.<br /><br />With Asteroid we try to offer our members a nice environment. Because of the many features that Asteroid offers, this has certainly succeeded! You no longer need to communicate only through the hotel, but you can also do so through the forum, or if you have a try through the help tool. Parents will also be able to reach the team easily and they will gain more confidence in the hotel.<br /><br />Asteroid also owns a number of info pages. Just think of the general terms and conditions, the rules, a privacy statement, cookie policy and a guide for parents. All this to create the best playing experience for the members.<br /><br />Our team has also thought about the security of your account. You can use Google Authenticator. But what is that now? Google Authenticator provides a 6-digit code with which you can login to your account. This code is asked when your username and password are entered correctly. The code you get is changed every X number of seconds to ensure the security of your account. If you can\'t get this code anymore, because your phone is broken or for any reason, you can restore it via Google itself or you can report this to the team and they will reopen your account so you can get back in (if this is your account of course).<br /><br />When you visit a user\'s profile, you can see different things: which badges he/she has, who his/her friends are, in which groups he/she sits, which rooms he/she has taken and which photos he/she has taken. You will also find a guestbook on each profile page. If you want to let a user know something small, you can write it in the guestbook. Or you can let them know on your own profile what you are doing at that moment.<br /><br />The settings of your account also offer some special features: Can other users see your profile? Can other users see when you were last online or when you are online? Can other users add you at the hotel or follow you to other rooms? It\'s all possible! As an employee you also have the possibility not to show yourself on the employee page.<br /><br />If all this is not enough, you also have a very large and extensive housekeeping! In the beginning of this message a number of functions are already explained. The housekeeping has been developed in such a way that you hardly need to search your database for data. Because of the RCON system we were able to add some extra functions, like sending alerts, banning users, ... You can create permissions, manage rooms, manage users, block VPN\'s using ASN, manage the word filter, view chatlogs/banlogs/stafflogs, manage help tickets, manage FAQ\'s, manage the feed, manage news, shop and catalogue! As an administrator you can easily assign all these permissions to different ranks. All pages have different permissions, which can be found under the permissions tab in the menu.<br /><br />Changing your password is also no problem due to the implemented e-mail system. Users can request their password and will receive an e-mail in the inbox. There is a link in the inbox that allows them to change their password. You should make sure you use a secure mail server, so that your email is not spamming, as this can cause confusion for some users and/or parents.<br /><br />This was it for the explanation of Asteroid. We hope you\'re sufficiently informed about Asteroid. If you have any questions, you can always visit our Discord. The support team is always ready to answer any questions you might have.<br /><br />We wish you a lot of fun using Asteroid!<br /><br />- Asteroid support team</p>', 'https://images.habbo.com/c_images/Security/safetytips1_n.png', 1, 'https://habboo-a.akamaihd.net/c_images/web_promo/lpromo_SweetHome1.png', 1, 'none', 1536203060, '0')";
+	    INSERT INTO `website_news` (`id`, `slug`, `title`, `short_story`, `full_story`, `images`, `author`, `header`, `category`, `form`, `timestamp`, `hidden`) VALUES
+	      (1, 'welcome-to-asteroidcms', 'Welcome to AsteroidCMS', 'Curious about AsteroidCMS\'s functions? Then be sure to read this!', '<p>Hey you! Who the hell are you?! Are you using AsteroidCMS?!<br /><br />You managed to get Asteroid working!<br /><br />Our team has worked very hard on Asteroid to keep the installation as easy as possible. Asteroid has been specially developed with a new proprietary written Framework. So it\'s normal that you won\'t know how everything works yet, hence the installation in the beginning!<br /><br />Asteroid offers many functions, all of which are easy to use. Just think of adding currency ids, adding and editing furniture, managing the FAQ, managing and answering help tickets, VPN control, remote control (RCON), and much more!<br /><br />Since Asteroid already has the basic functions, you won\'t have to add anything yourself, but of course you can! Though you will have to learn the Framework first. We have thought about this as well. Our team has provided a documentation that will allow you to write new features in our Framework within minutes/hours/days/weeks! This depends on the skills you already have!<br /><br />Unfortunately Asteroid only works on Arcturus Morningstar, this means that you cannot set Asteroid to Plus Emulator/Comet Server or R63 Emulators. Now the question is, can I also use Asteroid on the normal Arcturus or upcoming Sirius Emulator? We advise you not to do this as some functions may differ between these emulators. If you don\'t want to use Arcturus Morningstar anyway, you\'ll have to convert Asteroid to the emulator you love!<br /><br />Asteroid is composed of about 42% JavaScript, 25.5% PHP, 17% HTML and 15.5% CSS. Now you will think, why is Asteroid almost half made of JavaScript? Asteroid wouldn\'t work without this JavaScript, because we made sure that you only need to load Asteroid once and you can control all functions without refresh! This also ensures that we can use a hotel that can stay open. This makes it easier to switch between website and hotel, but also to control the functions, since we can use notifications without refreshing the page and because of this your data is gone!<br /><br />Asteroid also has a shop and forum! In the shop you can buy GOTW-Points via paypal and/or phone, and you can buy vip with GOTW-Points! This can all be set via housekeeping. Because of the RCON system built into Asteroid, the user who buys GOTW-Points or vip doesn\'t have to leave the hotel or log in. Everything happens automatically and you immediately receive your GOTW-Points and/or vip! After the purchase the user can view their purchase / purchases through the purchase history page. The forum also offers multiple functions. You can create topics, respond to topics, like topics, report topics, pin messages, ... Members can ask questions or offer information that is useful for other members. The categories and so on can all be created/adjusted in the housekeeping.<br /><br />Asteroid also has a photo page. Here you can see all the nice pictures of members taken in the hotel. If you think there is a picture you really like, you can also give it a like. Or maybe a photo that is inappropriate does not belong on the page, you can report it and the team will delete it.<br /><br />With Asteroid we try to offer our members a nice environment. Because of the many features that Asteroid offers, this has certainly succeeded! You no longer need to communicate only through the hotel, but you can also do so through the forum, or if you have a try through the help tool. Parents will also be able to reach the team easily and they will gain more confidence in the hotel.<br /><br />Asteroid also owns a number of info pages. Just think of the general terms and conditions, the rules, a privacy statement, cookie policy and a guide for parents. All this to create the best playing experience for the members.<br /><br />Our team has also thought about the security of your account. You can use Google Authenticator. But what is that now? Google Authenticator provides a 6-digit code with which you can login to your account. This code is asked when your username and password are entered correctly. The code you get is changed every X number of seconds to ensure the security of your account. If you can\'t get this code anymore, because your phone is broken or for any reason, you can restore it via Google itself or you can report this to the team and they will reopen your account so you can get back in (if this is your account of course).<br /><br />When you visit a user\'s profile, you can see different things: which badges he/she has, who his/her friends are, in which groups he/she sits, which rooms he/she has taken and which photos he/she has taken. You will also find a guestbook on each profile page. If you want to let a user know something small, you can write it in the guestbook. Or you can let them know on your own profile what you are doing at that moment.<br /><br />The settings of your account also offer some special features: Can other users see your profile? Can other users see when you were last online or when you are online? Can other users add you at the hotel or follow you to other rooms? It\'s all possible! As an employee you also have the possibility not to show yourself on the employee page.<br /><br />If all this is not enough, you also have a very large and extensive housekeeping! In the beginning of this message a number of functions are already explained. The housekeeping has been developed in such a way that you hardly need to search your database for data. Because of the RCON system we were able to add some extra functions, like sending alerts, banning users, ... You can create permissions, manage rooms, manage users, block VPN\'s using ASN, manage the word filter, view chatlogs/banlogs/stafflogs, manage help tickets, manage FAQ\'s, manage the feed, manage news, shop and catalogue! As an administrator you can easily assign all these permissions to different ranks. All pages have different permissions, which can be found under the permissions tab in the menu.<br /><br />Changing your password is also no problem due to the implemented e-mail system. Users can request their password and will receive an e-mail in the inbox. There is a link in the inbox that allows them to change their password. You should make sure you use a secure mail server, so that your email is not spamming, as this can cause confusion for some users and/or parents.<br /><br />This was it for the explanation of Asteroid. We hope you\'re sufficiently informed about Asteroid. If you have any questions, you can always visit our Discord. The support team is always ready to answer any questions you might have.<br /><br />We wish you a lot of fun using Asteroid!<br /><br />- Asteroid support team</p>', 'https://images.habbo.com/c_images/Security/safetytips1_n.png', 1, 'https://habboo-a.akamaihd.net/c_images/web_promo/lpromo_SweetHome1.png', 1, 'none', 1536203060, '0')";
         if ($conn->query($webForumNewsq) !== true) {
             self::rollback($conn->error);
         }
