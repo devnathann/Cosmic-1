@@ -201,8 +201,8 @@ $GLOBALS['language'] = array (
             'load_more'   => 'View more photos'
         ),
         'community_staff' => array (
-            'title'       => 'How do I become a Asteroid Staff?',
-            'content_1'   => 'Of course everyone dreams of such a place as a Asteroid Staff member, but unfortunately this is not for everyone. To become a Asteroid Staff you must apply.',
+            'title'       => 'How do I become an Asteroid Staff?',
+            'content_1'   => 'Of course everyone dreams of such a place as an Asteroid Staff member, but unfortunately this is not for everyone. To become an Asteroid Staff you must apply.',
             'content_2'   => 'This is only possible at times when we have vacancies, when we have this, this is mentioned in the news.'
         ),
         
@@ -625,9 +625,9 @@ $GLOBALS['language'] = array (
     ),
     'help' => array (
         'ticket_created'            => 'Your Help Ticket has been created. View your Help Tickets to view the help request.',
-        'ticket_received'           => 'A Asteroid Staff has responded to your Help Tool ticket. Visit the Help Tool to view the response.',
+        'ticket_received'           => 'An Asteroid Staff has responded to your Help Tool ticket. Visit the Help Tool to view the response.',
         'already_open'              => 'You still have an outstanding ticket! When this has been treated you can create a ticket again.',
-        'no_answer_yet'             => 'You can only respond once a Asteroid Staff has answered your ticket.',
+        'no_answer_yet'             => 'You can only respond once an Asteroid Staff has answered your ticket.',
     ),
     'forum' => array (
         'is_sticky'                 => 'Sticky updated!',
