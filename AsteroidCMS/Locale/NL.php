@@ -12,9 +12,9 @@ $GLOBALS['language'] = array (
             
             'nav_shop'              => 'winkel',
             'nav_buy_points'        => 'Bel-Credits kopen',
-            'nav_buy_club'          => 'Leet Club kopen',
+            'nav_buy_club'          => 'Asteroid Club kopen',
             'nav_purchasehistory'   => 'Aankoopgeschiedenis',
-            'nav_changename'        => 'Leetnaam veranderen',
+            'nav_changename'        => 'Asteroidnaam veranderen',
             
             'nav_highscores'        => 'Highscores',
           
@@ -54,7 +54,7 @@ $GLOBALS['language'] = array (
             'header_to'             => 'Naar',
             
             'footer_helptool'       => 'Help Tool',
-            'footer_rules'          => 'De Leet Regels',
+            'footer_rules'          => 'De Asteroid Regels',
             'footer_terms'          => 'Algemene voorwaarden',
             'footer_privacy'        => 'Privacyverklaring',
             'footer_cookies'        => 'Cookie-beleid',
@@ -75,9 +75,9 @@ $GLOBALS['language'] = array (
             'web_dialog_validate'                           => 'Valideren',
             'web_dialog_confirm'                            => 'Bevestig uw keuze',
             
-            'web_hotel_backto'                              => 'Terug naar Leet Hotel',
+            'web_hotel_backto'                              => 'Terug naar Asteroid Hotel',
             
-            'web_fill_pincode'                              => 'Vul de pincode in die je hebt opgegeven tijdens het aanmaken van de extra beveiliging op jouw account. Nou, ik ben deze vergeten? Neem dan contact op via de Leet Help Tool',
+            'web_fill_pincode'                              => 'Vul de pincode in die je hebt opgegeven tijdens het aanmaken van de extra beveiliging op jouw account. Nou, ik ben deze vergeten? Neem dan contact op via de Asteroid Help Tool',
             'web_twostep'                                   => 'Twee-staps autorisatie!',
             'web_login'                                     => 'Je moet ingelogd zijn om dit bericht te rapporteren!',
             'web_loggedout'                                 => 'Uitgelogd :(',
@@ -104,7 +104,7 @@ $GLOBALS['language'] = array (
             
             'web_page_settings_namechange_request'          => 'Aanvragen',
             'web_page_settings_namechange_not_available'    => 'Niet beschikbaar',
-            'web_page_settings_namechange_choose_name'      => 'Kies Leetnaam',
+            'web_page_settings_namechange_choose_name'      => 'Kies Asteroidnaam',
             
             'web_page_settings_verification_oops'           => 'Oeps...',
             'web_page_settings_verification_fill_password'  => 'Vul je wachtwoord in!',
@@ -201,8 +201,8 @@ $GLOBALS['language'] = array (
             'load_more'   => 'Bekijk meer foto\'s'
         ),
         'community_staff' => array (
-            'title'       => 'Hoe word ik Leet Staff?',
-            'content_1'   => 'Natuurlijk droomt iedereen wel van zo\'n plaats als Leet Staff lid, maar helaas is dit niet voor iedereen weggelegd. Om Leet Staff te kunnen worden moet je solliciteren.',
+            'title'       => 'Hoe word ik Asteroid Staff?',
+            'content_1'   => 'Natuurlijk droomt iedereen wel van zo\'n plaats als Asteroid Staff lid, maar helaas is dit niet voor iedereen weggelegd. Om Asteroid Staff te kunnen worden moet je solliciteren.',
             'content_2'   => 'Dit kan alleen op momenten wanneer wij vacatures hebben, wanneer we dit hebben, wordt dit vermeldt in het nieuws.'
         ),
         
@@ -228,7 +228,7 @@ $GLOBALS['language'] = array (
             'request_react'             => 'Reageren',
             'request_description'       => 'Beschrijving',
             'request_react_on_ticket'   => 'Reageer op ticket',
-            'request_contact'           => 'Neem contact op met Leet',
+            'request_contact'           => 'Neem contact op met Asteroid',
             'request_contact_help'      => 'U kunt contact met ons opnemen door een nieuw ticket te openen.',
             'request_new_ticket'        => 'Nieuw ticket',
             'request_subject'           => 'Onderwerp',
@@ -251,9 +251,9 @@ $GLOBALS['language'] = array (
             'friends_online'         => 'Online vrienden',
             'now_in'                 => 'Nu in',
             'latest_news'            => 'Laatste nieuws',
-            'latest_facts'           => 'De laatste weetjes binnen Leet!',
+            'latest_facts'           => 'De laatste weetjes binnen Asteroid!',
             'popular_rooms'          => 'Populaire kamers',
-            'popular_rooms_label'    => 'Weet welke kamers trending zijn binnen Leet!',
+            'popular_rooms_label'    => 'Weet welke kamers trending zijn binnen Asteroid!',
             'popular_no_rooms'       => 'Er is nog niemand op ons Hotel!',
             'goto_room'              => 'Naar deze kamer',
             'popular_groups'         => 'Populaire groepen',
@@ -319,17 +319,17 @@ $GLOBALS['language'] = array (
             'month'                 => 'Maand',
             'year'                  => 'Jaar',
             'birthdate_help'        => 'We zullen deze informatie nodig hebben om je account te herstellen voor het geval je de toegang verliest.',
-            'found'                 => 'Hoe heb je Leet Hotel gevonden?',
+            'found'                 => 'Hoe heb je Asteroid Hotel gevonden?',
             'found_choose'          => 'Maak een keuze...',
             'found_choose_1'        => 'Google',
             'found_choose_2'        => 'Door een vriend(in)',
             'found_choose_3'        => 'Door een ander spel',
             'found_choose_4'        => 'Door Facebook',
             'found_choose_5'        => 'Anders',
-            'create_user'           => 'Maak je Leet!',
-            'username'              => 'Leetnaam',
-            'username_fill'         => 'Leetnaam...',
-            'username_help'         => 'Jouw unieke naam in Leet Hotel.',
+            'create_user'           => 'Maak je Asteroid!',
+            'username'              => 'Asteroidnaam',
+            'username_fill'         => 'Asteroidnaam...',
+            'username_help'         => 'Jouw unieke naam in Asteroid Hotel.',
             'sex'                   => 'Geslacht',
             'male'                  => 'Jongen',
             'female'                => 'Meisje',
@@ -339,14 +339,14 @@ $GLOBALS['language'] = array (
         /*     App/View/Jobs     */
         'apply' => array (
             'title'               => 'Reageer op de vacture',
-            'content_1'           => 'Bedankt voor je interesse in Leet Hotel en voor het reageren op de vacature.',
+            'content_1'           => 'Bedankt voor je interesse in Asteroid Hotel en voor het reageren op de vacature.',
             'content_2'           => 'Probeer de vragenlijst zo nauwkeurig mogelijk te beantwoorden.',
             'description'         => 'Taakomschrijving',
             'question_name'       => 'Hoe heet je?',
             'question_age'        => 'Hoe oud ben je?',
             'question_why'        => 'Waarom denk je dat je geschikt zou kunnen zijn?',
             'question_time'       => 'Hoeveel uur ben je online?',
-            'question_time_help'  => 'Geef ons door hoeveel uur je per dag online bent op Leet Hotel.',
+            'question_time_help'  => 'Geef ons door hoeveel uur je per dag online bent op Asteroid Hotel.',
             'monday'              => 'Maandag',
             'tuesday'             => 'Dinsdag',
             'wednesday'           => 'Woensdag',
@@ -369,9 +369,9 @@ $GLOBALS['language'] = array (
         /*     App/View/Password     */
         'password_claim' => array (
             'title'                 => 'Wachtwoord vergeten?',
-            'content_1'             => 'Vul hieronder je Leetnaam en e-mailadres in en we sturen je een link per e-mail om je wachtwoord te veranderen.',
+            'content_1'             => 'Vul hieronder je Asteroidnaam en e-mailadres in en we sturen je een link per e-mail om je wachtwoord te veranderen.',
             'content_2'             => 'Doe dit niet als iemand je vraagt om dit te doen!',
-            'username'              => 'Leetnaam',
+            'username'              => 'Asteroidnaam',
             'email'                 => 'E-mailadres',
             'send'                  => 'Verstuur e-mail',
             'wrong_page'            => 'Vals alarm!',
@@ -392,7 +392,7 @@ $GLOBALS['language'] = array (
             'password'       => 'Wachtwoord veranderen',
             'verification'   => 'Verificatie instellen',
             'email'          => 'E-mailadres veranderen',
-            'namechange'     => 'Leetnaam veranderen',
+            'namechange'     => 'Asteroidnaam veranderen',
             'shop_history'   => 'Aankoopgeschiedenis'
         ),
         'settings_email' => array (
@@ -404,10 +404,10 @@ $GLOBALS['language'] = array (
             'save'            => 'Opslaan'
         ),
         'settings_namechange' => array (
-            'title'           => 'Leetnaam veranderen',
-            'help_1'          => 'Wil jij je Leetnaam veranderen? Dat kan! Dit kost',
+            'title'           => 'Asteroidnaam veranderen',
+            'help_1'          => 'Wil jij je Asteroidnaam veranderen? Dat kan! Dit kost',
             'help_2'          => 'en zullen meteen na je verzoek afgeschreven worden. Wanneer je naam eenmaal is veranderd kunnen wij dit niet meer terugdraaien! Zorg dus dat je goed na denkt over je besluit!',
-            'fill_username'   => 'Leetnaam...',
+            'fill_username'   => 'Asteroidnaam...',
             'request'         => 'Aanvragen'
         ),
         'settings_password' => array (
@@ -423,7 +423,7 @@ $GLOBALS['language'] = array (
         'settings_preferences' => array (
             'title'               => 'Mijn voorkeuren',
             'follow_title'        => 'Volgfunctie - wie mogen je volgen?' ,
-            'follow_label'        => 'Ik wil dat Leet\'s mij niet mogen volgen',
+            'follow_label'        => 'Ik wil dat Asteroid\'s mij niet mogen volgen',
             'friends_title'       => 'Vriendenverzoeken',
             'friends_label'       => 'Vriendschap verzoeken toestaan?',
             'room_title'          => 'Kamer uitgenodigingen',
@@ -447,7 +447,7 @@ $GLOBALS['language'] = array (
             'pincode_label'         => 'Zet een pincode op je account als extra beveiliging, hiermee zorg je voor een betere beveiliging van jouw account tegen hackers.',
             'fill_pincode'          => 'Vul je pincode in',
             'generate_auth'         => 'Code generen door 2FA',
-            'generate_auth_label'   => 'Deze methode is het meest betrouwbaar. Het koppelt uw Leet-account aan een authenticatietoepassing (Google Authenticator) op uw telefoon. Wanneer u zich aanmeldt, hoeft u alleen de code in te voeren die door uw app is gegenereerd.',
+            'generate_auth_label'   => 'Deze methode is het meest betrouwbaar. Het koppelt uw Asteroid-account aan een authenticatietoepassing (Google Authenticator) op uw telefoon. Wanneer u zich aanmeldt, hoeft u alleen de code in te voeren die door uw app is gegenereerd.',
             'link_account'          => 'Koppel je account',
             'link_account_label'    => 'Om uw account te koppelen, moet u deze QR-code eenvoudig met uw toepassing scannen en vervolgens op opslaan klikken om deze wijziging te valideren.',
             'save'                  => 'Opslaan'
@@ -456,23 +456,23 @@ $GLOBALS['language'] = array (
         /*     App/View/Shop     */
         'shop_club' => array (
             'club_benefits'       => 'Club voordelen',
-            'club_buy'            => 'Koop Leet Club',
+            'club_buy'            => 'Koop Asteroid Club',
             'unlimited'           => 'Onbeperkt',
             'more_information'    => 'Meer informatie',
             'content_1'           => 'Heb je een vraag of probleem met een aankoop?',
             'content_2'           => 'Aarzel niet om contact op te nemen met de klantenservice via de',
-            'help_tool'           => 'Leet Help Tool',
-            'random_club_users'   => 'Willekeurige Leet Club leden'
+            'help_tool'           => 'Asteroid Help Tool',
+            'random_club_users'   => 'Willekeurige Asteroid Club leden'
         ),
         'shop_history' => array (
             'buy_history'         => 'Aankoopgeschiedenis',
             'product'             => 'Product',
             'date'                => 'Datum',
             'buy_history_empty'   => 'Je hebt nog geen aankoopgeschiedenis.',
-            'buy_club'            => 'Koop Leet Club',
+            'buy_club'            => 'Koop Asteroid Club',
             'content_1'           => 'Heb je een vraag of probleem met een aankoop?',
             'content_2'           => 'Aarzel niet om contact op te nemen met de klantenservice via de',
-            'help_tool'           => 'Leet Help Tool'
+            'help_tool'           => 'Asteroid Help Tool'
         ),
         'shop_offers' => array (
             'back'              => 'Terug',
@@ -490,9 +490,9 @@ $GLOBALS['language'] = array (
             'more_information'  => 'Meer informatie',
             'content_1'         => 'Heb je een vraag of probleem met een aankoop?',
             'content_2'         => 'Aarzel niet om contact op te nemen met de klantenservice via de',
-            'help_tool'         => 'Leet Help Tool',
+            'help_tool'         => 'Asteroid Help Tool',
             'not_logged'        => 'Oeps! Je bent niet ingelogd.',
-            'have_to_login'     => 'Om de Leet Winkel te bezoeken moet je ingelogd zijn.',
+            'have_to_login'     => 'Om de Asteroid Winkel te bezoeken moet je ingelogd zijn.',
             'click_here'        => 'Klik hier',
             'to_login'          => 'om in te loggen.'
         )
@@ -507,16 +507,16 @@ $GLOBALS['language'] = array (
             'message_placed'        => 'Je bericht is geplaatst!',
             'message_deleted'       => 'Je bericht is verwijderd!',
             'invisible'             => 'Dit is onzichtbaar gemaakt!',
-            'profile_invisible'     => 'Deze Leet heeft zijn/haar profiel onzichtbaar gemaakt.',
-            'profile_notfound'      => 'Helaas.. we hebben de Leet niet kunnen vinden!',
+            'profile_invisible'     => 'Deze Asteroid heeft zijn/haar profiel onzichtbaar gemaakt.',
+            'profile_notfound'      => 'Helaas.. we hebben de Asteroid niet kunnen vinden!',
             'no_permissions'        => 'Je hebt geen toestemming.',
             'already_liked'         => 'Je vindt dit al leuk!',
             'liked'                 => 'Je vindt dit leuk!',
-            'banned_1'              => 'Je bent verbannen voor het overtreden van de Leet Regels:',
+            'banned_1'              => 'Je bent verbannen voor het overtreden van de Asteroid Regels:',
             'banned_2'              => 'Je ban verloopt over:',
             'something_wrong'       => 'Er is iets misgegaan, probeer het nogmaals.',
             'room_not_exists'       => 'Deze kamer bestaat niet!',
-            'staff_received'        => 'Bedankt! De Leet Staff heeft dit ontvangen!',
+            'staff_received'        => 'Bedankt! De Asteroid Staff heeft dit ontvangen!',
             'not_enough_belcredits' => 'Je hebt niet genoeg belcredits.',
             'topic_closed'          => 'Je kunt niet reageren op een topic dat is gesloten!'
         ),
@@ -546,13 +546,13 @@ $GLOBALS['language'] = array (
                 'index'         => 'Mijn voorkeuren',
                 'password'      => 'Wachtwoord veranderen',
                 'email'         => 'E-mail veranderen',
-                'namechange'    => 'Leetnaam veranderen'
+                'namechange'    => 'Asteroidnaam veranderen'
             ),
             'community' => array (
                 'index'     => 'Community',
                 'photos'    => 'Foto\'s',
-                'staff'     => 'Leet Staff',
-                'team'      => 'Leet Team',
+                'staff'     => 'Asteroid Staff',
+                'team'      => 'Asteroid Team',
                 'fansites'  => 'Fansites',
                 'value'     => 'Ruilwaarde',
                 'forum'     => 'Ons Forum'
@@ -561,9 +561,9 @@ $GLOBALS['language'] = array (
                 'ranking'   => 'Highscores'
             ),
             'shop' => array (
-                'index'     => 'Leet Winkel',
+                'index'     => 'Asteroid Winkel',
                 'history'   => 'Aankoopgeschiedenis',
-                'club'      => 'Leet Club'
+                'club'      => 'Asteroid Club'
             ),
             'help' => array (
                 'index'     => 'Help Tool',
@@ -571,22 +571,22 @@ $GLOBALS['language'] = array (
                 'new'       => 'Help Ticket openen'
             ),
             'jobs' => array (
-                'index'     => 'Leet Vacatures',
+                'index'     => 'Asteroid Vacatures',
                 'apply'     => 'Reageren op vacature'
             )
         )
     ),
     'login' => array (
         'invalid_password'          => 'Onjuist wachtwoord.',
-        'invalid_pincode'           => 'Deze pincode komt niet overeen met die van deze Leet!',
+        'invalid_pincode'           => 'Deze pincode komt niet overeen met die van deze Asteroid!',
         'fill_in_pincode'           => 'Vul nu je pincode in om toegang te krijgen tot jouw account!'
     ),
     'register' => array (
-        'username_invalid'          => 'Leetnaam is in strijd met de Leet Regels.',
-        'username_exists'           => 'Leetnaam is al in gebruik :-('
+        'username_invalid'          => 'Asteroidnaam is in strijd met de Asteroid Regels.',
+        'username_exists'           => 'Asteroidnaam is al in gebruik :-('
     ),
     'claim' => array (
-        'invalid_email'             => 'Dit e-mailadres komt niet overeen met die van deze Leet ID.',
+        'invalid_email'             => 'Dit e-mailadres komt niet overeen met die van deze Asteroid ID.',
         'invalid_link'              => 'Deze link is verlopen. Vraag opnieuw je wachtwoord aan om je wachtwoord te veranderen.',
         'send_link'                 => 'We hebben zojuist een e-mail naar je gestuurd! Niks ontvangen? Controleer dan de map met ongewenste e-mail.',
         'password_changed'          => 'Je wachtwoord is veranderd. Je kunt nu weer inloggen!',
@@ -600,11 +600,11 @@ $GLOBALS['language'] = array (
         'pincode_saved'             => 'Je pincode is opgeslagen, je zult opnieuw moeten inloggen. Tot zo! :)',
         'password_saved'            => 'Je wachtwoord is veranderd. Je zult nu opnieuw moeten inloggen. Tot zo! :)',
         'preferences_saved'         => 'Je voorkeuren zijn opgeslagen!',
-        'current_password_invalid'  => 'Huidig wachtwoord komt niet overeen met die van je Leet ID.',
-        'choose_new_username'       => 'Vul een nieuwe Leetnaam in.',
+        'current_password_invalid'  => 'Huidig wachtwoord komt niet overeen met die van je Asteroid ID.',
+        'choose_new_username'       => 'Vul een nieuwe Asteroidnaam in.',
         'choose_new_pincode'        => 'Vul een nieuwe pincode in.',
-        'user_is_active'            => 'Deze Leet is mogelijk nog actief!',
-        'user_not_exists'           => 'Deze Leetnaam is beschikbaar en bestaat nog niet!',
+        'user_is_active'            => 'Deze Asteroid is mogelijk nog actief!',
+        'user_not_exists'           => 'Deze Asteroidnaam is beschikbaar en bestaat nog niet!',
         'name_change_saved'         => 'Je naam is gewijzigd! En er zijn 50 Bel-Credits afgeschreven.',
         'invalid_secretcode'        => 'Google Authenticatie secretcode is onjuist.',
         'enabled_secretcode'        => 'Authenticatie methode ingesteld! Je zult opnieuw moeten inloggen.. tot zo!',
@@ -625,9 +625,9 @@ $GLOBALS['language'] = array (
     ),
     'help' => array (
         'ticket_created'            => 'Jouw Help Ticket is aangemaakt. Bekijk je Help Tickets om het hulpverzoek te bekijken.',
-        'ticket_received'           => 'Een Leet Staff heeft gereageerd op je Help Tool ticket. Bezoek de Help Tool om de reactie te bekijken.',
+        'ticket_received'           => 'Een Asteroid Staff heeft gereageerd op je Help Tool ticket. Bezoek de Help Tool om de reactie te bekijken.',
         'already_open'              => 'Je hebt nog een openstaande ticket! Wanneer deze behandeld is kun je weer een ticket aanmaken.',
-        'no_answer_yet'             => 'Je kunt pas reageren als een Leet Staff je ticket heeft beantwoord.',
+        'no_answer_yet'             => 'Je kunt pas reageren als een Asteroid Staff je ticket heeft beantwoord.',
     ),
     'forum' => array (
         'is_sticky'                 => 'Sticky geüpdate!',
