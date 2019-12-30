@@ -35,7 +35,7 @@ class Index
             'rooms'     => $rooms,
             'groups'    => $groups,
             'news'      => $news,
-            'random'    => $random
+            'random'    => isset($random) ? $random : null
         ], 10);
 
         return false;

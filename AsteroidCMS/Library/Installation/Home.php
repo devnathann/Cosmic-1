@@ -2,7 +2,12 @@
 namespace Library\Installation;
 
 use App\Config;
+use App\Auth;
+
 use App\Models\Install;
+use App\Models\Player;
+
+use Core\Session;;
 use Core\View;
 
 use stdClass;
@@ -88,6 +93,7 @@ class Home
         $email = input()->post('email')->value;
         $password = input()->post('password')->value;
       
+        Session::set('username', $username);
         if(Install::createUser($username, $email, $password)) {
             echo '{"status":"success","message":"User created!"}';
         }
@@ -192,10 +198,13 @@ class Home
         $freeCurrencys = 'array( ' . $this->array2stringa($decode) . ')';
       
         Install::editConfig('currencys = null', 'currencys = ' . $currencys);
-        Install::editConfig('currencys = null', 'currencys = ' . $freeCurrencys);
+        Install::editConfig('freeCurrency = null', 'freeCurrency = ' . $freeCurrencys);
         Install::editConfig('view = \'Library/Installation/Views\'', 'view = \'App/View\'');
         Install::editConfig('installation = true', 'installation = false');
         Install::editConfig('debug = true', 'debug = false');
+      
+        $player = Player::getDataByUsername(Session::get('username'), array('id', 'password', 'rank'));
+        Auth::login($player);
       
         echo '{"status":"success","message":"Install done! Please wait we redirect you!"}';
     }

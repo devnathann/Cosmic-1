@@ -30,8 +30,7 @@
                     </div>
                 </article>
               {% endif %}
-              
-                {% if player and random is not empty %}
+               {% if random is not null and random is not empty %}
                 <div class="myfriends-online">
                     {% for user in random %}
                       <div class="tooltip">
@@ -41,8 +40,7 @@
                       </div>
                     {% endfor %}
                 </div>
-                {% endif %}
-
+              {% endif %}
               {% if player %}
                 {% if data.friends is not empty %}
                 <article class="default-section">

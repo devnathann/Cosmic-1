@@ -39,7 +39,7 @@ class Faq
         $category = input()->post('category')->value;
 
         if (empty($id)) {
-            Admin::addFAQ($title, $story, $category, input()->player->id);
+            Admin::addFAQ($title, $story, $category, request()->player->id);
             Log::addStaffLog('-1', 'FAQ added: ' . $title, 'faq');
             echo '{"status":"success","message":"FAQ added successfully!"}';
             exit;
@@ -81,7 +81,7 @@ class Faq
             'post'      => 'required|max:100'
         ]);
 
-        if(!$validate->isSucces()) {
+        if(!$validate->isSuccess()) {
             exit;
         }
 
