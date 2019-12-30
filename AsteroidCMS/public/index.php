@@ -26,7 +26,6 @@ if (file_exists(__DIR__ . '/../vendor/usmanhalalit/') && file_exists(__DIR__ . '
     exit;
 }
 
-
 require_once __DIR__ . '/../Core/Helper.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
