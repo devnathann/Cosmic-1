@@ -112,6 +112,26 @@ class Home
         }
         return $log_a;
     }
+  
+    public function array2stringa($data){
+        $log_a = "";
+
+        $i = 0;
+        $len = count($data);
+        foreach ($data as $key => $value) {
+            if(is_array($value))  {
+                $log_a .= "'".$key."' => (". array2string($value). ") \n";
+            } else {
+                if ($i == $len - 1) {
+                    $log_a .= "'".$key."' => 1000\n"; 
+                } else {
+                    $log_a .= "'".$key."' => 1000,\n"; 
+                }
+            }
+            $i++;
+        }
+        return $log_a;
+    }
 
     public function complete() 
     {
@@ -168,9 +188,11 @@ class Home
       
       
         $decode = json_decode($currencys, true);
-        $array = 'array( ' . $this->array2string($decode) . ')';
+        $currencys = 'array( ' . $this->array2string($decode) . ')';
+        $freeCurrencys = 'array( ' . $this->array2stringa($decode) . ')';
       
-        Install::editConfig('currencys = 0', 'currencys = ' . $array);
+        Install::editConfig('currencys = null', 'currencys = ' . $currencys);
+        Install::editConfig('currencys = null', 'currencys = ' . $freeCurrencys);
         Install::editConfig('view = \'Library/Installation/Views\'', 'view = \'App/View\'');
         Install::editConfig('installation = true', 'installation = false');
         Install::editConfig('debug = true', 'debug = false');
