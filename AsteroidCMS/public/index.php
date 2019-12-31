@@ -2,7 +2,7 @@
 use App\Config;
 use Core\Routes;
 use Core\QueryBuilder;
-
+ini_set("display_errors", 1);
 if (file_exists(__DIR__ . '/../vendor/usmanhalalit/') && file_exists(__DIR__ . '/../vendor/twig/')) {
     if (!file_exists(__DIR__ . '/uploads/')) {
       

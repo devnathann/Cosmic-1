@@ -22,6 +22,31 @@ class Config
   
     const clientHost = '';
     const clientPort = 0;
+    
+    /**
+     * RCON: Must be enabled! RCON otherwise the housekeeping will not work fully.
+     */
+  
+    const apiHost = '';
+    const apiPort = 0;
+    
+   /**
+     * Client settings
+     */
+    
+    /* Example external_base: = 'gordon/PRODUCTION-201904011212-888653470/' */
+    
+    const client = array(
+      'external_override_variables' => 'gamedata/external_flash_override_texts.txt',
+      'external_override_texts'     => 'gamedata/external_override_variables.txt',
+      'external_variables'          => 'gamedata/external_variables.txt',
+      'external_texts'              => 'gamedata/external_flash_texts.txt',
+      'external_figurepartlist'     => 'gamedata/figuredata.xml',
+      'external_figuremap'          => 'gamedata/figuremap.xml',
+      'external_productdata'        => 'gamedata/productdata.txt',
+      'external_figuredata'         => 'gamedata/furnidata.xml',
+      'external_base'               => ''
+    );
   
     /**
      * Website settings
@@ -112,17 +137,10 @@ class Config
         'hr-545-45.hd-600-14.ch-650-76.lg-696-64.sh-907-76.he-1602-1408.wa-3210-1408-1408',
         'hr-890-42.hd-625-14.ch-3113-75-64.lg-720-64.sh-3115-75-64.he-1605-74'
     );
-    
-
-    /**
-     * RCON: Must be enabled! RCON otherwise the housekeeping will not work fully.
-     */
-  
-    const apiHost = '';
-    const apiPort = 0;
-    const apiEnabled = true;
   
     /* DONT CHANGE  */
+  
+    const apiEnabled = true;
   
     const minRank = 5;
     const maxRank = 7;

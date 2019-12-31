@@ -145,7 +145,16 @@ $GLOBALS['language'] = array (
             'web_page_shop_offers_no_card'                  => 'If you do not have a Neosurf prepaid card, you can see the',
             'web_page_shop_offers_no_card2'                 => 'points of sale',
             'web_page_shop_offers_to'                       => 'to',
-            'web_page_shop_offers_buy_code'                 => 'Purchase access code'
+            'web_page_shop_offers_buy_code'                 => 'Purchase access code',
+            'web_page_hotel_loading'                        => 'is now loading...',
+            'web_page_hotel_sometinhg_wrong_1'              => 'Oops, there is something wrong!.',
+            'web_page_hotel_sometinhg_wrong_2'              => 'Reload the page',
+            'web_page_hotel_sometinhg_wrong_3'              => 'Or create a ticket in the helptool',
+            'web_page_hotel_welcome_at'                     => 'Welcome at',
+            'web_page_hotel_soon'                           => 'Grab a drink, we\'ll be there soon...',
+            'web_hotel_active_flash_1'                      => 'Youre almost in Asteroid!',
+            'web_hotel_active_flash_2'                      => 'Click here',
+            'web_hotel_active_flash_3'                      => 'and click on the left side at "allow" flash, to enable flash.'
         ),
         
         /*     App/View/Community     */

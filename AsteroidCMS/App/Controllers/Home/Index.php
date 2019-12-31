@@ -43,6 +43,6 @@ class Index
 
     public function configuration() {
         Header('Content-Type: text/javascript');
-        View::renderTemplate('configuration.html', ['debug' => (Config::debug ? 'true' : 'false')]);
+        View::renderTemplate('configuration.html', ['debug' => (Config::debug ? 'true' : 'false'), 'client' => Config::client]);
     }
 }

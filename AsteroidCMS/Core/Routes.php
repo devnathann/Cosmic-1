@@ -69,6 +69,7 @@ class Routes extends Router
                 Router::get('/logout', 'Home\Login@logout');
                 Router::get('/hotel', 'Client\Client@hotel');
                 Router::get('/client', 'Client\Client@client');
+                Router::get('/new', 'Client\Client@new');
                 Router::get('/test', 'Client\Client@test');
 
                 Router::get('/settings', 'Settings\Preferences@index');

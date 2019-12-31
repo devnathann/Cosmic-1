@@ -145,9 +145,18 @@ $GLOBALS['language'] = array (
             'web_page_shop_offers_no_card'                  => 'Als je geen Neosurf-prepaidkaart hebt, kun je de',
             'web_page_shop_offers_no_card2'                 => 'verkooppunten zien',
             'web_page_shop_offers_to'                       => 'naar',
-            'web_page_shop_offers_buy_code'                 => 'Koop toegangscode'
+            'web_page_shop_offers_buy_code'                 => 'Koop toegangscode',
+            'web_page_hotel_loading'                        => 'is aan het opstarten...',
+            'web_page_hotel_sometinhg_wrong_1'              => 'Oeps, er is iets misgegaan.',
+            'web_page_hotel_sometinhg_wrong_2'              => 'Herlaad de pagina',
+            'web_page_hotel_sometinhg_wrong_3'              => 'Of neem contact met ons op',
+            'web_page_hotel_welcome_at'                     => 'Welkom op',
+            'web_page_hotel_soon'                           => 'Dit ziet er goed uit...',
+            'web_hotel_active_flash_1'                      => 'Je bent bijna op Asteroid!',
+            'web_hotel_active_flash_2'                      => 'Klik hier',
+            'web_hotel_active_flash_3'                      => 'en dan links boven op "Toestaan" om Flash Player aan te zetten.'
         ),
-        
+      
         /*     App/View/Community     */
         'article' => array (
             'reactions'         => 'Reacties',
