@@ -25,7 +25,7 @@ class Index
         $rooms = Community::getPopularRooms(5);
         $groups = Community::getPopularGroups(7);
         
-        if(isset(request()->player)) {
+        if(isset(request()->player->id)) {
             $random = Player::getMyOnlineFriends(request()->player->id);
         }
         
