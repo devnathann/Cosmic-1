@@ -451,18 +451,24 @@ class Remote
             }
         }
         
-        if (Admin::changePlayerSettings($email ?? $player->mail, $motto, $credits, $pin_code, $player->id)) {
+        if (Admin::changePlayerSettings($email ?? $player->mail, $motto, $pin_code, $player->id)) {
 
-            if (Config::apiEnabled && $player->online) {
-                if($player->rank != $rank) 
+            if ($player->online) {
+                if($player->credits != $credits) {
+                    HotelApi::execute('givecredits', array('user_id' => $player->id, 'credits' => -$player->credits));
+                    HotelApi::execute('givecredits', array('user_id' => $player->id, 'credits' => $credits));
+                }
+                if($player->rank != $rank) {
                     HotelApi::execute('setrank', array('user_id' => $player->id, 'rank' => $rank));
+                }
             } else {
+                Player::update($player->id, 'credits', $credits);
                 Player::update($player->id, 'rank', $rank);
             }
 
             foreach($currencys as $currency) {
                 if($currency) {
-                    if (Config::apiEnabled && $player->online && $currency->oldamount != $currency->amount) {
+                    if ($player->online && $currency->oldamount != $currency->amount) {
                         HotelApi::execute('givepoints', array('user_id' => $player->id, 'points' => -$currency->oldamount, 'type' => $currency->type));
                         HotelApi::execute('givepoints', array('user_id' => $player->id, 'points' => $currency->amount, 'type' => $currency->type));
                     } else {
