@@ -26,6 +26,7 @@ function SiteLoadingInterface()
         "web.page.help_requests",
         "web.page.profile",
         "web.page.community_photos",
+        "web.page.community_value",
         "web.page.home",
         "web.page.registration",
         "web.page.jobs",

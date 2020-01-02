@@ -58,7 +58,7 @@
                             <a href="{{path}}/profile/{{post.username}}">
                                 {{post.author.username}}
                             </a>
-                        </strong>: {{post.message|bbcode}}
+                        </strong>: {{post.message|bbcode|raw}}
 
                         {% if player and player.rank == 1 %}
                         <div style="float: right">

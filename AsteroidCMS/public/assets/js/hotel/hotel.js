@@ -77,8 +77,11 @@ function HotelLoadingInterface()
 
     this.load_hotel = function ()
     {
+        var base = Site.game_url;
+        var prod = (Client.external_base) ? '/' + Client.external_base + '/' : '/';
+
         swfobject.embedSWF(
-            Site.game_url + "/" + Client.external_base + "prodc6.swf?v=" + Configuration.revision,
+            Site.game_url + "/" + Client.external_base + Client.client_swf + "?v=" + Configuration.revision,
             "flash-container",
             "100%",
             "100%",
@@ -107,11 +110,11 @@ function HotelLoadingInterface()
               "ads.domain": "",
               "processlog.enabled": "1",
               "client.starting": "Frank brengt je koffers naar je hotelkamer!",
-              "flash.client.url": Site.game_url + "/" + Client.external_base,
+              "flash.client.url": base + prod,
               "flash.client.origin": "popup",
             },
             {
-                "base": Site.game_url + "/" + Site.base,
+                "base": base + prod,
                 "allowScriptAccess": "always",
                 "menu": "false",
                 "wmode": "opaque"

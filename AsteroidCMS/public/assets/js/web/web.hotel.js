@@ -52,7 +52,7 @@ function WebHotelManagerInterface()
             body.addClass("hotel-visible");
 
             var radio = document.getElementById("stream");
-            radio.src = "https://listen.leetfm.be/radio/8000/radio.mp3";
+            radio.src = Client.client_radio;
             radio.volume = 0.1;
             radio.play();
 
@@ -82,7 +82,7 @@ function WebHotelManagerInterface()
         var radio = document.getElementById("stream");
 
         this.hotel_container.find(".client-buttons .client-radio .fa-play").click( function() {
-            radio.src = "https://listen.leetfm.be/radio/8000/radio.mp3";
+            radio.src = Client.client_radio;
             radio.volume = 0.1;
             radio.play();
 

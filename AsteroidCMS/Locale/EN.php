@@ -9,6 +9,7 @@ $GLOBALS['language'] = array (
             'nav_news'              => 'News',
             'nav_photos'            => 'Photos',
             'nav_staff'             => 'Staff',
+            'nav_exchange'          => 'Marketplace',
             
             'nav_shop'              => 'shop',
             'nav_buy_points'        => 'Purchase GOTW-Points',
@@ -205,6 +206,8 @@ $GLOBALS['language'] = array (
             'topic_likes_2'             => 'likes this!',
             'topic_likes_3'             => 'like this!'
         ),
+      
+        /*     App/View/Community     */
         'community_photos' => array (
             'by'          => 'by',
             'load_more'   => 'View more photos'
@@ -214,7 +217,17 @@ $GLOBALS['language'] = array (
             'content_1'   => 'Of course everyone dreams of such a place as an Asteroid Staff member, but unfortunately this is not for everyone. To become an Asteroid Staff you must apply.',
             'content_2'   => 'This is only possible at times when we have vacancies, when we have this, this is mentioned in the news.'
         ),
-        
+        'community_value' => array (
+            'title_header'    => 'Catalogue marketplace',
+            'decs_header'     => 'All the exclusive furniture with a value higher than the type \'credits\' can you buy here!',
+            'furni_name'      => 'Furniname',
+            'furni_type'      => 'Type',
+            'furni_costs'     => 'Now',
+            'furni_amount'    => 'In game',
+            'furni_value'     => 'Old price',
+            'furni_rate'      => 'Rate',
+            'looking_for'     => 'I\'m looking for..'
+        ),
         /*     App/View/Games     */
         'games_ranking' => array (
             'username' => 'name'
@@ -563,7 +576,7 @@ $GLOBALS['language'] = array (
                 'staff'     => 'Asteroid Staff',
                 'team'      => 'Asteroid Team',
                 'fansites'  => 'Fansites',
-                'value'     => 'Exchange value',
+                'value'     => 'Catalogue Marketplace',
                 'forum'     => 'Our forum'
             ),
             'games' => array (

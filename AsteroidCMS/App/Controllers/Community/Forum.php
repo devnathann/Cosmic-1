@@ -112,7 +112,7 @@ class Forum
           
             $post->likes      = Forums::getPostLikes($post->id);
           
-            $post->content = $this->quote($post->content, $post->topic_id);
+            $post->content    = Core::FilterString($this->quote($post->content, $post->topic_id));
           
             foreach($post->likes as $likes) {
                 $likes->user  = Player::getDataById($likes->user_id, array('username'));

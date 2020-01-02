@@ -691,7 +691,7 @@ class Admin
         return QueryBuilder::table('website_forum_categories')->where('id', $id)->delete();
     }
   
-   public static function offerCreate($currencys, $amount, $price, $lang, $offer_id, $private_key)
+    public static function offerCreate($currencys, $amount, $price, $lang, $offer_id, $private_key)
     {
         $data = array(
             'currency'        => $currencys,
@@ -719,4 +719,35 @@ class Admin
         return QueryBuilder::table('website_shop_offers')->where('id', $id)->update($data);
     }
   
+    public static function getValueCategoryById($id)
+    {
+        return QueryBuilder::table('website_rare_values')->where('id', $id)->first();
+    }
+  
+    public static function removeValueCategory($id)
+    {
+        return QueryBuilder::table('website_rare_values')->where('id', $id)->delete();
+    }
+  
+    public static function getCataloguePage($string, $limit = 10)
+    {
+        return QueryBuilder::table('catalog_pages')->select('caption')->select('id')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->where('caption', 'LIKE', $string . '%')->limit($limit)->get();
+    }
+  
+    public static function getValueById($id)
+    {
+        return QueryBuilder::table('catalog_items')->where('id', $id)->first();
+    }
+  
+    public static function addValueCategory($cat_ids, $name, $hidden, $slug)
+    {
+        $data = array(
+            'cat_name' => $name,
+            'cat_ids' => $cat_ids,
+            'slug' => $slug,
+            'is_hidden' => $hidden
+        );
+
+        return QueryBuilder::table('website_rare_values')->insert($data);
+    }
 }

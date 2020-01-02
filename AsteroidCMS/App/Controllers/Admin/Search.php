@@ -34,6 +34,23 @@ class Search
         echo Json::raw($this->paths);
     }
 
+    public function catalogueitem()
+    {
+        $string =  input()->get('searchTerm')->value ?? null;
+
+        if(!isset($string)) {
+            echo json_encode(array(['id' => "none", 'text' => 'Choose an catalogue page']));
+            exit;
+        }
+
+        $userObject = Admin::getCataloguePage($string);
+        foreach($userObject as $user) {
+            $this->paths[] = array('id' => $user->id, 'text' => $user->caption);
+        }
+
+        echo json_encode($this->paths);
+    }
+      
     public function playername()
     {
         $string =  input()->get('searchTerm')->value ?? null;

@@ -20,7 +20,7 @@ class CacheMiddleware implements IMiddleware
                 View::getResponse(static::$template['template'], self::$template);
                 exit;
             }
-      
+            
             View::renderTemplate(static::$template['template'], self::$template);
             exit;
         }

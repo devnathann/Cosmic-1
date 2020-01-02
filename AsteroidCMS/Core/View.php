@@ -76,7 +76,7 @@ class View
           
             $twig->addGlobal('locale', Locale::get('website/' . (isset($args['page']) ? $args['page'] : null), true));
             $twig->addGlobal('locale_base', Locale::get('website/base', true));
-
+            
             if (request()->player !== null) {
               
                 $twig->addGlobal('player', request()->player);

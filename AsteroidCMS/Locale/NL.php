@@ -9,6 +9,7 @@ $GLOBALS['language'] = array (
             'nav_news'              => 'Nieuws',
             'nav_photos'            => 'Foto\'s',
             'nav_staff'             => 'Staff',
+            'nav_exchange'          => 'Marketplace',
             
             'nav_shop'              => 'winkel',
             'nav_buy_points'        => 'Bel-Credits kopen',
@@ -214,7 +215,17 @@ $GLOBALS['language'] = array (
             'content_1'   => 'Natuurlijk droomt iedereen wel van zo\'n plaats als Asteroid Staff lid, maar helaas is dit niet voor iedereen weggelegd. Om Asteroid Staff te kunnen worden moet je solliciteren.',
             'content_2'   => 'Dit kan alleen op momenten wanneer wij vacatures hebben, wanneer we dit hebben, wordt dit vermeldt in het nieuws.'
         ),
-        
+        'community_value' => array (
+            'title_header'    => 'Ruilwaardes',
+            'decs_header'     => 'Alle exclusieve furniture met de waarde hoger dan het type credit vindt je hier!',
+            'furni_name'      => 'Meubelnaam',
+            'furni_type'      => 'Type',
+            'furni_costs'     => 'Waarde',
+            'furni_amount'    => 'Aantal',
+            'furni_rate'      => 'Koers',
+            'looking_for'     => 'Ik ben opzoek naar...'
+        ),
+      
         /*     App/View/Games     */
         'games_ranking' => array (
             'username' => 'naam'

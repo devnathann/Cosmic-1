@@ -24,7 +24,7 @@ class Routes extends Router
             Router::setDefaultNamespace('\App\Controllers');
 
             Router::get('/assets/js/web/user_settings.js', 'Home\Index@configuration');
-
+        
             Router::get('/', 'Home\Index@index')->setName('index.home');
             Router::get('/home', 'Home\Index@index');
             Router::get('/lost', 'Home\Lost@index')->setName('lost');
@@ -35,7 +35,7 @@ class Routes extends Router
             Router::get('/forum/{slug}', 'Community\Forum@category', ['defaultParameterRegex' => '[\w\-]+']);
             Router::get('/forum/thread/{slug}', 'Community\Forum@topic', ['defaultParameterRegex' => '[\w\-]+']);
             Router::get('/forum/thread/{slug}/page/{page}', 'Community\Forum@topic', ['defaultParameterRegex' => '[\w\-]+']);
-          
+     
             Router::get('/profile', 'Home\Profile@profile');
             Router::get('/profile/{user}', 'Home\Profile@profile', ['defaultParameterRegex' => '[a-zA-Z0-9\d\-_=\?!@:\.,]+']);
           
@@ -112,8 +112,8 @@ class Routes extends Router
 
                 Router::get('/community/fansites', 'Community\Fansites@index');
 
-                Router::get('/ruilwaarde', 'Community\Value@index');
-                Router::get('/ruilwaarde/{value}', 'Community\Value@index', ['defaultParameterRegex' => '[\w\-]+']);
+                Router::get('/marketplace', 'Community\Value@index');
+                Router::get('/marketplace/{value}', 'Community\Value@index', ['defaultParameterRegex' => '[\w\-]+']);
 
                 Router::get('/help', 'Help\Help@index');
                 Router::get('/help/{slug}', 'Help\Help@index', ['defaultParameterRegex' => '[\w\-]+']);

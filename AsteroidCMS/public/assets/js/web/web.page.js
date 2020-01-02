@@ -242,6 +242,8 @@ function WebPageInterface(manager, type, scroll, page_data)
             this.page_interface = new WebPageProfileInterface(this);
         else if (this.type === "community_photos")
             this.page_interface = new WebPageCommunityPhotosInterface(this);
+        else if (this.type === "community_value")
+            this.page_interface = new WebPageCommunityValueInterface(this);
         else if (this.type === "jobs")
             this.page_interface = new WebPageJobsInterface(this);
         else if (this.type === "settings_preferences")

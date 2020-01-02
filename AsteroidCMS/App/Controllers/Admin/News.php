@@ -71,7 +71,7 @@ class News
         $full_story = input()->post('full_story')->value;
         $category = input()->post('category')->value;
         $images = input()->post('images')->value;
-        $imagePath = input()->post('imagePath')->value ?? null;
+        $imagePath = input()->file('imagePath')->name ?? null;
 
         if (!empty(input()->file('imagesUpload')->name)) {
             if ($this->imageUpload()) {
@@ -170,7 +170,7 @@ class News
         $this->file = new Upload();
 
         $this->file->setInput("imagesUpload");
-        $this->file->setDestinationDirectory("../public/uploads/articles");
+        $this->file->setDestinationDirectory("../public/uploads/");
         $this->file->setUploadFunction("copy");
         $this->file->setAllowMimeType("image");
         $this->file->setAutoFilename();

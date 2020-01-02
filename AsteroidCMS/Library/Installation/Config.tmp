@@ -34,7 +34,7 @@ class Config
      * Client settings
      */
     
-    /* Example external_base: = 'gordon/PRODUCTION-201904011212-888653470/' */
+    /* Example external_base: = 'gordon/PRODUCTION-201904011212-888653470' */
     
     const client = array(
       'external_override_variables' => 'gamedata/external_flash_override_texts.txt',
@@ -45,7 +45,9 @@ class Config
       'external_figuremap'          => 'gamedata/figuremap.xml',
       'external_productdata'        => 'gamedata/productdata.txt',
       'external_figuredata'         => 'gamedata/furnidata.xml',
-      'external_base'               => ''
+      'external_base'               => 'gordon/PRODUCTION-201904011212-888653470',
+      'client_swf'                  => 'prodc6.swf',
+      'client_radio'                => 'https://21253.live.streamtheworld.com/WEB16_AAC.aac'
     );
   
     /**

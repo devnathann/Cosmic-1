@@ -85,6 +85,12 @@
               <i class="kt-menu__link-icon flaticon2-rectangular"></i><span class="kt-menu__link-text">FAQ manage</span></a>
           </li>
           {% endif %}
+          {% if 'housekeeping_website_rarevalue' in permissions %}
+          <li class="kt-menu__item ajaxLoading" aria-haspopup="true" >
+              <a  href="{{path}}/housekeeping/value/manage" class="kt-menu__link ">
+              <i class="kt-menu__link-icon flaticon2-rectangular"></i><span class="kt-menu__link-text">Value manage</span></a>
+          </li>
+          {% endif %}
           {% if 'housekeeping_website_feeds' in permissions %}
           <li class="kt-menu__item ajaxLoading" aria-haspopup="true" >
               <a  href="{{path}}/housekeeping/feeds/manage" class="kt-menu__link ">
@@ -107,12 +113,6 @@
           <li class="kt-menu__item ajaxLoading" aria-haspopup="true" >
               <a  href="{{path}}/housekeeping/shop/manage" class="kt-menu__link ">
               <i class="kt-menu__link-icon flaticon2-rectangular"></i><span class="kt-menu__link-text">Shop manage</span></a>
-          </li>
-          {% endif %}
-          {% if 'housekeeping_server_catalog' in permissions or 'housekeeping_tools' in permissions %}
-          <li class="kt-menu__item ajaxLoading" aria-haspopup="true" >
-              <a  href="{{path}}/housekeeping/catalog/manage" class="kt-menu__link ">
-              <i class="kt-menu__link-icon flaticon2-rectangular"></i><span class="kt-menu__link-text">Catalog manage</span></a>
           </li>
           {% endif %}
           {% endif %}
