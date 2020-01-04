@@ -16,7 +16,7 @@
 If you using XAMPP, please add the line below in your ``httpd.conf``
 Otherwise your housekeeping won't work!
 
-> SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+``` SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1 ```
 
 ## Installation
 
