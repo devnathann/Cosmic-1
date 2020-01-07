@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block body %}
+        <header class="page-header flex-container flex-vertical-center">
+            <div class="page-header-content">
+              <h1>{{locale.title}}</h1>
+                {{locale.desc}}
+            </div>
+        </header>
+        <div class="page-content">
+            {% for key,currency in currencys %}
+            <article class="default-section ranking-container">
+                <table class="default-table ranking-content">
+                    <thead>
+                    <tr>
+                        <th colspan="2">{{shortname}}{{locale.username}}</th>
+                        <th>{{key}}</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for user in currency %}
+                    <tr>
+                        <td><img src="{{fpath}}/avatarimage?figure={{user.player.look}}&gesture=sml&headonly=1" alt="{{user.player.look}}" class="pixelated"></td>
+                        <td><a href="{{path}}/profile/{{user.player.username}}">{{user.player.username}}</a></td>
+                        <td><span>{{user.amount}}</span></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </article>
+            {% endfor %}
+        </div>
+{% endblock %}

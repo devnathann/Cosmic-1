@@ -1,0 +1,38 @@
+var Site = {
+    name: "{{sitename}}",
+    domain: "{{domain}}",
+    url: "{{path}}",
+    game_url: "{{cpath}}",
+    figure_url: "{{fpath}}",
+    game_host: "{{clientHost}}",
+    game_port: "{{clientPort}}"
+};
+
+{% if player %}
+    var Client = {{client|json_encode(constant('JSON_PRETTY_PRINT'))|raw}}
+{% endif %}
+
+{% if player is empty %}
+var User = {
+    id: 0,
+    username: "",
+    online: 0,
+    is_logged: false,
+    is_staff: false
+};
+{% else %}var User = {
+    id: {{player.id}},
+    username: "{{player.username}}",
+    is_logged: true,
+    ticket: "{{player.auth_ticket}}",
+    is_staff: {% if player.rank >= 3 %}true{% else %}false{% endif %}
+
+};
+{% endif %}
+
+var Configuration = {
+    {% if publicKey is not empty %}recaptcha_public: "{{publicKey}}",{% endif %}
+    revision: "{{revision}}2",
+    cache: "1a7010799aca22",
+    debug: {{debug}}
+};

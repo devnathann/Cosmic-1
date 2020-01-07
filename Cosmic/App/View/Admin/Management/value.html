@@ -1,0 +1,187 @@
+{% extends "Admin/base.html" %}
+{% block page %}Value management{% endblock %}
+{% block jsfile %}value{% endblock %}
+{% block body %}
+<div class="row">
+   <div class="col-xl-12">
+      <div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile ">
+         <div class="kt-portlet__head kt-portlet__head--lg">
+            <div class="kt-portlet__head-label">
+               <span class="kt-portlet__head-icon">
+               <i class="kt-font-brand flaticon-interface-3"></i>
+               </span>
+               <h3 class="kt-portlet__head-title">
+                  Value management
+               </h3>
+            </div>
+            <div class="kt-portlet__head-toolbar">
+               <div class="kt-portlet__head-wrapper">
+                  <div class="col-md-8 kt-margin-b-20-tablet-and-mobile">
+                     <div class="kt-input-icon kt-input-icon--left">
+                        <input type="text" class="form-control" placeholder="Search..." id="generalSearch">
+                        <span class="kt-input-icon__icon kt-input-icon__icon--left">
+                        <span><i class="la la-search"></i></span>
+                        </span>
+                     </div>
+                  </div>
+                  &nbsp;
+                  <div class="col-md-3 kt-tablet-and-mobile">
+                     <div class="kt-form__group kt-form__group--inline">
+                        <div class="kt-form__label">
+                           <button class="btn btn-secondary" type="button" id="kt_datatable_value_reload">Reload</button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="dropdown dropdown-inline">
+                     <button type="button" class="btn btn-hover-brand btn-elevate-hover btn-icon btn-sm btn-icon-md btn-circle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <i class="flaticon-more-1"></i>
+                     </button>
+                     <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(110px, 38px, 0px);">
+                        <ul class="kt-nav">
+                           <li class="kt-nav__section kt-nav__section--first">
+                              <span class="kt-nav__section-text">Actions</span>
+                           </li>
+                           <li class="kt-nav__item">
+                              <a class="kt-nav__link">
+                              <i class="kt-nav__link-icon flaticon2-settings"></i>
+                              <span class="kt-nav__link-text catEdit" data-toggle="modal" data-target="#categoryEdit">Category Edit</span>
+                              </a>
+                           </li>
+                           <li class="kt-nav__item">
+                              <a class="kt-nav__link">
+                              <i class="kt-nav__link-icon flaticon2-plus"></i>
+                              <span class="kt-nav__link-text addCat" data-toggle="modal" data-target="#addCategory">Add Category</span>
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="kt-portlet__body kt-portlet__body--fit">
+            <!--begin: Datatable -->
+            <div id="kt_datatable_value"></div>
+            <!--end: Datatable -->
+         </div>
+      </div>
+   </div>
+</div>
+<div class="modal fade" id="addCategory" tabindex="-1" role="dialog" aria-labelledby="addCategory" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title">Add Category</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Name:</label>
+                  <input type="text" class="form-control" name="categoryname">
+               </div>
+               <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Catalogue page:</label>
+                  <select name="element[]" class="form-control categoryControl" multiple="multiple"></select>
+               </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Hidden:</label>
+                  <select name="hidden" class="form-control">
+                      <option value="0">No</option>
+                      <option value="0">Yes</option>
+                  </select>
+               </div>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button type="submit" class="btn btn-primary addCategory">Add category</button>
+            </div>
+      </div>
+   </div>
+</div>
+<div class="modal fade" id="viewRareValue" tabindex="-1" role="dialog" aria-labelledby="viewRareValue" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+             <h5 class="modal-title"></h5>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+             </button>
+          </div>
+          <div class="modal-body">
+             <div class="form-group row">
+                <label for="example-text-input" class="col-3 col-form-label">Cost Credits</label>
+                <div class="col-lg-3">
+                   <input type="number" class="form-control" name="cost_credits">
+                </div>
+                <label for="example-text-input" class="col-3 col-form-label">Cost Points</label>
+                <div class="col-lg-3">
+                   <input type="number" class="form-control" name="cost_points">
+                </div>
+             </div>
+             <div class="form-group row">
+                <label for="example-text-input" class="col-3 col-form-label">Points Type</label>
+                <div class="col-lg-3">
+                   <select name="points_type" class="form-control"></select>
+                </div>
+                <label for="example-text-input" class="col-3 col-form-label">Club Only</label>
+                <div class="col-lg-3">
+                   <input type="number" class="form-control" name="club_only">
+                </div>
+             </div> 
+          </div>
+          <div class="modal-footer">
+             <input type="hidden" name="editItemId">
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+             <button type="submit" class="btn btn-primary editItem">Save</button>
+          </div>
+      </div>
+   </div>
+</div>
+ <div class="modal fade" id="reload-catalog" tabindex="-1" role="dialog" aria-labelledby="reload-catalog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            
+                <div class="modal-header">
+                    <h5 class="modal-title">Reload emulator catalog</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            
+                <div class="modal-body">
+                    <p>Do you want to reload the emulator catalog?</p>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-close" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger reload" data-dismiss="modal">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<div id="categoryEdit" class="modal fade" role="dialog" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content" style="min-height: 590px;">
+         <div class="modal-header">
+            <h5 class="modal-title">
+               Category management
+               <small>
+                  <div id="title-small"></div>
+               </small>
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body modal-body-fit">
+            <div id="categoryDatatable"></div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-clean btn-bold btn-upper btn-font-sm btnClose" data-dismiss="modal">Close</button>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock %}
