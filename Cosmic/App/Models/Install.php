@@ -969,7 +969,7 @@ class Install {
               }
         $qeqewwe = "
       ALTER TABLE `catalog_items`
-        ADD COLUMN `rate` enum('up','down','none') DEFAULT 'none";
+        ADD COLUMN `rate` enum('up','down','none') DEFAULT 'none'";
         if ($conn->query($qeqewwe) !== true) {
             self::rollback($conn->error);
         }
