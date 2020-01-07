@@ -158,8 +158,6 @@ class Home
             'credits'           => 'required|numeric',
             'points'            => 'required|numeric',
             'pixels'            => 'required|numeric',
-            'publicKey'         => 'required',
-            'secretKey'         => 'required',
             'language'          => 'required'
         ]);
 
