@@ -22,7 +22,7 @@ Otherwise your housekeeping won't work!
 
 ### Clone
 
-- Clone this repo to your local machine using `https://github.com/devraizer/Cosmos.git`
+- Clone this repo to your local machine using `https://github.com/devraizer/Cosmic.git`
 
 ### Setup
 
@@ -35,10 +35,10 @@ $ composer update
 
 ## Installer
 
-- Because the htaccess and web.config are already included, you do not need to change/add anything. When the repo is cloned and composer installed/updated you can go to your website and run the installer. Please follow the installation steps to install Cosmos.
+- Because the htaccess and web.config are already included, you do not need to change/add anything. When the repo is cloned and composer installed/updated you can go to your website and run the installer. Please follow the installation steps to install Cosmic.
 
 ![](https://i.gyazo.com/375ef46231c76a490a44142f1475d18b.gif)
 
 ## Documentation
 
-- Because Cosmos is still in a beta, we will not have any documentation available. We would like to see all bugs fixed before we leave the beta. Please create an issue when you found bug so that we can solve it. If you have problems with the installation, please add me on discord.
+- Because Cosmic is still in a beta, we will not have any documentation available. We would like to see all bugs fixed before we leave the beta. Please create an issue when you found bug so that we can solve it. If you have problems with the installation, please add me on discord.
