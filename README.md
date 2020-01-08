@@ -3,7 +3,7 @@
 # <img src="https://habborator.org/archive/icons/medium/go_arrow.gif"> About:
 
 
-> ![version](https://img.shields.io/badge/beta-0.1.1--dev-green?logo=appveyor&style=flat-square) [![unstable](https://img.shields.io/badge/stability-unstable-red?logo=appveyor&style=flat-square)](http://github.com/badges/stability-badges)
+> ![version](https://img.shields.io/badge/production-1.0.0-green?logo=appveyor&style=flat-square) [![unstable](https://img.shields.io/badge/stability-stable-green?logo=appveyor&style=flat-square)](http://github.com/badges/stability-badges)
 
 > Only for Arcturus Morningstar.
 
