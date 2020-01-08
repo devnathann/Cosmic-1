@@ -14,6 +14,7 @@ class Staff
         $ranks = Permission::getRanks();
 
         foreach ($ranks as $row) {
+          
             $row->users = Player::getDataByRank($row->id);
 
             if (!empty($row->users) && is_array($row->users)) {
@@ -21,6 +22,7 @@ class Staff
                     $users->settings = Player::getSettings($users->id);
                 }
             }
+          
         }
 
         View::renderTemplate('Community/staff.html', [

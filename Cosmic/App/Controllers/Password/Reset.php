@@ -45,9 +45,6 @@ class Reset
 
         Player::update($player->player_id, 'pincode', '0');
         Player::resetPassword($player->player_id, $newPassword);
-
-        Log::createPasswordLog($player->player_id);
-
         Password::deleteToken($player->email);
 
         echo '{"status":"success","message":"' . Locale::get('claim/password_changed') . '", "pagetime":"/home"}';
