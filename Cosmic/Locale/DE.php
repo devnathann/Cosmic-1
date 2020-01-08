@@ -9,7 +9,7 @@ $GLOBALS['language'] = array (
             
             'nav_community'         => 'Community',
             'nav_news'              => 'Neuigkeiten',
-            'nav_jobs'              => 'Jobs'
+            'nav_jobs'              => 'Jobs',
             'nav_photos'            => 'Fotos',
             'nav_staff'             => 'Unser Team',
             'nav_exchange'          => 'Preisliste',

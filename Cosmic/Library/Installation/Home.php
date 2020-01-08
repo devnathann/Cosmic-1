@@ -195,6 +195,7 @@ class Home
         $currencys = 'array( ' . $this->array2string($decode) . ')';
         $freeCurrencys = 'array( ' . $this->array2stringa($decode) . ')';
       
+        Install::editConfig('language = \'EN\'', 'language = \''. $configuration['language'] . '\'');
         Install::editConfig('currencys = null', 'currencys = ' . $currencys);
         Install::editConfig('freeCurrency = null', 'freeCurrency = ' . $freeCurrencys);
         Install::editConfig('view = \'Library/Installation/Views\'', 'view = \'App/View\'');
