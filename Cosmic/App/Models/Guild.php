@@ -24,7 +24,7 @@ class Guild
   
     public static function getPublicGuilds() 
     {
-        return QueryBuilder::table('guilds')->where('read_forum', 'EVERYONE')->get();
+        return QueryBuilder::table('guilds')->where('read_forum', 'EVERYONE')->where('forum', '=', '1')->get();
     }
   
     public static function getGuilds($guild_id, $user_id) 
