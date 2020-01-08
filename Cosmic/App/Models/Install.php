@@ -434,7 +434,7 @@ class Install {
               `player_id` int(11) DEFAULT NULL,
               `message` varchar(250) DEFAULT NULL,
               `hidden` int(11) DEFAULT 0,
-              `timestamp` datetime DEFAULT NULL
+              `timestamp` int(11) DEFAULT NULL
             ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC";
         if ($conn->query($webForumNewsReact) !== true) {
             self::rollback($conn->error);
