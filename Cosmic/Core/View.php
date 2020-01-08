@@ -89,7 +89,7 @@ class View
                     {
                         $twig->addGlobal('player_rank', Player::getHotelRank(request()->player->rank));
                         $twig->addGlobal('flash_messages', Flash::getMessages());
-                        $twig->addGlobal('locale_housekeeping', Locale::get('housekeeping/base', true));
+                        //$twig->addGlobal('locale_housekeeping', Locale::get('housekeeping/base', true));
                         $twig->addGlobal('alert_messages', Admin::getAlertMessages());
                         $twig->addGlobal('ban_messages', Admin::getBanMessages());
                         $twig->addGlobal('ban_times', Admin::getBanTime(request()->player->rank));

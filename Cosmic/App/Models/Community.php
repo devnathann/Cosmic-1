@@ -175,6 +175,21 @@ class Community
         return QueryBuilder::query('SELECT username, look FROM users ORDER BY RAND() LIMIT  ' . $limit)->get();
     }
   
+    public static function getAchievement($limit = 10)
+    {
+        return  QueryBuilder::table('users_settings')->select('user_id')->select('achievement_score')->orderBy('achievement_score', 'desc')->limit($limit)->get();
+    }
+  
+    public static function getRespectsReceived($limit = 10)
+    {
+        return  QueryBuilder::table('users_settings')->select('user_id')->select('respects_received')->orderBy('respects_received', 'desc')->limit($limit)->get();
+    }
+
+    public static function getCredits($limit = 10)
+    {
+        return  QueryBuilder::table('users')->select('id')->select('credits')->orderBy('credits', 'desc')->limit($limit)->get();
+    }
+  
     /*
      * Jobs queries
      */

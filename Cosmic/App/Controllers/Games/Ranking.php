@@ -16,7 +16,7 @@ class Ranking
         $currencys = array();
         foreach(Config::currencys as $currency => $type) 
         {
-            $highscores = Community::getCurrencyHighscores($type, 7);
+            $highscores = Community::getCurrencyHighscores($type, 6);
             $type = $currency;
           
             foreach($highscores as $highscore) {
@@ -26,8 +26,20 @@ class Ranking
             $currencys[$type] = $highscores;
         }
       
-        $achievements = Player::getByAchievement();
+        $credits = Community::getCredits(6);
+        foreach ($credits as $item) 
+        {
+            $item->player = Player::getDataById($item->id, array('username', 'look'));
+        }
+      
+        $achievements = Community::getAchievement(6);
         foreach ($achievements as $item) 
+        {
+            $item->player = Player::getDataById($item->user_id, array('username', 'look'));
+        }
+     
+        $respectreceived = Community::getRespectsReceived(6);
+        foreach ($respectreceived as $item) 
         {
             $item->player = Player::getDataById($item->user_id, array('username', 'look'));
         }
@@ -36,6 +48,8 @@ class Ranking
             'title' => Locale::get('core/title/games/ranking'),
             'page'  => 'games_ranking',
             'achievements' => $achievements,
+            'credits' => $credits,
+            'respects' => $respectreceived,
             'currencys'  => $currencys
         ]);
     }

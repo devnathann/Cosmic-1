@@ -30,5 +30,65 @@
                 </table>
             </article>
             {% endfor %}
+          
+            <article class="default-section ranking-container">
+                <table class="default-table ranking-content">
+                    <thead>
+                    <tr>
+                        <th colspan="2">{{shortname}}{{locale.username}}</th>
+                        <th>Credits</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for credits in credits %}
+                    <tr>
+                        <td><img src="{{fpath}}/avatarimage?figure={{credits.player.look}}&gesture=sml&headonly=1" alt="{{credits.player.look}}" class="pixelated"></td>
+                        <td><a href="{{path}}/profile/{{credits.player.username}}">{{credits.player.username}}</a></td>
+                        <td><span>{{credits.credits}}</span></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </article>
+          
+            <article class="default-section ranking-container">
+                <table class="default-table ranking-content">
+                    <thead>
+                    <tr>
+                        <th colspan="2">{{shortname}}{{locale.username}}</th>
+                        <th>Achievements</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for achievements in achievements %}
+                    <tr>
+                        <td><img src="{{fpath}}/avatarimage?figure={{achievements.player.look}}&gesture=sml&headonly=1" alt="{{achievements.player.look}}" class="pixelated"></td>
+                        <td><a href="{{path}}/profile/{{achievements.player.username}}">{{achievements.player.username}}</a></td>
+                        <td><span>{{achievements.achievement_score}}</span></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </article>
+          
+             <article class="default-section ranking-container">
+                <table class="default-table ranking-content">
+                    <thead>
+                    <tr>
+                        <th colspan="2">{{shortname}}{{locale.username}}</th>
+                        <th>Respects</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for respects in respects %}
+                    <tr>
+                        <td><img src="{{fpath}}/avatarimage?figure={{respects.player.look}}&gesture=sml&headonly=1" alt="{{respects.player.look}}" class="pixelated"></td>
+                        <td><a href="{{path}}/profile/{{respects.player.username}}">{{respects.player.username}}</a></td>
+                        <td><span>{{respects.respects_received}}</span></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </article>
         </div>
 {% endblock %}
