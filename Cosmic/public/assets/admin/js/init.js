@@ -220,6 +220,7 @@ var showOnlinePlayers = function() {
 
     return {
         init: function() {
+            
             $("#onlinePlayers").show();
 
             var datatableOnlinePlayers = function() {
@@ -313,4 +314,11 @@ jQuery(document).ready(function() {
     $("#showOnlinePlayers").unbind().click(function () {
         showOnlinePlayers.init();
     });
+  
+    $(".maintenance").unbind().click(function () {
+        var self = this;
+        this.ajax_manager = new WebPostInterface.init();
+
+        self.ajax_manager.post("/housekeeping/api/dashboard/maintenance", {});
+   });
 });

@@ -261,17 +261,15 @@ class Install {
         }
         $webConfig = "
             CREATE TABLE `website_config` (
-              `short_name` varchar(50) DEFAULT 'Cosmic',
-              `hotel_name` varchar(50) DEFAULT 'Cosmic Hotel',
-              `maintenance` enum('0','1') DEFAULT '0',
+              `maintenance` varchar(1) NOT NULL DEFAULT 0,
               `revision` varchar(50) DEFAULT ''
             ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT";
         if ($conn->query($webConfig) !== true) {
             self::rollback($conn->error);
         }
         $webConfigInsert = "
-            INSERT INTO `website_config` (`short_name`, `hotel_name`, `maintenance`, `revision`) VALUES
-            ('Cosmic', 'Cosmic Hotel', '0', '150')
+            INSERT INTO `website_config` (`maintenance`, `revision`) VALUES
+            ('0', '0')
         ";
         if ($conn->query($webConfigInsert) !== true) {
             self::rollback($conn->error);

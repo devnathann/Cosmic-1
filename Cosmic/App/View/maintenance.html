@@ -1,18 +1,111 @@
 <!DOCTYPE html>
-<title>Leet Hotel ~ Onderhoud</title>
-<style>
-  body { text-align: center; padding: 150px; }
-  h1 { font-size: 50px; }
-  body { font: 20px Helvetica, sans-serif; color: #333; }
-  article { display: block; text-align: left; width: 650px; margin: 0 auto; }
-  a { color: #dc8100; text-decoration: none; }
-  a:hover { color: #333; text-decoration: none; }
-</style>
+<html lang="en">
 
-<article>
-    <h1>Onderhoudsbeurt...</h1>
-    <div>
-        <p>Sorry! Er wordt op dit moment gewerkt aan Leet Hotel. Probeer het later nog eens, want we zullen snel terug zijn! Dat beloven we :)</p>
-        <p>&mdash; De Leet Staff</p>
+<head>
+    <title>{{shortname}} - Maintenance</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <link rel="stylesheet/less" type="text/css" href="/assets/css/login.less" />
+     <link rel="stylesheet" href="{{path}}/assets/css/magnific-popup.css">
+    <script src="{{path}}/assets/js/jquery-3.2.1.min.js"></script>
+    <script>
+      var Site = {
+    name: "{{sitename}}",
+    domain: "{{domain}}",
+    url: "{{path}}"
+};
+    var Configuration = {
+        revision: "{{revision}}9",
+        cache: "1a7010799aca23"
+    };
+    </script>
+</head>
+<noscript>
+    <style>
+        .loading-container {
+            display: none;
+        }
+    </style>
+</noscript>
+<div class="loading-container">
+    <div id="loading-background"></div>
+    <div class="loading-content">
+        <div class="c100 center">
+            <span></span>
+            <div class="slice">
+                <div class="bar"></div>
+                <div class="fill"></div>
+            </div>
+        </div>
+        <div class="loading-bodytext">
+            Laden.. 0%
+        </div>
     </div>
-</article>
+</div>  
+  
+  
+<body>
+    
+<div class="page-loading"></div>
+<div class="notifications-container"></div>
+    <div class="wrapper">
+        <div class="container">
+            <img src="https://habbofont.net/font/hma/{{shortname}}.gif">
+
+            <form class="form" method="post">
+                <input type="text" name="username" placeholder="Username">
+                <input type="password" name="password" placeholder="Password">
+                <button type="submit" id="login-button">LOGIN</button>
+            </form>
+        </div>
+
+        <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.10.3/less.js"></script>
+  
+  <script src="{{path}}/assets/js/js.cookie.js"></script>
+<script src="{{path}}/assets/js/jquery.history.js"></script>
+<script src="{{path}}/assets/js/jquery.magnific-popup.js"></script>
+<script src="{{path}}/assets/js/functions.js"></script>
+<script src="{{path}}/assets/js/web/loading.js?v=5"></script>
+<script src="{{path}}/assets/js/jquery.wysibb.js"></script>
+<script>
+ $("#login-button").unbind().click(function () {
+    var verification_data = {
+        username: $(".form [name=username]").val(),
+        password: $(".form [name=password]").val()
+    };
+
+    Web.ajax_manager.post("/home/login/request", verification_data, function(result) {
+
+        if(result.status == "pincode_required")
+        {
+            setTimeout(function(){ 
+            Web.dialog_manager.create("confirm", Locale.web_fill_pincode, Locale.web_twostep, null, "pincode", function (result)
+            {
+                verification_data.pincode = result.toString();
+                Web.ajax_manager.post("/home/login/request", verification_data);
+
+                $.magnificPopup.close();
+            });
+            }, 500);
+        }
+    });
+ });
+   
+</script>
+</html>

@@ -1,6 +1,7 @@
 <?php
 namespace Core;
 
+use App\Auth;
 use App\Config;
 use App\Flash;
 use App\Models\Admin;
@@ -83,19 +84,16 @@ class View
                 $twig->addGlobal('currencys', Player::getCurrencys(request()->player->id));
                 $twig->addGlobal('online_count', Core::getOnlineCount());
 
-                if (request()->player->rank >= Config::minRank) 
-                {
-                    if(request()->getUrl()->contains('/housekeeping')) 
-                    {
-                        $twig->addGlobal('player_rank', Player::getHotelRank(request()->player->rank));
-                        $twig->addGlobal('flash_messages', Flash::getMessages());
-                        //$twig->addGlobal('locale_housekeeping', Locale::get('housekeeping/base', true));
-                        $twig->addGlobal('alert_messages', Admin::getAlertMessages());
-                        $twig->addGlobal('ban_messages', Admin::getBanMessages());
-                        $twig->addGlobal('ban_times', Admin::getBanTime(request()->player->rank));
-                    }
-
+                if (request()->player->rank >= Config::minRank) {
                     $twig->addGlobal('player_permissions', Permission::get(request()->player->rank));
+                }
+              
+                if(request()->getUrl()->contains('/housekeeping')) {
+                    $twig->addGlobal('player_rank', Player::getHotelRank(request()->player->rank));
+                    $twig->addGlobal('flash_messages', Flash::getMessages());
+                    $twig->addGlobal('alert_messages', Admin::getAlertMessages());
+                    $twig->addGlobal('ban_messages', Admin::getBanMessages());
+                    $twig->addGlobal('ban_times', Admin::getBanTime(request()->player->rank));
                 }
             }
         }
@@ -106,8 +104,17 @@ class View
       
         if(request()->isAjax() && $request == false) {
             self::getResponse($template, $args);
-        } else {
-            return $twig->render($template, $args);
+            exit;
         }
+      
+        if(Auth::maintenance()) {
+            $rank = (isset(request()->player->rank)) ? request()->player->rank : 1;
+            if($rank <= Config::minRank) {
+                Auth::logout();
+                return $twig->render('maintenance.html');
+            }
+        }
+      
+        return $twig->render($template, $args);
     }
 }

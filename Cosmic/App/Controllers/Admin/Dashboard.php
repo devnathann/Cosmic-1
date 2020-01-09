@@ -45,6 +45,17 @@ class Dashboard
 
         Json::filter($online_users, 'desc', 'id');
     }
+  
+    public function maintenance()
+    {
+        if (!\App\Models\Core::permission('housekeeping_permissions', request()->player->rank)) {
+            echo '{"status":"error","message":"You have no permissions to do this!!"}';
+            exit;
+        }
+      
+        $maintenance = Admin::setMaintenance();
+        echo '{"status":"success","message":"Maintenance updated!"}';
+    }
 
     public function view()
     {
