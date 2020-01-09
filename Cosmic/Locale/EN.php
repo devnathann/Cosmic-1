@@ -333,7 +333,8 @@ $GLOBALS['language'] = array (
             'rooms_empty'           => 'Hasn\'t created any rooms yet',
             'photos_title'          => 'Photos',
             'photos_label'          => 'Will you take a picture with me?',
-            'photos_empty'          => 'Hasn\'t taken any photos yet'
+            'photos_empty'          => 'Hasn\'t taken any photos yet',
+            'title'                 => 'Profile'
         ),
         'registration' => array (
             'title'                 => 'Enter your information!',
@@ -365,7 +366,8 @@ $GLOBALS['language'] = array (
             'sex'                   => 'Sex',
             'male'                  => 'Boy',
             'female'                => 'Girl',
-            'register'              => 'Register'
+            'register'              => 'Register',
+            'header_slogan2'        => 'Join our community and make new friends'
         ),
         
         /*     App/View/Jobs     */

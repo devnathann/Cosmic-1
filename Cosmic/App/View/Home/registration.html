@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 {% block body %}
+        <header class="page-header flex-container flex-vertical-center">
+            <div class="page-header-content">
+                <h1>{{locale.create_user}}</h1>
+                {{locale.header_slogan2}}
+            </div>
+        </header>
+
         <div class="page-content">
             <article class="default-section">
                     <form action="home/registration/request" method="post" class="registration-form">

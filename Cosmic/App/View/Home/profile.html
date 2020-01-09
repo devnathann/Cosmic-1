@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 {% block body %}
+<header class="page-header flex-container flex-vertical-center">
+    <div class="page-header-content">
+        <h1>{{locale.title}} {{data.player.username}} <a onclick="openSearch()" style="border: none;color:#000; cursor: pointer"><i class="fa fa-search"></i></a></h1>
+    </div>
+</header>
 <div id="searchOverlay" class="overlay">
     <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
     <div class="overlay-content">
         <form action="profile/search">
-            <input type="text" placeholder="{{locale.overlay_search}}" name="search">
+            <input type="text" placeholder="Wie zoek je?" name="search">
             <button type="submit" onclick="closeSearch()"><i class="fa fa-search"></i></button>
         </form>
     </div>
