@@ -107,7 +107,7 @@ class View
             exit;
         }
       
-        if(Auth::maintenance()) {
+        if(Config::installation == false && Auth::maintenance()) {
             $rank = (isset(request()->player->rank)) ? request()->player->rank : 1;
             if($rank <= Config::minRank) {
                 Auth::logout();
