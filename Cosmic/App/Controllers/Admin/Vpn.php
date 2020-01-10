@@ -22,6 +22,7 @@ class Vpn
 
     public function __construct()
     {
+        $this->apiKey = '2b3dcf9260762a123c4d1ddeb9ae50c3d188ce34f1f93fe8241d4a5b';
         $this->data = new stdClass();
     }
 
@@ -33,25 +34,22 @@ class Vpn
         try {
 
             $last_ip = Player::getDataByUsername($player, 'ip_current')->ip_current;
-            $organisation = file_get_contents('https://api.ipdata.co/' . $last_ip . '?api-key=2b3dcf9260762a123c4d1ddeb9ae50c3d188ce34f1f93fe8241d4a5b');
+            $organisation = file_get_contents('https://api.ipdata.co/' . $last_ip . '?api-key=' . $this->apiKey);
 
             $record = $reader->asn($last_ip);
 
             $asn = Ban::getNetworkBanByAsn($record->autonomousSystemNumber);
             if ($asn != null) {
-                echo '{"status":"error","message":"AS' . $asn->asn . ' is already banned."}';
-                exit;
+                return Json::encode(["status" => "success", "message" => "AS {$asn->asn} is already banned"]);
             }
 
             Ban::createNetworkBan($record->autonomousSystemNumber, json_decode($organisation)->asn->name, request()->player->id);
-            echo '{"status":"success","message":"AS' . $record->autonomousSystemNumber . ' is added to our ban list"}';
+            return Json::encode(["status" => "success", "message" => "AS {$record->autonomousSystemNumber} is added to our ban list"]);
 
         } catch (AddressNotFoundException $e) {
-            echo '{"status":"error","message":"' . Locale::get('core/notification/something_wrong') . '"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         } catch (InvalidDatabaseException $e) {
-            echo '{"status":"error","message":"' . Locale::get('core/notification/something_wrong') . '"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         }
     }
 
@@ -59,12 +57,11 @@ class Vpn
     {
         $ban = Ban::getNetworkBanById(input()->post('asn')->value);
         if ($ban == null) {
-            echo '{"status":"error","message":"AS' . $ban->asn . ' is not banned."}';
-            exit;
+            return Json::encode(["status" => "error", "message" => "AS {$ban->asn} is not banned"]);
         }
 
         Ban::removeNetworkBan($ban->asn);
-        echo '{"status":"success","message":"AS' . $ban->asn . ' / ' . $ban->host . ' is deleted!"}';
+        return Json::encode(["status" => "success", "message" => "AS {$ban->asn}/{$ban->host} is deleted"]);
     }
 
     public function getasnbans()
@@ -81,6 +78,6 @@ class Vpn
 
     public function view()
     {
-        View::renderTemplate('Admin/Management/vpn.html', ['apiKey' => '2b3dcf9260762a123c4d1ddeb9ae50c3d188ce34f1f93fe8241d4a5b', 'permission' => 'housekeeping_vpn_control']);
+        View::renderTemplate('Admin/Management/vpn.html', ['apiKey' => $this->apiKey, 'permission' => 'housekeeping_vpn_control']);
     }
 }

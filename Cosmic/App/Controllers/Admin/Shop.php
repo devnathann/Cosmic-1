@@ -34,19 +34,18 @@ class Shop
         $private_key = input()->post('private_key')->value;
       
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
       
         if (!empty($id)) {
             Admin::offerEdit($id, $currencys, $amount, $price, $lang, $offer_id, $private_key);
             Log::addStaffLog('-1', 'Shop edited: ' . $offer_id, 'shop');
-            echo '{"status":"success","message":"Shop edited successfully!"}';
-            exit;
+            return Json::encode(["status" => "success", "message" => "Shop edited successfully!"]);
         }
       
         Admin::offerCreate($currencys, $amount, $price, $lang, $offer_id, $private_key);
         Log::addStaffLog('-1', 'Shop item created: ' . $offer_id, 'shop');
-        echo '{"status":"success","message":"Shop edited successfully!"}';
+        return Json::encode(["status" => "success", "message" => "Shop created successfully!"]);
     }
   
     public function give()
@@ -60,19 +59,17 @@ class Shop
         $type = input()->post('type')->value;
 
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
 
         $player = Player::getDataByUsername($username, array('id', 'online'));
         if (empty($player)) {
-            echo '{"status":"success","message":"This user does not exists!"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => "This user does not exists!"]);
         }
 
         $offer = \App\Models\Shop::getOfferById($type);
         if (empty($offer)) {
-            echo '{"status":"success","message":"This user does not exists!"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => "This offer does not exists!"]);
         }
 
         if ($player->online) {
@@ -82,7 +79,7 @@ class Shop
         }
 
         Log::addPurchaseLog($player->id, $offer->amount . ' Bel-Credits', $offer->lang);
-        echo '{"status":"success","message":"User has received the items!"}';
+        return Json::encode(["status" => "success", "message" => "User has received the items!"]);
     }
   
     public function getOfferById()
@@ -92,11 +89,11 @@ class Shop
         ]);
 
         if (!$validate->isSuccess()) {
-            exit;
+            return;
         }
       
         $offer = Shops::getOfferById(input()->post('post')->value);
-        Json::raw($offer);
+        Json::encode($offer);
     }
 
     public function getOffers()

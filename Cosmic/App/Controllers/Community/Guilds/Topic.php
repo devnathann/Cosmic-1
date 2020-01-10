@@ -8,14 +8,15 @@ use App\Core;
 use Core\Locale;
 use Core\View;
 
+use Library\Json;
+
 class Topic {
   
     public function __construct() 
     {
         if(!request()->guild->read_forum) {
             if(request()->isAjax()) {
-                echo '{"status":"error", "message":"'.Locale::get('core/notification/invisible').'"}';
-                exit;
+                return Json::encode(["status" => "error", "message" => Locale::get('core/notification/invisible')]);
             }
           
             redirect('/guilds');
@@ -72,7 +73,7 @@ class Topic {
         ]);
 
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
       
         $topic_id = input()->post('topic_id')->value;
@@ -83,22 +84,19 @@ class Topic {
         $message  = input()->post('message')->value;
       
         if (request()->player === null) {
-            echo '{"status":"error","message":"'.Locale::get('core/notification/something_wrong').'"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         }
       
         if(!request()->guild->post_messages != false) {
-            echo '{"status":"error","message":"'.Locale::get('core/notification/post_not_allowed').'"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/post_not_allowed')]);
         }
       
         if($topic->locked){
-            echo '{"status":"error","message":"'.Locale::get('core/notification/topic_closed').'"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/topic_closed')]);
         }
 
         $reply_id = Guild::createReply($topic_id, Core::FilterString(Core::tagByUser($message)), request()->player->id); 
-        echo '{"status":"success","message":"' . Locale::get('core/notification/message_placed') . '","replacepage":"guilds/' . $guild_id . '/thread/' . $topic->id . '-'. Core::convertSlug($topic->subject) . '/page/'. $totalPages . '#' . $reply_id . '"}';
+        return Json::encode(["status" => "success", "message" =>  Locale::get('core/notification/message_placed'), "replacepage" => "guilds/{$guild_id}/thread/{$topic->id} - " . Core::convertSlug($topic->subject) . "/page/{$totalPages}#{$reply_id}"]);
     }
   
     public function stickyclosethread()
@@ -109,17 +107,15 @@ class Topic {
         ]);
       
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
       
         if (request()->player === null) {
-            echo '{"status":"error","message":"'.Locale::get('core/notification/something_wrong').'"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         }
       
         if(!request()->guild->mod_forum != false) {
-            echo '{"status":"error","message":"'.Locale::get('core/notification/no_permissions').'"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/no_permissions')]);
         }
       
         $post_id = input()->post('id')->value;
@@ -130,8 +126,7 @@ class Topic {
 
         if(input()->post('action')->value == "sticky") {
             Guild::isSticky(input()->post('id')->value);
-            echo '{"status":"success","message":"' . Locale::get('forum/is_sticky') . '","replacepage":"guilds/'. $guild_id .'/thread/' . $topic->id . '-'. $topic->slug . '"}';
-            exit;
+            return Json::encode(["status" => "success", "message" => Locale::get('forum/is_sticky'), "replacepage" => "guilds/{$guild_id}/thread/{$topic->id}-{$topic->slug}"]);
         }
       
         Guild::isClosed(input()->post('id')->value);
@@ -146,25 +141,23 @@ class Topic {
         ]);
       
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
       
         if (request()->player === null) {
-            echo '{"status":"error","message":"'.Locale::get('core/notification/something_wrong').'"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         }
       
         $post_id  = input()->post('id')->value;
       
         if (in_array(request()->player->id, array_column(Guild::getPostLikes($post_id), 'user_id'))) {
-            echo '{"status":"error","message":"' . Locale::get('core/notification/already_liked') . '"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/already_liked')]);
         }
 
         Guild::insertLike($post_id, request()->player->id);
         $topic = Guild::getTopicByPostId($post_id);
       
-        echo '{"status":"success","message":"' . Locale::get('core/notification/liked') . '","replacepage":"' . input()->post('url')->value . '#' . $topic->idp . '"}';
+        return Json::encode(["status" => "success", "message" => Locale::get('core/notification/liked'), "replacepage" => input()->post('url')->value . "#{$topic->idp}"]);
     }
   
     private function slug($slug)

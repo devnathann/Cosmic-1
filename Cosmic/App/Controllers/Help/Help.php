@@ -6,6 +6,8 @@ use App\Models\Core;
 use Core\Locale;
 use Core\View;
 
+use Library\Json;
+
 use stdClass;
 
 class Help
@@ -32,8 +34,7 @@ class Help
     {
         $category = \App\Models\Help::getCategories();
         if($category == null) {
-            echo '{"status":"error","message":"We hebben helaas nog geen FAQ\'s voor je klaarstaan!"}';
-            exit;
+            redirect('/');
         }
 
         foreach ($category as $row) {

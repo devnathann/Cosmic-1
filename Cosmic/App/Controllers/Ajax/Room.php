@@ -5,6 +5,7 @@ use App\Config;
 use Core\Locale;
 
 use Library\HotelApi;
+use Library\Json;
 
 class Room
 {
@@ -21,20 +22,16 @@ class Room
         $roomId = input()->post('roomId')->value;
 
         if (!request()->player->online) {
-            echo '{"status":"error","message":""}';
-            exit;
+            return Json::encode(["status" => "error", "message" => "Please login first!"]);
         }
 
         $room = \App\Models\Room::getById($roomId);
         if ($room == null) {
-            echo '{"status":"error","message":"'.Locale::get('core/notification/room_not_exists').'"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/room_not_exists')]);
         }
 
         if(Config::apiEnabled && request()->player->online) {
             HotelApi::execute('forwarduser', array('user_id' => request()->player->id, 'room_id' => $roomId));
         }
-      
-        echo '{"status":"success","message":""}';
     }
 }

@@ -13,6 +13,7 @@ use Core\Locale;
 use Core\View;
 
 use Library\HotelApi;
+use Library\Json;
 
 use stdClass;
 
@@ -27,37 +28,29 @@ class Namechange
 
     public function validate()
     {
-        if(!Config::apiEnabled) {
-            echo '{"status":"error","message":"' . Locale::get('core/hotelapi/disable') . '"}';
-            exit;
-        }
-      
         $validate = request()->validator->validate([
             'username' => 'required|min:2|max:15|pattern:[^[:space:]]+',
         ]);
 
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
 
         $username = input()->post('username')->value;
 
         $user_validate = preg_replace('/[^a-zA-Z0-9\d\-\?!@:\.,]/i', '', $username);
         if ($user_validate != $username) {
-            echo '{"status":"error","message":"' . Locale::get('register/username_invalid') . '"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('register/username_invalid')]);
         }
 
         $new_player = Player::getDataByUsername($username);
         if (!empty($new_player)) {
-            echo '{"status":"error","message":"' . Locale::get('settings/user_is_active') . '"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('settings/user_is_active')]);
         }
 
         $amount = Player::getCurrencys(request()->player->id)[Config::payCurrency]->amount;
         if ($amount < 50) {
-            echo '{"status":"error","message":"' . Locale::get('core/notification/not_enough_belcredits') . '"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/not_enough_belcredits')]);
         }
 
         Player::updateCurrency(request()->player->id, Config::payCurrency, $amount - 50);
@@ -71,8 +64,8 @@ class Namechange
         }
       
         Log::addNamechangeLog(request()->player->id, request()->player->username, $username);
-        Player::update(request()->player->id, 'username', $username);
-        echo '{"status":"success","message":"' . Locale::get('settings/name_change_saved') . '","replacepage":"settings/namechange"}';
+        Player::update(request()->player->id, ['username' => $username]);
+        return Json::encode(["status" => "success", "message" => Locale::get('settings/name_change_saved'), "replacepage" => "settings/namechange"]);
     }
 
     public function availability()
@@ -83,11 +76,10 @@ class Namechange
         $player = Player::getDataByUsername($username, array('id'));
 
         if ($userCheck != $username || !empty($player)) {
-            echo '{"status":"unavailable"}';
-            exit;
+            return Json::encode(["status" => "unavailable"]);
         }
-
-        echo '{"status":"available"}';
+    
+        return Json::encode(["status" => "available"]);
     }
 
     public function index()

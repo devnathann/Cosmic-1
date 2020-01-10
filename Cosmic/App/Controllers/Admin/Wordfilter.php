@@ -30,7 +30,7 @@ class Wordfilter
         ]);
 
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
 
         $word = input()->post('post')->value;
@@ -38,8 +38,7 @@ class Wordfilter
         $word_filter = Admin::getWordFilterByWord($word);
 
         if ($word_filter) {
-            echo '{"status":"error","message":"' . $word . ' is already blacklisted!"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => "{$word} is already blacklisted!"]);
         }
 
         Admin::addWordFilter($word, request()->player->id);
@@ -49,7 +48,7 @@ class Wordfilter
         };
 
         Log::addStaffLog('-1', 'Added wordfilter: ' . $word, 'wordfilter');
-        echo '{"status":"success","message":"' . $word . ' is added to the blacklist."}';
+        return Json::encode(["status" => "success", "message" => "{$word} is added to the blacklist."]);
     }
 
     public function remove()
@@ -59,15 +58,14 @@ class Wordfilter
         ]);
 
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
 
         $word = input()->post('post')->value;
 
         $word_filter = Admin::getWordFilterByWord($word);
         if (empty($word_filter)) {
-            echo '{"status":"error","message":"' . $word . ' is already removed"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => "{$word} is already removed"]);
         }
 
         Admin::deleteWordByWord($word);
@@ -77,7 +75,7 @@ class Wordfilter
         }
 
         Log::addStaffLog('-1', 'Removed wordfilter: ' . $word, 'wordfilter');
-        echo '{"status":"success","message":"' . $word . ' successfully removed"}';
+        return Json::encode(["status" => "success", "message" => "{$word} successfully removed"]);
     }
 
     public function getwordfilters()
@@ -85,8 +83,7 @@ class Wordfilter
         $word_filter = Admin::getWordFilters();
 
         if (empty($word_filter)) {
-            echo '{"status":"error","message":"No word has added to this blacklist"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => "No word has added to this blacklist"]);
         }
 
         foreach ($word_filter as $row) {

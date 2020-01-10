@@ -50,7 +50,7 @@ class Client
         $this->data->auth_ticket = Token::authTicket(request()->player->id);
         $this->data->unique_id = sha1(request()->player->id . '-' . time());
 
-        Player::update(request()->player->id, 'auth_ticket', $this->data->auth_ticket);
+        Player::update(request()->player->id, ['auth_ticket' => $this->data->auth_ticket]);
 
         if(isset($_GET['room'])) {
             if(is_numeric($_GET['room'])) {

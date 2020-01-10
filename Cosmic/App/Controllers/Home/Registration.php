@@ -8,6 +8,8 @@ use App\Models\Player;
 use Core\Locale;
 use Core\View;
 
+use Library\Json;
+
 class Registration
 {
     public function request()
@@ -26,7 +28,7 @@ class Registration
         ]);
 
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
 
         $username = input()->post('username')->value;
@@ -35,13 +37,11 @@ class Registration
         $playerData->figure = input()->post('figure')->value;
 
         if (Player::exists($username)) {
-            echo '{"status":"error","message":"' . Locale::get('register/username_exists') . '"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('register/username_exists')]);
         }
 
         if (!Player::create($playerData)) {
-            echo '{"status":"error","message":"' . Locale::get('core/notification/something_wrong') . '","captcha_error":"error"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong'), "captcha_error" => "error"]);
         }
       
         $player = Player::getDataByUsername($username, array('id', 'password', 'rank'));
@@ -54,8 +54,7 @@ class Registration
         }
       
         Auth::login($player);
-
-        echo '{"status":"success","message":"","location":"/hotel"}';
+        return Json::encode(["status" => "success", "location" => "/hotel"]);
     }
 
     public function index()

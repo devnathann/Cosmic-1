@@ -28,8 +28,7 @@ class Faq
         ]);
 
         if (!$validate->isSuccess()) {
-            echo '{"status":"error","message":"Fill in all fields!"}';
-            exit;
+            return;
         }
 
         $id = input()->post('faqId')->value;
@@ -41,8 +40,7 @@ class Faq
         if (empty($id)) {
             Admin::addFAQ($title, $story, $category, request()->player->id);
             Log::addStaffLog('-1', 'FAQ added: ' . $title, 'faq');
-            echo '{"status":"success","message":"FAQ added successfully!"}';
-            exit;
+            return Json::encode(["status" => "success", "message" => "FAQ added successfully!"]);
         }
 
         $faq = Admin::getFAQById($id);
@@ -52,7 +50,7 @@ class Faq
 
         if (Admin::editFAQ($id, $title, $story, $category, request()->player->id)) {
             Log::addStaffLog('-1', 'FAQ edit: ' . $id, 'faq');
-            echo '{"status":"success","message":"FAQ edit successfully!"}';
+            return Json::encode(["status" => "success", "message" => "FAQ editted successfully!"]);
         }
     }
 
@@ -64,7 +62,7 @@ class Faq
 
         $this->data->category = Admin::getFAQCategory();
 
-        echo Json::raw($this->data);
+        echo Json::encode($this->data);
     }
 
     public function remove()
@@ -72,7 +70,7 @@ class Faq
         $faq = Admin::removeFAQ(input()->post('post')->value);
         Log::addStaffLog('-1', 'FAQ removed: ' . intval(input()->post('post')->value), 'faq');
 
-        echo '{"status":"success","message":"FAQ removed succesfully!"}';
+        return Json::encode(["status" => "success", "message" => "FAQ removed successfully!"]);
     }
 
     public function addcategory()
@@ -82,7 +80,7 @@ class Faq
         ]);
 
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
 
         $category = input()->post('post')->value;
@@ -90,7 +88,7 @@ class Faq
         Admin::addFAQCategory($category);
         Log::addStaffLog('-1', 'FAQ Category added: ' . $category, 'faq');
 
-        echo '{"status":"success","message":"Category successfully added!"}';
+        return Json::encode(["status" => "success", "message" => "Category successfully added!"]);
 }
 
     public function editcategory()
@@ -100,7 +98,7 @@ class Faq
         Log::addStaffLog('-1', 'FAQ Category edit: ' . $category->category . ' to ' . input()->post('value')->value, 'faq');
         Admin::editFAQCategory(input()->post('category')->value, input()->post('value')->value);
 
-        echo '{"status":"success","message":"Category modified succesfully!"}';
+        return Json::encode(["status" => "success", "message" => "Category modified succesfully!"]);
     }
 
     public function removecategory()
@@ -110,7 +108,7 @@ class Faq
         Log::addStaffLog('-1', 'FAQ Category removed: ' . $category->category, 'faq');
         Admin::removeFAQCategory($category->id);
 
-        echo '{"status":"success","message":"Category removed succesfully!"}';
+        return Json::encode(["status" => "success", "message" => "Category removed succesfully!"]);
     }
 
     public function getfaqs()

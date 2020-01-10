@@ -10,6 +10,7 @@ use Core\Locale;
 use Core\View;
 
 use Library\HotelApi;
+use Library\Json;
 
 class Club
 {
@@ -35,18 +36,15 @@ class Club
     public function buy() {
         $currency = Player::getCurrencys(request()->player->id)[Config::payCurrency];
         if(!$currency) {
-            echo '{"status":"error","message":"Je moet eerst ingelogd zijn binnen het hotel om dit te kunnen kopen!"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => "Je moet eerst ingelogd zijn binnen het hotel om dit te kunnen kopen!"]);
         }
       
         if($currency->amount < Config::vipPrice) {
-            echo '{"status":"error","message":"'.Locale::get('core/notification/not_enough_belcredits').'"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/not_enough_belcredits')]);
         }
       
         if(request()->player->rank >= Config::vipRank ||request()->player->rank == Config::vipRank) {
-            echo '{"status":"error","message":"'.Locale::get('shop/club/already_vip').'"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('shop/club/already_vip')]);
         }
 
         $playerCurrency = Player::getCurrencys(request()->player->id)[Config::payCurrency];
@@ -70,7 +68,6 @@ class Club
         HotelApi::execute('setrank', array('user_id' => request()->player->id, 'rank' => Config::vipRank));
         Log::addPurchaseLog(request()->player->id, Config::shortName.' Club ('.Config::vipPrice.' '.$playerCurrency->name.')', 'NL');
 
-        echo '{"status":"success","message":"'.Locale::get('shop/club/purchase_success').'", "replacepage":"shop/club"}';
-        exit;
+        return Json::encode(["status" => "success", "message" => Locale::get('shop/club/purchase_success'), "replacepage" => "shop/club"]);
     }
 }

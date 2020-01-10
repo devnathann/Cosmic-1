@@ -5,7 +5,7 @@ use \App\Models\Permission;
 
 class Json
 {
-    public static function raw($string)
+    public static function encode($string)
     {
         echo json_encode($string, JSON_PRETTY_PRINT);
     }
@@ -85,6 +85,6 @@ class Json
             'data' => $data,
         ];
       
-        self::raw($result);
+        self::encode($result);
     }
 }

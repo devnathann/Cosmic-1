@@ -19,14 +19,8 @@ class Value
   
     public function reloadCatalog() 
     {
-        if(!\App\Models\Core::permission('housekeeping_website_rarevalue', request()->player->rank)) {
-            Log::addStaffLog($player->id, 'No permissions to reload catalog', 'error');
-            echo '{"status":"error","message":"No permissions to reset"}';
-            exit;
-        }
-      
         HotelApi::execute('updatecatalog');
-        echo '{"status":"success","message":"Server catalog reloaded!"}';
+        return Json::encode(["status" => "success", "message" => "Server catalog reloaded!"]);
     }
 
     public function editItem() 
@@ -40,7 +34,7 @@ class Value
         ]);
 
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
       
         $value_id = input()->post('id')->value;
@@ -51,12 +45,11 @@ class Value
       
         $value = Admin::getValueById($value_id);
         if(!$value) {
-            echo '{"status":"error","message":"This item doesnt exist!"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => "This item doesnt exist!"]);
         }
       
-        Admin::editValueById($value_id, $cost_points, $cost_credits, $points_type, $club_only);
-        echo '{"status":"success","message":"Item successfuly edited!"}';
+        Admin::editValueById($value_id, $cost_points, $cost_credits, $points_type, $club_only); 
+        return Json::encode(["status" => "success", "message" => "Item successfuly edited!"]);
     }
 
     public function addcategory()
@@ -68,7 +61,7 @@ class Value
         ]);
 
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
   
         $cat_ids =  '[' . input()->post('cat_ids')->value . ']';
@@ -76,19 +69,18 @@ class Value
         $hidden = input()->post('hidden')->value;
 
         Admin::addValueCategory($cat_ids, $name, $hidden, Core::convertSlug($name));
-        echo '{"status":"success","message":"Category: ' . $name . ' is succesfully added."}';
+        return Json::encode(["status" => "success", "message" => "Category: {$name} is succesfully added!"]);
     }
 
     public function deleteCategory()
     {
         $category = Admin::getValueCategoryById(input()->post('post')->value);
         if (empty($category)) {
-            echo '{"status":"error","message":"Category does not exists!"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => "Category item doesnt exist!"]);
         }
 
         Admin::removeValueCategory($category->id);
-        echo '{"status":"success","message":"Category is succesfully deleted!"}';
+        return Json::encode(["status" => "success", "message" => "Category is succesfully deleted!"]);
     }
   
     public function getValueById()
@@ -103,7 +95,7 @@ class Value
         $this->data->currencys = Config::currencys;
         $this->data->value = $value;
       
-        Json::raw($this->data);
+        Json::encode($this->data);
     }
   
     public function getCategorys()

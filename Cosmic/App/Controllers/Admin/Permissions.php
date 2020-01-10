@@ -23,7 +23,7 @@ class Permissions
 
     public function getranks()
     {
-        echo Json::raw(Admin::getRanks(true));
+        echo Json::encode(Admin::getRanks(true));
     }
 
     public function getpermissioncommands()
@@ -37,7 +37,7 @@ class Permissions
         $minimum_rk = filter_var(input()->post('minimum_rank')->value, FILTER_SANITIZE_NUMBER_INT);
 
         if (Admin::changeMinimumRank($command_id, $minimum_rk)) {
-            echo '{"status":"success","message":"Permission rank has been changed!"}';
+            return Json::encode(["status" => "success", "message" => "Permission rank has been changed!"]);
         }
     }
 
@@ -60,17 +60,15 @@ class Permissions
         }
 
         if (empty($this->data->rank_name)) {
-            echo '{"status":"error","message":"Rank can not be empty!"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => "Rank can not be empty!"]);
         }
       
         if (in_array($this->data->rank_name, array_column(Admin::getRanks(true), 'name'))) {
-            echo '{"status":"error","message":"Rank name is already in use!"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => "Rank name is already in use!"]);
         }
   
         Admin::addRank($this->data, $permissionsArray);
-        echo '{"status":"success","message":"Rank added successfully!"}';
+        return Json::encode(["status" => "success", "message" => "Rank added successfully!"]);
     }
 
     public function getwebsiteranks()
@@ -82,13 +80,13 @@ class Permissions
     public function edit()
     {
         $this->data->ranks = Admin::getRankById(input()->post('post')->value);
-        echo Json::raw($this->data);
+        echo Json::encode($this->data);
     }
 
     public function wizard()
     {
         $permission = Admin::getWebPermissions(input()->post('post')->value);
-        echo Json::raw($permission);
+        echo Json::encode($permission);
     }
 
     public function getpermissions()
@@ -101,11 +99,8 @@ class Permissions
     {
         $permissionsById = Core::getField('permissions', 'id', 'id', input()->post('post')->value);
         if (empty($permissionsById)) {
-            echo '{"status":"error","message":"There is an error occurred, please try again!"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => "There is an error occurred, please try again!"]);
         }
-
-        echo '{"status":"success","message":"Permissions has been loaded!"}';
     }
 
     public function addpermission()
@@ -114,30 +109,27 @@ class Permissions
         $permission_id = input()->post('permissionid')->value;
 
         if (empty($role_id) || empty($permission_id)) {
-            echo '{"status":"error","message":"Permission can not be added!"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => "Permission can not be added!"]);
         }
 
         $permissionExists = Core::getField('website_permissions', 'id', 'id', $permission_id);
-        if (Admin::roleExists($role_id, $permission_id) || empty($permissionExists)) {
-            echo '{"status":"error","message":"Permissions has already added to this role!"}';
-            exit;
+        if (Admin::roleExists($role_id, $permission_id) || empty($permissionExists)) 
+            return Json::encode(["status" => "error", "message" => "Permissions has already added to this role!"]);
         }
 
         Admin::createPermission($role_id, $permission_id);
-        echo '{"status":"success","message":"Permissions has been added!"}';
+        return Json::encode(["status" => "success", "message" => "Permissions has been added!"]);
     }
 
     public function delete()
     {
         $permissionId = Core::getField('website_permissions_ranks', 'id', 'id', input()->post('id')->value);
         if (empty($permissionId)) {
-            echo '{"status":"error","message":"No permission found!!"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => "No permission found!"]);
         }
 
         Admin::deletePermission($permissionId);
-        echo '{"status":"success","message":"Permissions has been added!"}';
+        return Json::encode(["status" => "success", "message" => "Permissions has been deleted!"]);
     }
 
     public function view()

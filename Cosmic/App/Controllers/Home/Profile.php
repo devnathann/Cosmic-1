@@ -10,6 +10,8 @@ use App\Models\Player;
 use Core\Locale;
 use Core\View;
 
+use Library\Json;
+
 use stdClass;
 
 class Profile
@@ -83,11 +85,10 @@ class Profile
     public function search()
     {
         if(!Player::exists(input()->post('search')->value)) {
-            echo '{"status":"error", "message":"'.Locale::get('core/notification/profile_notfound').'"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/profile_notfound')]);
         }
 
-        echo '{"replacepage":"profile/'.input()->post('search')->value.'"}';
+        return Json::encode(["replacepage" => input()->post('search')->value]);
     }
 
     public function template()

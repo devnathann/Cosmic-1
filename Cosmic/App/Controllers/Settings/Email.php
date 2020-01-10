@@ -9,6 +9,8 @@ use App\Models\Player;
 use Core\Locale;
 use Core\View;
 
+use Library\Json;
+
 class Email
 {
     public function validate()
@@ -19,21 +21,20 @@ class Email
         ]);
 
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
 
         $currentPassword = input()->post('current_password');
         $email = input()->post('email');
 
         if (!Hash::verify(request()->player->id, $currentPassword, request()->player->password)) {
-            echo '{"status":"error","message":"' . Locale::get('settings/current_password_invalid') . '"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('settings/current_password_invalid')]);
         }
 
         Log::createEmailLog(request()->player->id, $email, request()->player->email);
-        Player::update(request()->player->id, 'email', $email);
+        Player::update(request()->player->id, ['email' => $email]);
 
-        echo '{"status":"success","message":"' . Locale::get('settings/email_saved') . '","replacepage":"settings/email"}';
+        return Json::encode(["status" => "success", "message" => Locale::get('settings/email_saved'), "replacepage" => "settings/email"]);
     }
 
     public function index()

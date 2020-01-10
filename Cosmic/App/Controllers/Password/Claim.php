@@ -7,6 +7,8 @@ use App\Models\Player;
 use Core\Locale;
 use Core\View;
 
+use Library\Json;
+
 class Claim
 {
     public function validate()
@@ -18,7 +20,7 @@ class Claim
         ]);
 
         if (!$validate->isSuccess()) {
-            exit;
+            return;
         }
 
         $username   = input()->post('username')->value;
@@ -26,13 +28,11 @@ class Claim
 
         $player = Player::getDataByUsername($username, array('id', 'username', 'mail'));
         if ($player == null || strtolower($player->mail) != strtolower($email)) {
-            echo '{"status":"error","message":"' . Locale::get('claim/invalid_email') . '","replacepage":"password/claim"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('claim/invalid_email'), "replacepage" => "password/claim"]);
         }
 
         Password::createToken($player->id, $player->username, $player->mail);
-
-        echo '{"status":"success","message":"' . Locale::get('claim/send_link') . '","replacepage":"password/claim"}';
+        return Json::encode(["status" => "success", "message" => Locale::get('claim/send_link'), "replacepage" => "password/claim"]);
     }
 
     public function index()

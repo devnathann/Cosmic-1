@@ -14,9 +14,17 @@ class Session
      * @param $value
      * @return mixed
      */
-    public static function set($name, $value)
+    public static function set($data)
     {
-        return $_SESSION[$name] = $value;
+        if(!is_array($data)) {
+            return $_SESSION[$data] = $data;
+        }
+        
+        foreach($data as $row => $value) {
+            $_SESSION[$row] = $value;
+        }
+      
+        return;
     }
 
     /**

@@ -17,7 +17,7 @@ class Vacancies
         ]);
 
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
       
         $jobid = input()->post('id')->value;
@@ -26,8 +26,7 @@ class Vacancies
       
         if(!empty($job)) {
             Admin::deleteJob($jobid);
-            echo '{"status":"success","message":"Vacancies is has been deleted!"}';
-            exit;
+            return Json::encode(["status" => "success", "message" => "Vacancies is has been deleted!"]);
         }
     }
   
@@ -40,7 +39,7 @@ class Vacancies
         ]);
 
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
 
         $jobid = input()->post('jobid')->value;
@@ -52,12 +51,11 @@ class Vacancies
       
         if(!empty($job)) {
             Admin::editJob($jobid, $job_title, $small_description, $full_description);
-            echo '{"status":"success","message":"Vacancies is edited!"}';
-            exit;
+            return Json::encode(["status" => "success", "message" => "Job are edited!"]);
         }
       
         Admin::addJob($job_title, $small_description, $full_description);
-        echo '{"status":"success","message":"Vacancies is has been added!"}';
+        return Json::encode(["status" => "success", "message" => "Job has been added!"]);
     }
   
     public function accept()
@@ -67,7 +65,7 @@ class Vacancies
         ]);
 
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
       
         $jobid = input()->post('id')->value;
@@ -76,8 +74,7 @@ class Vacancies
       
         if(!empty($job)) {
             Admin::changeJobStatus($jobid);
-            echo '{"status":"success","message":"Vacancie changed to closed!"}';
-            exit;
+            return Json::encode(["status" => "success", "message" => "Job changed to closed!"]);
         }
     }
   
@@ -85,13 +82,13 @@ class Vacancies
     {
         $this->job = new \stdClass();
         $this->job->job = Community::getApplicationById(input()->post('id')->value);
-        Json::raw($this->job);
+        Json::encode($this->job);
     } 
   
     public function getjob() 
     {
         $jobs = Community::getJob(input()->post('id')->value);
-        Json::raw($jobs);
+        Json::encode($jobs);
     }
   
     public function getApplications() 

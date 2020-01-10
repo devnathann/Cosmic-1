@@ -39,8 +39,8 @@ $GLOBALS['language'] = array (
             
             'login_name'            => 'name',
             'login_password'        => 'Password',
-            'login_save_data'       => 'Remember my data',
-            'login_lost_password'   => 'Lost your password/name?',
+            'login_save_data'       => 'Remember me',
+            'login_lost_password'   => 'Lost your password?',
             
             'report_message'        => 'Report this message',
             'report_certainty'      => 'You are about to report this message. Are you sure you want to report this message?',

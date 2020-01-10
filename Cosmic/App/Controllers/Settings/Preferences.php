@@ -8,6 +8,7 @@ use Core\Locale;
 use Core\View;
 
 use Library\HotelApi;
+use Library\Json;
 
 class Preferences
 {
@@ -25,8 +26,7 @@ class Preferences
         $type   = (int)filter_var(input()->post('type')->value, FILTER_VALIDATE_BOOLEAN);
 
         if (!is_int($type) || !in_array($column, $inArray)) {
-            echo '{"status":"error","message":"' . Locale::get('core/notification/something_wrong') . '","captcha_error":"error"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong'), "captcha_error" => "error"]);
         }
 
         if (Config::apiEnabled && request()->player->online) {
@@ -35,7 +35,7 @@ class Preferences
             Player::updateSettings(request()->player->id, $column, $type);
         }
 
-        echo '{"status":"success","message":"' . Locale::get('settings/preferences_saved') . '"}';
+        return Json::encode(["status" => "success", "message" => Locale::get('settings/preferences_saved')]);
     }
 
     public function index()

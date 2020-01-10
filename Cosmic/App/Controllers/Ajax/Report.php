@@ -25,19 +25,17 @@ class Report
                 Community::deleteFeedById($itemId);
                 \App\Models\Report::remove($itemId, 'feed');
 
-                echo '{"status":"success","message":"'.Locale::get('core/notification/invisible').'"}';
-                exit;
+                return Json::encode(['status' => 'success', 'message' => Locale::get('core/notification/invisible')]);
             }
 
             $report = \App\Models\Report::getByItemId($itemId, 'feed');
 
             if($report != null) {
-                echo '{"status":"success","message":"'.Locale::get('core/notification/staff_received').'"}';
-                exit;
+                return Json::encode(["status" => "success", "message" => Locale::get('core/notification/staff_received')]);
             }
 
             \App\Models\Report::insert($itemId, 'feed', $item->from_user_id, request()->player->id);
-            echo '{"status":"success","message":"'.Locale::get('core/notification/staff_received').'"}';
+            return Json::encode(["status" => "success", "message" => Locale::get('core/notification/staff_received')]);
         }
     }
 

@@ -9,6 +9,8 @@ use App\Models\Player;
 use Core\Locale;
 use Core\View;
 
+use Library\Json;
+
 use stdClass;
 
 class Requests
@@ -66,30 +68,27 @@ class Requests
         ]);
 
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
 
         $ticket = Help::getRequestById(input()->post('ticketid'), request()->player->id);
         if ($ticket == null) {
-            echo '{"status":"error","message":"' . Locale::get('core/notification/something_wrong') . '"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         }
 
         if ($ticket->player_id != request()->player->id && request()->player->rank < Config::minRank) {
-            echo '{"status":"error","message":"' . Locale::get('core/notification/something_wrong') . '"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         }
 
         $latest_post = Help::latestHelpTicketReaction($ticket->id);
         if ($latest_post ? $latest_post->practitioner_id == request()->player->id : true) {
-            echo '{"status":"success","message":"' . Locale::get('help/no_answer_yet') . '"}';
-            exit;
+            return Json::encode(["status" => "success", "message" => Locale::get('help/no_answer_yet')]);
         }
 
         Help::addTicketReaction($ticket->id, request()->player->id, input()->post('message'));
         Help::updateTicketStatus($ticket->id, 'wait_reply');
 
-        echo '{"status":"success","message":"' . Locale::get('core/notification/message_placed') . '","replacepage":"help/requests/' . $ticket->id . '/view"}';
+        return Json::encode(["status" => "success", "message" => Locale::get('core/notification/message_placed'), "replacepage" => "help/requests/" . $ticket->id . "/view"]);
     }
 
     public function create()
@@ -100,20 +99,18 @@ class Requests
         ]);
 
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
 
         if (in_array('open', array_column(Help::getTicketsByUserId(request()->player->id), 'status'))) {
-            echo '{"status":"error","message":"' . Locale::get('help/already_open') . '"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('help/already_open')]);
         }
 
         $this->data->subject = input()->post('subject')->value;
         $this->data->message = input()->post('message')->value;
 
         Help::createTicket($this->data, request()->player->id);
-
-        echo '{"status":"success","message":"' . Locale::get('help/ticket_created') . '","replacepage":"help/requests/view"}';
+        return Json::encode(["status" => "success", "message" => Locale::get('help/ticket_created'), "replacepage" => "help/requests/view"]);
     }
 
     public function index()

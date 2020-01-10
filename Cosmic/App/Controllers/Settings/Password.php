@@ -8,6 +8,8 @@ use Core\Locale;
 use Core\Session;
 use Core\View;
 
+use Library\Json;
+
 use stdClass;
 
 class Password
@@ -26,20 +28,19 @@ class Password
         ]);
 
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
 
         $currentPassword = input()->post('current_password')->value;
         $this->data->newpin = input()->post('new_password')->value;
 
         if (!Hash::verify(request()->player->id, $currentPassword, request()->player->password)) {
-            echo '{"status":"error","message":"' . Locale::get('settings/current_password_invalid') . '"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('settings/current_password_invalid')]);
         }
         Player::resetPassword(request()->player->id, $this->data->newpin);
         Session::destroy();
 
-        echo '{"status":"success","message":"' . Locale::get('settings/password_saved') . '","pagetime":"/home"}';
+        return Json::encode(["status" => "success", "message" => Locale::get('settings/password_saved'), "pagetime" => "/home"]);
     }
 
     public function index()

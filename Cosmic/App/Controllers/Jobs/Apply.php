@@ -3,8 +3,11 @@ namespace App\Controllers\Jobs;
 
 use Core\Locale;
 use Core\View;
+
 use App\Models\Community;
 use App\Models\Player;
+
+use Library\Json;
 
 class Apply
 {
@@ -38,7 +41,7 @@ class Apply
             ]);
 
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
       
         $player_id              =   request()->player->id;
@@ -56,11 +59,10 @@ class Apply
       
         $job = Community::getJob($job_id);
         if(empty($job)) {
-            echo '{"status":"error","message":"'.Locale::get('core/notification/something_wrong').'"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         }
         
         Community::addJobApply($job_id, $player_id, $firstname, $message, $available_monday, $available_tuesday, $available_wednesday, $available_thursday, $available_friday,$available_saturday, $available_sunday);
-        echo '{"status":"success","message":"'.Locale::get('website/apply/content_1').'","replacepage":"jobs/my"}';
+        return Json::encode(["status" => "success", "message" => Locale::get('website/apply/content_1'), "replacepage" => "jobs/my"]);    
     }
 }

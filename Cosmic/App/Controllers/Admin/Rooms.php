@@ -23,14 +23,13 @@ class Rooms
         ]);
 
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
 
         $room_id = Room::getById(input()->post('roomId')->value)->id;
 
-        if(empty($room_id)) {
-            echo '{"status":"error","message":"This room does not exists!"}';
-            exit;
+        if(empty($room_id)) { 
+            return Json::encode(["status" => "error", "message" => "This room does not exists!"]);
         }
 
         $room_name = input()->post('roomName')->value;
@@ -41,19 +40,18 @@ class Rooms
         Room::save($room_id, $room_name, $room_desc, $access_type, $max_users);
         Log::addStaffLog(request()->player->id, 'Saved room: ' . $room_name, 'manage');
 
-        echo '{"status":"success","message":"Room saved"}';
+        return Json::encode(["status" => "success", "message" => "Room saved!"]);
     }
 
     public function delete()
     {
         $ban = Ban::getRoomBanById(input()->post('id')->value);
         if (empty($ban)) {
-            echo '{"status":"error","message":"Ban doesnt exist"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => "Ban doesnt exist!"]);
         }
 
         Ban::deleteRoomBan($ban->id);
-        echo '{"status":"success","message":"Ban deleted!"}';
+        return Json::encode(["status" => "success", "message" => "Ban deleted!"]);
     }
 
     public function get()
@@ -61,12 +59,11 @@ class Rooms
         $room = Room::getById(input()->post('post'));
 
         if (empty($room)) {
-            echo '{"status":"info","message":"No results"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => "No results!"]);
         }
 
         $roomData = Room::getById($room->id);
-        echo Json::raw($roomData);
+        echo Json::encode($roomData);
     }
 
     public function getroombans()

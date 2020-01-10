@@ -8,14 +8,15 @@ use App\Core;
 use Core\Locale;
 use Core\View;
 
+use Library\Json;
+
 class Category {
   
     public function __construct()
     {
         if(!request()->guild->read_forum) {
             if(request()->isAjax()) {
-                echo '{"status":"error", "message":"'.Locale::get('core/notification/invisible').'"}';
-                exit;
+                return Json::encode(["status" => "error", "message" => Locale::get('core/notification/invisible')]);
             }
           
             redirect('/guilds');
@@ -44,7 +45,7 @@ class Category {
             $topic->slug        = Core::convertSlug($topic->subject);
 
             if($topic->latest_post) {
-                $topic->latest_post->author     = Player::getDataById($topic->latest_post->user_id, array('username', 'look'));
+                $topic->latest_post->author = Player::getDataById($topic->latest_post->user_id, array('username', 'look'));
             }
         }
       
@@ -79,19 +80,17 @@ class Category {
         $forums   = Guild::getGuild($cat_id);
       
         if (request()->player === null || empty($forums)) {
-            echo '{"status":"error","message":"'.Locale::get('core/notification/something_wrong').'"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         }
       
         if(!request()->guild->post_threads != false) {
-            echo '{"status":"error","message":"'.Locale::get('core/notification/no_permissions').'"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/no_permissions')]);
         }
       
         $topic_id = Guild::createTopic($cat_id, Core::FilterString($title), request()->player->id, $slug); 
         $reply_id = Guild::createReply($topic_id, Core::FilterString(Core::tagByUser($message)), request()->player->id);
       
-        echo '{"status":"success","message":"' . Locale::get('core/notification/message_placed') . '","replacepage":"guilds/' . $forums->id . '/thread/' . $topic_id . '-'. $slug . '"}';
+        return Json::encode(["status" => "success", "message" => Locale::get('core/notification/message_placed'), "replacepage" => "guilds/{$forums->id}/thread/{$topic_id}-{$slug}"]);
     }
   
     private function slug($slug)

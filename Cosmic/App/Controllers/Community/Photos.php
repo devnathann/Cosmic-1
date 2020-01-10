@@ -8,6 +8,8 @@ use App\Models\Player;
 use Core\Locale;
 use Core\View;
 
+use Library\Json;
+
 use stdClass;
 
 class Photos
@@ -22,18 +24,17 @@ class Photos
     public function like()
     {
         if (Community::userAlreadylikePhoto(input()->post('post'), request()->player->id)) {
-            echo '{"status":"error","message":"' . Locale::get('core/notification/already_liked') . '"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/already_liked')]);
         }
 
         Community::insertPhotoLike(input()->post('post'), request()->player->id);
-        echo '{"status":"success","message":"' . Locale::get('core/notification/liked') . '"}';
+        return Json::encode(["status" => "success", "message" =>Locale::get('core/notification/liked')]);
     }
 
     public function more()
     {
         $this->index(input()->post('offset')->value, true);
-        echo response()->json(array('photos' => $this->data->photos));
+        return Json::encode(['photos' => $this->data->photos]);
     }
 
     public function index($offset = null, $request = false)

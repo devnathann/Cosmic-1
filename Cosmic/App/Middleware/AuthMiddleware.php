@@ -1,6 +1,7 @@
 <?php
 namespace App\Middleware;
 
+use App\Auth;
 use App\Config;
 use App\Core;
 use App\Models\Player;
@@ -20,6 +21,7 @@ class AuthMiddleware implements IMiddleware
         }
         
         if(!Session::exists('player_id')) {
+            Auth::loginFromRememberCookie();
             return;
         }
 

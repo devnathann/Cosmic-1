@@ -28,8 +28,7 @@ class News
         $news = Admin::getNews();
 
         if (empty($news)) {
-            echo '{"status":"error","message":"We were unable to find any news items"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => "We were unable to find any news items"]);
         }
 
         foreach ($news as $row) {
@@ -45,8 +44,7 @@ class News
         $category = Admin::getNewsCategories();
 
         if (empty($category)) {
-            echo '{"status":"error","message":"We were unable to find any news categories"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => "We were unable to find any news categories"]);
         }
 
         Json::filter($category, 'desc', 'id');
@@ -61,7 +59,7 @@ class News
         ]);
 
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
 
         $id = input()->post('newsId')->value ?? 0;
@@ -82,25 +80,25 @@ class News
         if ($id == 0) {
             Admin::addNews($title, $short_story, $full_story, $category, $imagePath, $images, request()->player->id);
             Log::addStaffLog('-1', 'News placed: ' . $title, 'news');
-            echo '{"status":"success","message":"News article is posted!"}';
-            exit;
+          
+            return Json::encode(["status" => "success", "message" => "News article is posted!"]);
         }
 
         Admin::editNews($id, $title, $short_story, $full_story, $category, $imagePath, $images, request()->player->id);
         Log::addStaffLog('-1', 'News edit: ' . $title, 'news');
-        echo '{"status":"success","message":"News edit successfully!"}';
+      
+        return Json::encode(["status" => "success", "message" => "News edit successfully"]);
     }
 
     public function edit()
     {
         if (empty(input()->post('post')->value)) {
-            echo '{"status":"error","message":"We were unable to find this news item"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => "We were unable to find this news item"]);
         }
 
         $this->data->news = Admin::getNewsById(input()->post('post')->value);
         $this->data->category = Admin::getNewsCategories();
-        echo Json::raw($this->data);
+        echo Json::encode($this->data);
     }
 
     public function remove()
@@ -108,12 +106,11 @@ class News
         $news = Admin::removeNews(input()->post('post')->value);
 
         if (empty($news)) {
-            echo '{"status":"error","message":"We were unable to find this news item"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => "We were unable to find this news item"]);
         }
 
-        Log::addStaffLog('-1', 'News removed: ' . input()->post('post')->value, 'news');
-        echo '{"status":"success","message":"News removed succesfully!"}';
+        Log::addStaffLog('-1', 'News removed: ' . input()->post('post')->value, 'news');  
+        return Json::encode(["status" => "success", "message" => "News removed succesfully!"]);
     }
 
     public function addcategory()
@@ -128,7 +125,8 @@ class News
 
         Admin::addNewsCategory(input()->post('post')->value);
         Log::addStaffLog('-1', 'News category added: ' . input()->post('post')->value, 'news');
-        echo '{"status":"success","message":"Category successfully added!"}';
+      
+        return Json::encode(["status" => "success", "message" => "Category successfully added!"]);
     }
 
     public function editcategory()
@@ -136,26 +134,26 @@ class News
         $category = Admin::getNewsCategoryById(input()->post('post')->value);
 
         if (empty($category)) {
-            echo '{"status":"error","message":"Category does not exists!"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => "Category does not exists!"]);
         }
 
         Log::addStaffLog('-1', 'News category edit: ' . $category->category . ' to ' .input()->post('post')->value, 'news');
         Admin::editNewsCategory($category->id, input()->post('value')->value);
-        echo '{"status":"success","message":"Category edit is successfully!"}';
+      
+        return Json::encode(["status" => "success", "message" => "Category edit is successfully!"]);
     }
 
     public function removecategory()
     {
         $category = Admin::getNewsCategoryById(input()->post('post')->value);
-        if (empty($category)) {
-            echo '{"status":"error","message":"Category does not exists!"}';
-            exit;
+        if (empty($category)) { 
+            return Json::encode(["status" => "error", "message" => "Category does not exists!"]);
         }
 
         Log::addStaffLog('-1', 'News category removed: ' . $category->category, 'news');
         Admin::removeNewsCategory($category->id);
-        echo '{"status":"success","message":"Category removed succesfully!"}';
+      
+        return Json::encode(["status" => "success", "message" => "Category removed succesfully!"]);
     }
 
     public function view()

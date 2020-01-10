@@ -10,6 +10,7 @@ use Core\Locale;
 use Core\View;
 
 use Library\HotelApi;
+use Library\Json;
 
 use stdClass;
 
@@ -40,7 +41,7 @@ class Offers
         ]);
 
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
 
         $offer_id = input()->post('offer_id')->value;
@@ -48,15 +49,13 @@ class Offers
 
         $offer = \App\Models\Shop::getOfferByOfferId($offer_id);
         if ($offer == null) {
-            echo '{"status":"error","message":"'.Locale::get('shop/offers/invalid_transaction').'"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('shop/offers/invalid_transaction')]);
         }
 
         $dedipass = file_get_contents('https://api.dedipass.com/v1/pay/?public_key=' . $offer_id . '&private_key=' . $offer->private_key . '&code=' . $code);
         $dedipass = json_decode($dedipass);
         if ($dedipass->status != 'success') {
-            echo '{"status":"error","message":"'.Locale::get('shop/offers/invalid_code').'"}';
-            exit;
+            return Json::encode(["status" => "error", "message" => Locale::get('shop/offers/invalid_code')]);
         }
 
         $currencyType =  Config::currencys[$offer->currency];      
@@ -71,7 +70,7 @@ class Offers
         }
       
         Log::addPurchaseLog(request()->player->id, $offer->amount . ' '.Locale::get('core/belcredits').' (' . $code . ')', $offer->lang);
-        echo '{"status":"success","message":"'.Locale::get('shop/offers/success_1').' ' . $offer->amount . ' '.Locale::get('shop/offers/success_2').'"}';
+        return Json::encode(["status" => "success", "message" => Locale::get('shop/offers/success_1').' ' . $offer->amount . ' '.Locale::get('shop/offers/success_2')]);
     }
 
     public function index($offerid)

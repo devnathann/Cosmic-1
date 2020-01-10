@@ -7,7 +7,9 @@ use App\Models\Player;
 use App\Core;
 
 use Core\Locale;
-use Core\View;
+use Core\View;;
+
+use Library\Json;
 
 class Home
 {

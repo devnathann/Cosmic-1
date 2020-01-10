@@ -50,8 +50,8 @@ class Player
         return  QueryBuilder::table('users_settings')->select('user_id')->select('achievement_score')->orderBy('achievement_score', 'desc')->limit($limit)->get();
     }
 
-    public static function update($player_id, $key, $value){
-        return QueryBuilder::table('users')->where('id', $player_id)->update(array($key => $value));
+    public static function update($player_id, $data = null) {
+        return QueryBuilder::table('users')->where('id', $player_id)->update($data ?? static::$data);
     }
   
     public static function updateCurrency($player_id, $type, $value){
@@ -69,24 +69,24 @@ class Player
 
     public static function create($data)
     {
-            $data = array(
-                'username' => $data->username,
-                'password' => Hash::password($data->password),
-                'mail' => $data->email,
-                'account_created' => time(),
-                'credits' => Config::credits,
-                'look' => $data->figure,
-                'account_day_of_birth' => strtotime($data->birthdate_day . '-' . $data->birthdate_month . '-' . $data->birthdate_year),
-                'gender' => $data->gender == 'male' ? 'M' : 'F',
-                'last_login' => time(),
-                'ip_register' => Core::getIpAddress(),
-                'ip_current' => Core::getIpAddress()
-            );
+        $data = array(
+            'username' => $data->username,
+            'password' => Hash::password($data->password),
+            'mail' => $data->email,
+            'account_created' => time(),
+            'credits' => Config::credits,
+            'look' => $data->figure,
+            'account_day_of_birth' => strtotime($data->birthdate_day . '-' . $data->birthdate_month . '-' . $data->birthdate_year),
+            'gender' => $data->gender == 'male' ? 'M' : 'F',
+            'last_login' => time(),
+            'ip_register' => Core::getIpAddress(),
+            'ip_current' => Core::getIpAddress()
+        );
 
-            $user_id = QueryBuilder::table('users')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->insert($data);
-            QueryBuilder::table('users_settings')->insert(array('user_id' => $user_id, 'home_room' => '0'));
+        $user_id = QueryBuilder::table('users')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->insert($data);
+        QueryBuilder::table('users_settings')->insert(array('user_id' => $user_id, 'home_room' => '0'));
 
-            return $user_id;
+        return $user_id;
     }
   
     public static function createCurrency($user_id, $type)
@@ -97,12 +97,24 @@ class Player
     public static function resetPassword($player_id, $password)
     {
         $password_hash = Hash::password($password);
+        return QueryBuilder::table('users')->where('id', $player_id)->update(array('password' => $password_hash));
+    }
+  
+    public function rememberLogin()
+    {
+        $token = new \App\Token();
+        $hashed_token = $token->getHash();
+      
+        $this->remember_token = $token->getValue();
+        $this->expiry_timestamp = time() + 60 * 60 * 24 * 30;
 
         $data = array(
-            'password'  => $password_hash,
+            'token_hash' => $hashed_token,
+            'user_id' => $this->id,
+            'expires_at' => date('Y-m-d H:i:s', $this->expiry_timestamp)
         );
 
-        return QueryBuilder::table('users')->where('id', $player_id)->update($data);
+        return QueryBuilder::table('website_remembered_logins')->insert($data);
     }
 
     /* Get queries */

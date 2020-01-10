@@ -2,9 +2,7 @@
 namespace App\Middleware;
 
 use Core\Locale;
-
 use App\Middleware\AuthMiddleware;
-
 use Pecee\Http\Middleware\IMiddleware;
 use Pecee\Http\Request;
 
