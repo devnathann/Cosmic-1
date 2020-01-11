@@ -101,7 +101,7 @@ class Permissions
         if (empty($permissionsById)) {
             return Json::encode(["status" => "error", "message" => "There is an error occurred, please try again!"]);
         }
-      
+
         return Json::encode(["status" => "success", "message" => "Permissions has been loaded!"]);
     }
 
