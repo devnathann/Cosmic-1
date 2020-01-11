@@ -5,7 +5,7 @@ function WebPageCommunityPhotosInterface(main_page) {
     this.photo_template = [
         '<div class="photo-container" style="display: none;">\n' +
         '    <div class="photo-content">\n' +
-        '        <a href="' + Site.story_url + '/photos/{photo.file_name}.png" class="photo-picture" target="_blank" style="background-image: url(' + Site.story_url + '/photos/{photo.file_name}.png);" data-title="{photo.date.min} door {creator.username}"></a>\n' +
+        '        <a href="{story}" class="photo-picture" target="_blank" style="background-image: url({story});" data-title="{photo.date.min} door {creator.username}"></a>\n' +
         '        <a href="#" class="photo-meta flex-container flex-vertical-center">\n' +
         '            <div class="photo-meta-left-side"><img src="' + Site.url + '/imaging/avatarimage?figure={creator.figure}&gesture=sml&headonly=1" alt="{creator.username}" class="pixelated"></div>\n' +
         '            <div class="photo-meta-right-side">\n' +
@@ -71,7 +71,7 @@ function WebPageCommunityPhotosInterface(main_page) {
                 if (result.photos.length > 0) {
                     for (var i = 0; i < result.photos.length; i++) {
                         var photo_data = result.photos[i];
-                        var photo_template = $(self.photo_template.replace(/{photo.file_name}/g, photo_data.photo_id).replace(/{photo._id}/g, photo_data.id).replace(/{photo.likes}/g, photo_data.likes).replace(/{photo.date.full}/g, photo_data.timestamp).replace(/{photo.date.min}/g, photo_data.timestamp).replace(/{creator.username}/g, photo_data.author).replace(/{creator.figure}/g, photo_data.figure));
+                        var photo_template = $(self.photo_template.replace(/{story}/g, photo_data.url).replace(/{photo._id}/g, photo_data.id).replace(/{photo.likes}/g, photo_data.likes).replace(/{photo.date.full}/g, photo_data.timestamp).replace(/{photo.date.min}/g, photo_data.timestamp).replace(/{creator.username}/g, photo_data.author).replace(/{creator.figure}/g, photo_data.look));
                         page_container.find(".photos-container").append(photo_template);
                         photo_template.fadeIn();
 

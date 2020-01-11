@@ -31,9 +31,7 @@ class Email
             return Json::encode(["status" => "error", "message" => Locale::get('settings/current_password_invalid')]);
         }
 
-        Log::createEmailLog(request()->player->id, $email, request()->player->email);
-        Player::update(request()->player->id, ['email' => $email]);
-
+        Player::update(request()->player->id, ['mail' => $email]);
         return Json::encode(["status" => "success", "message" => Locale::get('settings/email_saved'), "replacepage" => "settings/email"]);
     }
 
