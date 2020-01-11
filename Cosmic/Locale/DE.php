@@ -6,29 +6,29 @@ $GLOBALS['language'] = array (
         /*     App/View/base.html     */
         'base' => array(
             'nav_home'              => 'Meine Seite',
-            
+
             'nav_community'         => 'Community',
             'nav_news'              => 'Neuigkeiten',
             'nav_jobs'              => 'Jobs',
             'nav_photos'            => 'Fotos',
             'nav_staff'             => 'Unser Team',
             'nav_exchange'          => 'Preisliste',
-            
+
             'nav_shop'              => 'Shop',
             'nav_buy_points'        => 'Punkte Kaufen',
             'nav_buy_club'          => 'Habbo Club',
             'nav_purchasehistory'   => 'Meine Käufe',
             'nav_changename'        => 'Username ändern',
-            
+
             'nav_highscores'        => 'Highscores',
-          
-            'nav_forum'             => 'My Groups',
-          
+
+            'nav_forum'             => 'Meine Gruppen',
+
             'nav_helptool'          => 'Help Tool',
             'nav_helptickets'       => 'Help Tickets',
-            
+
             'nav_housekeeping'      => 'Housekeeping',
-            
+
             'close'                 => 'Schließen',
             'cookies'               => 'benutzt eigene sowie Drittanbieter Cookies um einen besseren Service anzubieten und um Werbung anzuzeigen, die zu deinen Vorlieben gehören. Durch die Nutzung unserer Webseite stimmst du unseren Cookie Richtlinien zu.',
             'read_more'             => 'Weiter lesen.',
@@ -36,27 +36,27 @@ $GLOBALS['language'] = array (
             'made_with_love'        => 'wurde mit viel Liebe entwickelt.',
             'credits'               => 'Ein besonderes Danke geht an Raizer und Metus',
             'and_all'               => 'und natürlich auch an alle',
-            
+
             'login_name'            => 'Username',
             'login_password'        => 'Passwort',
             'login_save_data'       => 'Logindaten merken',
             'login_lost_password'   => 'Passwort vergessen?',
-            
+
             'report_message'        => 'Diese Nachricht Melden',
             'report_certainty'      => 'Du bist dabei diese Nachricht zu Melden. Willst du dies wirklich tun oder bist du nur ausversehen auf dieses Zeichen gekommen?',
             'report_inappropriate'  => 'Ja, ich möchte dies Melden',
-            
+
             'user_to'               => 'Ins',
             'user_profile'          => 'Mein Profil',
             'user_settings'         => 'Einstellungen',
-            'user_logout'           => 'Abmeldung',
-            
+            'user_logout'           => 'Abmelden',
+
             'header_slogan'         => 'Slogen1',
             'header_slogan2'        => 'Slogen2',
             'header_login'          => 'Anmelden',
             'header_register'       => 'Kostenlos Registrieren',
             'header_to'             => 'Ins',
-            
+
             'footer_helptool'       => 'Help Tool',
             'footer_rules'          => Config::shortName .' Regelwerk',
             'footer_terms'          => 'Nutzungsbedingungen',
@@ -64,7 +64,7 @@ $GLOBALS['language'] = array (
             'footer_cookies'        => 'Cookie Richtlinien',
             'footer_guide'          => 'Für Eltern'
         ),
-        
+
         /*     public/assets/js/web     */
         'javascript' => array(
             'web_customforms_markedfields'                  => 'Alle Felder die mit einem * Markiert sind müssen aufgefüllt werden.',
@@ -74,27 +74,27 @@ $GLOBALS['language'] = array (
             'web_customforms_participation'                 => 'Vielen dank fürs Mitmachen :)',
             'web_customforms_sent'                          => 'Deine Antwort wurde abgeschickt und wird von einem Mitarbeiter ausgewertet und anschließend freigegeben.',
             'web_customforms_answer'                        => 'Deine Antwort',
-            
+
             'web_dialog_cancel'                             => 'Abbrechen',
             'web_dialog_validate'                           => 'Verifizieren',
             'web_dialog_confirm'                            => 'Deine Auswahl wiederholen',
-            
+
             'web_hotel_backto'                              => 'Zurück ins Hotel',
-            
+
             'web_fill_pincode'                              => 'Geben Sie den PIN-Code ein, den Sie in der Google Authentication APP angezeigt bekommen. Solltest du hier Probleme haben, melde dich über unser Help Tool.',
             'web_twostep'                                   => 'Zwei-Schritt Verifizierung',
             'web_login'                                     => 'Du musst eingeloggt sein um diese Nachricht zu Melden.',
             'web_loggedout'                                 => 'Abmelden',
-            
+
             'web_notifications_success'                     => 'Geschafft!',
             'web_notifications_error'                       => 'Error!',
             'web_notifications_info'                        => 'Information!',
-            
+
             'web_page_article_login'                        => 'Du musst eingeloggt sein um hier zu Kommentieren!',
-            
+
             'web_page_community_photos_login'               => 'Du musst eingeloggt sein um dieses Bild zu liken!',
             'web_page_community_photos_loggedout'           => 'Abmelden',
-            
+
             'web_page_forum_change'                         => 'Ändern',
             'web_page_forum_cancel'                         => 'Abbrechen',
             'web_page_forum_oops'                           => 'Oops...',
@@ -102,14 +102,14 @@ $GLOBALS['language'] = array (
             'web_page_forum_login_toreact'                  => 'Um zu antworten musst du angemeldet sein.',
             'web_page_forum_login_tolike'                   => 'Du musst Angemeldet sein um diesen Beitrag zu liken',
             'web_page_forum_loggedout'                      => 'Abmelden',
-            
+
             'web_page_profile_login'                        => 'Du musst eingeloggt sein um dieses Bild zu liken!',
             'web_page_profile_loggedout'                    => 'Abmelden',
 
             'web_page_settings_namechange_request'          => 'Anfragen',
             'web_page_settings_namechange_not_available'    => 'Nicht Verfügbar!',
             'web_page_settings_namechange_choose_name'      => 'Wähle deinen neuen Usernamen',
-            
+
             'web_page_settings_verification_oops'           => 'Oops...',
             'web_page_settings_verification_fill_password'  => 'Bitte dein Passwort eingeben!',
             'web_page_settings_verification_2fa_on'         => 'Die Google-Authentifizierung ist derzeit in Ihrem Konto festgelegt. Um eine andere Bestätigungsmethode zu verwenden, musst du zuerst deine alte Bestätigung entfernen!',
@@ -120,7 +120,7 @@ $GLOBALS['language'] = array (
             'web_page_settings_verification_pincode_off'    => 'Um die PIN-Code-Authentifizierung zu deaktivieren, bitten wir dich, deinen PIN-Code einzugeben.',
             'web_page_settings_verification_pincode'        => 'Pin-Code',
             'web_page_settings_verification_switch'         => 'Wähle den Button, um eine Authentifizierungsmethode zu aktivieren!',
-            
+
             'web_page_shop_offers_neosurf_name'             => 'Neosurf',
             'web_page_shop_offers_neosurf_description'      => 'Zahle einfach mit Neosurf und deine GOTW-Punkte werden sofort aufgeladen',
             'web_page_shop_offers_neosurf_dialog'           => 'Gib unten deine Neosurf-Guthaben-Code ein, um fortzufahren.',
@@ -160,7 +160,7 @@ $GLOBALS['language'] = array (
             'web_hotel_active_flash_2'                      => 'Klick hier',
             'web_hotel_active_flash_3'                      => 'und "erlaube" deinen Browser Flash zu Aktivieren um das Habboversum zu betreten.'
         ),
-        
+
         /*     App/View/Community     */
         'article' => array (
             'reactions'         => 'Kommentare',
@@ -177,7 +177,7 @@ $GLOBALS['language'] = array (
             'index_empty'               => 'Keine Beiträge vorhanden',
             'index_latest_activities'   => 'Letzte Antwort',
             'index_by'                  => 'von',
-            
+
           /*  Forum/category.html  */
             'category_new_topic'        => 'neuen Beitrag',
             'category_back'             => 'Zurück',
@@ -193,7 +193,7 @@ $GLOBALS['language'] = array (
             'category_create_button'    => 'Veröffentlichen',
             'category_or'               => 'oder',
             'category_cancel'           => 'Abbrechen',
-          
+
           /*  Forum/topic.html  */
             'topic_react'               => 'Antworten',
             'topic_close'               => 'Schließen',
@@ -209,17 +209,17 @@ $GLOBALS['language'] = array (
             'topic_likes_2'             => 'gefällt das!',
             'topic_likes_3'             => 'gefällt das!'
         ),
-      
+
         /*     App/View/Community     */
         'community_photos' => array (
             'by'          => 'von',
-            'photos_by'   => 'Photos\'s by',
-            'photos_desc' => 'See all the latest pictures taken by',
+            'photos_by'   => 'Fotos von',
+            'photos_desc' => 'Die neusten Fotos von',
             'load_more'   => 'Mehr Fotos laden'
         ),
         'community_staff' => array (
             'title'       => 'Wie werde ich ein ' . Config::shortName . ' Mitarbeiter',
-            'desc'        => 'Our staff is to help and guide you within this hotel!',
+            'desc'        => 'Unsere Mitarbeiter sind hier um dir zu helfen!',
             'content_1'   => 'Natürlich träumt jeder von einer Stelle als' . Config::shortName . '-Mitarbeiter, aber leider ist dies nicht jedermanns Sache. Um ein Mitarbeiter zu werden, musst du dich bewerben.',
             'content_2'   => 'Dies ist nur möglich, wenn wir freie Stellen haben, wenn wir dies haben, wird euch dies in den Neuigkeiten mitgeteilt.'
         ),
@@ -238,8 +238,8 @@ $GLOBALS['language'] = array (
         'games_ranking' => array (
             'username' => 'name'
         ),
-        
-        /*     App/View/Help     */        
+
+        /*     App/View/Help     */
         'help' => array (
           /*  Help/help.html  */
             'help_title'                => 'FAQ',
@@ -248,8 +248,8 @@ $GLOBALS['language'] = array (
             'help_content_1'            => 'Kein Problem! Dann frage einen unserer Mitarbeiter. Hier hast du die Möglichkeit ein Help Ticket zu erstellen welches von einem Mitarbeiter schnellstmöglich bearbeitet wird.',
             'help_contact'              => 'Help Ticket erstellen',
             'title'                     => 'Help Tool',
-            'desc'                      => 'You can search here for answers to your questions. If you cannot find the answer to your question, submit a request.',
-          
+            'desc'                      => 'Such nach einer Antwort. Wenn du keine findest, erstell ein neues Help Ticket.',
+
           /*  Help/request.html  */
             'request_closed'            => 'Geschlossen',
             'request_on'                => 'On:',
@@ -274,11 +274,11 @@ $GLOBALS['language'] = array (
             'description'   => 'Worum geht es genau? Bitte möglichst ausführlich.',
             'open_ticket'   => 'Ticket Eröffnen'
         ),
-        
+
         /*     App/View/Home     */
         'home' => array (
             'to'                     => 'ins',
-            'friends_online'         => 'Online friends',
+            'friends_online'         => 'Online Freunde',
             'now_in'                 => 'Jetzt ins',
             'latest_news'            => 'Aktuelle Neuigkeiten',
             'latest_facts'           => 'Die aktuellsten Neuigkeiten.',
@@ -365,7 +365,7 @@ $GLOBALS['language'] = array (
             'female'                => 'Mädchen',
             'register'              => 'Registrieren'
         ),
-        
+
         /*     App/View/Jobs     */
         'apply' => array (
             'title'               => 'Reagiere auf ein Stellenangebot',
@@ -395,7 +395,7 @@ $GLOBALS['language'] = array (
             'buildteam_desc'          => 'Du bist dafür Verantwortlich Offizielle Räume und Events zu bauen und zu veranstallten.',
             'react'                   => 'Bewerben'
         ),
-        
+
         /*     App/View/Password     */
         'password_claim' => array (
             'title'                 => 'Hast du dein Passwort vergessen?',
@@ -415,7 +415,7 @@ $GLOBALS['language'] = array (
             'new_password_repeat_fill'  => 'Bitte das Neue Passwort wiederholen...',
             'change_password'           => 'Passwort Ändern'
         ),
-        
+
         /*     App/View/Settings     */
         'settings_panel' => array (
             'preferences'    => 'Meine Einstellungen',
@@ -482,7 +482,7 @@ $GLOBALS['language'] = array (
             'link_account_label'    => 'Um dein Konto zu Verknüpfen, scanne einfach deinen QR-Code mit deiner APP ein und Speichere diesen ab.',
             'save'                  => 'Speichern'
         ),
-        
+
         /*     App/View/Shop     */
         'shop_club' => array (
             'club_benefits'       => 'Clubvorteile',
@@ -493,7 +493,7 @@ $GLOBALS['language'] = array (
             'content_2'           => 'Dann zögere nicht ein Help Ticket zu erstellen.',
             'help_tool'           => config::shortName . ' Help Ticket',
             'random_club_users'   => 'Zufällige ' . config::shortName . ' Club Mitglieder',
-            'desc'                => 'Here you can buy a club for real money. With club you can buy exclusive items.'
+            'desc'                => 'Kaufe eine Club Mitgliedschaft mit echtem Geld. Dadurch erhälst du Zugriff auf exklusive Möbel!'
         ),
         'shop_history' => array (
             'buy_history'         => 'Meine Käufe',
@@ -505,7 +505,7 @@ $GLOBALS['language'] = array (
             'content_2'           => 'Dann zögere nicht ein Help Ticket zu erstellen.',
             'help_tool'           => Config::shortName . ' Help Ticket',
             'title'               => 'Meine Käufe',
-            'desc'                => 'You see here all the purchases you have made'
+            'desc'                => 'Hier siehst du alle deine Käufe.'
         ),
         'shop_offers' => array (
             'back'              => 'Zurück',
@@ -530,11 +530,11 @@ $GLOBALS['language'] = array (
             'have_to_login'     => 'Du musst angemeldet sein um den Shop abrufen zu können.',
             'click_here'        => 'Klick hier',
             'to_login'          => 'zum anmelden.',
-            'desc'              => 'Here you can buy credits for real money for real money, with this you can buy exclusive items in our catalogue'
+            'desc'              => 'Kaufe Taler mit echtem Geld. Dadurch kannst du dir Möbel in unserem Katalog kaufen!'
         ),
         'games_ranking' => array(
             'title'             => 'Highscores',
-            'desc'              => 'On this you find all the high scores of our players!'
+            'desc'              => 'Hier findest du die Highscores von unseren Mitglieder.'
         )
     ),
     'core' => array (
@@ -543,8 +543,8 @@ $GLOBALS['language'] = array (
             'disabled' => 'Anfrage kann nicht bearbeitet werden, da die Hotel-API Deaktiviert wurde.'
         ),
         'dialog' => array (
-            'logged_in'             => 'Oops to visit this page you must be logged in!',
-            'not_logged_in'         => 'You do not have to be logged in to visit this page!'
+            'logged_in'             => 'Oops, du musst eingeloggt sein um diese Seite zu sehen!',
+            'not_logged_in'         => 'Du musst nicht eingeloggt sein um diese Seite zu sehen!'
         ),
         'notification' => array (
             'message_placed'        => 'Deine Nachricht wurde erfolgreich abgeschickt!',
@@ -632,8 +632,8 @@ $GLOBALS['language'] = array (
     'claim' => array (
         'invalid_email'             => 'Diese E-Mail-Adresse stimmt nicht mit der dieses Users überein.',
         'invalid_link'              => 'Dieser Link ist abgelaufen. Fordern Sie Ihr Passwort erneut an, um Ihr Passwort zu ändern.',
-        'send_link'                 => 'We have just sent you an e-mail! Received nothing? Then check the junk e-mail folder.',
-        'password_changed'          => 'Your password has been changed. You can now log in again!',
+        'send_link'                 => 'Wir haben dir eine E-Mail gesendet. Vergiss nicht im Spam-Ordner nachzusehen!',
+        'password_changed'          => 'Dein Passwort wurde geändert. Du kannst dich jetzt einloggen!',
 
         'email'  => array (
             'title'                 => 'Passwort ändern.',
