@@ -1,33 +1,33 @@
-<?php 
+<?php
 use App\Config;
 
 $GLOBALS['language'] = array (
     'website' => array (
         /*     App/View/base.html     */
-        'base' => array(fo
+        'base' => array(
             'nav_home'              => 'Inicio',
-            
+
             'nav_community'         => 'Comunidade',
             'nav_news'              => 'Noticias',
             'nav_jobs'              => 'Jobs',
             'nav_photos'            => 'Fotos',
             'nav_staff'             => 'Equipe',
-            
+
             'nav_shop'              => 'Loja',
             'nav_buy_points'        => 'Comprar GOTW-Points',
             'nav_buy_club'          => 'Comprar ' . Config::shortName . ' Clube',
             'nav_purchasehistory'   => 'Histórico de Compras',
             'nav_changename'        => 'Mudar Nome',
-            
+
             'nav_highscores'        => 'Rank',
-          
+
             'nav_forum'             => 'My Groups',
-          
+
             'nav_helptool'          => 'Ajuda',
             'nav_helptickets'       => 'Ticket de Ajuda',
-            
+
             'nav_housekeeping'      => 'Painel',
-            
+
             'close'                 => 'Fechar',
             'cookies'               => 'uses its own and third-party cookies to provide a better service and also ensures that the advertisements better match your preferences. If you use our website you agree with our cookie policy.',
             'read_more'             => 'Ler mais',
@@ -35,27 +35,27 @@ $GLOBALS['language'] = array (
             'made_with_love'        => 'foi feito com muito amor',
             'credits'               => 'Agradecimentos a Raizer e Metus',
             'and_all'               => 'e todos',
-            
+
             'login_name'            => 'Usuário',
             'login_password'        => 'Senha',
             'login_save_data'       => 'Mantenha-me logado',
             'login_lost_password'   => 'Esqueci minha senha',
-            
+
             'report_message'        => 'Reporte essa mensagem',
             'report_certainty'      => 'Você está prestes a reportar essa mensagem. Tem certeza que deseja reportar?',
             'report_inappropriate'  => 'Sim, isso é inapropriado!',
-            
+
             'user_to'               => 'Vá para o',
             'user_profile'          => 'Meu perfil',
             'user_settings'         => 'Configurações',
             'user_logout'           => 'Deslogar',
-            
+
             'header_slogan'         => 'Virtual world for young people!',
             'header_slogan2'        => 'Join our community and make new friends',
             'header_login'          => 'Entrar',
             'header_register'       => 'Registre-se de graça!',
             'header_to'             => 'Vá para o',
-            
+
             'footer_helptool'       => 'Help Tool',
             'footer_rules'          => 'The Leet Rules',
             'footer_terms'          => 'Terms and Conditions',
@@ -63,7 +63,7 @@ $GLOBALS['language'] = array (
             'footer_cookies'        => 'Cookie policy',
             'footer_guide'          => 'Parents guide'
         ),
-        
+
         /*     public/assets/js/web     */
         'javascript' => array(
             'web_customforms_markedfields'                  => 'All fields marked with an * are mandatory.',
@@ -73,27 +73,27 @@ $GLOBALS['language'] = array (
             'web_customforms_participation'                 => 'Thanks for your participation!',
             'web_customforms_sent'                          => 'Your answers have been sent and will be analyzed by the person who starts this form.',
             'web_customforms_answer'                        => 'Your answer',
-            
+
             'web_dialog_cancel'                             => 'Cancel',
             'web_dialog_validate'                           => 'Validate',
             'web_dialog_confirm'                            => 'Confirm your choice',
-            
+
             'web_hotel_backto'                              => 'Voltar para o ' . Config::shortName . ' Hotel',
-            
+
             'web_fill_pincode'                              => 'Enter the pin code that you specified when creating the extra security on your account. Well, I forgot this one? Then contact us via the Leet Help Tool',
             'web_twostep'                                   => 'Two-step authorization!',
             'web_login'                                     => 'You must be logged in to report this message!',
             'web_loggedout'                                 => 'Logged out :(',
-            
+
             'web_notifications_success'                     => 'Success!',
             'web_notifications_error'                       => 'Erro!',
             'web_notifications_info'                        => 'Information!',
-            
+
             'web_page_article_login'                        => 'You must be logged in to post a comment!',
-            
+
             'web_page_community_photos_login'               => 'You must be logged in to like photos!',
             'web_page_community_photos_loggedout'           => 'Logged out :(',
-            
+
             'web_page_forum_change'                         => 'Change',
             'web_page_forum_cancel'                         => 'Cancel',
             'web_page_forum_oops'                           => 'Oops...',
@@ -101,14 +101,14 @@ $GLOBALS['language'] = array (
             'web_page_forum_login_toreact'                  => 'In order to respond, you need to be logged in!',
             'web_page_forum_login_tolike'                   => 'You must be logged in to like this post!',
             'web_page_forum_loggedout'                      => 'Logged out :(',
-            
+
             'web_page_profile_login'                        => 'You must be logged in to like photos!',
             'web_page_profile_loggedout'                    => 'Logged out :(',
-            
+
             'web_page_settings_namechange_request'          => 'Request',
             'web_page_settings_namechange_not_available'    => 'Not available',
             'web_page_settings_namechange_choose_name'      => 'Choose Leetname',
-            
+
             'web_page_settings_verification_oops'           => 'Oops...',
             'web_page_settings_verification_fill_password'  => 'Enter your password!',
             'web_page_settings_verification_2fa_on'         => 'Google Authentication is currently set on your account. To use another verification method, you must first remove your old verification!',
@@ -119,7 +119,7 @@ $GLOBALS['language'] = array (
             'web_page_settings_verification_pincode_off'    => 'To disable the pincode authentication we ask you to enter your pincode.',
             'web_page_settings_verification_pincode'        => 'Pincode code',
             'web_page_settings_verification_switch'         => 'Select the switch button to enable an authentication method!',
-            
+
             'web_page_shop_offers_neosurf_name'             => 'Neosurf',
             'web_page_shop_offers_neosurf_description'      => 'Pay easily with Paypal and your GOTW-Points will be topped up immediately.',
             'web_page_shop_offers_neosurf_dialog'           => 'Enter your Paypal e-mailaddress below to continue.',
@@ -150,7 +150,7 @@ $GLOBALS['language'] = array (
             'web_page_shop_offers_to'                       => 'to',
             'web_page_shop_offers_buy_code'                 => 'Purchase access code'
         ),
-        
+
         /*     App/View/Community     */
         'article' => array (
             'reactions'         => 'Reactions',
@@ -167,7 +167,7 @@ $GLOBALS['language'] = array (
             'index_empty'               => 'Não há tópicos',
             'index_latest_activities'   => 'Últimas atividades',
             'index_by'                  => 'por',
-            
+
           /*  Forum/category.html  */
             'category_new_topic'        => 'Novo tópico',
             'category_back'             => 'Voltar',
@@ -183,7 +183,7 @@ $GLOBALS['language'] = array (
             'category_create_button'    => 'Criar tópico',
             'category_or'               => 'ou',
             'category_cancel'           => 'cancelar',
-          
+
           /*  Forum/topic.html  */
             'topic_react'               => 'Responder',
             'topic_close'               => 'Fechar',
@@ -211,13 +211,13 @@ $GLOBALS['language'] = array (
             'content_1'   => 'Todos sonham com um lugar entre os membros da equipe ' . Config::shortName . ', mas infelizmente não é possível abrir vaga a todos.',
             'content_2'   => 'Quando abrirem novas vagas para equipe, não se preocupe que você irá ficar sabendo.'
         ),
-        
+
         /*     App/View/Games     */
         'games_ranking' => array (
             'username' => 'name'
         ),
-        
-        /*     App/View/Help     */        
+
+        /*     App/View/Help     */
         'help' => array (
           /*  Help/help.html  */
             'help_title'                => 'FAQ',
@@ -227,7 +227,7 @@ $GLOBALS['language'] = array (
             'help_contact'              => 'Contact',
             'title'                     => 'Help Tool',
             'desc'                      => 'You can search here for answers to your questions. If you cannot find the answer to your question, submit a request.',
-          
+
           /*  Help/request.html  */
             'request_closed'            => 'FECHADO',
             'request_on'                => 'On:',
@@ -252,7 +252,7 @@ $GLOBALS['language'] = array (
             'description'   => 'Descrição',
             'open_ticket'   => 'Abrir um ticket'
         ),
-        
+
         /*     App/View/Home     */
         'home' => array (
             'to'                     => 'Vá para o',
@@ -343,7 +343,7 @@ $GLOBALS['language'] = array (
             'female'                => 'Menina',
             'register'              => 'Registre-se'
         ),
-        
+
         /*     App/View/Jobs     */
         'apply' => array (
             'title'               => 'React on the invoice',
@@ -373,7 +373,7 @@ $GLOBALS['language'] = array (
             'buildteam_desc'          => 'They are responsible for building (event/official) rooms.',
             'react'                   => 'React'
         ),
-        
+
         /*     App/View/Password     */
         'password_claim' => array (
             'title'                 => 'Esqueceu sua senha?',
@@ -393,7 +393,7 @@ $GLOBALS['language'] = array (
             'new_password_repeat_fill'  => 'Repita sua nova senha...',
             'change_password'           => 'Mudar senha'
         ),
-        
+
         /*     App/View/Settings     */
         'settings_panel' => array (
             'preferences'    => 'Minhas preferências',
@@ -460,7 +460,7 @@ $GLOBALS['language'] = array (
             'link_account_label'    => 'Para conectar sua conta, você pode scannear o QR code com um aplicativo e clicar para salvar no Google Authenticator.',
             'save'                  => 'Salvar'
         ),
-        
+
         /*     App/View/Shop     */
         'shop_club' => array (
             'club_benefits'       => 'Clube: Benefícios',
