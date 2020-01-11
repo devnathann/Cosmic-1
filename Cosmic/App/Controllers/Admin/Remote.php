@@ -460,7 +460,7 @@ class Remote
             }
           
             Log::addStaffLog($player->id, 'User Info saved', 'MANAGE');
-            return Json::encode(["status" => "error", "message" => "Info of {$player->username} is updated!"]);
+            return Json::encode(["status" => "success", "message" => "Info of {$player->username} is updated!"]);
         }
     }
 }

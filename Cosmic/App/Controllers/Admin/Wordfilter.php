@@ -82,10 +82,6 @@ class Wordfilter
     {
         $word_filter = Admin::getWordFilters();
 
-        if (empty($word_filter)) {
-            return Json::encode(["status" => "error", "message" => "No word has added to this blacklist"]);
-        }
-
         foreach ($word_filter as $row) {
             $row->hide    = ($row->hide == 0 ? 'No' : 'Yes');
             $row->report  = ($row->report == 0 ? 'No' : 'Yes');

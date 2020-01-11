@@ -36,7 +36,7 @@ class Articles
         $is_hidden = Core::getField('website_news_reactions', 'hidden', 'id', $news_id);
         if($is_hidden == 0) {
             Community::hideNewsReaction($news_id, '1');
-            return Json::encode(["status" => "success", "is_hidden" => "show", "message" => Locale::get('website/article/reaction_hidden_yes')]);
+            return Json::encode(["status" => "success", "is_hidden" => "hide", "message" => Locale::get('website/article/reaction_hidden_yes')]);
         }
 
         Community::hideNewsReaction($news_id, '0');

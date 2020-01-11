@@ -31,7 +31,7 @@ class AuthMiddleware implements IMiddleware
         }
 
         if (Session::get('ip_address') != Core::getIpAddress()) {
-            Player::update($request->player->id, 'ip_current', Core::getIpAddress());
+            Player::update($request->player->id, ['ip_current' => Core::getIpAddress()]);
         }
     }
 }

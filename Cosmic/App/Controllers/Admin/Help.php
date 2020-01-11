@@ -51,7 +51,7 @@ class Help
         }
 
         $this->data->ticket = $request;
-        echo Json::raw($this->data);
+        echo Json::encode($this->data);
     }
 
     public function gethelptickets()

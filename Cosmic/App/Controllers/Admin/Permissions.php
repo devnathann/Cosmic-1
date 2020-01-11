@@ -113,7 +113,7 @@ class Permissions
         }
 
         $permissionExists = Core::getField('website_permissions', 'id', 'id', $permission_id);
-        if (Admin::roleExists($role_id, $permission_id) || empty($permissionExists)) 
+        if (Admin::roleExists($role_id, $permission_id) || empty($permissionExists))  {
             return Json::encode(["status" => "error", "message" => "Permissions has already added to this role!"]);
         }
 

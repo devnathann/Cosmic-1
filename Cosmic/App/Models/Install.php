@@ -462,6 +462,16 @@ class Install {
         if ($conn->query($webNotiReset) !== true) {
             self::rollback($conn->error);
         }
+        $webNotiReset = "
+            CREATE TABLE website_remembered_logins  (
+              id int(11) NOT NULL AUTO_INCREMENT,
+              token_hash varchar(128) NOT NULL DEFAULT NULL,
+              user_id int(11) NULL DEFAULT NULL,
+              expires_at datetime(0) NULL DEFAULT NULL
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT";
+        if ($conn->query($webNotiReset) !== true) {
+            self::rollback($conn->error);
+        }
         $webPermssions = "
             CREATE TABLE `website_permissions` (
               `id` int(11) NOT NULL,
@@ -656,6 +666,12 @@ class Install {
                   self::rollback($conn->error);
               }
               $aaaaasa = "
+      ALTER TABLE `website_remembered_logins`
+        ADD PRIMARY KEY (`id`) USING BTREE";
+              if ($conn->query($aaaaasa) !== true) {
+                  self::rollback($conn->error);
+              }
+              $aaaaasa = "
       ALTER TABLE `website_feeds`
         ADD PRIMARY KEY (`id`) USING BTREE";
               if ($conn->query($aaaaasa) !== true) {
@@ -835,6 +851,12 @@ class Install {
               }
               $qeqewwe = "
       ALTER TABLE `website_feeds`
+        MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0";
+              if ($conn->query($qeqewwe) !== true) {
+                  self::rollback($conn->error);
+              }
+              $qeqewwe = "
+      ALTER TABLE `website_remembered_logins`
         MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0";
               if ($conn->query($qeqewwe) !== true) {
                   self::rollback($conn->error);
