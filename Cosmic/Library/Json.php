@@ -46,9 +46,9 @@ class Json
                 return false;
             }
             if ($sort === 'asc') {
-                return $a->$field > $b->$field ? true : false;
+                return $a->$field > $b->$field;
             }
-            return $a->$field < $b->$field ? true : false;
+            return $a->$field < $b->$field;
         });
 
         // $perpage 0; get all data
@@ -84,7 +84,7 @@ class Json
                 ],
             'data' => $data,
         ];
-      
+
         self::encode($result);
     }
 }

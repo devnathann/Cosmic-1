@@ -19,11 +19,11 @@ class Session
         if(!is_array($data)) {
             return $_SESSION[$data] = $data;
         }
-        
+
         foreach($data as $row => $value) {
             $_SESSION[$row] = $value;
         }
-      
+
         return;
     }
 
@@ -48,7 +48,7 @@ class Session
      */
     public static function exists($name)
     {
-        return isset($_SESSION[$name]) ? true : false;
+        return isset($_SESSION[$name]);
     }
 
     /**
