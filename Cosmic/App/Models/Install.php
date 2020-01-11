@@ -463,12 +463,12 @@ class Install {
             self::rollback($conn->error);
         }
         $webNotiReset = "
-            CREATE TABLE website_remembered_logins  (
-              id int(11) NOT NULL AUTO_INCREMENT,
-              token_hash varchar(128) NOT NULL DEFAULT NULL,
-              user_id int(11) NULL DEFAULT NULL,
-              expires_at datetime(0) NULL DEFAULT NULL
-            ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT";
+            CREATE TABLE `website_remembered_logins` (
+              `id` int(11) NOT NULL,
+              `token_hash` varchar(128) DEFAULT NULL,
+              `user_id` int(11) DEFAULT NULL,
+              `expires_at` datetime DEFAULT NULL
+            ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC";
         if ($conn->query($webNotiReset) !== true) {
             self::rollback($conn->error);
         }
