@@ -74,7 +74,7 @@ class Verification
             'title' => Locale::get('core/title/settings/index'),
             'page'  => 'settings_verification',
             'token' => (!request()->player->secret_key ? (new GoogleAuthenticator())->generateSecret() : request()->player->secret_key),
-            'auth_enabled' => (request()->player->secret_key || (request()->player->pincode != NULL) ? true : false)
+            'auth_enabled' => (request()->player->secret_key || (request()->player->pincode != NULL))
         ]);
     }
 }

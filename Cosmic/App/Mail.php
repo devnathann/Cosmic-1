@@ -19,6 +19,6 @@ class Mail
             ->setTo([$to])
             ->setBody($body, 'text/html');
 
-        return $mailer->send($message) ? true : false;
+        return $mailer->send($message);
     }
 }
