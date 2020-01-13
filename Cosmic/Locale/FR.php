@@ -6,28 +6,28 @@ $GLOBALS['language'] = array (
         /*     App/View/base.html     */
         'base' => array(
             'nav_home'              => 'Accueil',
-            
+
             'nav_community'         => 'Communauté',
             'nav_news'              => 'Articles',
             'nav_jobs'              => 'Jobs',
             'nav_photos'            => 'Photos',
             'nav_staff'             => 'Staff',
-            
+
             'nav_shop'              => 'Boutique',
             'nav_buy_points'        => 'acheter des points',
             'nav_buy_club'          => 'Acheter le ' . Config::shortName . ' Club',
             'nav_purchasehistory'   => 'Acheter une histoire',
             'nav_changename'        => 'Changer ton pseudo',
-            
+
             'nav_highscores'        => 'Meilleurs scores',
-          
+
             'nav_forum'             => 'My Groups',
-          
+
             'nav_helptool'          => 'Outil d\'aide',
             'nav_helptickets'       => 'Tickets d\'aide',
-            
+
             'nav_housekeeping'      => 'Housekeeping',
-            
+
             'close'                 => 'Fermer',
             'cookies'               => 'utilise ses propres cookies et ceux de tiers pour fournir un meilleur service et garantir également que les publicités correspondent le mieux à vos préférences. Si vous utilisez notre site Web, vous acceptez notre politique en matière de cookies.',
             'read_more'             => 'Lire plus',
@@ -35,27 +35,27 @@ $GLOBALS['language'] = array (
             'made_with_love'        => 'a été fait avec amour',
             'credits'               => 'Merci à Raizer et Metus',
             'and_all'               => 'Et tous le monde',
-            
+
             'login_name'            => 'Pseudo',
             'login_password'        => 'Mot de passe',
             'login_save_data'       => 'Se souvenir de moi',
             'login_lost_password'   => 'Mot de passe/pseudo oublié ?',
-            
+
             'report_message'        => 'Rapporter ce message',
             'report_certainty'      => 'Tu vas rapporter ce message. Es- tu sur de vouloir le faire?',
             'report_inappropriate'  => 'Oui, c\'est inapproprié!',
-            
+
             'user_to'               => 'Jouer à',
             'user_profile'          => 'Mon profile',
             'user_settings'         => 'Paramètres',
             'user_logout'           => 'Deconnexion',
-            
+
             'header_slogan'         => 'Un monde virtuel pour de jeunes joueurs!',
             'header_slogan2'        => 'Rejoins notre communauté et fais toi de nouveaux amis !',
             'header_login'          => 'Connexion',
             'header_register'       => 'Inscription gratuite!',
             'header_to'             => 'Jouer à',
-            
+
             'footer_helptool'       => 'Outil d\'aide',
             'footer_rules'          => 'Les règles de ' . Config::shortName,
             'footer_terms'          => 'Termes et Conditions',
@@ -63,7 +63,7 @@ $GLOBALS['language'] = array (
             'footer_cookies'        => 'Politique des cookies',
             'footer_guide'          => 'Guide parental'
         ),
-        
+
         /*     public/assets/js/web     */
         'javascript' => array(
             'web_customforms_markedfields'                  => 'Tout les champs marqués par un * sont obligatoires.',
@@ -73,27 +73,27 @@ $GLOBALS['language'] = array (
             'web_customforms_participation'                 => 'Merci pour votre participation!',
             'web_customforms_sent'                          => 'Vos réponses ont été envoyées et seront analysées par la personne qui commence ce formulaire.',
             'web_customforms_answer'                        => 'Votre réponse',
-            
+
             'web_dialog_cancel'                             => 'Annuler',
             'web_dialog_validate'                           => 'Valider',
             'web_dialog_confirm'                            => 'Confirmer votre choix',
-            
+
             'web_hotel_backto'                              => 'Retour sur ' . Config::shortName ,
-            
+
             'web_fill_pincode'                              => 'Entrez le code PIN que vous avez spécifié lors de la création de la sécurité supplémentaire sur votre compte. Vous l\'avez oublié ? Contactez-nous via l\'outil d\aide de ' . Config::shortName,
             'web_twostep'                                   => 'Deuxième étape d\'authorisation!',
             'web_login'                                     => 'Vous devez être connecté pour signaler ce message!',
             'web_loggedout'                                 => 'Déconnecté :(',
-            
+
             'web_notifications_success'                     => 'Succès!',
             'web_notifications_error'                       => 'Erreur!',
             'web_notifications_info'                        => 'Informations!',
-            
+
             'web_page_article_login'                        => 'Vous devez être connectés pour poster un commentaire!',
-            
+
             'web_page_community_photos_login'               => 'Vous devez être connecté pour aimer les photos!',
             'web_page_community_photos_loggedout'           => 'Déconnecté :(',
-            
+
             'web_page_forum_change'                         => 'Changer',
             'web_page_forum_cancel'                         => 'Retour',
             'web_page_forum_oops'                           => 'Oops...',
@@ -101,14 +101,14 @@ $GLOBALS['language'] = array (
             'web_page_forum_login_toreact'                  => 'Pour répondre, vous devez être connecté!',
             'web_page_forum_login_tolike'                   => 'Vous devez être connecté pour aimer ce post!',
             'web_page_forum_loggedout'                      => 'Logged out :(',
-            
+
             'web_page_profile_login'                        => 'Vous devez être connecté pour aimer des photos!',
             'web_page_profile_loggedout'                    => 'Déconnecté :(',
-            
+
             'web_page_settings_namechange_request'          => 'Demander',
             'web_page_settings_namechange_not_available'    => 'Non Disponible',
             'web_page_settings_namechange_choose_name'      => 'Choisir un Pseudo',
-            
+
             'web_page_settings_verification_oops'           => 'Oops...',
             'web_page_settings_verification_fill_password'  => 'Entrez votre mot de passe!',
             'web_page_settings_verification_2fa_on'         => 'L\'authentification Google est actuellement définie sur votre compte. Pour utiliser une autre méthode de vérification, vous devez d\'abord supprimer votre ancienne vérification!',
@@ -119,7 +119,7 @@ $GLOBALS['language'] = array (
             'web_page_settings_verification_pincode_off'    => 'Pour désactiver l\'authentification par code PIN, nous vous demandons de saisir votre code PIN.',
             'web_page_settings_verification_pincode'        => 'Code Pincode',
             'web_page_settings_verification_switch'         => 'Sélectionnez le bouton de commutation pour activer une méthode d\'authentification!',
-            
+
             'web_page_shop_offers_neosurf_name'             => 'Neosurf',
             'web_page_shop_offers_neosurf_description'      => 'Payez facilement avec Paypal et vos points GOTW seront rechargés immédiatement.',
             'web_page_shop_offers_neosurf_dialog'           => 'Entrez votre adresse e-mail Paypal ci-dessous pour continuer.',
@@ -159,7 +159,7 @@ $GLOBALS['language'] = array (
             'web_hotel_active_flash_2'                      => 'Cliques ici',
             'web_hotel_active_flash_3'                      => 'et cliques sur le côté gauche sur "autoriser" flash, pour activer flash.'
         ),
-        
+
         /*     App/View/Community     */
         'article' => array (
             'reactions'         => 'Réactions',
@@ -176,7 +176,7 @@ $GLOBALS['language'] = array (
             'index_empty'               => 'pas de topics',
             'index_latest_activities'   => 'Dernières activités',
             'index_by'                  => 'par',
-            
+
           /*  Forum/category.html  */
             'category_new_topic'        => 'Nouveau topic',
             'category_back'             => 'Retour',
@@ -192,7 +192,7 @@ $GLOBALS['language'] = array (
             'category_create_button'    => 'Créer un topic',
             'category_or'               => 'ou',
             'category_cancel'           => 'revenir',
-          
+
           /*  Forum/topic.html  */
             'topic_react'               => 'Réagir',
             'topic_close'               => 'Fermer',
@@ -220,13 +220,13 @@ $GLOBALS['language'] = array (
             'content_1'   => 'Bien sûr, tout le monde rêve d\'un tel poste en tant que membre du personnel de ' . Config::shortName . ', mais malheureusement, ce n\'est pas pour tout le monde. Pour devenir membre du personnel de ' . Config::shortName . ', vous devez postuler.',
             'content_2'   => 'Cela n\'est possible que lorsque nous avons des postes libres, quand c\'est le cas, nous le mentionnons dans les articles.'
         ),
-        
+
         /*     App/View/Games     */
         'games_ranking' => array (
             'username' => 'nom'
         ),
-        
-        /*     App/View/Help     */        
+
+        /*     App/View/Help     */
         'help' => array (
           /*  Help/help.html  */
             'help_title'                => 'FAQ',
@@ -236,7 +236,7 @@ $GLOBALS['language'] = array (
             'help_contact'              => 'Contact',
             'title'                     => 'Help Tool',
             'desc'                      => 'You can search here for answers to your questions. If you cannot find the answer to your question, submit a request.',
-          
+
           /*  Help/request.html  */
             'request_closed'            => 'FERMÉ',
             'request_on'                => 'Sur:',
@@ -261,7 +261,7 @@ $GLOBALS['language'] = array (
             'description'   => 'Description',
             'open_ticket'   => 'Ouvrir un ticket'
         ),
-        
+
         /*     App/View/Home     */
         'home' => array (
             'to'                     => 'Jouer à',
@@ -352,7 +352,7 @@ $GLOBALS['language'] = array (
             'female'                => 'Fille',
             'register'              => 'Inscription'
         ),
-        
+
         /*     App/View/Jobs     */
         'apply' => array (
             'title'               => 'Remplissez le formulaire',
@@ -382,7 +382,7 @@ $GLOBALS['language'] = array (
             'buildteam_desc'          => 'Ils sont responsables de la construction des salles.',
             'react'                   => 'Réagir'
         ),
-        
+
         /*     App/View/Password     */
         'password_claim' => array (
             'title'                 => 'Mot de passe oublié?',
@@ -402,7 +402,7 @@ $GLOBALS['language'] = array (
             'new_password_repeat_fill'  => 'Re-entrer le mot de passe...',
             'change_password'           => 'Changer le mot de passe'
         ),
-        
+
         /*     App/View/Settings     */
         'settings_panel' => array (
             'preferences'    => 'Mes préférences',
@@ -469,7 +469,7 @@ $GLOBALS['language'] = array (
             'link_account_label'    => 'Pour lier votre compte, scannez simplement ce QR code avec votre application puis cliquez sur enregistrer pour valider cette modification.',
             'save'                  => 'Sauvegarder'
         ),
-        
+
         /*     App/View/Shop     */
         'shop_club' => array (
             'club_benefits'       => 'Avantages du club',
@@ -613,7 +613,8 @@ $GLOBALS['language'] = array (
     ),
     'register' => array (
         'username_invalid'          => 'Ce pseudo est contraire aux règles.',
-        'username_exists'           => 'Pseudo déjà utilisé :-('
+        'username_exists'           => 'Pseudo déjà utilisé :-(',
+        'email_exists'              =>  'This e-mail address is already in use :-(',
     ),
     'claim' => array (
         'invalid_email'             => 'Cette adresse e-mail ne correspond pas à celle de cet identifiant ' . Config::shortName,
