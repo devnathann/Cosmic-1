@@ -191,7 +191,6 @@ class Player
 
     public static function mailTaken($mail)
     {
-        $query = QueryBuilder::table('users')->select('mail')->where('mail', $mail)->first();
-        return $query->mail ?? false;
+        return QueryBuilder::table('users')->select('mail')->where('mail', $mail)->first();
     }
 }
