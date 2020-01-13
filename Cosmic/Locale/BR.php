@@ -604,7 +604,8 @@ $GLOBALS['language'] = array (
     ),
     'register' => array (
         'username_invalid'          => 'Asteroidname is contrary to the Asteroid Rules.',
-        'username_exists'           => 'Asteroidname is already in use :-('
+        'username_exists'           => 'Asteroidname is already in use :-(',
+        'email_exists'              =>  'This e-mail address is already in use :-(',
     ),
     'claim' => array (
         'invalid_email'             => 'This e-mail address does not match that of this Asteroid ID.',

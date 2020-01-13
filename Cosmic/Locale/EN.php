@@ -632,7 +632,7 @@ $GLOBALS['language'] = array (
     'register' => array (
         'username_invalid'          =>  Config::shortName . 'name is contrary to the ' . Config::shortName . ' Rules.',
         'username_exists'           =>  Config::shortName . 'name is already in use :-(',
-        'email_exists'              =>  'This e-mail address is already taken.',
+        'email_exists'              =>  'This e-mail address is already in use :-(',
     ),
     'claim' => array (
         'invalid_email'             => 'This e-mail address does not match that of this ' . Config::shortName . ' ID.',

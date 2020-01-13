@@ -4,27 +4,27 @@ $GLOBALS['language'] = array (
         /*     App/View/base.html     */
         'base' => array(
             'nav_home'              => 'Hem',
-            
+
             'nav_community'         => 'Gemenskap',
             'nav_news'              => 'Nyheter',
             'nav_photos'            => 'Kamera-bilder',
             'nav_staff'             => 'Personal',
-            
+
             'nav_shop'              => 'Shoppen',
             'nav_buy_points'        => 'Köp GOTW-Points',
             'nav_buy_club'          => 'Köp Habbo Club',
             'nav_purchasehistory'   => 'Köphistorik',
             'nav_changename'        => 'Ändra användarnamn',
-            
+
             'nav_highscores'        => 'Topplista',
-          
+
             'nav_forum'             => 'Forum',
-          
+
             'nav_helptool'          => 'Hjälpdesk',
             'nav_helptickets'       => 'Äranden',
-            
+
             'nav_housekeeping'      => 'Housekeeping',
-            
+
             'close'                 => 'Stäng',
             'cookies'               => 'använder sina egna och tredje parts kakor för att ge en bättre service och ser också till att annonserna bättre matchar dina preferenser. Om du använder vår webbplats accepterar du vår cookie-policy.',
             'read_more'             => 'Läs mer',
@@ -32,27 +32,27 @@ $GLOBALS['language'] = array (
             'made_with_love'        => ', ett hotell skapat med kärlek',
             'credits'               => 'Tack till Raizer och Metus',
             'and_all'               => 'Och alla',
-            
+
             'login_name'            => 'Användarnamn',
             'login_password'        => 'Lösenord',
             'login_save_data'       => 'Komihåg mina uppgifter',
             'login_lost_password'   => 'Glömt lösenord',
-            
+
             'report_message'        => 'Rapportera detta meddelande',
             'report_certainty'      => 'Är du säker på att du vill rapportera det här meddelandet?',
             'report_inappropriate'  => 'Det här är olämpligt!',
-            
+
             'user_to'               => 'Till',
             'user_profile'          => 'Min profil',
             'user_settings'         => 'Inställningar',
             'user_logout'           => 'Logga ut',
-            
+
             'header_slogan'         => 'En virtuell värld för tonåringar',
             'header_slogan2'        => 'Gå med vårat community och träffa nya vänner',
             'header_login'          => 'Logga in',
             'header_register'       => 'Registrera dig helt gratis!',
             'header_to'             => 'Till',
-            
+
             'footer_helptool'       => 'Hjälpdesk',
             'footer_rules'          => 'Hablo regler',
             'footer_terms'          => 'Hablo villkor',
@@ -60,7 +60,7 @@ $GLOBALS['language'] = array (
             'footer_cookies'        => 'Cookie policy',
             'footer_guide'          => 'Föräldrar guide'
         ),
-        
+
         /*     public/assets/js/web     */
         'javascript' => array(
             'web_customforms_markedfields'                  => 'Alla fält markerade med * är obligatoriska.',
@@ -70,27 +70,27 @@ $GLOBALS['language'] = array (
             'web_customforms_participation'                 => 'Tack för ditt deltagande!',
             'web_customforms_sent'                          => 'Dina svar har skickats och kommer att analyseras av personen som startar detta formulär.',
             'web_customforms_answer'                        => 'Dina svar',
-            
+
             'web_dialog_cancel'                             => 'Avbryt',
             'web_dialog_validate'                           => 'Bekräfta',
             'web_dialog_confirm'                            => 'Bekräfta ditt val',
-            
+
             'web_hotel_backto'                              => 'Tillbaka till Hablo',
-            
+
             'web_fill_pincode'                              => 'Ange den pinkod som du angav när du skapade din tvåfaktorsautentisering på ditt konto. Jag har glömt den? Kontakta oss via hjälpverktyget',
             'web_twostep'                                   => 'Två-faktors autentisering!',
             'web_login'                                     => 'Du måste vara inloggad för att rapportera detta meddelande',
             'web_loggedout'                                 => 'Utloggad :(',
-            
+
             'web_notifications_success'                     => 'Lyckat!',
             'web_notifications_error'                       => 'Error!',
             'web_notifications_info'                        => 'Information!',
-            
+
             'web_page_article_login'                        => 'Du måste vara inloggad för att kunna kommentera!',
-            
+
             'web_page_community_photos_login'               => 'Du måste vara inloggad för att gilla foton!',
             'web_page_community_photos_loggedout'           => 'Utloggad :(',
-            
+
             'web_page_forum_change'                         => 'Ändra',
             'web_page_forum_cancel'                         => 'Avbryt',
             'web_page_forum_oops'                           => 'Oops...',
@@ -98,14 +98,14 @@ $GLOBALS['language'] = array (
             'web_page_forum_login_toreact'                  => 'För att kunna svara måste du vara inloggad!',
             'web_page_forum_login_tolike'                   => 'Du måste vara inloggad för att gilla det här inlägget!',
             'web_page_forum_loggedout'                      => 'Utloggad :(',
-            
+
             'web_page_profile_login'                        => 'Du måste vara inloggad för att gilla foton!',
             'web_page_profile_loggedout'                    => 'Utloggad :(',
-            
+
             'web_page_settings_namechange_request'          => 'Begäran',
             'web_page_settings_namechange_not_available'    => 'Inte tillgänglig',
             'web_page_settings_namechange_choose_name'      => 'Välj ett namn',
-            
+
             'web_page_settings_verification_oops'           => 'Oops...',
             'web_page_settings_verification_fill_password'  => 'Ange ditt lösenord!',
             'web_page_settings_verification_2fa_on'         => 'Google-autentisering är för närvarande igång på ditt konto. Om du vill använda en annan verifieringsmetod måste du först ta bort din gamla verifiering!',
@@ -116,7 +116,7 @@ $GLOBALS['language'] = array (
             'web_page_settings_verification_pincode_off'    => 'För att inaktivera pinkod-autentiseringen ber vi dig ange din pinkod.',
             'web_page_settings_verification_pincode'        => 'PIN-Kod',
             'web_page_settings_verification_switch'         => 'Välj switch-knappen för att aktivera en autentiseringsmetod!',
-            
+
             'web_page_shop_offers_neosurf_name'             => 'Neosurf',
             'web_page_shop_offers_neosurf_description'      => 'Betala enkelt med Paypal och dina GOTW-poäng fylls omedelbart.',
             'web_page_shop_offers_neosurf_dialog'           => 'Ange din Paypal e-postadress nedan för att fortsätta.',
@@ -147,7 +147,7 @@ $GLOBALS['language'] = array (
             'web_page_shop_offers_to'                       => 'till',
             'web_page_shop_offers_buy_code'                 => 'Köp åtkomstkod'
         ),
-        
+
         /*     App/View/Community     */
         'article' => array (
             'reactions'         => 'Reactions',
@@ -164,7 +164,7 @@ $GLOBALS['language'] = array (
             'index_empty'               => 'Inga ämnen',
             'index_latest_activities'   => 'Senaste aktiviteter',
             'index_by'                  => 'Av',
-            
+
           /*  Forum/category.html  */
             'category_new_topic'        => 'Nytt ämne',
             'category_back'             => 'Tillbaka',
@@ -180,7 +180,7 @@ $GLOBALS['language'] = array (
             'category_create_button'    => 'Skapa ämne',
             'category_or'               => 'eller',
             'category_cancel'           => 'Avbryt',
-          
+
           /*  Forum/topic.html  */
             'topic_react'               => 'Reagera',
             'topic_close'               => 'Stäng',
@@ -205,13 +205,13 @@ $GLOBALS['language'] = array (
             'content_1'   => 'Of course everyone dreams of such a place as a Leet Staff member, but unfortunately this is not for everyone. To become a Leet Staff you must apply.',
             'content_2'   => 'This is only possible at times when we have vacancies, when we have this, this is mentioned in the news.'
         ),
-        
+
         /*     App/View/Games     */
         'games_ranking' => array (
             'username' => 'name'
         ),
-        
-        /*     App/View/Help     */        
+
+        /*     App/View/Help     */
         'help' => array (
           /*  Help/help.html  */
             'help_title'                => 'FAQ',
@@ -219,7 +219,7 @@ $GLOBALS['language'] = array (
             'help_other_questions'      => 'Other questions',
             'help_content_1'            => 'Didn\'t find the answer to your question? Do not hesitate to contact our customer service so that we can provide more information.',
             'help_contact'              => 'Contact',
-          
+
           /*  Help/request.html  */
             'request_closed'            => 'CLOSED',
             'request_on'                => 'On:',
@@ -244,7 +244,7 @@ $GLOBALS['language'] = array (
             'description'   => 'Beskrivning',
             'open_ticket'   => 'Öppna en ticket'
         ),
-        
+
         /*     App/View/Home     */
         'home' => array (
             'to'                     => 'Till',
@@ -335,7 +335,7 @@ $GLOBALS['language'] = array (
             'female'                => 'Tjej',
             'register'              => 'Registrera'
         ),
-        
+
         /*     App/View/Jobs     */
         'apply' => array (
             'title'               => 'Reagera på ansökan',
@@ -365,7 +365,7 @@ $GLOBALS['language'] = array (
             'buildteam_desc'          => 'De ansvarar för att bygga (event / officiella) rum.',
             'react'                   => 'Reagera'
         ),
-        
+
         /*     App/View/Password     */
         'password_claim' => array (
             'title'                 => 'Glömt lösenord?',
@@ -385,7 +385,7 @@ $GLOBALS['language'] = array (
             'new_password_repeat_fill'  => 'Ange ditt lösenord igen...',
             'change_password'           => 'Ändra lösenord'
         ),
-        
+
         /*     App/View/Settings     */
         'settings_panel' => array (
             'preferences'    => 'Mina preferenser',
@@ -452,7 +452,7 @@ $GLOBALS['language'] = array (
             'link_account_label'    => 'För att länka ditt konto, skanna bara denna QR-kod med din applikation och klicka sedan på spara för att bekräfta denna ändring.',
             'save'                  => 'Spara'
         ),
-        
+
         /*     App/View/Shop     */
         'shop_club' => array (
             'club_benefits'       => 'Klubbfördelar',
@@ -496,7 +496,7 @@ $GLOBALS['language'] = array (
             'click_here'        => 'Klicka här',
             'to_login'          => 'för att logga in.'
         )
-        
+
     ),
     'core' => array (
         'belcredits' => 'GOTW-Points',
@@ -583,7 +583,8 @@ $GLOBALS['language'] = array (
     ),
     'register' => array (
         'username_invalid'          => 'Användarnamnet strider mot reglerna.',
-        'username_exists'           => 'Användarnamnet existerar redan! :-('
+        'username_exists'           => 'Användarnamnet existerar redan! :-(',
+        'email_exists'              =>  'This e-mail address is already in use :-(',
     ),
     'claim' => array (
         'invalid_email'             => 'Den här e-postadressen matchar inte den här användaren',
