@@ -628,6 +628,7 @@ $GLOBALS['language'] = array (
     'register' => array (
         'username_invalid'          => 'Dieser Username verstößt gegen das Regelwerk!',
         'username_exists'           => 'Dieser Username wird bereits verwendet.',
+        'email_exists'              => 'Diese E-Mail Adresse wird bereits verwendet.',
     ),
     'claim' => array (
         'invalid_email'             => 'Diese E-Mail-Adresse stimmt nicht mit der dieses Users überein.',

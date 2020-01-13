@@ -40,19 +40,23 @@ class Registration
             return Json::encode(["status" => "error", "message" => Locale::get('register/username_exists')]);
         }
 
+        if (Player::mailTaken(input()->post('email')->value)) {
+            return Json::encode(["status" => "error", "message" => Locale::get('register/email_exists')]);
+        }
+
         if (!Player::create($playerData)) {
             return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong'), "captcha_error" => "error"]);
         }
-      
+
         $player = Player::getDataByUsername($username, array('id', 'password', 'rank'));
-      
+
         if(Config::currencys) {
             foreach(Config::currencys as $column => $type) {
                 Player::createCurrency($player->id, $type);
                 Player::updateCurrency($player->id, $type, Config::freeCurrency[$column]);
             }
         }
-      
+
         Auth::login($player);
         return Json::encode(["status" => "success", "location" => "/hotel"]);
     }

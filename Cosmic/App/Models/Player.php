@@ -53,7 +53,7 @@ class Player
     public static function update($player_id, $data = null) {
         return QueryBuilder::table('users')->where('id', $player_id)->update($data ?? static::$data);
     }
-  
+
     public static function updateCurrency($player_id, $type, $value){
         return QueryBuilder::table('users_currency')->where('user_id', $player_id)->where('type', $type)->update(array('amount' => $value));
     }
@@ -61,7 +61,7 @@ class Player
     public static function updateSettings($player_id, $column, $type){
         return QueryBuilder::table('users_settings')->where('user_id', $player_id)->update(array($column => "$type"));
     }
-  
+
     public static function updateNotification($player_id, $notification_id)
     {
         return QueryBuilder::table('website_notifications')->where('id', $notification_id)->where('player_id', $player_id)->update(array('is_read' => "1"));
@@ -88,10 +88,10 @@ class Player
 
         return $user_id;
     }
-  
+
     public static function createCurrency($user_id, $type)
     {
-        return QueryBuilder::table('users_currency')->insert(array('user_id' => $user_id, 'type' => $type, 'amount' => 0)); 
+        return QueryBuilder::table('users_currency')->insert(array('user_id' => $user_id, 'type' => $type, 'amount' => 0));
     }
 
     public static function resetPassword($player_id, $password)
@@ -99,12 +99,12 @@ class Player
         $password_hash = Hash::password($password);
         return QueryBuilder::table('users')->where('id', $player_id)->update(array('password' => $password_hash));
     }
-  
+
     public function rememberLogin()
     {
         $token = new \App\Token();
         $hashed_token = $token->getHash();
-      
+
         $this->remember_token = $token->getValue();
         $this->expiry_timestamp = time() + 60 * 60 * 24 * 30;
 
@@ -128,7 +128,7 @@ class Player
     {
         return QueryBuilder::query('SELECT users.look, users.username FROM messenger_friendships JOIN users ON messenger_friendships.user_one_id = users.id WHERE user_two_id = "' . $user_id .'"  ORDER BY RAND() LIMIT  ' . $limit)->get();
     }
-  
+
     public static function getMyOnlineFriends($user_id)
     {
         return QueryBuilder::query('SELECT users.look, users.username FROM messenger_friendships JOIN users ON messenger_friendships.user_one_id = users.id WHERE user_two_id = "' . $user_id .'" AND users.online > "0"')->get();
@@ -153,7 +153,7 @@ class Player
     {
         return QueryBuilder::table('permissions')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->find($rank_id);
     }
-  
+
     public static function giveBadge($user_id, $badge)
     {
         $data = array(
@@ -169,23 +169,29 @@ class Player
     {
         return QueryBuilder::table('website_shop_purchases')->where('user_id', $player_id)->orderBy('id', 'desc')->get();
     }
-    
+
     public static function getCurrencys($user_id)
     {
         $data = array();
         foreach(Config::currencys as $row => $colum) {
             $data[$colum] = self::getUserCurrencys($user_id, $colum);
-          
-            if(isset($data[$colum])) 
+
+            if(isset($data[$colum]))
                 $data[$colum]->name = $row;
-               
+
         }
         return $data;
     }
-  
+
     public static function hasPermission($permission)
     {
         $query = QueryBuilder::table('permissions')->select($permission)->where('id', request()->player->rank)->first();
         return $query->$permission ?? null;
+    }
+
+    public static function mailTaken($mail)
+    {
+        $query = QueryBuilder::table('users')->select('mail')->where('mail', $mail)->first();
+        return $query->mail ?? false;
     }
 }
