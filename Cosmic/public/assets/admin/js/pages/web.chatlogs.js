@@ -45,7 +45,6 @@ var chatlogs = function() {
                         scroll: !1,
                         footer: !1
                     },
-                    sortable: !0,
                     pagination: !0,
                     search: {
                         input: $("#generalSearch")
@@ -68,7 +67,7 @@ var chatlogs = function() {
                         width: 350
                     }, {
                         field: "timestamp",
-                        title: "Timestamp",
+                        title: "Timestamp"
                     }]
                 });
 
@@ -112,7 +111,6 @@ var chatlogs = function() {
                         scroll: !1,
                         footer: !1
                     },
-                    sortable: !0,
                     pagination: !0,
                     search: {
                         input: $("#generalSearch")
@@ -135,7 +133,6 @@ var chatlogs = function() {
                    }, {
                        field: "timestamp",
                        title: "timestamp",
-                       width: 150
                    }]
                 });
 
@@ -171,7 +168,6 @@ var chatlogs = function() {
                         scroll: !1,
                         footer: !1
                     },
-                    sortable: !0,
                     pagination: !0,
                     search: {
                         input: $("#generalSearch")
@@ -193,7 +189,7 @@ var chatlogs = function() {
                         width: 350
                     }, {
                         field: "timestamp",
-                        title: "Timestamp",
+                        title: "Timestamp"
                     }]
                 }), $("#kt_datatable_reload").on("click", function() {
                     $("#kt_datatable_chatlogs").KTDatatable("reload")

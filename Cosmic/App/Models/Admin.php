@@ -691,29 +691,27 @@ class Admin
         return QueryBuilder::table('website_forum_categories')->where('id', $id)->delete();
     }
   
-    public static function offerCreate($currencys, $amount, $price, $lang, $offer_id, $private_key)
+    public static function offerCreate($currencys, $amount, $price, $offer_id, $private_key)
     {
         $data = array(
             'currency'        => $currencys,
             'amount'          => $amount,
             'price'           => $price,
             'offer_id'        => $offer_id,
-            'private_key'     => $private_key,
-            'lang'            => $lang
+            'private_key'     => $private_key
         );
       
         return QueryBuilder::table('website_shop_offers')->insert($data);
     } 
   
-   public static function offerEdit($id, $currencys, $amount, $price, $lang, $offer_id, $private_key)
+   public static function offerEdit($id, $currencys, $amount, $price, $offer_id, $private_key)
    {
         $data = array(
             'currency'        => $currencys,
             'amount'          => $amount,
             'price'           => $price,
             'offer_id'        => $offer_id,
-            'private_key'     => $private_key,
-            'lang'            => $lang
+            'private_key'     => $private_key
         );
       
         return QueryBuilder::table('website_shop_offers')->where('id', $id)->update($data);

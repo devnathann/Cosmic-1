@@ -60,7 +60,7 @@ class Logs
             Log::addStaffLog(Player::getDataByUsername($row, 'id')->id, 'Manage Multiple Chatlogs', 'check');
         }
 
-        Json::filter($this->data->chatlogsall, 'desc', 'timestamp');
+        Json::encode($this->data->chatlogsall);
     }
 
   
@@ -93,7 +93,7 @@ class Logs
             }
         }
     
-        Json::filter($chat_logs, 'desc', 'timestamp');
+        Json::encode($chat_logs);
     }
 
     public function getstafflogs()

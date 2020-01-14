@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use App\Token;
+use App\Models\Player;
 
 use QueryBuilder;
 use PDO;

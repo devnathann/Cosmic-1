@@ -16,10 +16,9 @@ class Shop
         $this->data = new stdClass();
     }
 
-    public function index($lang = 'NL')
+    public function index()
     {
-        $this->data->lang = $lang;
-        $this->data->shop = \App\Models\Shop::getOffers($this->data->lang);
+        $this->data->shop = \App\Models\Shop::getOffers();
 
         View::renderTemplate('Shop/shop.html', [
             'title' => Locale::get('core/title/shop/index'),

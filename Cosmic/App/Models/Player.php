@@ -188,4 +188,9 @@ class Player
         $query = QueryBuilder::table('permissions')->select($permission)->where('id', request()->player->rank)->first();
         return $query->$permission ?? null;
     }
+  
+    public static function mailTaken($mail)
+    { 
+        return QueryBuilder::table('users')->where('mail', $mail)->first(); 
+    }
 }

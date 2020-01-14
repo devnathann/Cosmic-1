@@ -109,7 +109,7 @@
          <tbody>
             {% for request in data.tickets %}
             <tr>
-                <td><img src="{{fpath}}/avatarimage?figure={{player.look}}&gesture=sml&headonly=1" alt="{{user.username}}" class="pixelated small-head"></td>
+                <td><img src="{{fpath}}/avatarimage?figure={{player.look}}&gesture=sml&headonly=1" alt="{{user.username}}" class="pixelated"></td>
                 <td><a href="{{path}}/help/requests/{{request.id}}/view">{{request.subject}}</a></td>
                 {% if request.status == "in_treatment" %}
                     <td>{{locale.request_in_treatment}}</td>

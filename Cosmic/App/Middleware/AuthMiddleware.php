@@ -21,7 +21,10 @@ class AuthMiddleware implements IMiddleware
         }
         
         if(!Session::exists('player_id')) {
-            Auth::loginFromRememberCookie();
+            $remember_me = Auth::loginFromRememberCookie();
+            if($remember_me !== NULL) {
+               $request->player = $remember_me;
+            }
             return;
         }
 

@@ -6,9 +6,9 @@ use QueryBuilder;
 class Shop
 {
    
-    public static function getOffers($lang = 'NL')
+    public static function getOffers()
     {
-        return QueryBuilder::table('website_shop_offers')->where('lang', $lang)->get();
+        return QueryBuilder::table('website_shop_offers')->get();
     }
 
     public static function getOfferById($id)

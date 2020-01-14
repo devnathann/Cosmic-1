@@ -95,6 +95,6 @@ class Feeds
         $feeds = new Profile();
         $init = $feeds->feeds(input()->post('count')->value, input()->post('player_id')->value);
 
-        echo Json::encode([('feeds' => $init)]);
+        echo Json::encode(['feeds' => $init]);
     }
 }

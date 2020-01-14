@@ -20,7 +20,6 @@ class Shop
             'currencys' => 'required',
             'amount'    => 'required|numeric',
             'price'     => 'required|numeric',
-            'lang'      => 'required',
             'offer_id'  => 'required',
             'private_key' => 'required'
         ]);
@@ -29,7 +28,6 @@ class Shop
         $currencys = input()->post('currencys')->value;
         $amount = input()->post('amount')->value;
         $price = input()->post('price')->value;
-        $lang = input()->post('lang')->value;
         $offer_id = input()->post('offer_id')->value;
         $private_key = input()->post('private_key')->value;
       
@@ -38,12 +36,12 @@ class Shop
         }
       
         if (!empty($id)) {
-            Admin::offerEdit($id, $currencys, $amount, $price, $lang, $offer_id, $private_key);
+            Admin::offerEdit($id, $currencys, $amount, $price, $offer_id, $private_key);
             Log::addStaffLog('-1', 'Shop edited: ' . $offer_id, 'shop');
             return Json::encode(["status" => "success", "message" => "Shop edited successfully!"]);
         }
       
-        Admin::offerCreate($currencys, $amount, $price, $lang, $offer_id, $private_key);
+        Admin::offerCreate($currencys, $amount, $price, $offer_id, $private_key);
         Log::addStaffLog('-1', 'Shop item created: ' . $offer_id, 'shop');
         return Json::encode(["status" => "success", "message" => "Shop created successfully!"]);
     }

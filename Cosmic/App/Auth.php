@@ -15,7 +15,7 @@ use Library\Json;
 
 class Auth
 {
-    public static function login(Player $player, $remember_me)
+    public static function login(Player $player, $remember_me = false)
     {
         self::banExists($player);
         session_regenerate_id(true);
@@ -44,7 +44,7 @@ class Auth
             $remembered_login = RememberedLogin::findByToken($cookie);
             if ($remembered_login && ! $remembered_login->hasExpired()) {
                 $user = $remembered_login->getPlayer();
-                static::login($user, false);
+                return static::login($user, false);
             }
         }
     }
