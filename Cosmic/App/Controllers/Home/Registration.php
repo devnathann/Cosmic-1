@@ -39,10 +39,6 @@ class Registration
         if (Player::exists($username)) {
             return Json::encode(["status" => "error", "message" => Locale::get('register/username_exists')]);
         }
-      
-        if (Player::mailTaken(input()->post('email')->value)) {
-            return Json::encode(["status" => "error", "message" => "bestaat al"]);
-        }
 
         if (Player::mailTaken(input()->post('email')->value)) {
             return Json::encode(["status" => "error", "message" => Locale::get('register/email_exists')]);
