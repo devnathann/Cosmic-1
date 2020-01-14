@@ -38,14 +38,14 @@ class Login
         if (!$validate->isSuccess()) {
             return;
         }
-        
+
         $username     = input()->post('username')->value;
         $password     = input()->post('password')->value;
         $remember_me  = input()->post('remember_me')->value;
         $pin_code     = !empty(input()->post('pincode')->value) ? input()->post('pincode')->value : false;
 
         $player = Player::getDataByUsername($username, array('id', 'password', 'rank', 'secret_key'));
-        if ($player == null || !Hash::verify($player->id, $password, $player->password)) {
+        if ($player == null || !Hash::verify($password, $player->password)) {
             return Json::encode(["status" => "error", "message" => Locale::get('login/invalid_password')]);
         }
 
@@ -58,15 +58,15 @@ class Login
                 return Json::encode(["status" => "pincode_required"]);
             }
         }
-      
+
         if ($pin_code && $player->secret_key == null) {
             return Json::encode(["status" => "error", "message" => Locale::get('login/invalid_pincode')]);
         }
-        
+
         if($player->secret_key != null) {
             $this->googleAuthentication($pin_code, $player->secret_key);
         }
-      
+
         /*
         *  End authentication
         */

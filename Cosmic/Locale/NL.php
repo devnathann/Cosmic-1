@@ -6,29 +6,29 @@ $GLOBALS['language'] = array (
         /*     App/View/base.html     */
         'base' => array(
             'nav_home'              => 'Home',
-            
+
             'nav_community'         => 'Community',
             'nav_news'              => 'Nieuws',
             'nav_jobs'              => 'Jobs',
             'nav_photos'            => 'Foto\'s',
             'nav_staff'             => 'Staff',
             'nav_exchange'          => 'Marketplace',
-            
+
             'nav_shop'              => 'winkel',
             'nav_buy_points'        => 'Bel-Credits kopen',
             'nav_buy_club'          =>  Config::shortName . ' Club kopen',
             'nav_purchasehistory'   => 'Aankoopgeschiedenis',
             'nav_changename'        =>  Config::shortName . 'naam veranderen',
-            
+
             'nav_highscores'        => 'Highscores',
-          
+
             'nav_forum'             => 'Groepen',
-          
+
             'nav_helptool'          => 'Help Tool',
             'nav_helptickets'       => 'Help Tickets',
-            
+
             'nav_housekeeping'      => 'Housekeeping',
-            
+
             'close'                 => 'Sluit',
             'cookies'               => 'maakt gebruik van eigen cookies en die van derden om zo een betere service te kunnen verlenen en zorgt er daarnaast voor dat de advertenties beter bij jouw voorkeuren aansluiten. Als je gebruik maakt van onze website ga je akkoord met ons cookie-beleid.',
             'read_more'             => 'Lees meer',
@@ -36,27 +36,27 @@ $GLOBALS['language'] = array (
             'made_with_love'        => 'is gemaakt met heel veel liefde',
             'credits'               => 'Met dank aan Raizer and Metus',
             'and_all'               => 'En alle',
-            
+
             'login_name'            => 'naam',
             'login_password'        => 'Wachtwoord',
             'login_save_data'       => 'Onthoud mijn gegevens',
             'login_lost_password'   => 'Wachtwoord/naam kwijt?',
-            
+
             'report_message'        => 'Rapporteer dit bericht',
             'report_certainty'      => 'Je staat op het punt om dit bericht te rapporteren. Weet je zeker dat je dit bericht wilt rapporteren?',
             'report_inappropriate'  => 'Ja, dit is ongepast!',
-            
+
             'user_to'               => 'Naar',
             'user_profile'          => 'Mijn profiel',
             'user_settings'         => 'instellingen',
             'user_logout'           => 'Log uit',
-            
+
             'header_slogan'         => 'Virtuele wereld voor jongeren!',
             'header_slogan2'        => 'Word lid van onze community en maak nieuwe vrienden',
             'header_login'          => 'Inloggen',
             'header_register'       => 'Meld je gratis aan!',
             'header_to'             => 'Naar',
-            
+
             'footer_helptool'       => 'Help Tool',
             'footer_rules'          => 'De '. Config::shortName . ' Regels',
             'footer_terms'          => 'Algemene voorwaarden',
@@ -64,7 +64,7 @@ $GLOBALS['language'] = array (
             'footer_cookies'        => 'Cookie-beleid',
             'footer_guide'          => 'Gids voor ouders'
         ),
-        
+
         /*     public/assets/js/web     */
         'javascript' => array(
             'web_customforms_markedfields'                  => 'Alle velden gemarkeerd met een * zijn verplicht.',
@@ -74,27 +74,27 @@ $GLOBALS['language'] = array (
             'web_customforms_participation'                 => 'Bedankt voor uw deelname!',
             'web_customforms_sent'                          => 'Uw antwoorden zijn verzonden en zullen worden geanalyseerd door de persoon die dit formulier opstart.',
             'web_customforms_answer'                        => 'Uw antwoord',
-            
+
             'web_dialog_cancel'                             => 'Annuleren',
             'web_dialog_validate'                           => 'Valideren',
             'web_dialog_confirm'                            => 'Bevestig uw keuze',
-            
+
             'web_hotel_backto'                              => 'Terug naar '. Config::shortName . ' Hotel',
-            
+
             'web_fill_pincode'                              => 'Vul de pincode in die je hebt opgegeven tijdens het aanmaken van de extra beveiliging op jouw account. Nou, ik ben deze vergeten? Neem dan contact op via de '. Config::shortName . ' Help Tool',
             'web_twostep'                                   => 'Twee-staps autorisatie!',
             'web_login'                                     => 'Je moet ingelogd zijn om dit bericht te rapporteren!',
             'web_loggedout'                                 => 'Uitgelogd :(',
-            
+
             'web_notifications_success'                     => 'Gelukt!',
             'web_notifications_error'                       => 'Error!',
             'web_notifications_info'                        => 'Informatie!',
-            
+
             'web_page_article_login'                        => 'Je dient ingelogd te zijn om een reactie te plaatsen!',
-            
+
             'web_page_community_photos_login'               => 'Je moet ingelogd zijn om foto\'s te kunnen liken!',
             'web_page_community_photos_loggedout'           => 'Uitgelogd :(',
-            
+
             'web_page_forum_change'                         => 'Aanpassen',
             'web_page_forum_cancel'                         => 'Annuleren',
             'web_page_forum_oops'                           => 'Oeps...',
@@ -102,14 +102,14 @@ $GLOBALS['language'] = array (
             'web_page_forum_login_toreact'                  => 'Om te kunnen reageren dien je ingelogd te zijn!',
             'web_page_forum_login_tolike'                   => 'Je moet ingelogd zijn om deze post te kunnen liken!',
             'web_page_forum_loggedout'                      => 'Uitgelold :(',
-            
+
             'web_page_profile_login'                        => 'Je moet ingelogd zijn om foto\'s te kunnen liken!',
             'web_page_profile_loggedout'                    => 'Uitgelogd :(',
-            
+
             'web_page_settings_namechange_request'          => 'Aanvragen',
             'web_page_settings_namechange_not_available'    => 'Niet beschikbaar',
             'web_page_settings_namechange_choose_name'      => 'Kies '. Config::shortName . 'naam',
-            
+
             'web_page_settings_verification_oops'           => 'Oeps...',
             'web_page_settings_verification_fill_password'  => 'Vul je wachtwoord in!',
             'web_page_settings_verification_2fa_on'         => 'Op dit moment staat Google Authenticatie ingesteld op jouw account. Om een ander verificatie middel te gebruiken dien je eerst je oude verificatie te verwijderen!',
@@ -120,7 +120,7 @@ $GLOBALS['language'] = array (
             'web_page_settings_verification_pincode_off'    => 'Om de pincode authenticatie uit te schakelen vragen wij je om je pincode in te vullen.',
             'web_page_settings_verification_pincode'        => 'Pincode code',
             'web_page_settings_verification_switch'         => 'Selecteer de switch button om een authenticatie methode in te schakelen!',
-            
+
             'web_page_shop_offers_neosurf_name'             => 'Neosurf',
             'web_page_shop_offers_neosurf_description'      => 'Betaal gemakkelijk met Paypal en je Bel-Credits worden direct opgewaardeerd.',
             'web_page_shop_offers_neosurf_dialog'           => 'Vul je onderstaande Paypal e-mailadres in om door te gaan.',
@@ -160,7 +160,7 @@ $GLOBALS['language'] = array (
             'web_hotel_active_flash_2'                      => 'Klik hier',
             'web_hotel_active_flash_3'                      => 'en dan links boven op "Toestaan" om Flash Player aan te zetten.'
         ),
-      
+
         /*     App/View/Community     */
         'article' => array (
             'reactions'              => 'Reacties',
@@ -179,7 +179,7 @@ $GLOBALS['language'] = array (
             'index_empty'               => 'Geen topics',
             'index_latest_activities'   => 'Laatste activiteiten',
             'index_by'                  => 'door',
-            
+
           /*  Forum/category.html  */
             'category_new_topic'        => 'Nieuw topic',
             'category_back'             => 'Terug',
@@ -195,7 +195,7 @@ $GLOBALS['language'] = array (
             'category_create_button'    => 'Maak topic',
             'category_or'               => 'of',
             'category_cancel'           => 'annuleer',
-          
+
           /*  Forum/topic.html  */
             'topic_react'               => 'Reageren',
             'topic_close'               => 'Sluiten',
@@ -233,13 +233,13 @@ $GLOBALS['language'] = array (
             'furni_rate'      => 'Koers',
             'looking_for'     => 'Ik ben opzoek naar...'
         ),
-      
+
         /*     App/View/Games     */
         'games_ranking' => array (
             'username' => 'naam'
         ),
-        
-        /*     App/View/Help     */        
+
+        /*     App/View/Help     */
         'help' => array (
           /*  Help/help.html  */
             'help_title'                => 'FAQ',
@@ -249,7 +249,7 @@ $GLOBALS['language'] = array (
             'help_contact'              => 'Contact opnemen',
             'title'                     => 'Help Tool',
             'desc'                      => 'Je kunt hier op zoek naar antwoorden op je vragen. Vind je het antwoord op jouw vraag niet, dien dan een hulpverzoek in.',
-          
+
           /*  Help/request.html  */
             'request_closed'            => 'GESLOTEN',
             'request_on'                => 'Op:',
@@ -274,7 +274,7 @@ $GLOBALS['language'] = array (
             'description'   => 'Beschrijving',
             'open_ticket'   => 'Open een ticket'
         ),
-        
+
         /*     App/View/Home     */
         'home' => array (
             'to'                     => 'Naar',
@@ -365,7 +365,7 @@ $GLOBALS['language'] = array (
             'female'                => 'Meisje',
             'register'              => 'Registreer'
         ),
-        
+
         /*     App/View/Jobs     */
         'apply' => array (
             'title'               => 'Reageer op de vacture',
@@ -395,7 +395,7 @@ $GLOBALS['language'] = array (
             'buildteam_desc'          => 'Ze zijn verantwoordelijk voor het bouwen van (event/officiele) kamers.',
             'react'                   => 'Reageren'
         ),
-        
+
         /*     App/View/Password     */
         'password_claim' => array (
             'title'                 => 'Wachtwoord vergeten?',
@@ -415,7 +415,7 @@ $GLOBALS['language'] = array (
             'new_password_repeat_fill'  => 'Vul nogmaals je wachtwoord in...',
             'change_password'           => 'Wijzig wachtwoord'
         ),
-        
+
         /*     App/View/Settings     */
         'settings_panel' => array (
             'preferences'    => 'Mijn voorkeuren',
@@ -482,7 +482,7 @@ $GLOBALS['language'] = array (
             'link_account_label'    => 'Om uw account te koppelen, moet u deze QR-code eenvoudig met uw toepassing scannen en vervolgens op opslaan klikken om deze wijziging te valideren.',
             'save'                  => 'Opslaan'
         ),
-        
+
         /*     App/View/Shop     */
         'shop_club' => array (
             'club_benefits'       => 'Club voordelen',
@@ -534,7 +534,7 @@ $GLOBALS['language'] = array (
         'games_ranking' => array(
             'title'             => 'Highscores',
             'desc'              => 'Bekijk hier onze spelers met de meeste punten of scores!'
-        )  
+        )
     ),
     'core' => array (
         'belcredits' => 'Bel-Credits',
@@ -626,7 +626,8 @@ $GLOBALS['language'] = array (
     ),
     'register' => array (
         'username_invalid'          =>  Config::shortName . 'naam is in strijd met de '. Config::shortName . ' Regels.',
-        'username_exists'           =>  Config::shortName . 'naam is al in gebruik :-('
+        'username_exists'           =>  Config::shortName . 'naam is al in gebruik :-(',
+        'email_exists'              =>  'This e-mail address is already in use :-(',
     ),
     'claim' => array (
         'invalid_email'             => 'Dit e-mailadres komt niet overeen met die van deze '. Config::shortName . ' ID.',
@@ -676,7 +677,7 @@ $GLOBALS['language'] = array (
         'is_sticky'                 => 'Sticky geüpdate!',
         'is_closed'                 => 'Topic status aangepast!'
     ),
-  
+
     /*     Housekeeping     */
     'housekeeping' => array (
         'base' => array(

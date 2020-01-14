@@ -8,8 +8,8 @@ class Hash
         return password_hash($string, PASSWORD_DEFAULT);
     }
 
-    public static function verify($player_id, $password, $hash)
+    public static function verify($password, $hash)
     {
-        return password_verify($password, $hash) ? true : false;
+        return password_verify($password, $hash);
     }
 }

@@ -34,7 +34,7 @@ class Password
         $currentPassword = input()->post('current_password')->value;
         $this->data->newpin = input()->post('new_password')->value;
 
-        if (!Hash::verify(request()->player->id, $currentPassword, request()->player->password)) {
+        if (!Hash::verify($currentPassword, request()->player->password)) {
             return Json::encode(["status" => "error", "message" => Locale::get('settings/current_password_invalid')]);
         }
         Player::resetPassword(request()->player->id, $this->data->newpin);

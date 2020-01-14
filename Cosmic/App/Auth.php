@@ -25,7 +25,7 @@ class Auth
                 setcookie('remember_me', $player->remember_token, $player->expiry_timestamp, '/');
             }
         }
-                                       
+
         if (in_array('housekeeping', array_column(Permission::get($player->rank), 'permission'))) {
             Log::addStaffLog('-1', 'Staff logged in: '.Core::getIpAddress(), 'LOGIN');
         }
@@ -35,11 +35,11 @@ class Auth
 
         return $player;
     }
-  
+
     public static function loginFromRememberCookie()
     {
         $cookie = $_COOKIE['remember_me'] ?? false;
-        
+
         if ($cookie) {
             $remembered_login = RememberedLogin::findByToken($cookie);
             if ($remembered_login && ! $remembered_login->hasExpired()) {
@@ -48,11 +48,11 @@ class Auth
             }
         }
     }
-  
+
     protected static function forgetLogin()
     {
         $cookie = $_COOKIE['remember_me'] ?? false;
-      
+
         if ($cookie) {
             $remembered_login = RememberedLogin::findByToken($cookie);
             if ($remembered_login) {
@@ -61,7 +61,7 @@ class Auth
             setcookie('remember_me', '', time() - 3600);
         }
     }
-  
+
     public static function banExists($player)
     {
         $ban = Ban::getBanById($player->id, Core::getIpAddress());
@@ -69,7 +69,7 @@ class Auth
             return Json::encode(["status" => "error", "message" => Locale::get('core/notification/banned_1').' ' . $ban->ban_reason . '. '.Locale::get('core/notification/banned_2').' ' . Core::timediff($ban->ban_expire, true)]);
         }
     }
-  
+
     public static function logout()
     {
         $_SESSION = [];
@@ -94,6 +94,6 @@ class Auth
 
     public static function maintenance()
     {
-        return \App\Models\Core::getWebsiteConfig('maintenance') ? true : false;
+        return \App\Models\Core::getWebsiteConfig('maintenance');
     }
 }
