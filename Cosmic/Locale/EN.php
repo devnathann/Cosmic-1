@@ -169,7 +169,8 @@ $GLOBALS['language'] = array (
             'reactions_post'            => 'Post',
             'latest_news'               => 'Latest news',
             'reaction_hidden_yes'       => 'Newscomments made invisible!',
-            'reaction_hidden_no'        => 'Newscomments made visible!'
+            'reaction_hidden_no'        => 'Newscomments made visible!',
+            'forbidden_words'           => 'Your message contains forbidden words!',
         ),
         'forum' => array (
           /*  Forum/index.html  */

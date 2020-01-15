@@ -6,7 +6,7 @@ class Config
     /**
      * Database settings
      */
-  
+
     const driver = 'mysql';
     const host = '';
     const username = '';
@@ -17,25 +17,30 @@ class Config
     const prefix = '';
 
     /**
+     * Allow users to post news comments
+     */
+    const newsComments = true;
+
+    /**
      * Emulator settings
      */
-  
+
     const clientHost = '';
     const clientPort = 0;
-    
+
     /**
      * RCON: Must be enabled! RCON otherwise the housekeeping will not work fully.
      */
-  
+
     const apiHost = '';
     const apiPort = 0;
-    
+
    /**
      * Client settings
      */
-    
+
     /* Example external_base: = 'gordon/PRODUCTION-201904011212-888653470/' */
-    
+
     const client = array(
       'external_override_variables' => 'gamedata/override/external_flash_override_texts.txt',
       'external_override_texts'     => 'gamedata/override/external_override_variables.txt',
@@ -49,7 +54,7 @@ class Config
       'client_swf'                  => 'Habbo.swf',
       'client_radio'                => 'https://21253.live.streamtheworld.com/WEB16_AAC.aac'
     );
-  
+
     /**
      * Website settings
      */
@@ -63,14 +68,14 @@ class Config
     const siteName = '';
     const language = 'EN';
     const region = 'Europe/Amsterdam';
-  
+
     const SECRET_TOKEN = '';
-  
+
     /**
      * SHOP: When users want to buy VIP in our shop.
      * Controller: Shop/club@index
      */
-  
+
     const vipRank = 2;
     const vipPrice = 1000;
 
@@ -78,14 +83,14 @@ class Config
      * recaptcha v2: Create a inisible reCAPTCHA V2 @google website
      * Set null if you dont want a reCAPTCHA.
      */
-  
+
     const publicKey = '';
     const secretKey = '';
 
     /**
      * Mail: For sending emails when someone has forgotten their password
      */
-  
+
     const mailHost      = null;
     const mailFrom      = null;
     const mailUser      = null;
@@ -96,30 +101,30 @@ class Config
      * Register: Credits that the user receives when creating an account
      * int @amount
      */
-  
+
     const credits = 1000;
-  
+
     /**
      * Currencys: Register users currencys type's for arcturus
      * param @name, int @type
      */
-  
+
     const currencys = null;
-  
+
     /**
      * Currencys: User recieve free currency when register
      * param @name, int @amount
      */
-  
+
     const freeCurrency = null;
 
     /**
-     * Currencys: Which currency type user paid for club donation 
+     * Currencys: Which currency type user paid for club donation
      * param @type
      */
-      
+
     const payCurrency = 103;
-  
+
     /**
      * Register: Basic looks user can choose when they create an account
      * param @array
@@ -140,19 +145,18 @@ class Config
         'hr-545-45.hd-600-14.ch-650-76.lg-696-64.sh-907-76.he-1602-1408.wa-3210-1408-1408',
         'hr-890-42.hd-625-14.ch-3113-75-64.lg-720-64.sh-3115-75-64.he-1605-74'
     );
-  
+
     /* DONT CHANGE  */
-  
+
     const apiEnabled = true;
-  
+
     const minRank = 5;
     const maxRank = 7;
-  
+
     const debug = true;
     const view = 'Library/Installation/Views';
-  
+
     const installation = true;
-  
+
     const vpnLocation = '/../../../ASN.mmdb';
 }
-

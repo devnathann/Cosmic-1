@@ -42,6 +42,7 @@
 
     <div class="right-side">
 
+      {% if newsComments %}
        <aside class="default-section">
             <div class="aside-title-content">{{locale.reactions}}</div>
             <div class="aside-content">
@@ -99,6 +100,7 @@
             </div>
             {% endif %}
         </aside>
+      {% endif %}
 
         <aside class="default-section">
             <div class="aside-title-content">{{locale.latest_news}}</div>

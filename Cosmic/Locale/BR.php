@@ -157,7 +157,8 @@ $GLOBALS['language'] = array (
             'reactions_empty'   => 'There are no reactions yet.',
             'reactions_fill'    => 'Digite sua mensagem aqui...',
             'reactions_post'    => 'Publicar',
-            'latest_news'       => 'Últimas notícias'
+            'latest_news'       => 'Últimas notícias',
+            'forbidden_words'   => 'Your message contains forbidden words!',
         ),
         'forum' => array (
           /*  Forum/index.html  */
