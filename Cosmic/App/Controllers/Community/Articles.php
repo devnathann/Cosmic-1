@@ -1,6 +1,8 @@
 <?php
 namespace App\Controllers\Community;
 
+use App\Config;
+
 use App\Models\Community;
 use App\Models\Core;
 use App\Models\Player;
@@ -104,7 +106,8 @@ class Articles
             'page'          => 'article',
             'latest_news'   => $latest_news,
             'article'       => $article,
-            'posts'         => $posts
+            'posts'         => $posts,
+            'newsComments'  => Config::newsComments,
         ]);
     }
 }

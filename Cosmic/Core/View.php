@@ -63,8 +63,6 @@ class View
             $twig->addExtension(new DateExtension());
             $twig->addExtension(new \Library\Bbcode(new \ChrisKonnertz\BBCode\BBCode()));
 
-            $twig->addGlobal('newsComments', Config::newsComments);
-
             $twig->addGlobal('path', Config::path);
             $twig->addGlobal('cpath', Config::swfPath);
             $twig->addGlobal('fpath', Config::figurePath);
