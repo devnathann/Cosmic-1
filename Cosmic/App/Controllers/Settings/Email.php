@@ -17,7 +17,7 @@ class Email
     {
         $validate = request()->validator->validate([
             'current_password' => 'required|max:100',
-            'email'            => 'required|min:6|max:72|email'
+            'email'            => 'required|min:6|max:150|email'
         ]);
 
         if(!$validate->isSuccess()) {

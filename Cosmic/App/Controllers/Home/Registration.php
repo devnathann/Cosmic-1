@@ -16,7 +16,7 @@ class Registration
     {
         $validate = (request())->validator->validate([
             'username'              => 'required|min:2|max:15|pattern:[a-zA-Z0-9-=?!@:.]+',
-            'email'                 => 'required|max:72|email',
+            'email'                 => 'required|max:150|email',
             'password'              => 'required|min:6|max:32',
             'password_repeat'       => 'required|same:password',
             'birthdate_day'         => 'required|numeric|pattern:0?[1-9]OR[12][0-9]OR3[01]',
