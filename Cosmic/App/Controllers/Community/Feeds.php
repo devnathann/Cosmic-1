@@ -45,7 +45,7 @@ class Feeds
         if (empty($reply) || empty($user_id)) {
             return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         }
-      
+
         $userposts = Community::getFeedsByUserid($user_id);
         if(!empty($userposts)) {
             if(end($userposts)->from_user_id == request()->player->id){

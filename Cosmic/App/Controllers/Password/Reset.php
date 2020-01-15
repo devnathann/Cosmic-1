@@ -41,15 +41,15 @@ class Reset
             if($player->timestamp < time()) {
                 Password::deleteToken($player->email);
             }
-          
-            return Json::encode(["status" => "error", "message" => Locale::get('claim/invalid_link'), "pagetime":"/home"]);
+
+            return Json::encode(["status" => "error", "message" => Locale::get('claim/invalid_link'), "pagetime" => "/home"]);
         }
 
         Player::update($player->player_id, ['pincode' => null]);
         Player::resetPassword($player->player_id, $newPassword);
         Password::deleteToken($player->email);
 
-        return Json::encode(["status" => "success", "message" => Locale::get('claim/password_changed'), "pagetime":"/home"]);
+        return Json::encode(["status" => "success", "message" => Locale::get('claim/password_changed'), "pagetime" => "/home"]);
     }
 
     public function index($token)
