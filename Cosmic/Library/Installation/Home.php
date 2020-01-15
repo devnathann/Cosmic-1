@@ -202,9 +202,6 @@ class Home
         Install::editConfig('installation = true', 'installation = false');
         Install::editConfig('debug = true', 'debug = false');
 
-        $player = Player::getDataByUsername(Session::get('username'), array('id', 'password', 'rank'));
-        Auth::login($player);
-
         echo '{"status":"success","message":"Install done! Please wait we redirect you!"}';
     }
 
