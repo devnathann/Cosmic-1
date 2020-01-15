@@ -60,7 +60,7 @@ class Articles
             return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         }
       
-        $message = \App\Core::tagByUser(input()->post('message')->value, $article->id);
+        $message = \App\Core::filterString(\App\Core::tagByUser(input()->post('message')->value, $article->id));
         Community::addNewsReaction($article->id, request()->player->id, $message);
         
         return Json::encode(["status" => "success", "message" => Locale::get('core/notification/message_placed'), "bericht" => $message, "figure" => request()->player->look]);
