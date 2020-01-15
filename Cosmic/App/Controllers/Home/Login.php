@@ -38,6 +38,10 @@ class Login
         if (!$validate->isSuccess()) {
             return;
         }
+        
+        if(request()->player->id !== null) {
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
+        }
 
         $username     = input()->post('username')->value;
         $password     = input()->post('password')->value;
