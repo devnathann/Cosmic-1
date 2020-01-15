@@ -85,7 +85,7 @@ class Requests
             return Json::encode(["status" => "success", "message" => Locale::get('help/no_answer_yet')]);
         }
 
-        Help::addTicketReaction($ticket->id, request()->player->id, input()->post('message'));
+        Help::addTicketReaction($ticket->id, request()->player->id, \App\Core::filterString(input()->post('message')));
         Help::updateTicketStatus($ticket->id, 'wait_reply');
 
         return Json::encode(["status" => "success", "message" => Locale::get('core/notification/message_placed'), "replacepage" => "help/requests/" . $ticket->id . "/view"]);
@@ -107,7 +107,7 @@ class Requests
         }
 
         $this->data->subject = input()->post('subject')->value;
-        $this->data->message = input()->post('message')->value;
+        $this->data->message = \App\Core::filterString(input()->post('message')->value);
 
         Help::createTicket($this->data, request()->player->id);
         return Json::encode(["status" => "success", "message" => Locale::get('help/ticket_created'), "replacepage" => "help/requests/view"]);

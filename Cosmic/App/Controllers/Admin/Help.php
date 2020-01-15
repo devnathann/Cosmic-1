@@ -47,6 +47,7 @@ class Help
       
         foreach ($this->data->reactions as $row) {
             $row->user = Player::getDataById($row->practitioner_id, array('username','look'));
+            $row->message = \App\Core::filterString($row->message);
             $row->timestamp = Core::timediff($row->timestamp);
         }
 

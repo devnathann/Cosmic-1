@@ -62,7 +62,7 @@ class Apply
             return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         }
         
-        Community::addJobApply($job_id, $player_id, $firstname, $message, $available_monday, $available_tuesday, $available_wednesday, $available_thursday, $available_friday,$available_saturday, $available_sunday);
+        Community::addJobApply($job_id, $player_id, $firstname, \App\Core::filterString($message), $available_monday, $available_tuesday, $available_wednesday, $available_thursday, $available_friday,$available_saturday, $available_sunday);
         return Json::encode(["status" => "success", "message" => Locale::get('website/apply/content_1'), "replacepage" => "jobs/my"]);    
     }
 }
