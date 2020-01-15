@@ -63,6 +63,8 @@ class View
             $twig->addExtension(new DateExtension());
             $twig->addExtension(new \Library\Bbcode(new \ChrisKonnertz\BBCode\BBCode()));
 
+            $twig->addGlobal('newsComments', Config::newsComments);
+
             $twig->addGlobal('path', Config::path);
             $twig->addGlobal('cpath', Config::swfPath);
             $twig->addGlobal('fpath', Config::figurePath);
@@ -74,12 +76,12 @@ class View
             $twig->addGlobal('sitename', Config::siteName);
 
             $twig->addGlobal('publicKey', Config::publicKey);
-          
+
             $twig->addGlobal('locale', Locale::get('website/' . (isset($args['page']) ? $args['page'] : null), true));
             $twig->addGlobal('locale_base', Locale::get('website/base', true));
-            
+
             if (request()->player !== null) {
-              
+
                 $twig->addGlobal('player', request()->player);
                 $twig->addGlobal('currencys', Player::getCurrencys(request()->player->id));
                 $twig->addGlobal('online_count', Core::getOnlineCount());
@@ -87,7 +89,7 @@ class View
                 if (request()->player->rank >= Config::minRank) {
                     $twig->addGlobal('player_permissions', Permission::get(request()->player->rank));
                 }
-              
+
                 if(request()->getUrl()->contains('/housekeeping')) {
                     $twig->addGlobal('player_rank', Player::getHotelRank(request()->player->rank));
                     $twig->addGlobal('flash_messages', Flash::getMessages());
@@ -98,15 +100,15 @@ class View
             }
         }
 
-        if(static::$cache === null && !empty($cacheTime)) { 
+        if(static::$cache === null && !empty($cacheTime)) {
             \App\Middleware\CacheMiddleware::set($template, $args, $cacheTime);
         }
-      
+
         if(request()->isAjax() && $request == false) {
             self::getResponse($template, $args);
             exit;
         }
-      
+
         if(Config::installation == false && Auth::maintenance()) {
             $rank = (isset(request()->player->rank)) ? request()->player->rank : 1;
             if($rank <= Config::minRank) {
@@ -114,7 +116,7 @@ class View
                 return $twig->render('maintenance.html');
             }
         }
-      
+
         return $twig->render($template, $args);
     }
 }
