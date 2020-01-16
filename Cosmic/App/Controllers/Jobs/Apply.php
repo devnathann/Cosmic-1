@@ -36,8 +36,8 @@ class Apply
             'when_thursday'     =>   'required|numeric',
             'when_wednesday'    =>   'required|numeric',
             'when_friday'       =>   'required|numeric',
-            'when_sunday'       =>   'required|numeric'
-            'when_saturday'     =>   'required|numeric',
+            'when_sunday'       =>   'required|numeric',
+            'when_saturday'     =>   'required|numeric'
             ]);
 
         if(!$validate->isSuccess()) {
