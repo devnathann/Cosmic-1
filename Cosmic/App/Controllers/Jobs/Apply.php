@@ -31,13 +31,13 @@ class Apply
             'name'              =>   'required',
             'age'               =>   'required|numeric',
             'job_why'           =>   'required',
-            'when_monday'       =>   'required',
-            'when_tuesday'      =>   'required',
-            'when_wednesday'    =>   'required',
-            'when_thursday'     =>   'required',
-            'when_friday'       =>   'required',
-            'when_saturday'     =>   'required',
-            'when_sunday'       =>   'required'
+            'when_monday'       =>   'required|numeric',
+            'when_tuesday'      =>   'required|numeric',
+            'when_thursday'     =>   'required|numeric',
+            'when_wednesday'    =>   'required|numeric',
+            'when_friday'       =>   'required|numeric',
+            'when_sunday'       =>   'required|numeric'
+            'when_saturday'     =>   'required|numeric',
             ]);
 
         if(!$validate->isSuccess()) {
@@ -62,7 +62,7 @@ class Apply
             return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         }
         
-        Community::addJobApply($job_id, $player_id, $firstname, \App\Core::filterString($message), $available_monday, $available_tuesday, $available_wednesday, $available_thursday, $available_friday,$available_saturday, $available_sunday);
+        Community::addJobApply($job_id, $player_id, \App\Core::filterString($firstname), \App\Core::filterString($message), $available_monday, $available_tuesday, $available_wednesday, $available_thursday, $available_friday,$available_saturday, $available_sunday);
         return Json::encode(["status" => "success", "message" => Locale::get('website/apply/content_1'), "replacepage" => "jobs/my"]);    
     }
 }
