@@ -106,8 +106,7 @@ class Articles
             'page'          => 'article',
             'latest_news'   => $latest_news,
             'article'       => $article,
-            'posts'         => $posts,
-            'newsComments'  => Config::newsComments,
+            'posts'         => $posts
         ]);
     }
 }
