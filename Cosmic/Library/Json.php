@@ -8,6 +8,7 @@ class Json
     public static function encode($string)
     {
         echo json_encode($string, JSON_PRETTY_PRINT);
+        exit;
     }
 
     public static function filter($object, $sortOrder, $fieldOrder)

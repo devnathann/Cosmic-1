@@ -44,7 +44,7 @@ class Login
         $remember_me  = input()->post('remember_me')->value;
         $pin_code     = !empty(input()->post('pincode')->value) ? input()->post('pincode')->value : false;
 
-        $player = Player::getDataByUsername($username, array('id', 'password', 'rank', 'secret_key'));
+        $player = Player::getDataByUsername($username, array('id', 'password', 'rank', 'secret_key', 'pincode'));
         if ($player == null || !Hash::verify($password, $player->password)) {
             return Json::encode(["status" => "error", "message" => Locale::get('login/invalid_password')]);
         }
@@ -54,16 +54,22 @@ class Login
         */
 
         if(!$pin_code) {
-            if (!is_null($player->secret_key)) {
+            if (!is_null($player->secret_key) || !is_null($player->pincode)) {
                 return Json::encode(["status" => "pincode_required"]);
             }
         }
 
-        if ($pin_code && $player->secret_key == null) {
+        if ($pin_code && $player->secret_key == null && $player->pincode == null) {
             return Json::encode(["status" => "error", "message" => Locale::get('login/invalid_pincode')]);
         }
+      
+        if($player->pincode != NULL && $player->secret_key == NULL) {
+            if($player->pincode !== $pin_code) {
+                return Json::encode(["status" => "error", "message" => Locale::get('login/invalid_pincode')]);
+            }
+        }
 
-        if($player->secret_key != null) {
+        if($player->secret_key != NULL && $player->pincode == NULL) {
             $this->googleAuthentication($pin_code, $player->secret_key);
         }
 

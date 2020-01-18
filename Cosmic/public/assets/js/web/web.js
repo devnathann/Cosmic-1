@@ -103,14 +103,19 @@ function WebInterface()
                     type: "inline",
                     src: "#login-dialog"
                 },
+                callbacks: {
+                    open: function() {
+                      console.log(1)
+                      $(".rounded-input").keypress(function(e){
+                          if (e.which == 13){
+                              $.magnificPopup.close();
+                              $("#login-request").click();
+                          }
+                      });
+                    }
+                },
                 mainClass: "my-mfp-zoom-in"
             });
-        }).on("keydown", ".rounded-input", function(event)
-        {
-            var key = event.which;
-            if (key == 13) {    
-                $('#login-request').click();
-            }
         }).on("click", "#login-request", function(event) 
         {
             event.preventDefault();

@@ -46,11 +46,11 @@ class Verification
 
             if($verification_enabled && request()->player->pincode == null) {
                 Player::update(request()->player->id, ['secret_key' => input()->post('data')->value]);
-                return Json::encode(["status" => "error", "message" => Locale::get('settings/enabled_secretcode'), "pagetime" =>"/logout"]);
+                return Json::encode(["status" => "success", "message" => Locale::get('settings/enabled_secretcode'), "pagetime" =>"/logout"]);
             }
 
             Player::update(request()->player->id, ['secret_key' => NULL]);
-            return Json::encode(["status" => "error", "message" => Locale::get('settings/disabled_secretcode'), "replacepage" => "settings/verification"]);
+            return Json::encode(["status" => "success", "message" => Locale::get('settings/disabled_secretcode'), "replacepage" => "settings/verification"]);
         }
 
         /*
@@ -60,11 +60,11 @@ class Verification
 
             if($verification_enabled && request()->player->secret_key == NULL) {
                 Player::update(request()->player->id, ['pincode' => input()->post('data')->value]);
-                return Json::encode(["status" => "error", "message" => Locale::get('settings/enabled_secretcode'), "pagetime" => "/logout"]);
+                return Json::encode(["status" => "success", "message" => Locale::get('settings/enabled_secretcode'), "pagetime" => "/logout"]);
             }
 
             Player::update(request()->player->id, ['pincode' => null]);
-            return Json::encode(["status" => "error", "message" => Locale::get('settings/disabled_secretcode'), "replacepage" => "settings/verification"]);
+            return Json::encode(["status" => "success", "message" => Locale::get('settings/disabled_secretcode'), "replacepage" => "settings/verification"]);
         }
     }
 

@@ -96,7 +96,7 @@ class Topic {
         }
 
         $reply_id = Guild::createReply($topic_id, Core::FilterString(Core::tagByUser($message)), request()->player->id); 
-        return Json::encode(["status" => "success", "message" =>  Locale::get('core/notification/message_placed'), "replacepage" => "guilds/{$guild_id}/thread/{$topic->id} - " . Core::convertSlug($topic->subject) . "/page/{$totalPages}#{$reply_id}"]);
+        return Json::encode(["status" => "success", "message" =>  Locale::get('core/notification/message_placed'), "replacepage" => "guilds/{$guild_id}/thread/{$topic->id}-" . Core::convertSlug($topic->subject) . "/page/{$totalPages}#{$reply_id}"]);
     }
   
     public function stickyclosethread()

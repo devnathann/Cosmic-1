@@ -61,7 +61,7 @@ class View
 
             $twig->addExtension(new DebugExtension());
             $twig->addExtension(new DateExtension());
-            $twig->addExtension(new \Library\Bbcode(new \ChrisKonnertz\BBCode\BBCode()));
+            $twig->addExtension(new \Library\Bbcode\Parser(new \Library\Bbcode\Bbcode()));
 
             $twig->addGlobal('path', Config::path);
             $twig->addGlobal('cpath', Config::swfPath);

@@ -1,20 +1,11 @@
 <?php
-namespace Library;
+namespace Library\Bbcode;
 
-class Bbcode extends \Twig_Extension
+class Parser extends \Twig_Extension
 {
-    /**
-    * Messages for next request
-    *
-    * @var ChrisKonnertz\BBCode\BBCode
-    */
+
     public $bbcode;
 
-    /**
-    * Create new BBcode extension
-    *
-    * @param null|ChrisKonnertz\BBCode\BBCode $bbcode
-    */
     public function __construct($bbcode = null)
     {
         if($bbcode == null){
