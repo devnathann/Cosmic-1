@@ -88,7 +88,7 @@ class Profile
             return Json::encode(["status" => "error", "message" => Locale::get('core/notification/profile_notfound')]);
         }
 
-        return Json::encode(["replacepage" => input()->post('search')->value]);
+        return Json::encode(["replacepage" => "profile" . input()->post('search')->value]);
     }
 
     public function template()
