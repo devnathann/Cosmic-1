@@ -1,5 +1,6 @@
 <?php
-ini_set("display_errors",1);
+Header('Content-Security-Policy: upgrade-insecure-requests');
+
 use App\Config;
 use Core\Routes;
 use Core\QueryBuilder;
