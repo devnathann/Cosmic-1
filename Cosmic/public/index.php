@@ -31,7 +31,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 if(!file_exists(__DIR__ . '/../App/Config.php')) {
   
-    copy(__DIR__ . '/../../App/Config.tmp', __DIR__ . '/../../App/Config.php');
+    $copy = copy(__DIR__ . '/../../App/Config.tmp', __DIR__ . '/../../App/Config.php');
     if($copy) {
         redirect('/');
     }
