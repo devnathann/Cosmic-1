@@ -190,6 +190,11 @@ class Remote
         if(!$validate->isSuccess()) {
             return;
         }
+      
+        if(Permission::exists('housekeeping_ban_user', request()->player->rank)) {
+            Log::addStaffLog($player->id, 'No permissions to ban', 'error');
+            return Json::encode(["status" => "error", "message" => "You have no permissions to do this action!"]);
+        }
 
         $ban_message = Admin::getBanMessagesById(input()->post('reason')->value);
         $ban_time = Admin::getBanTimeById(input()->post('expire')->value);
@@ -358,7 +363,7 @@ class Remote
         foreach($currencys as $currency) {
             if($currency) {
                 $currency->oldamount = $currency->amount;
-                $currency->amount = (int)(input()->post($currency->name)->value ? input()->post($currency->name)->value : (string)$currency->amount);
+                $currency->amount = (int)(input()->post($currency->currency)->value ? input()->post($currency->currency)->value : (string)$currency->amount);
             }
         }
 

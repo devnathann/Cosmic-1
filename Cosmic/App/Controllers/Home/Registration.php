@@ -53,7 +53,16 @@ class Registration
         if (!Player::create($playerData)) {
             return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong'), "captcha_error" => "error"]);
         }
-
+  
+        $freeCurrencys = Core::getCurrencys();
+      
+        if($freeCurrencys)
+            foreach(Core::getCurrencys() as $currency) {
+                Player::createCurrency($player->id, $currency->type);
+                Player::updateCurrency($player->id, $currency->type, $currency->amount);
+            }
+        }
+      
         $player = Player::getDataByUsername($username, array('id', 'password', 'rank'));
 
 

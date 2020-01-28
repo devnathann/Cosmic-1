@@ -92,7 +92,7 @@
                       {% if currency is not empty %}
                           <div class="col-lg-4">
                              <label>{{currency.name}}</label>
-                             <input type="number" class="form-control" value="{{currency.amount}}" name="{{currency.name}}" {{disabled}}>
+                             <input type="number" class="form-control" value="{{currency.amount}}" name="{{currency.currency}}" {{disabled}}>
                           </div>
                       {% endif %}
                   {% endfor %}

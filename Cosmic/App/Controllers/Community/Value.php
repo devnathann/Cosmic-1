@@ -75,6 +75,8 @@ class Value
                 }
 
                 redirect('/marketplace/' . $cat_id->id . '-' . $cat_id->slug);
+            } else {
+                redirect('/');
             }
         } else {
             $cat_id = explode('-', $slug)[0];

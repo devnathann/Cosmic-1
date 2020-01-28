@@ -41,7 +41,8 @@ class Login
 
         $username     = input()->post('username')->value;
         $password     = input()->post('password')->value;
-        $remember_me  = input()->post('remember_me')->value;
+        $remember_me  = input()->post('remember_me')->value ?? false;
+      
         $pin_code     = !empty(input()->post('pincode')->value) ? input()->post('pincode')->value : false;
 
         $player = Player::getDataByUsername($username, array('id', 'password', 'rank', 'secret_key', 'pincode'));
