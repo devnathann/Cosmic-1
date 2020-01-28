@@ -31,12 +31,12 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 if(!file_exists(__DIR__ . '/../App/Config.php')) {
   
-    $copy = copy(\App\Models\Install::$tmp, \App\Models\Install::$path);
+    copy(__DIR__ . '/../../App/Config.tmp', __DIR__ . '/../../App/Config.php');
     if($copy) {
         redirect('/');
     }
   
-    echo 'Cant create config file, please CHMOD app folder to 777';
+    echo 'Cant create config file, please CHMOD App folder to 777 or rename Config.tmp to Config.php';
     exit;
 }
 
