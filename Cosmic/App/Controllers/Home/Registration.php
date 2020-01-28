@@ -46,7 +46,7 @@ class Registration
             return Json::encode(["status" => "error", "message" => Locale::get('register/email_exists')]);
         }
       
-        if (Player::checkMaxIp(Core::getIpAddress() >= \App\Models\Core::settings()->registration_max_ip)) {
+        if (Player::checkMaxIp(Core::getIpAddress()) >= \App\Models\Core::settings()->registration_max_ip) {
             return Json::encode(["status" => "error", "message" => Locale::get('register/too_many_accounts')]);
         }
 
@@ -54,17 +54,16 @@ class Registration
             return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong'), "captcha_error" => "error"]);
         }
   
-        $freeCurrencys = Core::getCurrencys();
+        $player = Player::getDataByUsername($username, array('id', 'password', 'rank'));
       
-        if($freeCurrencys)
-            foreach(Core::getCurrencys() as $currency) {
+        $freeCurrencys = \App\Models\Core::getCurrencys();
+      
+        if($freeCurrencys) {
+            foreach($freeCurrencys as $currency) {
                 Player::createCurrency($player->id, $currency->type);
                 Player::updateCurrency($player->id, $currency->type, $currency->amount);
             }
         }
-      
-        $player = Player::getDataByUsername($username, array('id', 'password', 'rank'));
-
 
         Auth::login($player);
         return Json::encode(["status" => "success", "location" => "/hotel"]);

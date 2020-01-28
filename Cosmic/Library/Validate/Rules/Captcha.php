@@ -2,7 +2,9 @@
 namespace Library\Validate\Rules;
 
 use App\Config;
-use App\Core;
+
+use App\Models\Core;
+
 use Core\Locale;
 use Library\Validate\Rule;
 
@@ -35,9 +37,9 @@ class Captcha extends Rule
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_POSTFIELDS, array(
-            'secret' => Config::site['secretKey'],
+            'secret' => Core::settings()->recaptcha_secretkey ?? null,
             'response' => $value,
-            'remoteip' => Core::getIpAddress()
+            'remoteip' => \App\Core::getIpAddress()
         ));
         $curlData = curl_exec($curl);
         curl_close($curl);

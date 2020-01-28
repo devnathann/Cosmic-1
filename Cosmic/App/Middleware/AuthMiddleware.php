@@ -17,10 +17,6 @@ class AuthMiddleware implements IMiddleware
   
     public function handle(Request $request) : void
     {
-        if(Config::installation) {
-            redirect('/installation');
-        }
-        
         if(!Session::exists('player_id')) {
             $remember_me = Auth::loginFromRememberCookie();
             if($remember_me !== NULL) {

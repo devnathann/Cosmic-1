@@ -29,7 +29,7 @@ var User = {
 {% endif %}
 
 var Configuration = {
-    {% if publicKey is not empty %}recaptcha_public: "{{site.publicKey}}",{% endif %}
+    {% if publickey is not empty %}recaptcha_public: "{{publickey}}",{% endif %}
     revision: "{{revision}}2213",
     cache: "3802706481311",
     debug: {{debug}}

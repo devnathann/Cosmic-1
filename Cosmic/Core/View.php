@@ -63,6 +63,8 @@ class View
             $twig->addExtension(new \Library\Bbcode\Parser(new \Library\Bbcode\Bbcode()));
 
             $twig->addGlobal('site', Config::site);
+            $twig->addGlobal('publickey', \App\Models\Core::settings()->recaptcha_publickey ?? null);
+            
 
             $twig->addGlobal('locale', Locale::get('website/' . (isset($args['page']) ? $args['page'] : null), true));
             $twig->addGlobal('locale_base', Locale::get('website/base', true));
@@ -93,7 +95,7 @@ class View
             exit;
         }
 
-        if(Config::installation == false && Auth::maintenance()) {
+        if(Auth::maintenance()) {
             $rank = (isset(request()->player->rank)) ? request()->player->rank : 1;
             if(!Permission::exists('housekeeping', $rank)) {
                 Auth::logout();

@@ -187,18 +187,6 @@ class Routes extends Router
             });
         });
 
-        if(Config::installation) {
-            Router::group(['prefix' => '/installation'], function () {
-                Router::setDefaultNamespace('\Library');
-
-                Router::get('/', 'Installation\Home@index');
-
-                Router::partialGroup('/api/{param1}/{param2}', function ($param1, $param2) {
-                    Router::post('/', 'Installation\\' . ucfirst($param1) . '@' . $param2);
-                })->addMiddleware(ValidateMiddleWare::class);
-            });
-        }
-
         Router::start();
     }
 }
