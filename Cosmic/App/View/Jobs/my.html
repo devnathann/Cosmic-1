@@ -3,7 +3,7 @@
 {% block body %}
 <div class="page-content job">
     <div class="tabs-container">
-      <a href="{{path}}/jobs" class="tab">{{locale.title}}</a>
+      <a href="{{site.path}}/jobs" class="tab">{{locale.title}}</a>
         <span class="tab selected">{{locale.applications}}</span>
     </div>
     <h2>{{locale.applications}}</h2>
@@ -16,9 +16,9 @@
         </div>
         <div class="offer-button">
             {% if job.status == "open" %}
-                <img src="{{path}}/assets/images/web/pages/jobs/pending.png" width="46">
+                <img src="{{site.path}}/assets/images/web/pages/jobs/pending.png" width="46">
             {% else %}
-                <img src="{{path}}/assets/images/web/pages/jobs/closed.png" width="46">
+                <img src="{{site.path}}/assets/images/web/pages/jobs/closed.png" width="46">
             {% endif %}
       </div>
     </article>

@@ -16,9 +16,9 @@ $GLOBALS['language'] = array (
 
             'nav_shop'              => 'winkel',
             'nav_buy_points'        => 'Bel-Credits kopen',
-            'nav_buy_club'          =>  Config::shortName . ' Club kopen',
+            'nav_buy_club'          =>  Config::site['shortname'] . ' Club kopen',
             'nav_purchasehistory'   => 'Aankoopgeschiedenis',
-            'nav_changename'        =>  Config::shortName . 'naam veranderen',
+            'nav_changename'        =>  Config::site['shortname'] . 'naam veranderen',
 
             'nav_highscores'        => 'Highscores',
 
@@ -58,7 +58,7 @@ $GLOBALS['language'] = array (
             'header_to'             => 'Naar',
 
             'footer_helptool'       => 'Help Tool',
-            'footer_rules'          => 'De '. Config::shortName . ' Regels',
+            'footer_rules'          => 'De '. Config::site['shortname'] . ' Regels',
             'footer_terms'          => 'Algemene voorwaarden',
             'footer_privacy'        => 'Privacyverklaring',
             'footer_cookies'        => 'Cookie-beleid',
@@ -79,9 +79,9 @@ $GLOBALS['language'] = array (
             'web_dialog_validate'                           => 'Valideren',
             'web_dialog_confirm'                            => 'Bevestig uw keuze',
 
-            'web_hotel_backto'                              => 'Terug naar '. Config::shortName . ' Hotel',
+            'web_hotel_backto'                              => 'Terug naar '. Config::site['shortname'] . ' Hotel',
 
-            'web_fill_pincode'                              => 'Vul de pincode in die je hebt opgegeven tijdens het aanmaken van de extra beveiliging op jouw account. Nou, ik ben deze vergeten? Neem dan contact op via de '. Config::shortName . ' Help Tool',
+            'web_fill_pincode'                              => 'Vul de pincode in die je hebt opgegeven tijdens het aanmaken van de extra beveiliging op jouw account. Nou, ik ben deze vergeten? Neem dan contact op via de '. Config::site['shortname'] . ' Help Tool',
             'web_twostep'                                   => 'Twee-staps autorisatie!',
             'web_login'                                     => 'Je moet ingelogd zijn om dit bericht te rapporteren!',
             'web_loggedout'                                 => 'Uitgelogd :(',
@@ -108,7 +108,7 @@ $GLOBALS['language'] = array (
 
             'web_page_settings_namechange_request'          => 'Aanvragen',
             'web_page_settings_namechange_not_available'    => 'Niet beschikbaar',
-            'web_page_settings_namechange_choose_name'      => 'Kies '. Config::shortName . 'naam',
+            'web_page_settings_namechange_choose_name'      => 'Kies '. Config::site['shortname'] . 'naam',
 
             'web_page_settings_verification_oops'           => 'Oeps...',
             'web_page_settings_verification_fill_password'  => 'Vul je wachtwoord in!',
@@ -156,7 +156,7 @@ $GLOBALS['language'] = array (
             'web_page_hotel_sometinhg_wrong_3'              => 'Of neem contact met ons op',
             'web_page_hotel_welcome_at'                     => 'Welkom op',
             'web_page_hotel_soon'                           => 'Dit ziet er goed uit...',
-            'web_hotel_active_flash_1'                      => 'Je bent bijna op '. Config::shortName . '!',
+            'web_hotel_active_flash_1'                      => 'Je bent bijna op '. Config::site['shortname'] . '!',
             'web_hotel_active_flash_2'                      => 'Klik hier',
             'web_hotel_active_flash_3'                      => 'en dan links boven op "Toestaan" om Flash Player aan te zetten.'
         ),
@@ -219,20 +219,26 @@ $GLOBALS['language'] = array (
             'load_more'   => 'Bekijk meer foto\'s'
         ),
         'community_staff' => array (
-            'title'       => 'Hoe word ik '. Config::shortName . ' Staff?',
+            'title'       => 'Hoe word ik '. Config::site['shortname'] . ' Staff?',
             'desc'        => 'Zij vertegenwoordigen het officiele team dat verantwoordelijk is voor de goede werking van het hotel.',
-            'content_1'   => 'Natuurlijk droomt iedereen wel van zo\'n plaats als '. Config::shortName . ' Staff lid, maar helaas is dit niet voor iedereen weggelegd. Om '. Config::shortName . ' Staff te kunnen worden moet je solliciteren.',
+            'content_1'   => 'Natuurlijk droomt iedereen wel van zo\'n plaats als '. Config::site['shortname'] . ' Staff lid, maar helaas is dit niet voor iedereen weggelegd. Om '. Config::site['shortname'] . ' Staff te kunnen worden moet je solliciteren.',
             'content_2'   => 'Dit kan alleen op momenten wanneer wij vacatures hebben, wanneer we dit hebben, wordt dit vermeldt in het nieuws.'
         ),
         'community_value' => array (
-            'title_header'    => 'Ruilwaardes',
-            'decs_header'     => 'Alle exclusieve furniture met de waarde hoger dan het type credit vindt je hier!',
-            'furni_name'      => 'Meubelnaam',
-            'furni_type'      => 'Type',
-            'furni_costs'     => 'Waarde',
-            'furni_amount'    => 'Aantal',
-            'furni_rate'      => 'Koers',
-            'looking_for'     => 'Ik ben opzoek naar...'
+            'title_header'      => 'Ruilwaardes',
+            'decs_header'       => 'Alle exclusieve furniture met de waarde hoger dan het type credit vindt je hier!',
+            'furni_name'        => 'Meubelnaam',
+            'furni_type'        => 'Type',
+            'furni_costs'       => 'Waarde',
+            'furni_amount'      => 'Aantal',
+            'furni_rate'        => 'Koers',
+            'looking_for'       => 'Ik ben opzoek naar...',
+            'seller'            => 'Verkoper',
+            'price'             => 'Prijs',
+            'nav_my'            => 'Mijn markplaats',
+            'nav_shop'          => 'Marktplaats',
+            'nav_catalogue'     => 'Catalogus',
+            'marketplace_desc'  => 'Leden van ' . Config::site['shortname'] . ' proberen hier hun items te verkopen op de online marktplaats. Ben jij opzoek naar item waar je al lang naar opzoek was, wellicht vind je hem hier!'
         ),
 
         /*     App/View/Games     */
@@ -259,7 +265,7 @@ $GLOBALS['language'] = array (
             'request_react'             => 'Reageren',
             'request_description'       => 'Beschrijving',
             'request_react_on_ticket'   => 'Reageer op ticket',
-            'request_contact'           => 'Neem contact op met '. Config::shortName,
+            'request_contact'           => 'Neem contact op met '. Config::site['shortname'],
             'request_contact_help'      => 'U kunt contact met ons opnemen door een nieuw ticket te openen.',
             'request_new_ticket'        => 'Nieuw ticket',
             'request_subject'           => 'Onderwerp',
@@ -282,9 +288,9 @@ $GLOBALS['language'] = array (
             'friends_online'         => 'Online vrienden',
             'now_in'                 => 'Nu in',
             'latest_news'            => 'Laatste nieuws',
-            'latest_facts'           => 'De laatste weetjes binnen '. Config::shortName . '!',
+            'latest_facts'           => 'De laatste weetjes binnen '. Config::site['shortname'] . '!',
             'popular_rooms'          => 'Populaire kamers',
-            'popular_rooms_label'    => 'Weet welke kamers trending zijn binnen '. Config::shortName . '!',
+            'popular_rooms_label'    => 'Weet welke kamers trending zijn binnen '. Config::site['shortname'] . '!',
             'popular_no_rooms'       => 'Er is nog niemand op ons Hotel!',
             'goto_room'              => 'Naar deze kamer',
             'popular_groups'         => 'Populaire groepen',
@@ -350,17 +356,17 @@ $GLOBALS['language'] = array (
             'month'                 => 'Maand',
             'year'                  => 'Jaar',
             'birthdate_help'        => 'We zullen deze informatie nodig hebben om je account te herstellen voor het geval je de toegang verliest.',
-            'found'                 => 'Hoe heb je '. Config::shortName . ' Hotel gevonden?',
+            'found'                 => 'Hoe heb je '. Config::site['shortname'] . ' Hotel gevonden?',
             'found_choose'          => 'Maak een keuze...',
             'found_choose_1'        => 'Google',
             'found_choose_2'        => 'Door een vriend(in)',
             'found_choose_3'        => 'Door een ander spel',
             'found_choose_4'        => 'Door Facebook',
             'found_choose_5'        => 'Anders',
-            'create_user'           => 'Maak je '. Config::shortName . '!',
-            'username'              =>  Config::shortName . 'naam',
-            'username_fill'         =>  Config::shortName . 'naam...',
-            'username_help'         => 'Jouw unieke naam in '. Config::shortName . ' Hotel.',
+            'create_user'           => 'Maak je '. Config::site['shortname'] . '!',
+            'username'              =>  Config::site['shortname'] . 'naam',
+            'username_fill'         =>  Config::site['shortname'] . 'naam...',
+            'username_help'         => 'Jouw unieke naam in '. Config::site['shortname'] . ' Hotel.',
             'sex'                   => 'Geslacht',
             'male'                  => 'Jongen',
             'female'                => 'Meisje',
@@ -370,14 +376,14 @@ $GLOBALS['language'] = array (
         /*     App/View/Jobs     */
         'apply' => array (
             'title'               => 'Reageer op de vacture',
-            'content_1'           => 'Bedankt voor je interesse in '. Config::shortName . ' Hotel en voor het reageren op de vacature.',
+            'content_1'           => 'Bedankt voor je interesse in '. Config::site['shortname'] . ' Hotel en voor het reageren op de vacature.',
             'content_2'           => 'Probeer de vragenlijst zo nauwkeurig mogelijk te beantwoorden.',
             'description'         => 'Taakomschrijving',
             'question_name'       => 'Hoe heet je?',
             'question_age'        => 'Hoe oud ben je?',
             'question_why'        => 'Waarom denk je dat je geschikt zou kunnen zijn?',
             'question_time'       => 'Hoeveel uur ben je online?',
-            'question_time_help'  => 'Geef ons door hoeveel uur je per dag online bent op '. Config::shortName . ' Hotel.',
+            'question_time_help'  => 'Geef ons door hoeveel uur je per dag online bent op '. Config::site['shortname'] . ' Hotel.',
             'monday'              => 'Maandag',
             'tuesday'             => 'Dinsdag',
             'wednesday'           => 'Woensdag',
@@ -400,9 +406,9 @@ $GLOBALS['language'] = array (
         /*     App/View/Password     */
         'password_claim' => array (
             'title'                 => 'Wachtwoord vergeten?',
-            'content_1'             => 'Vul hieronder je '. Config::shortName . 'naam en e-mailadres in en we sturen je een link per e-mail om je wachtwoord te veranderen.',
+            'content_1'             => 'Vul hieronder je '. Config::site['shortname'] . 'naam en e-mailadres in en we sturen je een link per e-mail om je wachtwoord te veranderen.',
             'content_2'             => 'Doe dit niet als iemand je vraagt om dit te doen!',
-            'username'              =>  Config::shortName . 'naam',
+            'username'              =>  Config::site['shortname'] . 'naam',
             'email'                 => 'E-mailadres',
             'send'                  => 'Verstuur e-mail',
             'wrong_page'            => 'Vals alarm!',
@@ -423,7 +429,7 @@ $GLOBALS['language'] = array (
             'password'       => 'Wachtwoord veranderen',
             'verification'   => 'Verificatie instellen',
             'email'          => 'E-mailadres veranderen',
-            'namechange'     =>  Config::shortName . 'naam veranderen',
+            'namechange'     =>  Config::site['shortname'] . 'naam veranderen',
             'shop_history'   => 'Aankoopgeschiedenis'
         ),
         'settings_email' => array (
@@ -435,7 +441,7 @@ $GLOBALS['language'] = array (
             'save'            => 'Opslaan'
         ),
         'settings_namechange' => array (
-            'title'           =>  Config::shortName . 'naam veranderen',
+            'title'           =>  Config::site['shortname'] . 'naam veranderen',
             'help_1'          => 'Wil jij je Asteroidnaam veranderen? Dat kan! Dit kost',
             'help_2'          => 'en zullen meteen na je verzoek afgeschreven worden. Wanneer je naam eenmaal is veranderd kunnen wij dit niet meer terugdraaien! Zorg dus dat je goed na denkt over je besluit!',
             'fill_username'   => 'Asteroidnaam...',
@@ -454,7 +460,7 @@ $GLOBALS['language'] = array (
         'settings_preferences' => array (
             'title'               => 'Mijn voorkeuren',
             'follow_title'        => 'Volgfunctie - wie mogen je volgen?' ,
-            'follow_label'        => 'Ik wil dat '. Config::shortName . '\'s mij niet mogen volgen',
+            'follow_label'        => 'Ik wil dat '. Config::site['shortname'] . '\'s mij niet mogen volgen',
             'friends_title'       => 'Vriendenverzoeken',
             'friends_label'       => 'Vriendschap verzoeken toestaan?',
             'room_title'          => 'Kamer uitgenodigingen',
@@ -478,7 +484,7 @@ $GLOBALS['language'] = array (
             'pincode_label'         => 'Zet een pincode op je account als extra beveiliging, hiermee zorg je voor een betere beveiliging van jouw account tegen hackers.',
             'fill_pincode'          => 'Vul je pincode in',
             'generate_auth'         => 'Code generen door 2FA',
-            'generate_auth_label'   => 'Deze methode is het meest betrouwbaar. Het koppelt uw '. Config::shortName . '-account aan een authenticatietoepassing (Google Authenticator) op uw telefoon. Wanneer u zich aanmeldt, hoeft u alleen de code in te voeren die door uw app is gegenereerd.',
+            'generate_auth_label'   => 'Deze methode is het meest betrouwbaar. Het koppelt uw '. Config::site['shortname'] . '-account aan een authenticatietoepassing (Google Authenticator) op uw telefoon. Wanneer u zich aanmeldt, hoeft u alleen de code in te voeren die door uw app is gegenereerd.',
             'link_account'          => 'Koppel je account',
             'link_account_label'    => 'Om uw account te koppelen, moet u deze QR-code eenvoudig met uw toepassing scannen en vervolgens op opslaan klikken om deze wijziging te valideren.',
             'save'                  => 'Opslaan'
@@ -487,13 +493,13 @@ $GLOBALS['language'] = array (
         /*     App/View/Shop     */
         'shop_club' => array (
             'club_benefits'       => 'Club voordelen',
-            'club_buy'            => 'Koop '. Config::shortName . ' Club',
+            'club_buy'            => 'Koop '. Config::site['shortname'] . ' Club',
             'unlimited'           => 'Onbeperkt',
             'more_information'    => 'Meer informatie',
             'content_1'           => 'Heb je een vraag of probleem met een aankoop?',
             'content_2'           => 'Aarzel niet om contact op te nemen met de klantenservice via de',
-            'help_tool'           =>  Config::shortName . ' Help Tool',
-            'random_club_users'   => 'Willekeurige '. Config::shortName . ' Club leden',
+            'help_tool'           =>  Config::site['shortname'] . ' Help Tool',
+            'random_club_users'   => 'Willekeurige '. Config::site['shortname'] . ' Club leden',
             'desc'                => 'Hier kun je club kopen voor echt geld. Met club heb je voordelen en kun je exclusieve items kopen.'
         ),
         'shop_history' => array (
@@ -501,10 +507,10 @@ $GLOBALS['language'] = array (
             'product'             => 'Product',
             'date'                => 'Datum',
             'buy_history_empty'   => 'Je hebt nog geen aankoopgeschiedenis.',
-            'buy_club'            => 'Koop '. Config::shortName . ' Club',
+            'buy_club'            => 'Koop '. Config::site['shortname'] . ' Club',
             'content_1'           => 'Heb je een vraag of probleem met een aankoop?',
             'content_2'           => 'Aarzel niet om contact op te nemen met de klantenservice via de',
-            'help_tool'           =>  Config::shortName . ' Help Tool',
+            'help_tool'           =>  Config::site['shortname'] . ' Help Tool',
             'title'               => 'Mijn aankoopgeschiedenis',
             'desc'                => 'Vind hier alle aankopen die je hebt gedaan in'
         ),
@@ -524,9 +530,9 @@ $GLOBALS['language'] = array (
             'more_information'  => 'Meer informatie',
             'content_1'         => 'Heb je een vraag of probleem met een aankoop?',
             'content_2'         => 'Aarzel niet om contact op te nemen met de klantenservice via de',
-            'help_tool'         =>  Config::shortName . ' Help Tool',
+            'help_tool'         =>  Config::site['shortname'] . ' Help Tool',
             'not_logged'        => 'Oeps! Je bent niet ingelogd.',
-            'have_to_login'     => 'Om de '. Config::shortName . ' Winkel te bezoeken moet je ingelogd zijn.',
+            'have_to_login'     => 'Om de '. Config::site['shortname'] . ' Winkel te bezoeken moet je ingelogd zijn.',
             'click_here'        => 'Klik hier',
             'to_login'          => 'om in te loggen.',
             'desc'              => 'Hier kun je Bel-Credits kopen voor echt geld. Met Bel-Credits kun je exclusieve items kopen.',
@@ -550,16 +556,16 @@ $GLOBALS['language'] = array (
             'message_placed'        => 'Je bericht is geplaatst!',
             'message_deleted'       => 'Je bericht is verwijderd!',
             'invisible'             => 'Dit is onzichtbaar gemaakt!',
-            'profile_invisible'     => 'Deze '. Config::shortName . ' heeft zijn/haar profiel onzichtbaar gemaakt.',
-            'profile_notfound'      => 'Helaas.. we hebben de '. Config::shortName . ' niet kunnen vinden!',
+            'profile_invisible'     => 'Deze '. Config::site['shortname'] . ' heeft zijn/haar profiel onzichtbaar gemaakt.',
+            'profile_notfound'      => 'Helaas.. we hebben de '. Config::site['shortname'] . ' niet kunnen vinden!',
             'no_permissions'        => 'Je hebt geen toestemming.',
             'already_liked'         => 'Je vindt dit al leuk!',
             'liked'                 => 'Je vindt dit leuk!',
-            'banned_1'              => 'Je bent verbannen voor het overtreden van de '. Config::shortName . ' Regels:',
+            'banned_1'              => 'Je bent verbannen voor het overtreden van de '. Config::site['shortname'] . ' Regels:',
             'banned_2'              => 'Je ban verloopt over:',
             'something_wrong'       => 'Er is iets misgegaan, probeer het nogmaals.',
             'room_not_exists'       => 'Deze kamer bestaat niet!',
-            'staff_received'        => 'Bedankt! De '. Config::shortName . ' Staff heeft dit ontvangen!',
+            'staff_received'        => 'Bedankt! De '. Config::site['shortname'] . ' Staff heeft dit ontvangen!',
             'not_enough_belcredits' => 'Je hebt niet genoeg belcredits.',
             'topic_closed'          => 'Je kunt niet reageren op een topic dat is gesloten!',
             'post_not_allowed'      => 'Je hebt geen rechten om te posten!'
@@ -590,13 +596,13 @@ $GLOBALS['language'] = array (
                 'index'         => 'Mijn voorkeuren',
                 'password'      => 'Wachtwoord veranderen',
                 'email'         => 'E-mail veranderen',
-                'namechange'    =>  Config::shortName . 'naam veranderen'
+                'namechange'    =>  Config::site['shortname'] . 'naam veranderen'
             ),
             'community' => array (
                 'index'     => 'Community',
                 'photos'    => 'Foto\'s',
-                'staff'     =>  Config::shortName . ' Staff',
-                'team'      =>  Config::shortName . ' Team',
+                'staff'     =>  Config::site['shortname'] . ' Staff',
+                'team'      =>  Config::site['shortname'] . ' Team',
                 'fansites'  => 'Fansites',
                 'value'     => 'Ruilwaarde',
                 'forum'     => 'Ons Forum'
@@ -605,9 +611,9 @@ $GLOBALS['language'] = array (
                 'ranking'   => 'Highscores'
             ),
             'shop' => array (
-                'index'     =>  Config::shortName . ' Winkel',
+                'index'     =>  Config::site['shortname'] . ' Winkel',
                 'history'   => 'Aankoopgeschiedenis',
-                'club'      =>  Config::shortName . ' Club'
+                'club'      =>  Config::site['shortname'] . ' Club'
             ),
             'help' => array (
                 'index'     => 'Help Tool',
@@ -615,23 +621,24 @@ $GLOBALS['language'] = array (
                 'new'       => 'Help Ticket openen'
             ),
             'jobs' => array (
-                'index'     =>  Config::shortName . ' Vacatures',
+                'index'     =>  Config::site['shortname'] . ' Vacatures',
                 'apply'     => 'Reageren op vacature'
             )
         )
     ),
     'login' => array (
         'invalid_password'          => 'Onjuist wachtwoord.',
-        'invalid_pincode'           => 'Deze pincode komt niet overeen met die van deze '. Config::shortName . '!',
+        'invalid_pincode'           => 'Deze pincode komt niet overeen met die van deze '. Config::site['shortname'] . '!',
         'fill_in_pincode'           => 'Vul nu je pincode in om toegang te krijgen tot jouw account!'
     ),
     'register' => array (
-        'username_invalid'          =>  Config::shortName . 'naam is in strijd met de '. Config::shortName . ' Regels.',
-        'username_exists'           =>  Config::shortName . 'naam is al in gebruik :-(',
+        'username_invalid'          =>  Config::site['shortname'] . 'naam is in strijd met de '. Config::site['shortname'] . ' Regels.',
+        'username_exists'           =>  Config::site['shortname'] . 'naam is al in gebruik :-(',
         'email_exists'              =>  'This e-mail address is already in use :-(',
+        'too_many_accounts'         =>  'Er zijn teveel accounts geregistreerd op dit ip :-('
     ),
     'claim' => array (
-        'invalid_email'             => 'Dit e-mailadres komt niet overeen met die van deze '. Config::shortName . ' ID.',
+        'invalid_email'             => 'Dit e-mailadres komt niet overeen met die van deze '. Config::site['shortname'] . ' ID.',
         'invalid_link'              => 'Deze link is verlopen. Vraag opnieuw je wachtwoord aan om je wachtwoord te veranderen.',
         'send_link'                 => 'We hebben zojuist een e-mail naar je gestuurd! Niks ontvangen? Controleer dan de map met ongewenste e-mail.',
         'password_changed'          => 'Je wachtwoord is veranderd. Je kunt nu weer inloggen!',
@@ -645,11 +652,11 @@ $GLOBALS['language'] = array (
         'pincode_saved'             => 'Je pincode is opgeslagen, je zult opnieuw moeten inloggen. Tot zo! :)',
         'password_saved'            => 'Je wachtwoord is veranderd. Je zult nu opnieuw moeten inloggen. Tot zo! :)',
         'preferences_saved'         => 'Je voorkeuren zijn opgeslagen!',
-        'current_password_invalid'  => 'Huidig wachtwoord komt niet overeen met die van je '. Config::shortName . ' ID.',
-        'choose_new_username'       => 'Vul een nieuwe '. Config::shortName . 'naam in.',
+        'current_password_invalid'  => 'Huidig wachtwoord komt niet overeen met die van je '. Config::site['shortname'] . ' ID.',
+        'choose_new_username'       => 'Vul een nieuwe '. Config::site['shortname'] . 'naam in.',
         'choose_new_pincode'        => 'Vul een nieuwe pincode in.',
-        'user_is_active'            => 'Deze '. Config::shortName . ' is mogelijk nog actief!',
-        'user_not_exists'           => 'Deze '. Config::shortName . 'naam is beschikbaar en bestaat nog niet!',
+        'user_is_active'            => 'Deze '. Config::site['shortname'] . ' is mogelijk nog actief!',
+        'user_not_exists'           => 'Deze '. Config::site['shortname'] . 'naam is beschikbaar en bestaat nog niet!',
         'name_change_saved'         => 'Je naam is gewijzigd! En er zijn 50 Bel-Credits afgeschreven.',
         'invalid_secretcode'        => 'Google Authenticatie secretcode is onjuist.',
         'enabled_secretcode'        => 'Authenticatie methode ingesteld! Je zult opnieuw moeten inloggen.. tot zo!',
@@ -666,13 +673,18 @@ $GLOBALS['language'] = array (
             'already_vip'           => 'Je bent al onbeperkt lid van de VIP Club.',
             'purchase_success'      => 'Jeuj! Je hebt een levenslange VIP-Club gekocht!'
 
+        ),
+        'marketplace' => array(
+            'expired'               => 'Item die je probeert te kopen is niet meer te koop!',
+            'purchased'             => 'Item is met succes gekocht en is toegevoegd aan je inventory!',
+            'regards'               => 'Je gekochte item is gearriveerd! Met vriendelijke groet, ' . Config::site['shortname']
         )
     ),
     'help' => array (
         'ticket_created'            => 'Jouw Help Ticket is aangemaakt. Bekijk je Help Tickets om het hulpverzoek te bekijken.',
-        'ticket_received'           => 'Een '. Config::shortName . ' Staff heeft gereageerd op je Help Tool ticket. Bezoek de Help Tool om de reactie te bekijken.',
+        'ticket_received'           => 'Een '. Config::site['shortname'] . ' Staff heeft gereageerd op je Help Tool ticket. Bezoek de Help Tool om de reactie te bekijken.',
         'already_open'              => 'Je hebt nog een openstaande ticket! Wanneer deze behandeld is kun je weer een ticket aanmaken.',
-        'no_answer_yet'             => 'Je kunt pas reageren als een '. Config::shortName . ' Staff je ticket heeft beantwoord.',
+        'no_answer_yet'             => 'Je kunt pas reageren als een '. Config::site['shortname'] . ' Staff je ticket heeft beantwoord.',
     ),
     'forum' => array (
         'is_sticky'                 => 'Sticky geüpdate!',

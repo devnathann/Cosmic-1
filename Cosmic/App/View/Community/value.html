@@ -9,8 +9,8 @@
 </header>
 <div class="page-content">
     <div class="left-side">
-
-        <article class="default-section ranking-container">
+        {% include "Shop/Marketplace/nav.html" %}
+        <article class="default-section ranking-container" style="margin-top: 50px;">
             <table class="default-table ranking-content">
                 <thead>
                 <tr>
@@ -27,18 +27,11 @@
                 {% for value in values %}
                     {% if value.cost_points > 0 %}                   
                         <tr>
-                            <td><img src="{{cpath}}/meubels/{{value.catalog_name|replace({'*': "_"})}}_icon.png" class="pixelated"></td>
-                            <td><a href="#" style="border-bottom: 1px dotted;" class="payment-button" data-id="{{value.id}}" data-costs="{{ (cat.discount/100) * value.cost_points }}" data-type="{{item_currency}}" data-image="{{value.catalog_name|replace({'*': "_"})}}">{{value.catalog_name|replace({'*': "_"})}}</a></td>
-                                {% set item_currency = '' %}
-                                {% for values,key in currency_types %}
-                                    {% if value.points_type == key %}
-                                      {% set item_currency = values %}
-                                      <td>{{item_currency}}</td>
-                                    {% endif %}
-                                {% endfor %}
-                            </td>
+                            <td><img src="{{site.cpath}}/meubels/{{value.catalog_name|replace({'*': "_"})}}_icon.png" class="pixelated"></td>
+                            <td><a href="#" style="border-bottom: 1px dotted;" class="payment-button" data-state="catalogue" data-id="{{value.id}}" data-costs="{{ (cat.discount/100) * value.cost_points }}" data-type="{{item_currency}}" data-image="{{value.catalog_name|replace({'*': "_"})}}">{{value.catalog_name|replace({'*': "_"})}}</a></td>
+                            <td>{{value.currency.currency}}</td>
                             <td>{{value.cost_points}}</td>
-                            <td style="font-size: 14px;font-weight: bold">{{ (cat.discount/100) * value.cost_points }}</td>
+                            <td style="font-size: 14px;font-weight: bold">{{value.price}}</td>
                             <td>{{value.amount}}</td>
                             <td><img src="/assets/images/web/pages/value/{{value.rate}}.gif" style="margin-right: 10px;" class="pixelated"></td>
                         </tr>
@@ -48,13 +41,13 @@
             </table>
         </article>
     </div>
-    <div class="right-side">
+    <div class="right-side"  style="margin-top: 50px;">
       
         <aside class="default-section">
             <div class="aside-title-content">{{cat.cat_name}} - {{cat.discount}}% discount</div>
             <div class="aside-content">
-                <img src="{{path}}/assets/images/web/pages/shop/discount.png" align="right">
-                At the big marketplace you can buy items that you would normally find in the catalog for a better price!<br /><br /><a href="#">Go to my marketplace!</a>
+                <img src="{{site.path}}/assets/images/web/pages/shop/discount.png" align="right">
+                At the big marketplace you can buy items that you would normally find in the catalog for a better price!<br /><br /><a href="{{site.path}}/marketplace/my/inventory">Go to my marketplace!</a>
             </div>
         </aside>
       
@@ -62,11 +55,10 @@
             <div class="aside-title-content">{{locale.looking_for}}</div>
             <div class="aside-content">
                 {% for category in categories %}
-                <a href="{{path}}/marketplace/{{category.id}}-{{category.slug}}" class="values"><button type="button" class="btn btn-primary btn-lg outline" {% if cat.id == category.id %}style="color: #33a6cc;border-color: #33a6cc;"{% endif %}>{{category.cat_name}}</button></a>
+                <a href="{{site.path}}/marketplace/{{category.id}}-{{category.slug}}" class="values"><button type="button" class="btn btn-{% if cat.id == category.id %}success{% else %}primary{% endif %} btn-lg outline">{{category.cat_name}}</button></a>
                 {% endfor %}
             </div>
         </aside>
     </div>
 </div>
-<link href="{{path}}/assets/css/custombuttons.css" rel="stylesheet">
 {% endblock %}

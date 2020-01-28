@@ -4,6 +4,7 @@ namespace App;
 use App\Models\Admin;
 use App\Models\Ban;
 use App\Models\Log;
+use App\Models\Core;
 use App\Models\RememberedLogin;
 use App\Models\Permission;
 use App\Models\Player;
@@ -27,11 +28,11 @@ class Auth
         }
 
         if (in_array('housekeeping', array_column(Permission::get($player->rank), 'permission'))) {
-            Log::addStaffLog('-1', 'Staff logged in: '.Core::getIpAddress(), 'LOGIN');
+            Log::addStaffLog('-1', 'Staff logged in: ' . \App\Core::getIpAddress(), $player->id, 'LOGIN');
         }
 
-        Session::set(['player_id' => $player->id, 'ip_address' => Core::getIpAddress()]);
-        Player::update($player->id, ['ip_current' => Core::getIpAddress(), 'last_online' => time()]);
+        Session::set(['player_id' => $player->id, 'ip_address' => \App\Core::getIpAddress()]);
+        Player::update($player->id, ['ip_current' => \App\Core::getIpAddress(), 'last_online' => time()]);
 
         return $player;
     }
@@ -64,9 +65,9 @@ class Auth
 
     public static function banExists($player)
     {
-        $ban = Ban::getBanById($player->id, Core::getIpAddress());
+        $ban = Ban::getBanByUserId($player->id, \App\Core::getIpAddress());
         if($ban) {
-            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/banned_1').' ' . $ban->ban_reason . '. '.Locale::get('core/notification/banned_2').' ' . Core::timediff($ban->ban_expire, true)]);
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/banned_1').' ' . $ban->ban_reason . '. '.Locale::get('core/notification/banned_2').' ' . \App\Core::timediff($ban->ban_expire, true)]);
         }
     }
 
@@ -94,6 +95,6 @@ class Auth
 
     public static function maintenance()
     {
-        return \App\Models\Core::getWebsiteConfig('maintenance');
+        return Core::settings()->maintenance ?? false;
     }
 }

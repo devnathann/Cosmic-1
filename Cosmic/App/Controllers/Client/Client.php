@@ -1,13 +1,14 @@
 <?php
 namespace App\Controllers\Client;
 
+use App\Core;
 use App\Config;
-use App\Models\Ban;
 use App\Token;
 
+use App\Models\Api;
+use App\Models\Ban;
 use App\Models\Player;
 use App\Models\Room;
-use App\Models\Core;
 
 use Core\Locale;
 use Core\View;
@@ -28,7 +29,7 @@ class Client
         $reader = new Reader(__DIR__. Config::vpnLocation);
 
         try {
-            $record = $reader->asn(\App\Core::getIpAddress());
+            $record = $reader->asn(Core::getIpAddress());
         } catch (AddressNotFoundException $e) {
         } catch (InvalidDatabaseException $e) {
 
@@ -75,15 +76,10 @@ class Client
             'page'  => 'hotel'
         ]);
     }
-  
-    public function test() 
-    {
-        \Library\HotelApi::execute('givepoints', array('user_id' => 2, 'points' => 1000, 'type' => 103));
-    }
 
     public function count()
     {
-        echo Core::getOnlineCount();
+        echo \App\Models\Core::getOnlineCount();
         exit;
     }
 }

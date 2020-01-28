@@ -109,19 +109,7 @@ function WebPagesManagerInterface()
                 // Create notification
                 if (!isEmpty(result.status) && !isEmpty(result.message))
                     Web.notifications_manager.create(result.status, result.message, (result.title ? result.title : null), (Number.isInteger(result.timer) ? result.timer : undefined), (result.link ? result.link : null));
-              
-                // Build modal
-                if (result.modal)
-                {
-                    $.magnificPopup.open({
-                        closeOnBgClick: false,
-                        items: [{
-                            modal: true,
-                            src: "/popup/" + result.modal,
-                            type: "ajax"
-                        }]
-                    }, 0);
-                }
+            
               
                 // Create dialog
                 if (result.dialog) {

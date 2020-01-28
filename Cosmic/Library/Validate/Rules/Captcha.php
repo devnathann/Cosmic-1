@@ -35,7 +35,7 @@ class Captcha extends Rule
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_POSTFIELDS, array(
-            'secret' => Config::secretKey,
+            'secret' => Config::site['secretKey'],
             'response' => $value,
             'remoteip' => Core::getIpAddress()
         ));

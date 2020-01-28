@@ -2,6 +2,7 @@
 namespace App\Controllers\Admin;
 
 use App\Config;
+
 use App\Models\Admin;
 use App\Models\Log;
 use App\Models\Player;
@@ -37,12 +38,12 @@ class Shop
       
         if (!empty($id)) {
             Admin::offerEdit($id, $currencys, $amount, $price, $offer_id, $private_key);
-            Log::addStaffLog('-1', 'Shop edited: ' . $offer_id, 'shop');
+            Log::addStaffLog('-1', 'Shop edited: ' . $offer_id, request()->player->id, 'shop');
             return Json::encode(["status" => "success", "message" => "Shop edited successfully!"]);
         }
       
         Admin::offerCreate($currencys, $amount, $price, $offer_id, $private_key);
-        Log::addStaffLog('-1', 'Shop item created: ' . $offer_id, 'shop');
+        Log::addStaffLog('-1', 'Shop item created: ' . $offer_id, request()->player->id, 'shop');
         return Json::encode(["status" => "success", "message" => "Shop created successfully!"]);
     }
   

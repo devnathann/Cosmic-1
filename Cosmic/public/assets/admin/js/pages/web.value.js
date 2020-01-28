@@ -383,7 +383,6 @@ var value = function() {
                     
                     $('#reload-catalog').on('show.bs.modal', function(e) {
                         $(".reload").unbind().click(function () {
-                            console.log(1)
                             self.ajax_manager.post("/housekeeping/api/value/reloadcatalog");
                         });
                     });

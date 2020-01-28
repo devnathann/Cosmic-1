@@ -3,7 +3,7 @@
 {% block body %}
 <header class="page-header flex-container flex-vertical-center">
     <div class="page-header-content">
-        <h1>{{shortname}} Club</h1>
+        <h1>{{site.shortname}} Club</h1>
         {{locale.desc}}
     </div>
 </header>
@@ -11,61 +11,34 @@
 <div class="page-content">
     <div class="left-side">
         <article class="default-section">
-            <div class="aside-title-content">{{shortname}} {{locale.club_benefits}}</div>
+            <div class="aside-title-content">{{site.shortname}} {{locale.club_benefits}}</div>
             <div class="aside-content">
-                <ul>
-                    <li>Je krijgt <b>50 Bel-Credits</b> en <b>1000 Diamanten</b>.</li>
-                    <li>Je krijgt <b>10000 Duckets</b> en <b>20000 Achievement Score</b>.</li>
-                    <li>Je kunt meubels uit de <b>Donatie Winkel</b> kopen.</li>
-                    <li>Je kunt als eerste de <b>Nieuwste Meubi's</b> kopen.</li>
-                    <li>Je kunt <b>volle kamers</b> bezoeken.</li>
-                    <li>Je hebt een korter typverbod (<b>10 seconden</b>).</li>
-                    <li>Je kunt <b>1000 kamers</b> maken (Normaal 150).</li>
-                    <li>Je kunt lid worden van <b>500 groepen</b> (Normaal 150).</li>
-                    <li>Je kunt <b>10 respect</b> geven aan Leet's (Normaal 5).</li>
-                    <li>Je kunt Leet Hotel <b>zonder reclame</b> spelen.</li>
-                    <li>Je hebt toegang tot <b>speciale spraakcommando's</b></li>
-                    <p>
-                        Je ontvangt <b>6 speciale</b> badges<br>
-                        <img src="{{cpath}}/library/c_images/album1584/HC1.gif"> <img src="{{cpath}}/library/c_images/album1584/VIP.gif"> <img src="{{cpath}}/library/c_images/album1584/DON1.gif"> <img src="{{cpath}}/library/c_images/album1584/DON2.gif"> <img src="{{cpath}}/library/c_images/album1584/DON3.gif"><br>
-                    </p>
-                </ul>
-                <h4>De speciale spraakcommando's</h4>
-                <p>Je hebt toegang tot speciale spraakcommando's.</p>
-                <ul>
-                    <li><b>:duw (<i>{{shortname}}naam</i>)</b> duwt de gewenste Leet 1 vak naar voor</li>
-                    <li><b>:trek (<i>{{shortname}}naam</i>)</b> trek een Leet naar je toe</li>
-                    <li><b>:kus (<i>{{shortname}}naam</i>)</b> geef een kusje aan een Leet</li>
-                    <li><b>:sla (<i>{{shortname}}naam</i>)</b> sla een Leet</li>
-                    <li><b>:gezichtloos</b> haal je gezicht weg</li>
-                    <li><b>:trashvrij</b> zorgt ervoor dat Leet's met rechten niks kunnen verplaatsen.</li>
-                    <li><b>:huisdier (<i>lijst</i>)</b> zal je veranderen in het dier dat je kiest uit de lijst</li>
-                    <li><b>:zit</b> zitten op de grond</li>
-                    <li><b>:lig</b> liggen op de grond</li>
-                </ul>
-
-                <h5>Wanneer er nieuwe {{shortname}} Club functies beschikbaar zijn zullen deze zijn inbegrepen!</h5>
+                
+                {{content|raw}}
+              
+                <h4>Badges</h4>
+                {% for badges in data.vip_badges %}
+                    <img src="{{site.cpath}}/c_images/album1584/{{badges|trim('value')}}.gif">
+                {% endfor %}
             </div>
         </article>
     </div>
 
     <div class="right-side">
         <div class="shop-purses">
-
-            {% for value in currencys %}
+            {% for value in data.currencys %}
                 {% if value.type != 0 %}
-                <div class="purse-container {{value.name}}">
+                <div class="purse-container {{value.currency}}">
                    {{value.amount}}
                 </div> 
                 {% endif %}
             {% endfor %}
         </div>
-
         <aside class="default-section">
             <div class="aside-title-content">{{locale.club_buy}}</div>
             <div class="aside-content">
                 <form action="shop/club/buy">
-                    <center><button class="rounded-button blue">{{locale.unlimited}} ({{data.price}} {{data.type}})</button></center>
+                    <center><button class="rounded-button blue">{{locale.unlimited}} ({{data.vip_price}} {{data.vip_type}})</button></center>
                 </form>
             </div>
         </aside>
@@ -73,7 +46,7 @@
         <aside class="default-section">
             <div class="aside-title-content">{{locale.more_information}}</div>
             <div class="aside-content">
-                <p>{{locale.content_1}} {{locale.content_2}} <a href="{{path}}/help/requests/new">{{locale.help_tool}}</a>.</p>
+                <p>{{locale.content_1}} {{locale.content_2}} <a href="{{site.path}}/help/requests/new">{{locale.help_tool}}</a>.</p>
             </div>
         </aside>
 
@@ -84,9 +57,9 @@
                 <div class="members-container">
                     {% for player in data.vip %}
                     <div class="member-container">
-                        <a href="{{path}}/profile/{{player.username}}" class="member-content flex-container flex-vertical-center">
+                        <a href="{{site.path}}/profile/{{player.username}}" class="member-content flex-container flex-vertical-center">
                             <div class="member-avatar flex-container flex-vertical-center flex-horizontal-center">
-                                <img src="{{fpath}}/avatarimage?figure={{player.look}}&head_direction=2&gesture=sml&headonly=true" alt="{{player.username}}" class="pixelated">
+                                <img src="{{site.fpath}}/avatarimage?figure={{player.look}}&head_direction=2&gesture=sml&headonly=true" alt="{{player.username}}" class="pixelated">
                             </div>
                             <div class="member-details">
                                 <div class="details-username">{{player.username}}</div>

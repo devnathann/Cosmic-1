@@ -6,11 +6,11 @@
     <!-- jquery data -->
     <input type="hidden" name="totalpages" value="{{topic.total}}">
     <input type="hidden" name="currentpage" value="{{currentpage}}">
-    <input type="hidden" name="page_url" value="{{path}}/guilds/{{topic.guild_id}}/thread/{{topic.id}}-{{topic.slug}}">
+    <input type="hidden" name="page_url" value="{{site.path}}/guilds/{{topic.guild_id}}/thread/{{topic.id}}-{{topic.slug}}">
     <!-- end jquery data -->
   
     <div class="aside-toolbar-content">
-        <a href="{{path}}/guilds">Home</a> - <a href="{{path}}/guilds/{{topic.guild_id}}-{{topic.slug}}">{{topic.forum.name}}</a> - {{topic.subject}}
+        <a href="{{site.path}}/guilds">Home</a> - <a href="{{site.path}}/guilds/{{topic.guild_id}}-{{topic.slug}}">{{topic.forum.name}}</a> - {{topic.subject}}
     </div>
   
     <div class="aside-toolbar-content">
@@ -33,25 +33,25 @@
              <div class="forum-author">
                 <div class="fpost-user">
                    <strong>
-                      <div class="user-style"><a href="{{path}}/profile/{{post.author.username}}">{{post.author.username}}</a></div>
+                      <div class="user-style"><a href="{{site.path}}/profile/{{post.author.username}}">{{post.author.username}}</a></div>
                    </strong>
                 </div>
                 {% if topic.forum.user_id == post.user_id %}
-                    <div class="forum-user-icon" style="background: url({{path}}/assets/images/web/pages/forum/moderator.png) center no-repeat;"></div>
+                    <div class="forum-user-icon" style="background: url({{site.path}}/assets/images/web/pages/forum/moderator.png) center no-repeat;"></div>
                 {% endif %}
                 <div class="hidden-sm hidden-xs">
                    <div class="forum-post-avatar">
-                      <div style="background: url({{fpath}}/avatarimage?figure={{post.author.look}}&amp;head_direction=3&amp;headonly=1) no-repeat center; width: 48px; height: 62px;"></div>
+                      <div style="background: url({{site.fpath}}/avatarimage?figure={{post.author.look}}&amp;head_direction=3&amp;headonly=1) no-repeat center; width: 48px; height: 62px;"></div>
                    </div>
                 </div>
                 <div class="hidden-sm hidden-xs" style="text-align: left;"><strong>{{locale.topic_since}}</strong> {{post.author.account_created|time_diff}}</div>
                 <div class="hidden-sm hidden-xs" style="text-align: left;"><strong>{{locale.topic_posts}}</strong> {{data.requests.ctickets}}</div>
-                <div style="text-align: right;"><img src="{{path}}/assets/images/web/pages/forum/{% if player.online %}online.gif{% else %}offline.gif{% endif %}"></div>
+                <div style="text-align: right;"><img src="{{site.path}}/assets/images/web/pages/forum/{% if player.online %}online.gif{% else %}offline.gif{% endif %}"></div>
              </div>
              <div class="forum-content">
                 <div class="forum-title">
-                    {% if topic.pinned == 1 %}<img src="{{path}}/assets/images/web/pages/forum/sticky_icon.gif">{% endif %}
-                    {% if topic.locked == 1 %}<img src="{{path}}/assets/images/web/pages/forum/locked_icon.gif">{% endif %}
+                    {% if topic.pinned == 1 %}<img src="{{site.path}}/assets/images/web/pages/forum/sticky_icon.gif">{% endif %}
+                    {% if topic.locked == 1 %}<img src="{{site.path}}/assets/images/web/pages/forum/locked_icon.gif">{% endif %}
                 <strong>
                      {% if loop.first %}{{locale.topic_topic}}{% else %}{{locale.topic_reaction}}{% endif %} {{topic.subject}}
                 </strong>
@@ -67,7 +67,7 @@
                             {% if topic.locked == 1 and currentpage < 2 %}
                             <div class="forum-closed">
                                 <span class="fas fa-times-circle"></span>
-                                {{locale.topic_closed}} <a href="{{path}}/help">{{locale.topic_helptool}}</a>!
+                                {{locale.topic_closed}} <a href="{{site.path}}/help">{{locale.topic_helptool}}</a>!
                             </div>
                             {% endif %}
                         {% endif %}

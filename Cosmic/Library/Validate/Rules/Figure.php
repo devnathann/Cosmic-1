@@ -29,7 +29,7 @@ class Figure extends Rule
     }
 
     public function figure($value) {
-        if(in_array(substr($value, strrpos($value, 'hr-')), Config::look) ? substr($value, strrpos($value, 'hr-')) : Config::look[rand(1, 9)]) {
+        if(in_array(substr($value, strrpos($value, 'hr-')), Config::look['male']) ? substr($value, strrpos($value, 'hr-')) : Config::look['male'][rand(1, 9)]) {
             return true;
         }
 

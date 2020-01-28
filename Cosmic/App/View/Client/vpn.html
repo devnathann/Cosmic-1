@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
-    <title>Geblokkeerd - {{shortname}} Hotel</title>
+    <title>Geblokkeerd - {{site.shortname}} Hotel</title>
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900" rel="stylesheet">
 
@@ -85,9 +85,9 @@
         <div class="notfound">
             <div class="notfound-404"></div>
             {% if type == "vpn" %}
-            <img src="{{path}}/assets/images/web/login-logo.png" style="float:left">
+            <img src="{{site.path}}/assets/images/web/login-logo.png" style="float:left">
                 <h2>#{{asn}} - VPN Geblokkeerd</h2>
-                <p>Helaas is een VPN niet toegestaan binnen {{shortname}}. Schakel je VPN uit om {{shortname}} te kunnen bezoeken.</p>
+                <p>Helaas is een VPN niet toegestaan binnen {{site.shortname}}. Schakel je VPN uit om {{site.shortname}} te kunnen bezoeken.</p>
                 <p>Als je denkt dat dit een fout is maak dan een Help Ticket met de bovenstaande code (<strong>#{{asn}}</strong>).</p>
                 {% elseif type == "language" %}
                 <h2>#{{country}} - Land Geblokkeerd</h2>
@@ -95,10 +95,10 @@
                 <p>Als je denkt dat dit een fout is maak dan een Help Ticket met de bovenstaande code (<strong>#{{country}}</strong>).</p>
                 {% elseif type == "puffin" %}
                     <h2>Puffin Desktop</h2>
-                    <p>Je kunt Puffin alleen gebruiken op de telefoon.<br>Gebruik een andere browser om {{shortname}} te bezoeken.</p>
+                    <p>Je kunt Puffin alleen gebruiken op de telefoon.<br>Gebruik een andere browser om {{site.shortname}} te bezoeken.</p>
                     <p>Als je denkt dat dit een fout is maak dan een Help Ticket.</p>
                 {% endif %}
-                <a href="{{path}}/help/requests/new">Maak Help Ticket</a>
+                <a href="{{site.path}}/help/requests/new">Maak Help Ticket</a>
         </div>
     </div>
 </body>

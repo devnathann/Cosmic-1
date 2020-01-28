@@ -4,6 +4,7 @@ namespace App\Controllers\Shop;
 use App\Config;
 
 use App\Models\Log;
+use App\Models\Core;
 use App\Models\Player;
 
 use Core\Locale;
@@ -14,59 +15,49 @@ use Library\Json;
 
 class Club
 {
+    public $settings;
+  
+    public function __construct() 
+    {
+        $this->settings = Core::settings();
+    }
+  
     public function index()
     {
-        $this->data = new \stdClass();
+        $this->settings->vip_badges = explode(",", preg_replace("/[^a-zA-Z0-9,_]/", "", $this->settings->vip_badges));
+        $this->settings->currencys  = Player::getCurrencys(request()->player->id);
+        $this->settings->vip_type   = Core::getCurrencyByType($this->settings->vip_currency_type)->currency;
+        
       
-        $this->data->price = Config::vipPrice;
-        $this->data->vip = Player::getDataByRank(Config::vipRank, 5);
-
-        foreach(Config::currencys as $value => $key) {
-            if($key == Config::payCurrency) 
-                $this->data->type = $value;
-        }
-
         View::renderTemplate('Shop/club.html', [
-            'title' => Locale::get('core/title/shop/club'),
-            'page'  => 'shop_club',
-            'data'  => $this->data
+            'title'   => Locale::get('core/title/shop/club'),
+            'page'    => 'shop_club',
+            'data'    => $this->settings,
+            'content' => $this->settings->club_page_content
         ]);
     }
 
-    public function buy() {
-        $currency = Player::getCurrencys(request()->player->id)[Config::payCurrency];
-        if(!$currency) {
-            return Json::encode(["status" => "error", "message" => "Je moet eerst ingelogd zijn binnen het hotel om dit te kunnen kopen!"]);
+    public function buy() 
+    {
+        $currency = Player::getCurrencys(request()->player->id)[$this->settings->vip_currency_type];
+
+        if($currency->amount < $this->settings->vip_price) {
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/not_enough_points')]);
         }
       
-        if($currency->amount < Config::vipPrice) {
-            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/not_enough_belcredits')]);
-        }
-      
-        if(request()->player->rank >= Config::vipRank ||request()->player->rank == Config::vipRank) {
+        if(request()->player->rank >= $this->settings->vip_permission_id) {
             return Json::encode(["status" => "error", "message" => Locale::get('shop/club/already_vip')]);
         }
-
-        $playerCurrency = Player::getCurrencys(request()->player->id)[Config::payCurrency];
+  
+        $vip_badges->vip_badges = (object)json_decode($this->settings->vip_badges, true);
       
-        if(request()->player->online && Config::apiEnabled) {
-            HotelApi::execute('givepoints', array('user_id' => request()->player->id, 'points' => -Config::vipPrice, 'type' => Config::payCurrency));
-            HotelApi::execute('givebadge', array('user_id' => request()->player->id, 'badge' => "VIP"));
-            HotelApi::execute('givebadge', array('user_id' => request()->player->id, 'badge' => "HC1"));
-            HotelApi::execute('givebadge', array('user_id' => request()->player->id, 'badge' => "DON1"));
-            HotelApi::execute('givebadge', array('user_id' => request()->player->id, 'badge' => "DON2"));
-            HotelApi::execute('givebadge', array('user_id' => request()->player->id, 'badge' => "DON3"));
-        } else {
-            Player::updateCurrency(request()->player->id, Config::payCurrency, $playerCurrency->amount - Config::vipPrice);
-            Player::giveBadge(request()->player->id, "VIP");
-            Player::giveBadge(request()->player->id, "HC1");
-            Player::giveBadge(request()->player->id, "DON1");
-            Player::giveBadge(request()->player->id, "DON2");
-            Player::giveBadge(request()->player->id, "DON3");
+        foreach($vip_badges as $badge) {
+            HotelApi::execute('givebadge', array('user_id' => request()->player->id, 'badge' => $badge->value));
         }
       
-        HotelApi::execute('setrank', array('user_id' => request()->player->id, 'rank' => Config::vipRank));
-        Log::addPurchaseLog(request()->player->id, Config::shortName.' Club ('.Config::vipPrice.' '.$playerCurrency->name.')', 'NL');
+        HotelApi::execute('givepoints', ['user_id' => request()->player->id, 'points' => - $this->settings->vip_price, 'type' => $this->settings->vip_currency_type]);
+        HotelApi::execute('setrank', ['user_id' => request()->player->id, 'rank' => $this->settings->vip_permission_id]);
+        Log::addPurchaseLog(request()->player->id, Config::site['shortname'].' Club ('.$this->settings->vip_price.' '.$currency->name.')', 'NL');
 
         return Json::encode(["status" => "success", "message" => Locale::get('shop/club/purchase_success'), "replacepage" => "shop/club"]);
     }

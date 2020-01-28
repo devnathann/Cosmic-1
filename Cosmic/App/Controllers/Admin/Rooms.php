@@ -38,7 +38,7 @@ class Rooms
         $max_users = input()->post('maxUsers')->value;
 
         Room::save($room_id, $room_name, $room_desc, $access_type, $max_users);
-        Log::addStaffLog(request()->player->id, 'Saved room: ' . $room_name, 'manage');
+        Log::addStaffLog(request()->player->id, 'Saved room: ' . $room_name, request()->player->id, 'manage');
 
         return Json::encode(["status" => "success", "message" => "Room saved!"]);
     }

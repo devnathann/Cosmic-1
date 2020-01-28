@@ -90,8 +90,8 @@ function HotelLoadingInterface()
             {
               "client.allow.cross.domain": "1",
               "client.notify.cross.domain": "0",
-              "connection.info.host": Site.game_host,
-              "connection.info.port": Site.game_port,
+              "connection.info.host": Client.client_host,
+              "connection.info.port": Client.client_port,
               "site.url": Site.url + '/',
               "url.prefix": Site.url + '/',
               "client.reload.url": Site.url + "/home",

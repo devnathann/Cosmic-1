@@ -37,6 +37,7 @@ class Password
         if (!Hash::verify($currentPassword, request()->player->password)) {
             return Json::encode(["status" => "error", "message" => Locale::get('settings/current_password_invalid')]);
         }
+      
         Player::resetPassword(request()->player->id, $this->data->newpin);
         Session::destroy();
 

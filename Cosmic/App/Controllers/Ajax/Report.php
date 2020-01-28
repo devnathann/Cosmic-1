@@ -21,7 +21,7 @@ class Report
 
         $item = Community::getFeedsByFeedId($itemId);
         if ($item) {
-            if (in_array('housekeeping_moderation_tools', array_column(Permission::get(request()->player->rank), 'permission'))) {
+            if(Permission::exists('housekeeping_moderation_tools', request()->player->rank)) {
                 Community::deleteFeedById($itemId);
                 \App\Models\Report::remove($itemId, 'feed');
 

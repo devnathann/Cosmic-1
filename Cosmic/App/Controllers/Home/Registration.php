@@ -3,6 +3,8 @@ namespace App\Controllers\Home;
 
 use App\Config;
 use App\Auth;
+use App\Core;
+
 use App\Models\Player;
 
 use Core\Locale;
@@ -14,7 +16,7 @@ class Registration
 {
     public function request()
     {
-        $validate = (request())->validator->validate([
+        $validate = request()->validator->validate([
             'username'              => 'required|min:2|max:15|pattern:[a-zA-Z0-9-=?!@:.]+',
             'email'                 => 'required|max:150|email',
             'password'              => 'required|min:6|max:32',
@@ -30,7 +32,7 @@ class Registration
         if(!$validate->isSuccess()) {
             return;
         }
-
+      
         $username = input()->post('username')->value;
 
         $playerData = (object)input()->all();
@@ -43,6 +45,10 @@ class Registration
         if (Player::mailTaken(input()->post('email')->value)) {
             return Json::encode(["status" => "error", "message" => Locale::get('register/email_exists')]);
         }
+      
+        if (Player::checkMaxIp(Core::getIpAddress() >= \App\Models\Core::settings()->registration_max_ip)) {
+            return Json::encode(["status" => "error", "message" => Locale::get('register/too_many_accounts')]);
+        }
 
         if (!Player::create($playerData)) {
             return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong'), "captcha_error" => "error"]);
@@ -50,12 +56,6 @@ class Registration
 
         $player = Player::getDataByUsername($username, array('id', 'password', 'rank'));
 
-        if(Config::currencys) {
-            foreach(Config::currencys as $column => $type) {
-                Player::createCurrency($player->id, $type);
-                Player::updateCurrency($player->id, $type, Config::freeCurrency[$column]);
-            }
-        }
 
         Auth::login($player);
         return Json::encode(["status" => "success", "location" => "/hotel"]);
@@ -65,6 +65,7 @@ class Registration
     {
         View::renderTemplate('Home/registration.html', [
             'title' => Locale::get('core/title/registration'),
+            'looks' => Config::look,
             'page'  => 'registration'
         ]);
     }

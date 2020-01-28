@@ -3,6 +3,7 @@ namespace App\Controllers\Help;
 
 use App\Config;
 use App\Core;
+
 use App\Models\Help;
 use App\Models\Player;
 
@@ -20,21 +21,6 @@ class Requests
     public function __construct()
     {
         $this->data = new stdClass();
-    }
-
-    public function requests()
-    {
-        $tickets = Help::getTicketsByUserId(request()->player->id);
-
-        if ($tickets) {
-            foreach ($tickets as $ticket) {
-                $ticket->timestamp = Core::timediff($ticket->timestamp);
-            }
-        }
-
-        $this->data->tickets = $tickets;
-
-        $this->index();
     }
 
     public function ticket($ticket)
@@ -72,11 +58,7 @@ class Requests
         }
 
         $ticket = Help::getRequestById(input()->post('ticketid'), request()->player->id);
-        if ($ticket == null) {
-            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
-        }
-
-        if ($ticket->player_id != request()->player->id && request()->player->rank < Config::minRank) {
+        if ($ticket == null || $ticket->player_id != request()->player->id) {
             return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         }
 
@@ -85,7 +67,7 @@ class Requests
             return Json::encode(["status" => "success", "message" => Locale::get('help/no_answer_yet')]);
         }
 
-        Help::addTicketReaction($ticket->id, request()->player->id, \App\Core::filterString(input()->post('message')));
+        Help::addTicketReaction($ticket->id, request()->player->id, Core::filterString(input()->post('message')));
         Help::updateTicketStatus($ticket->id, 'wait_reply');
 
         return Json::encode(["status" => "success", "message" => Locale::get('core/notification/message_placed'), "replacepage" => "help/requests/" . $ticket->id . "/view"]);
@@ -107,7 +89,7 @@ class Requests
         }
 
         $this->data->subject = input()->post('subject')->value;
-        $this->data->message = \App\Core::filterString(input()->post('message')->value);
+        $this->data->message = Core::filterString(input()->post('message')->value);
 
         Help::createTicket($this->data, request()->player->id);
         return Json::encode(["status" => "success", "message" => Locale::get('help/ticket_created'), "replacepage" => "help/requests/view"]);
@@ -117,13 +99,6 @@ class Requests
     {
         if(request()->player) {
             $tickets = Help::getTicketsByUserId(request()->player->id);
-
-            if ($tickets) {
-                foreach ($tickets as $ticket) {
-                    $ticket->timestamp = Core::timediff($ticket->timestamp);
-                }
-            }
-
             $this->data->tickets = $tickets;
         }
 

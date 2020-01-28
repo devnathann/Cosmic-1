@@ -53,10 +53,6 @@ class Profile
         $this->data->player->roomCount = count($this->data->player->rooms);
         $this->data->player->photoCount = count($this->data->player->photos);
 
-        foreach ($this->data->player->photos as $row) {
-            $row->timestamp = Core::timediff($row->timestamp);
-        }
-
         $this->data->player->feeds = Community::getFeedsByUserid($player->id);
         $this->data->player->feedCount = count($this->data->player->feeds);
         $this->data->player->feedCountTotal = count($this->data->player->feeds);
@@ -88,7 +84,7 @@ class Profile
             return Json::encode(["status" => "error", "message" => Locale::get('core/notification/profile_notfound')]);
         }
 
-        return Json::encode(["replacepage" => input()->post('search')->value]);
+        return Json::encode(["replacepage" => "profile/" . input()->post('search')->value]);
     }
 
     public function template()

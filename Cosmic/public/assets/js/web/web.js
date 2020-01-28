@@ -105,11 +105,10 @@ function WebInterface()
                 },
                 callbacks: {
                     open: function() {
-                      console.log(1)
                       $(".rounded-input").keypress(function(e){
                           if (e.which == 13){
                               $.magnificPopup.close();
-                              $("#login-request").click();
+                              $("#login-request").unbind().click();
                           }
                       });
                     }

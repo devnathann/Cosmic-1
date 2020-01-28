@@ -4,6 +4,7 @@ namespace App\Controllers\Games;
 use App\Config;
 
 use App\Models\Player;
+use App\Models\Core;
 use App\Models\Community;
 
 use Core\Locale;
@@ -14,13 +15,13 @@ class Ranking
     public function index()
     {
         $currencys = array();
-        foreach(Config::currencys as $currency => $type) 
+        foreach(Core::getCurrencys() as $type) 
         {
-            $highscores = Community::getCurrencyHighscores($type, 6);
-            $type = $currency;
-          
+            $highscores = Community::getCurrencyHighscores($type->type, 6);
+            $type = $type->currency;
+            
             foreach($highscores as $highscore) {
-                $highscore->player = Player::getDataById($highscore->user_id, array('username', 'look'));
+                $highscore->player = Player::getDataById($highscore->user_id, ['username', 'look']);
             }
           
             $currencys[$type] = $highscores;

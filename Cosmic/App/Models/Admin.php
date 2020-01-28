@@ -797,4 +797,9 @@ class Admin
     {
         return QueryBuilder::query('UPDATE website_config SET maintenance = 1 - maintenance');
     }
+  
+    public static function saveSettings($column, $value_id)
+    {
+        return QueryBuilder::table('website_settings')->where('key', $column)->update(array('value' => $value_id));
+    }
 }

@@ -27,6 +27,14 @@ function url(?string $name = null, $parameters = null, ?array $getParams = null)
     return Router::getUrl($name, $parameters, $getParams);
 }
 
+
+function debug($string): Response
+{
+    echo '<pre>';
+    print_r($string);
+    exit;
+}
+
 /**
  * @return \Pecee\Http\Response
  */

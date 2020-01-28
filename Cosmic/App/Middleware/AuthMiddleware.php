@@ -4,6 +4,7 @@ namespace App\Middleware;
 use App\Auth;
 use App\Config;
 use App\Core;
+
 use App\Models\Player;
 
 use Core\Session;
@@ -34,7 +35,7 @@ class AuthMiddleware implements IMiddleware
         }
 
         if (Session::get('ip_address') != Core::getIpAddress()) {
-            Player::update($request->player->id, ['ip_current' => Core::getIpAddress()]);
+            Auth::logout();
         }
     }
 }

@@ -29,7 +29,7 @@ class Preferences
             return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong'), "captcha_error" => "error"]);
         }
 
-        if (Config::apiEnabled && request()->player->online) {
+        if (request()->player->online) {
             HotelApi::execute('updateuser', array('user_id' => request()->player->id, $column => $type));
         } else {
             Player::updateSettings(request()->player->id, $column, $type);

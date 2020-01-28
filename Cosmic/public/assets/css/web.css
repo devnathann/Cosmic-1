@@ -6,29 +6,6 @@ openBtn {
     cursor: pointer;
 }
 
-.tooltip {
-  position: relative;
-  display: inline-block;
-  
-}
-
-.tooltip .tooltip-text {
-  visibility: hidden;
-  width: 120px;ha
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-
-  position: absolute;
-  z-index: 1;
-}
-
-.tooltip:hover .tooltip-text {
-  visibility: visible;
-}
-
 .openBtn:hover {
     background: #bbb;
 }
@@ -53,7 +30,7 @@ openBtn {
     -ms-touch-action: manipulation;
     touch-action: manipulation;
     cursor: pointer;
-    -webkit-user-select: none;
+    -webkit-user-select: none;home
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
@@ -223,7 +200,12 @@ button, html input[type=button], input[type=reset], input[type=submit] {
     color: #fff;
     background-color: #31c766;
 }
-   
+
+.btn-nav {
+    color: #fff;
+    background-color: #2c3b48e0;
+}
+
 .btn {
     display: inline-block;
     padding: 6px 12px;
@@ -1693,7 +1675,7 @@ input:-webkit-autofill{
     overflow: hidden;
     position: relative;
     height: 180px;
-    background: url(https://habbobites.com/images/site/coffee_house_banner.png) no-repeat center;
+    background: url(../images/web/header/15c59e326599a1_oipjfnhqmlgek.gif) no-repeat center;
     background-color: #74d8ea;
     background-repeat: no-repeat;
     border-bottom: 3px solid rgba(8, 8, 8, 0.18);
@@ -2274,9 +2256,6 @@ input:-webkit-autofill{
     overflow: hidden;
 }
 
-
-
-
 .page-container[data-page = "home"] .page-content table {
     width: 100%;
     height: 50px;
@@ -2386,6 +2365,30 @@ input:-webkit-autofill{
 .page-container[data-page = "home"] .page-content .articles-container .article-container .article-content:hover .article-header {
     padding-top: 25px;
     padding-bottom: 25px;
+}
+
+.page-container[data-page = "home"] .page-content .user_of_the_week {
+    background: url('/assets/images/web/pages/home/oftw_background.png');
+    background-size: cover;
+    width: 60px;
+    height: 60px;
+    border-radius: 3px;
+}
+
+.page-container[data-page = "home"] .page-content .user_of_the_week_img {
+    height: 72px;
+    overflow: hidden;
+    margin-top: -12px;
+    margin-left: -2px;
+}
+
+.page-container[data-page = "home"] .page-content .user_of_the_week_info {
+    width: 100%;
+    margin-left: 15px;
+    font-size: 15px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .page-container[data-page = "home"] .page-content .articles-container .article-container .article-content .article-header:before {
@@ -2542,22 +2545,6 @@ input:-webkit-autofill{
 .page-container[data-page = "home"] .page-content article.default-section.profile-section .icons {
     padding-left: 35px;
     margin: 0 20%;
-}
-
-.page-container[data-page = "home"] .page-content article.default-section.profile-section .credits {
-    background: url(../images/hotel/purses/credits-icon.png) no-repeat center center;
-}
-
-.page-container[data-page = "home"] .page-content article.default-section.profile-section .duckets {
-    background: url(../images/hotel/purses/duckets-icon.png) no-repeat center center;
-}
-
-.page-container[data-page = "home"] .page-content article.default-section.profile-section .diamonds {
-    background: url(../images/hotel/purses/diamonds-icon.png) no-repeat center center;
-}
-
-.page-container[data-page = "home"] .page-content article.default-section.profile-section .belcredits {
-    background: url(../images/hotel/purses/belcredits-icon.png) no-repeat center center;
 }
 
 .page-container[data-page = "home"] .page-content article.default-section.profile-section .stats {
@@ -3560,14 +3547,14 @@ input:-webkit-autofill{
 .page-container[data-page = "shop"] .shop-purses .purse-container.diamonds:before,
 .page-container[data-page = "shop_history"] .shop-purses .purse-container.diamonds:before,
 .page-container[data-page = "shop_club"] .shop-purses .purse-container.diamonds:before{
-    background-image: url(../images/hotel/purses/diamonds-icon.png);
+    background-image: url(../images/hotel/purses/5-icon.png);
     background-color: #083666;
 }
 
 .page-container[data-page = "shop"] .shop-purses .purse-container.belcredits:before,
 .page-container[data-page = "shop_history"] .shop-purses .purse-container.belcredits:before,
 .page-container[data-page = "shop_club"] .shop-purses .purse-container.belcredits:before{
-    background-image: url(../images/hotel/purses/belcredits-icon.png);
+    background-image: url(../images/hotel/purses/103-icon.png);
     background-color: #8c4e41;
 }
 
@@ -4071,6 +4058,57 @@ input:-webkit-autofill{
     font-weight: 400;
 }
 
+.page-container[data-page = "community_value"] .page-content .items {
+    height: 50px; 
+    width: 50px; 
+    border:1px solid #dad6d6; 
+    display: inline-block;
+}
+
+.page-container[data-page = "community_value"] .page-content .items .notification-bar {
+    float: right;
+    margin-right: 2px;
+    background-color: #ff0000;
+    border-radius: 50%;
+    color: #fff;
+    padding: 5px;
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+}
+
+.page-container[data-page = "community_value"] .page-content .items .notification-bar .count {
+    margin-top: -5px;
+    margin-left: 1px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.page-container[data-page = "community_value"] .page-content .tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.page-container[data-page = "community_value"] .page-content .tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  width: 165px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.page-container[data-page = "community_value"] .page-content .tooltip:hover .tooltiptext {
+  visibility: visible;
+}
 
 /* Page - Settings */
 .page-container[data-page ^= "settings_"] .page-header{
@@ -4708,6 +4746,7 @@ input:-webkit-autofill{
     margin-top: -3px;
 }
 
+.page-container[data-page = "community_value"] .related-articles-container .related-article-container,
 .page-container[data-page = "article"] .related-articles-container .related-article-container,
 .page-container[data-page = "event"] .related-articles-container .related-article-container{
     display: block;
@@ -4715,11 +4754,13 @@ input:-webkit-autofill{
     line-height: normal;
 }
 
+.page-container[data-page = "community_value"] .related-articles-container .related-article-container,
 .page-container[data-page = "article"] .related-articles-container .related-article-container:not(:first-child),
 .page-container[data-page = "event"] .related-articles-container .related-article-container:not(:first-child){
     margin-top: 13px;
 }
 
+.page-container[data-page = "community_value"] .related-articles-container .related-article-container,
 .page-container[data-page = "article"] .related-articles-container .related-article-container .related-article-thumbnail,
 .page-container[data-page = "event"] .related-articles-container .related-article-container .related-article-thumbnail{
     background-position: center;
@@ -4729,11 +4770,13 @@ input:-webkit-autofill{
     margin-right: 10px;
 }
 
+.page-container[data-page = "community_value"] .related-articles-container .related-article-container,
 .page-container[data-page = "article"] .related-articles-container .related-article-container .related-article-details,
 .page-container[data-page = "event"] .related-articles-container .related-article-container .related-article-details{
     padding-top: 5px;
 }
 
+.page-container[data-page = "community_value"] .related-articles-container .related-article-container,
 .page-container[data-page = "article"] .related-articles-container .related-article-container .related-article-details .related-article-title,
 .page-container[data-page = "event"] .related-articles-container .related-article-container .related-article-details .related-article-title{
     font-weight: 400;
@@ -4743,6 +4786,7 @@ input:-webkit-autofill{
     text-overflow: ellipsis;
 }
 
+.page-container[data-page = "community_value"] .related-articles-container .related-article-container,
 .page-container[data-page = "article"] .related-articles-container .related-article-container .related-article-details .related-article-date,
 .page-container[data-page = "event"] .related-articles-container .related-article-container .related-article-details .related-article-date{
     font-size: 12px;

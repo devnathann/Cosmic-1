@@ -3,7 +3,7 @@
 {% block body %}
         <header class="page-header flex-container flex-vertical-center">
             <div class="page-header-content">
-                <h1>{{shortname}} {{locale.title}}</h1>
+                <h1>{{site.shortname}} {{locale.title}}</h1>
                 {{locale.desc}}
             </div>
         </header>
@@ -27,7 +27,7 @@
                           <h5>{{category.category}}</h5>
 
                           {% for item in category.faq %}
-                          <a href="{{path}}/help/{{item.id}}-{{item.slug}}">{{item.title}}</a><br>
+                          <a href="{{site.path}}/help/{{item.id}}-{{item.slug}}">{{item.title}}</a><br>
                           {% endfor %}
                           {% endif %}
                           {% endfor %}
@@ -40,7 +40,7 @@
                     <div class="aside-title-content">{{locale.help_other_questions}}</div>
                     <div class="aside-content">
                         <p>{{locale.help_content_1}}</p>
-                        <p style="text-align: center;"><a href="{{path}}/help/requests/new" class="rounded-button blue">{{locale.help_contact}}</a></p>
+                        <p style="text-align: center;"><a href="{{site.path}}/help/requests/new" class="rounded-button blue">{{locale.help_contact}}</a></p>
                     </div>
                 </aside>
             </div>

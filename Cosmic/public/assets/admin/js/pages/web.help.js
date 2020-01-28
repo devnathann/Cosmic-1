@@ -237,7 +237,7 @@ var help = function() {
                    title: "Reporter"
                }, {
                    field: "practitioner",
-                   title: "Leef staff"
+                   title: "Staff"
                }, {
                    field: "timestamp",
                    title: "Timestamp"

@@ -15,10 +15,10 @@ $GLOBALS['language'] = array (
             'nav_exchange'          => 'Marketplace',
 
             'nav_shop'              => 'shop',
-            'nav_buy_points'        => 'Purchase GOTW-Points',
-            'nav_buy_club'          => 'Purchase ' . Config::shortName . ' Club',
+            'nav_buy_points'        => Config::site['shortname'] . ' Shop',
+            'nav_buy_club'          => 'Purchase ' . Config::site['shortname'] . ' Club',
             'nav_purchasehistory'   => 'Purchase history',
-            'nav_changename'        => 'Change ' . Config::shortName . 'name',
+            'nav_changename'        => 'Change ' . Config::site['shortname'] . 'name',
 
             'nav_highscores'        => 'Highscores',
 
@@ -58,7 +58,7 @@ $GLOBALS['language'] = array (
             'header_to'             => 'To',
 
             'footer_helptool'       => 'Help Tool',
-            'footer_rules'          => 'The ' . Config::shortName . ' Rules',
+            'footer_rules'          => 'The ' . Config::site['shortname'] . ' Rules',
             'footer_terms'          => 'Terms and Conditions',
             'footer_privacy'        => 'Privacy declaration',
             'footer_cookies'        => 'Cookie policy',
@@ -79,9 +79,9 @@ $GLOBALS['language'] = array (
             'web_dialog_validate'                           => 'Validate',
             'web_dialog_confirm'                            => 'Confirm your choice',
 
-            'web_hotel_backto'                              => 'Back to ' . Config::shortName . ' Hotel',
+            'web_hotel_backto'                              => 'Back to ' . Config::site['shortname'] . ' Hotel',
 
-            'web_fill_pincode'                              => 'Enter the pin code that you specified when creating the extra security on your account. Well, I forgot this one? Then contact us via the ' . Config::shortName . ' Help Tool',
+            'web_fill_pincode'                              => 'Enter the pin code that you specified when creating the extra security on your account. Well, I forgot this one? Then contact us via the ' . Config::site['shortname'] . ' Help Tool',
             'web_twostep'                                   => 'Two-step authorization!',
             'web_login'                                     => 'You must be logged in to report this message!',
             'web_loggedout'                                 => 'Logged out :(',
@@ -108,7 +108,7 @@ $GLOBALS['language'] = array (
 
             'web_page_settings_namechange_request'          => 'Request',
             'web_page_settings_namechange_not_available'    => 'Not available',
-            'web_page_settings_namechange_choose_name'      => 'Choose ' . Config::shortName . 'name',
+            'web_page_settings_namechange_choose_name'      => 'Choose ' . Config::site['shortname'] . 'name',
 
             'web_page_settings_verification_oops'           => 'Oops...',
             'web_page_settings_verification_fill_password'  => 'Enter your password!',
@@ -156,7 +156,7 @@ $GLOBALS['language'] = array (
             'web_page_hotel_sometinhg_wrong_3'              => 'Or create a ticket in the helptool',
             'web_page_hotel_welcome_at'                     => 'Welcome at',
             'web_page_hotel_soon'                           => 'Grab a drink, we\'ll be there soon...',
-            'web_hotel_active_flash_1'                      => 'Youre almost in ' . Config::shortName .'!',
+            'web_hotel_active_flash_1'                      => 'Youre almost in ' . Config::site['shortname'] .'!',
             'web_hotel_active_flash_2'                      => 'Click here',
             'web_hotel_active_flash_3'                      => 'and click on the left side at "allow" flash, to enable flash.'
         ),
@@ -221,21 +221,27 @@ $GLOBALS['language'] = array (
             'load_more'   => 'View more photos'
         ),
         'community_staff' => array (
-            'title'       => 'How do I become an ' . Config::shortName . ' Staff?',
+            'title'       => 'How do I become an ' . Config::site['shortname'] . ' Staff?',
             'desc'        => 'Our staff is to help and guide you within this hotel!',
-            'content_1'   => 'Of course everyone dreams of such a place as an ' . Config::shortName . ' Staff member, but unfortunately this is not for everyone. To become an ' . Config::shortName . ' Staff you must apply.',
+            'content_1'   => 'Of course everyone dreams of such a place as an ' . Config::site['shortname'] . ' Staff member, but unfortunately this is not for everyone. To become an ' . Config::site['shortname'] . ' Staff you must apply.',
             'content_2'   => 'This is only possible at times when we have vacancies, when we have this, this is mentioned in the news.'
         ),
         'community_value' => array (
-            'title_header'    => 'Catalogue marketplace',
-            'decs_header'     => 'All the exclusive furniture with a value higher than the type \'credits\' can you buy here!',
-            'furni_name'      => 'Furniname',
-            'furni_type'      => 'Type',
-            'furni_costs'     => 'Now',
-            'furni_amount'    => 'In game',
-            'furni_value'     => 'Old price',
-            'furni_rate'      => 'Rate',
-            'looking_for'     => 'I\'m looking for..'
+            'title_header'      => 'Catalogue marketplace',
+            'decs_header'       => 'All the exclusive furniture with a value higher than the type \'credits\' can you buy here!',
+            'furni_name'        => 'Furniname',
+            'furni_type'        => 'Type',
+            'furni_costs'       => 'Now',
+            'furni_amount'      => 'In game',
+            'furni_value'       => 'Old price',
+            'furni_rate'        => 'Rate',
+            'looking_for'       => 'I\'m looking for..',
+            'seller'            => 'Seller',
+            'price'             => 'Price',
+            'nav_my'            => 'My marketplace',
+            'nav_shop'          => 'Marketplace',
+            'nav_catalogue'     => 'Catalogue',
+            'marketplace_desc'  => 'Sellers of ' . Config::site['shortname'] . ' hotel offer their stuff here that you can pay for with your currencys. Maybe you will find here exclusive items that you normally cannot buy in our catalogue!'
         ),
         /*     App/View/Games     */
         'games_ranking' => array (
@@ -261,7 +267,7 @@ $GLOBALS['language'] = array (
             'request_react'             => 'React',
             'request_description'       => 'Description',
             'request_react_on_ticket'   => 'React on ticket',
-            'request_contact'           => 'Contact ' . Config::shortName,
+            'request_contact'           => 'Contact ' . Config::site['shortname'],
             'request_contact_help'      => 'You can contact us by opening a new ticket.',
             'request_new_ticket'        => 'New ticket',
             'request_subject'           => 'Subject',
@@ -284,9 +290,9 @@ $GLOBALS['language'] = array (
             'friends_online'         => 'Online friends',
             'now_in'                 => 'Now in',
             'latest_news'            => 'Latest news',
-            'latest_facts'           => 'The latest facts within ' . Config::shortName . '!',
+            'latest_facts'           => 'The latest facts within ' . Config::site['shortname'] . '!',
             'popular_rooms'          => 'Popular rooms',
-            'popular_rooms_label'    => 'Know which rooms are trending within '. Config::shortName . '!',
+            'popular_rooms_label'    => 'Know which rooms are trending within '. Config::site['shortname'] . '!',
             'popular_no_rooms'       => 'There is nobody inside our Hotel!!',
             'goto_room'              => 'Goto room',
             'popular_groups'         => 'Popular groups',
@@ -353,17 +359,17 @@ $GLOBALS['language'] = array (
             'month'                 => 'Month',
             'year'                  => 'Year',
             'birthdate_help'        => 'We will need this information to restore your account in case you lose access.',
-            'found'                 => 'How did you find ' . Config::shortName . ' Hotel?',
+            'found'                 => 'How did you find ' . Config::site['shortname'] . ' Hotel?',
             'found_choose'          => 'Make a choice...',
             'found_choose_1'        => 'Google',
             'found_choose_2'        => 'By a friend',
             'found_choose_3'        => 'By another game',
             'found_choose_4'        => 'By Facebook',
             'found_choose_5'        => 'Other',
-            'create_user'           => 'Create your ' . Config::shortName . '!',
-            'username'              =>  Config::shortName . 'name',
-            'username_fill'         =>  Config::shortName . 'name...',
-            'username_help'         => 'Your unique name in ' . Config::shortName . ' Hotel.',
+            'create_user'           => 'Create your ' . Config::site['shortname'] . '!',
+            'username'              =>  Config::site['shortname'] . 'name',
+            'username_fill'         =>  Config::site['shortname'] . 'name...',
+            'username_help'         => 'Your unique name in ' . Config::site['shortname'] . ' Hotel.',
             'sex'                   => 'Sex',
             'male'                  => 'Boy',
             'female'                => 'Girl',
@@ -374,14 +380,14 @@ $GLOBALS['language'] = array (
         /*     App/View/Jobs     */
         'apply' => array (
             'title'               => 'React on the invoice',
-            'content_1'           => 'Thank you for your interest in ' . Config::shortName . ' Hotel and for responding to the vacancy.',
+            'content_1'           => 'Thank you for your interest in ' . Config::site['shortname'] . ' Hotel and for responding to the vacancy.',
             'content_2'           => 'Try to answer the questionnaire as accurately as possible.',
             'description'         => 'Job description',
             'question_name'       => 'What\'s your name?',
             'question_age'        => 'How old are you?',
             'question_why'        => 'Why do you think you might be suitable?',
             'question_time'       => 'How many hours are you online?',
-            'question_time_help'  => 'Tell us how many hours you spend online a day at ' . Config::shortName . ' Hotel.',
+            'question_time_help'  => 'Tell us how many hours you spend online a day at ' . Config::site['shortname'] . ' Hotel.',
             'monday'              => 'Monday',
             'tuesday'             => 'Tuesday',
             'wednesday'           => 'Wednesday',
@@ -404,9 +410,9 @@ $GLOBALS['language'] = array (
         /*     App/View/Password     */
         'password_claim' => array (
             'title'                 => 'Forgot your password?',
-            'content_1'             => 'Enter your ' . Config::shortName . 'name and e-mailaddress below and we will send you a link by e-mail to change your password.',
+            'content_1'             => 'Enter your ' . Config::site['shortname'] . 'name and e-mailaddress below and we will send you a link by e-mail to change your password.',
             'content_2'             => 'Don\'t do this if someone asks you to do this!',
-            'username'              =>  Config::shortName . 'name',
+            'username'              =>  Config::site['shortname'] . 'name',
             'email'                 => 'E-mailadress',
             'send'                  => 'Send e-mail',
             'wrong_page'            => 'False alarm!',
@@ -427,7 +433,7 @@ $GLOBALS['language'] = array (
             'password'       => 'Change password',
             'verification'   => 'Set verification',
             'email'          => 'Change e-mailadress',
-            'namechange'     => 'Change ' . Config::shortName . 'name',
+            'namechange'     => 'Change ' . Config::site['shortname'] . 'name',
             'shop_history'   => 'Purchase history'
         ),
         'settings_email' => array (
@@ -439,10 +445,10 @@ $GLOBALS['language'] = array (
             'save'            => 'Save'
         ),
         'settings_namechange' => array (
-            'title'           => 'Change ' . Config::shortName . 'name',
-            'help_1'          => 'Do you want to change your ' . Config::shortName . 'name? Which can! This costs',
+            'title'           => 'Change ' . Config::site['shortname'] . 'name',
+            'help_1'          => 'Do you want to change your ' . Config::site['shortname'] . 'name? Which can! This costs',
             'help_2'          => 'and will be debited immediately after your request. Once your name has been changed we cannot reverse it! So make sure you think carefully about your decision!',
-            'fill_username'   =>  Config::shortName . 'name...',
+            'fill_username'   =>  Config::site['shortname'] . 'name...',
             'request'         => 'Request'
         ),
         'settings_password' => array (
@@ -458,7 +464,7 @@ $GLOBALS['language'] = array (
         'settings_preferences' => array (
             'title'               => 'My preferences',
             'follow_title'        => 'Follow function - who can follow you?' ,
-            'follow_label'        => 'I don\'t want ' . Config::shortName . '\'s to follow me',
+            'follow_label'        => 'I don\'t want ' . Config::site['shortname'] . '\'s to follow me',
             'friends_title'       => 'Friend requests',
             'friends_label'       => 'Allow friendship requests?',
             'room_title'          => 'Room invites',
@@ -482,7 +488,7 @@ $GLOBALS['language'] = array (
             'pincode_label'         => 'Put a pincode on your account as extra security, with this you ensure better protection of your account against hackers.',
             'fill_pincode'          => 'Enter your pincode',
             'generate_auth'         => 'Code generation by 2FA',
-            'generate_auth_label'   => 'This method is the most reliable. It links your ' . Config::shortName . ' account to an authentication application (Google Authenticator) on your phone. When you sign up, all you have to do is enter the code generated by your app.',
+            'generate_auth_label'   => 'This method is the most reliable. It links your ' . Config::site['shortname'] . ' account to an authentication application (Google Authenticator) on your phone. When you sign up, all you have to do is enter the code generated by your app.',
             'link_account'          => 'Link your account',
             'link_account_label'    => 'To link your account, simply scan this QR code with your application and then click save to validate this change.',
             'save'                  => 'Save'
@@ -491,13 +497,13 @@ $GLOBALS['language'] = array (
         /*     App/View/Shop     */
         'shop_club' => array (
             'club_benefits'       => 'Club benefits',
-            'club_buy'            => 'Purchase ' . Config::shortName . ' Club',
+            'club_buy'            => 'Purchase ' . Config::site['shortname'] . ' Club',
             'unlimited'           => 'Unlimited',
             'more_information'    => 'More information',
             'content_1'           => 'Do you have a question or problem with a purchase?',
             'content_2'           => 'Do not hesitate to contact customer service via the',
-            'help_tool'           =>  Config::shortName . ' Help Tool',
-            'random_club_users'   => 'Random ' . Config::shortName . ' Club members',
+            'help_tool'           =>  Config::site['shortname'] . ' Help Tool',
+            'random_club_users'   => 'Random ' . Config::site['shortname'] . ' Club members',
             'desc'                => 'Here you can buy a club for real money. With club you can buy exclusive items.'
         ),
         'shop_history' => array (
@@ -505,10 +511,10 @@ $GLOBALS['language'] = array (
             'product'             => 'Product',
             'date'                => 'Date',
             'buy_history_empty'   => 'You do not have a purchase history yet.',
-            'buy_club'            => 'Purchase ' . Config::shortName . ' Club',
+            'buy_club'            => 'Purchase ' . Config::site['shortname'] . ' Club',
             'content_1'           => 'Do you have a question or problem with a purchase?',
             'content_2'           => 'Do not hesitate to contact customer service via the',
-            'help_tool'           =>  Config::shortName . ' Help Tool',
+            'help_tool'           =>  Config::site['shortname'] . ' Help Tool',
             'title'               => 'My Purchase history',
             'desc'                => 'You see here all the purchases you have made'
         ),
@@ -529,9 +535,9 @@ $GLOBALS['language'] = array (
             'more_information'  => 'More information',
             'content_1'         => 'Do you have a question or problem with a purchase?',
             'content_2'         => 'Do not hesitate to contact customer service via the',
-            'help_tool'         =>  Config::shortName . ' Help Tool',
+            'help_tool'         =>  Config::site['shortname'] . ' Help Tool',
             'not_logged'        => 'Oops! You\'re not logged in.',
-            'have_to_login'     => 'You must be logged in to visit the ' . Config::shortName . ' Shop.',
+            'have_to_login'     => 'You must be logged in to visit the ' . Config::site['shortname'] . ' Shop.',
             'click_here'        => 'Click here',
             'to_login'          => 'to log in.',
             'store'             => 'Store',
@@ -555,17 +561,18 @@ $GLOBALS['language'] = array (
             'message_placed'        => 'Your message has been posted!',
             'message_deleted'       => 'Your message has been deleted!',
             'invisible'             => 'This is made invisible!',
-            'profile_invisible'     => 'This ' . Config::shortName . ' has made his/her profile invisible.',
-            'profile_notfound'      => 'Unfortunately.. we could not find the ' . Config::shortName . '!',
+            'profile_invisible'     => 'This ' . Config::site['shortname'] . ' has made his/her profile invisible.',
+            'profile_notfound'      => 'Unfortunately.. we could not find the ' . Config::site['shortname'] . '!',
             'no_permissions'        => 'You do not have permission.',
             'already_liked'         => 'You already like this!',
             'liked'                 => 'You like this!',
-            'banned_1'              => 'You have been banned for breaking the ' . Config::shortName . ' Rules:',
+            'banned_1'              => 'You have been banned for breaking the ' . Config::site['shortname'] . ' Rules:',
             'banned_2'              => 'Your ban expires:',
             'something_wrong'       => 'Something went wrong, please try again.',
             'room_not_exists'       => 'This room does not exist!',
-            'staff_received'        => 'Thanks! The ' . Config::shortName . ' Staff has received this!',
+            'staff_received'        => 'Thanks! The ' . Config::site['shortname'] . ' Staff has received this!',
             'not_enough_belcredits' => 'You do not have enough gotwpoints.',
+            'not_enough_points'     => 'You do not have enough points.',
             'topic_closed'          => 'You cannot respond to a topic that has been closed!',
             'post_not_allowed'      => 'You don\'t have access to create a post in this forum!'
         ),
@@ -595,13 +602,13 @@ $GLOBALS['language'] = array (
                 'index'         => 'My preferences',
                 'password'      => 'Change password',
                 'email'         => 'Change e-mail',
-                'namechange'    => 'Change ' . Config::shortName . 'name'
+                'namechange'    => 'Change ' . Config::site['shortname'] . 'name'
             ),
             'community' => array (
                 'index'     => 'Community',
                 'photos'    => 'Photo\'s',
-                'staff'     =>  Config::shortName . ' Staff',
-                'team'      =>  Config::shortName . ' Team',
+                'staff'     =>  Config::site['shortname'] . ' Staff',
+                'team'      =>  Config::site['shortname'] . ' Team',
                 'fansites'  => 'Fansites',
                 'value'     => 'Catalogue Marketplace',
                 'forum'     => 'My Guilds'
@@ -610,9 +617,9 @@ $GLOBALS['language'] = array (
                 'ranking'   => 'Highscores'
             ),
             'shop' => array (
-                'index'     =>  Config::shortName . ' Store',
+                'index'     =>  Config::site['shortname'] . ' Store',
                 'history'   => 'Purchase history',
-                'club'      =>  Config::shortName . ' Club'
+                'club'      =>  Config::site['shortname'] . ' Club'
             ),
             'help' => array (
                 'index'     => 'Help Tool',
@@ -620,23 +627,24 @@ $GLOBALS['language'] = array (
                 'new'       => 'Open Help Ticket'
             ),
             'jobs' => array (
-                'index'     =>  Config::shortName . ' Vacancies',
+                'index'     =>  Config::site['shortname'] . ' Vacancies',
                 'apply'     => 'Respond to vacancy'
             )
         )
     ),
     'login' => array (
         'invalid_password'          => 'Invalid password.',
-        'invalid_pincode'           => 'This pin code does not match that of this ' . Config::shortName . '!',
+        'invalid_pincode'           => 'This pin code does not match that of this ' . Config::site['shortname'] . '!',
         'fill_in_pincode'           => 'Enter your pin code now to gain access to your account!'
     ),
     'register' => array (
-        'username_invalid'          =>  Config::shortName . 'name is contrary to the ' . Config::shortName . ' Rules.',
-        'username_exists'           =>  Config::shortName . 'name is already in use :-(',
+        'username_invalid'          =>  Config::site['shortname'] . 'name is contrary to the ' . Config::site['shortname'] . ' Rules.',
+        'username_exists'           =>  Config::site['shortname'] . 'name is already in use :-(',
         'email_exists'              =>  'This e-mail address is already in use :-(',
+        'too_many_accounts'         => 'There are too many accounts registered on this ip :-('
     ),
     'claim' => array (
-        'invalid_email'             => 'This e-mail address does not match that of this ' . Config::shortName . ' ID.',
+        'invalid_email'             => 'This e-mail address does not match that of this ' . Config::site['shortname'] . ' ID.',
         'invalid_link'              => 'This link has expired. Request your password again to change your password.',
         'send_link'                 => 'We have just sent you an e-mail! Received nothing? Then check the junk e-mail folder.',
         'password_changed'          => 'Your password has been changed. You can now log in again!',
@@ -650,11 +658,11 @@ $GLOBALS['language'] = array (
         'pincode_saved'             => 'Your pin code has been saved, you will have to log in again. See you soon! :)',
         'password_saved'            => 'Your password has been changed. You will now have to log in again. See you soon! :)',
         'preferences_saved'         => 'Your preferences have been saved!',
-        'current_password_invalid'  => 'Current password does not match that of your ' . Config::shortName . ' ID.',
-        'choose_new_username'       => 'Enter a new ' . Config::shortName . 'name.',
+        'current_password_invalid'  => 'Current password does not match that of your ' . Config::site['shortname'] . ' ID.',
+        'choose_new_username'       => 'Enter a new ' . Config::site['shortname'] . 'name.',
         'choose_new_pincode'        => 'Enter a new pin code.',
-        'user_is_active'            => 'This ' . Config::shortName . ' may still be active!',
-        'user_not_exists'           => 'This ' . Config::shortName . 'name is available and does not exist yet!',
+        'user_is_active'            => 'This ' . Config::site['shortname'] . ' may still be active!',
+        'user_not_exists'           => 'This ' . Config::site['shortname'] . 'name is available and does not exist yet!',
         'name_change_saved'         => 'Your application will be processed, 50 gotw-points have been debited.',
         'invalid_secretcode'        => 'Google Authentication secret code is incorrect.',
         'enabled_secretcode'        => 'Authentication method set! You will have to log in again... see you soon!',
@@ -668,16 +676,21 @@ $GLOBALS['language'] = array (
             'success_2'             => 'gotw-points.'
         ),
         'club' => array (
-            'already_vip'           => 'You are an unlimited member of the ' . Config::shortName . ' Club.',
-            'purchase_success'      => 'Yeah! You are now a member of the ' . Config::shortName . ' Club for 31 days.'
+            'already_vip'           => 'You are an unlimited member of the ' . Config::site['shortname'] . ' Club.',
+            'purchase_success'      => 'Yeah! You are now a member of the ' . Config::site['shortname'] . ' Club for 31 days.'
 
+        ),
+        'marketplace' => array(
+            'expired'               => 'Item is expired, its not possible to purchase this item!',
+            'purchased'             => 'Item is succesfull purchased and is now added to your inventory',
+            'regards'               => 'Your item has been arrived! Friendly regards from ' . Config::site['shortname']
         )
     ),
     'help' => array (
         'ticket_created'            => 'Your Help Ticket has been created. View your Help Tickets to view the help request.',
-        'ticket_received'           => 'An ' . Config::shortName . ' Staff has responded to your Help Tool ticket. Visit the Help Tool to view the response.',
+        'ticket_received'           => 'An ' . Config::site['shortname'] . ' Staff has responded to your Help Tool ticket. Visit the Help Tool to view the response.',
         'already_open'              => 'You still have an outstanding ticket! When this has been treated you can create a ticket again.',
-        'no_answer_yet'             => 'You can only respond once an ' . Config::shortName . ' Staff has answered your ticket.',
+        'no_answer_yet'             => 'You can only respond once an ' . Config::site['shortname'] . ' Staff has answered your ticket.',
     ),
     'forum' => array (
         'is_sticky'                 => 'Sticky updated!',

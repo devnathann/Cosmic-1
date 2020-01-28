@@ -190,19 +190,15 @@
                             <div class="avatars-container">
                                 <input type="hidden" name="figure" value="hr-802-37.hd-185-1.ch-804-82.lg-280-73.sh-3068-1408-1408.wa-2001">
                                 <div class="avatars-preload">
-                                    <img class="male-avatar1 pixelated" src="{{fpath}}/avatarimage?figure=hr-802-37.hd-185-1.ch-804-82.lg-280-73.sh-3068-1408-1408.wa-2001&amp;direction=4&amp;size=l" alt="Preload avatar M1">
-                                    <img class="male-avatar2 pixelated" src="{{fpath}}/avatarimage?figure=hr-893-36.hd-208-8.ch-225-73.lg-270-64.sh-300-64.ea-1406.wa-2001&amp;direction=4&amp;size=l" alt="Preload avatar M2">
-                                    <img class="male-avatar3 pixelated" src="{{fpath}}/avatarimage?figure=hr-165-39.hd-180-8.ch-255-82.lg-275-1408&amp;direction=4&amp;size=l" alt="Preload avatar M3">
-                                    <img class="male-avatar4 pixelated" src="{{fpath}}/avatarimage?figure=hr-170-35.hd-190-10.ch-267-72.lg-3290-64.sh-3068-1408-72.cp-3125-64&amp;direction=4&amp;size=l" alt="Preload avatar M4">
-                                    <img class="male-avatar5 pixelated" src="{{fpath}}/avatarimage?figure=hr-125-31.hd-209-14.ch-3030-64.lg-275-64.sh-295-64.ha-1020.fa-1201&amp;direction=4&amp;size=l" alt="Preload avatar M5">
-                                    <img class="female-avatar1 pixelated" src="{{fpath}}/avatarimage?figure=hr-890-35.hd-629-8.ch-665-76.lg-696-76.sh-730-64.ha-1003-64&amp;direction=4&amp;size=l" alt="Preload avatar F1">
-                                    <img class="female-avatar2 pixelated" src="{{fpath}}/avatarimage?figure=hr-890-37.hd-605-8.ch-650-76.lg-715-76.sh-907-71.he-3274-71.fa-3276-1408.ca-1812.wa-2008&amp;direction=4&amp;size=l" alt="Preload avatar F2">
-                                    <img class="female-avatar3 pixelated" src="{{fpath}}/avatarimage?figure=hd-629-8.ch-630-1408.lg-695-1408.sh-730-1408.ca-1812&amp;direction=4&amp;size=l" alt="Preload avatar F3">
-                                    <img class="female-avatar4 pixelated" src="{{fpath}}/avatarimage?figure=hr-545-45.hd-600-14.ch-650-76.lg-696-64.sh-907-76.he-1602-1408.wa-3210-1408-1408&amp;direction=4&amp;size=l" alt="Preload avatar F4">
-                                    <img class="female-avatar5 pixelated" src="{{fpath}}/avatarimage?figure=hr-890-42.hd-625-14.ch-3113-75-64.lg-720-64.sh-3115-75-64.he-1605-74&amp;direction=4&amp;size=l" alt="Preload avatar F5">
+                                    {% for key,gender in looks %}
+                                      {% for number,look in gender %}
+                                          <img class="{{key}}-avatar{{number}} pixelated" src="{{site.fpath}}/avatarimage?figure={{look}}&amp;direction=4&amp;size=l" alt="Preload avatar M1">
+                                          {{key}}
+                                      {% endfor %}
+                                    {% endfor %}
                                 </div>
                                 <div class="avatar-container">
-                                    <img src="{{fpath}}/avatarimage?figure=hr-802-37.hd-185-1.ch-804-82.lg-280-73.sh-3068-1408-1408.wa-2001&amp;direction=4&amp;size=l" alt="Avatar" class="pixelated">
+                                    <img src="{{site.fpath}}/avatarimage?figure=hr-802-37.hd-185-1.ch-804-82.lg-280-73.sh-3068-1408-1408.wa-2001&amp;direction=4&amp;size=l" alt="Avatar" class="pixelated">
                                 </div>
                                 <div class="tabs-container">
                                     <span class="selected" data-avatar="1"></span>

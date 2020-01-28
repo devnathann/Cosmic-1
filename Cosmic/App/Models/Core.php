@@ -1,35 +1,55 @@
 <?php
 namespace App\Models;
 
+use PDO;
 use QueryBuilder;
 
 class Core
 {
-    public static function getField($table, $data, $id, $player_id)
+    public static function settings()
     {
-        $query = QueryBuilder::table($table)->select($data)->where($id, $player_id)->first();
-        return $query->$data ?? null;
-    }
-
-    public static function permission($permission, $player_rank)
-    {
-        if (in_array($permission, array_column(Permission::get($player_rank), 'permission'))) {
-            return true;
+        $settings = QueryBuilder::table('website_settings')->get();
+      
+        $inArray = new \stdClass();
+      
+        foreach($settings as $setting) {
+            if(!empty($setting->value) && !is_null($setting->value)) {
+                $key           = $setting->key;
+                $inArray->$key = $setting->value;
+            }
         }
-
-        return false;
+      
+        return $inArray;
     }
-
-    public static function getWebsitePage($select) {
-        return QueryBuilder::table('website_pages')->select('website_pages.*')->select('website_pages_categories.name')
-                    ->join('website_pages_categories', 'website_pages.category', '=', 'website_pages_categories.id')
-                    ->where('website_pages.action', $select)->first();
-    }
-
-    public static function getWebsiteConfig($select)
+  
+    public static function getCurrencys($array = false)
     {
-        $query = QueryBuilder::table('website_config')->select($select)->first();
-        return $query->$select;
+        return QueryBuilder::table('website_settings_currencys')->get();
+    }
+  
+    public static function getCurrencyByType($type)
+    {
+        return QueryBuilder::table('website_settings_currencys')->where('type', $type)->first();
+    }
+  
+    public static function getRegisteredUsers()
+    {
+        return QueryBuilder::table('users')->count();
+    }
+  
+    public static function getCatalogPages()
+    {
+        return QueryBuilder::table('catalog_pages')->count();
+    }
+  
+    public static function getCatalogItems()
+    {
+        return QueryBuilder::table('catalog_items')->count();
+    }
+ 
+    public static function getItems()
+    {
+        return QueryBuilder::table('items_base')->count();
     }
 
     public static function getOnlineCount()

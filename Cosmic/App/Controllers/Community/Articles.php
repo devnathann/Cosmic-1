@@ -2,9 +2,10 @@
 namespace App\Controllers\Community;
 
 use App\Config;
+use App\Core;
 
 use App\Models\Community;
-use App\Models\Core;
+use App\Models\Permission;
 use App\Models\Player;
 use App\Models\Admin;
 
@@ -32,12 +33,11 @@ class Articles
 
         $news_id = input()->post('post')->value;
 
-        if(Core::permission('housekeeping_moderation_tools', request()->player->id)) {
+        if(Permission::exists('housekeeping_moderation_tools', request()->player->id)) {
             return Json::encode(["status" => "error", "is_hidden" => "show", "message" => Locale::get('core/notification/something_wrong')]);
         }
 
-        $is_hidden = Core::getField('website_news_reactions', 'hidden', 'id', $news_id);
-        if($is_hidden == 0) {
+        if(Community::isNewsHidden($news_id)->hidden == 0) {
             Community::hideNewsReaction($news_id, '1');
             return Json::encode(["status" => "success", "is_hidden" => "hide", "message" => Locale::get('website/article/reaction_hidden_yes')]);
         }
@@ -63,7 +63,7 @@ class Articles
             return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         }
 
-        $message = \App\Core::filterString(\App\Core::tagByUser(input()->post('message')->value, $article->id));
+        $message = Core::filterString(Core::tagByUser(input()->post('message')->value, $article->id));
 
         $wordfilter = Admin::getWordFilters();
 

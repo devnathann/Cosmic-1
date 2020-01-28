@@ -58,18 +58,18 @@ class Remote
       
         $this->data->user->currencys     = Player::getCurrencys($this->user->id);
 
-        if(\App\Models\Core::permission('housekeeping_ranks', request()->player->rank)) {
+        if(Permission::exists('housekeeping_ranks', request()->player->rank)) {
             $this->data->hotel_ranks     = Permission::getRanks(true);
         }
 
-        if ($this->user->rank >= request()->player->rank && $this->user->rank != Config::maxRank) {
-            Log::addStaffLog($this->user->id, 'No permissions for Remote Control', 'error');
+        if ($this->user->rank >= request()->player->rank) {
+            Log::addStaffLog($this->user->id, 'No permissions for Remote Control', request()->player->id, 'error');
             Flash::addMessage('You have no permissions!', FLASH::ERROR);
             redirect('/housekeeping');
         }
       
         $log = isset($type) && !empty($type) ? $type : 'All user information';
-        Log::addStaffLog($this->user->id, 'Checked ' . $log, 'check');
+        Log::addStaffLog($this->user->id, 'Checked ' . $log, request()->player->id, 'check');
 
         $this->template();
     }
@@ -103,9 +103,7 @@ class Remote
         }
 
         $player = Player::getDataByUsername(input()->post('element')->value, 'username');
-        $type = input()->post('type')->value;
-
-        return Json::encode(["location" => "/housekeeping/remote/user/view/{$player->username}/{$type}"]);
+        return Json::encode(["location" => "/housekeeping/remote/user/view/{$player->username}"]);
     }
 
     public function reset()
@@ -116,16 +114,11 @@ class Remote
         ]);
 
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
 
-        $player = Player::getDataByUsername(input()->post('element')->value, array('id','username','online','gender'));
-        if($player == null) {
-            return Json::encode(["status" => "error", "message" => "User doesnt exist"]);
-        }
-
-        if(!\App\Models\Core::permission('housekeeping_reset_user', request()->player->rank)) {
-            Log::addStaffLog($player->id, 'No permissions to reset', 'error');
+        if(!Permission::exists('housekeeping_reset_user', request()->player->rank)) {
+            Log::addStaffLog($player->id, 'No permissions to reset', request()->player->id, 'error');
             return Json::encode(["status" => "error", "message" => "No permissions to reset!"]);
         }
   
@@ -133,12 +126,8 @@ class Remote
             
             case 1:
             
-                Player::update($player->id, ['motto' => 'Onacceptabel voor het Hotel Management']);
-                Log::addStaffLog($player->id, 'Reset motto', 'reset');
-
-                if (Config::apiEnabled && $player->online) {
-                    HotelApi::execute('setmotto', array('user_id' => $player->id, 'motto' => 'Onacceptabel voor het Hotel Management'));
-                }
+                Log::addStaffLog($player->id, 'Reset motto', request()->player->id, 'reset');
+                HotelApi::execute('setmotto', ['user_id' => $player->id, 'motto' => 'Onacceptabel voor het Hotel Management']);
             
                 return Json::encode(["status" => "success", "message" => "The motto of {$player->username} is resetted!"]);
 
@@ -146,15 +135,7 @@ class Remote
 
             case 2: 
                         
-                Player::update($player->id, ['look' => $player->gender == 'M' ? 
-                    'hr-802-37.hd-185-1.ch-804-82.lg-280-73.sh-3068-1408-1408.wa-2001': 
-                    'hr-890-35.hd-629-8.ch-665-76.lg-696-76.sh-730-64.ha-1003-64'
-                ]);
-            
-                if (Config::apiEnabled && $player->online) {
-                    HotelApi::execute('updateuser', array('user_id' => $player->id, 'look' => "hr-802-37.hd-185-1.ch-804-82.lg-280-73.sh-3068-1408-1408.wa-2001"));
-                }
-            
+                HotelApi::execute('updateuser', ['user_id' => $player->id, 'look' => "hr-802-37.hd-185-1.ch-804-82.lg-280-73.sh-3068-1408-1408.wa-2001"]);
                 return Json::encode(["status" => "success", "message" => "The look of {$player->username} is resetted!"]);
 
                 break;
@@ -169,37 +150,32 @@ class Remote
         ]);
 
         if(!$validate->isSuccess()) {
-            exit;
+            return;
         }
 
-        $player = Player::getDataByUsername(input()->post('element')->value, array('id', 'username', 'online'));
-        if($player == null) {
-            return Json::encode(["status" => "error", "message" => "User doesnt exist"]);
-        }
-
-        if(!\App\Models\Core::permission('housekeeping_alert_user', request()->player->rank)) {
-            Log::addStaffLog($player->id, 'No permissions to send alert', 'error');
+        if(!Permission::exists('housekeeping_alert_user', request()->player->rank)) {
+            Log::addStaffLog($player->id, 'No permissions to send alert', request()->player->id, 'error');
             return Json::encode(["status" => "error", "message" => "You have no permissions!"]);
         }
 
         $alert_message = Admin::getAlertMessagesById(input()->post('reason')->value);
 
-        if (!Config::apiEnabled || !$player->online) {
+        if (!$player->online) {
             return Json::encode(["status" => "error", "message" => "This user is offline!"]);
         }
 
         switch (input()->post('action')->value) {
             case 1:
-                HotelApi::execute('disconnect', array('user_id' => $player->id));
+                HotelApi::execute('disconnect', ['user_id' => $player->id]);
                 break;
 
             case 2:
-                HotelApi::execute('muteuser', array('user_id' => $player->id, 'duration' => 600));
+                HotelApi::execute('muteuser', ['user_id' => $player->id, 'duration' => 600]);
                 break;
         }
 
-        HotelApi::execute('alertuser', array('user_id' => $player->id, 'message' => $alert_message->message));
-        Log::addStaffLog($player->id, 'Alert send: ' . $alert_message->message, 'alert');
+        HotelApi::execute('alertuser', ['user_id' => $player->id, 'message' => $alert_message->message]);
+        Log::addStaffLog($player->id, 'Alert send: ' . $alert_message->message, request()->player->id, 'alert');
         return Json::encode(["status" => "success", "message" => "The user {$player->username} received a alert!"]);
     }
 
@@ -215,26 +191,12 @@ class Remote
             return;
         }
 
-        $player = Player::getDataByUsername(input()->post('element')->value, array('id','username','rank', 'ip_current'));
-        if($player == null) {
-            return Json::encode(["status" => "error", "message" => "The user does\'nt exists."]);
-        }
-
-        if($player->rank >= Config::maxRank && \App\Models\Core::permission('housekeeping_ban_user', request()->player->rank)) {
-            Log::addStaffLog($player->id, 'No permissions to ban', 'error');
-            return Json::encode(["status" => "error", "message" => "You have no permissions to do this action!"]);
-        }
-      
         $ban_message = Admin::getBanMessagesById(input()->post('reason')->value);
         $ban_time = Admin::getBanTimeById(input()->post('expire')->value);
 
-        if(input()->post('type')->value == "ip") {
-            Ban::insertBan($player->id, $player->ip_current, request()->player->id, time() + $ban_time->seconds, $ban_message->message, 'ip');
-        } else {
-            Ban::insertBan($player->id, $player->ip_current, request()->player->id, time() + $ban_time->seconds, $ban_message->message, 'account');
-        }
+        Ban::insertBan($player->id, $player->ip_current, request()->player->id, time() + $ban_time->seconds, $ban_message->message, (input()->post('type')->value == "ip") ? "ip" : "account");
         
-        HotelApi::execute('disconnect', array('user_id' => $player->id));
+        HotelApi::execute('disconnect', ['user_id' => $player->id]);
         return Json::encode(["status" => "success", "message" => "The user {$player->username} is been banned: {$ban_time->message}"]);
     }
   
@@ -250,10 +212,6 @@ class Remote
         $this->getMailLogs($player_id);
         $this->getBanLogs($player_id);
         $this->getStaffLogs($player_id);
-
-        if(request()->player->rank >= Config::maxRank) {
-            $this->data->authorization = true;
-        }
 
         Json::encode($this->data);
     }
@@ -296,13 +254,13 @@ class Remote
         $this->data->tradelogs = Admin::getTradeLogs($player_id);
         foreach($this->data->tradelogs as $item) {
           
-            $item->user_one_id = Player::getDataById($item->user_one_id, array('username'));
-            $item->user_two_id = Player::getDataById($item->user_two_id, array('username'));
+            $item->user_one_id = Player::getDataById($item->user_one_id, ['username']);
+            $item->user_two_id = Player::getDataById($item->user_two_id, ['username']);
           
             $item->items = Admin::getTradeLogItems($item->id);
           
             foreach($item->items as $trade) {
-                $trade->user_id = Player::getDataById($trade->user_id, array('username'));
+                $trade->user_id = Player::getDataById($trade->user_id, ['username']);
             }
           
             $item->timestamp = date("d-m-Y H:i:s", $item->timestamp);
@@ -315,10 +273,11 @@ class Remote
       
         foreach ($this->data->chatlogs as $logs) {
           
+            $logs->message = Core::filterString($logs->message);
             $logs->timestamp = date("d-m-Y H:i:s", $logs->timestamp);
           
             if($logs->user_to_id != 0) {
-                $logs->message = '<b>' . Player::getDataById($logs->user_to_id, array('username'))->username . '</b>: ' . $logs->message;
+                $logs->message = '<b>' . Player::getDataById($logs->user_to_id, ['username'])->username . '</b>: ' . $logs->message;
             }
         }
     }
@@ -357,23 +316,18 @@ class Remote
         $this->data->banlog = Admin::getBanLogByUserId($player_id);
       
         foreach($this->data->banlog as $ban) {
-            $ban->user_staff_id = Player::getDataById($ban->user_staff_id, array('username'));
+            $ban->user_staff_id = Player::getDataById($ban->user_staff_id, ['username']);
             $ban->ban_expire = date("d-m-Y H:i:s", $ban->ban_expire);
         }
     }
 
     public function unban($id)
     {
-        $ban = \App\Models\Core::getField('bans', 'id', 'id', $id);
-
-        if (empty($ban)) {
+        if (empty(Ban::getBanById($id))) {
             return Json::encode(["status" => "error", "message" => "This player is does not exists!"]);
         }
 
-        if (!Admin::deleteBan($ban)) {
-            return Json::encode(["status" => "error", "message" => "This player is not banned.!"]);
-        }
-
+        Admin::deleteBan($ban);
         return Json::encode(["status" => "error", "message" => "This player is unbanned!"]);
     }
 
@@ -408,7 +362,7 @@ class Remote
             }
         }
 
-        if(\App\Models\Core::permission('housekeeping_change_email', request()->player->rank)) {
+        if(Permission::exists('housekeeping_change_email', request()->player->rank)) {
             $validate = request()->validator->validate([
                 'email' => 'required|min:6|max:72|email'
             ]);
@@ -418,7 +372,7 @@ class Remote
             }
         }
 
-        if(\App\Models\Core::permission('housekeeping_ranks',  request()->player->rank)) {
+        if(Permission::exists('housekeeping_ranks',  request()->player->rank)) {
             $validate = request()->validator->validate([
                 'rank' => 'required|numeric',
             ]);
@@ -436,30 +390,23 @@ class Remote
         
         if (Admin::changePlayerSettings($email ?? $player->mail, $motto, $pin_code, $player->id)) {
 
-            if ($player->online) {
-                if($player->credits != $credits) {
-                    HotelApi::execute('givecredits', array('user_id' => $player->id, 'credits' => -$player->credits));
-                    HotelApi::execute('givecredits', array('user_id' => $player->id, 'credits' => $credits));
-                }
-                if($player->rank != $rank) {
-                    HotelApi::execute('setrank', array('user_id' => $player->id, 'rank' => $rank));
-                }
-            } else {
-                Player::update($player->id, ['credits' => $credits, 'rank' => $rank]);
+            if($player->credits != $credits) {
+                HotelApi::execute('givecredits', ['user_id' => $player->id, 'credits' => - $player->credits + $player->credits - $credits]);
+            }
+
+            if($player->rank != $rank) {
+                HotelApi::execute('setrank', ['user_id' => $player->id, 'rank' => $rank]);
             }
 
             foreach($currencys as $currency) {
                 if($currency) {
-                    if ($player->online && $currency->oldamount != $currency->amount) {
-                        HotelApi::execute('givepoints', array('user_id' => $player->id, 'points' => -$currency->oldamount, 'type' => $currency->type));
-                        HotelApi::execute('givepoints', array('user_id' => $player->id, 'points' => $currency->amount, 'type' => $currency->type));
-                    } else {
-                        Player::updateCurrency($player->id, $currency->type, $currency->amount);
-                    }
+                    if ($currency->oldamount != $currency->amount) {
+                        HotelApi::execute('givepoints', ['user_id' => $player->id, 'points' => - $currency->oldamount - $currency->oldamount + $currency->amount, 'type' => $currency->type]);
+                    } 
                 }
             }
           
-            Log::addStaffLog($player->id, 'User Info saved', 'MANAGE');
+            Log::addStaffLog($player->id, 'User Info saved', request()->player->id, 'MANAGE');
             return Json::encode(["status" => "success", "message" => "Info of {$player->username} is updated!"]);
         }
     }

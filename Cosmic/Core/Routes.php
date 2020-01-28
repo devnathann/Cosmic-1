@@ -25,14 +25,20 @@ class Routes extends Router
             Router::setDefaultNamespace('\App\Controllers');
 
             Router::get('/assets/js/web/user_settings.js', 'Home\Index@configuration');
+          
+            Router::partialGroup('/api/{callback}', function ($callback) {
+                Router::get('/', 'Ajax\Api@' . $callback);
+            });
+            
         
             Router::get('/', 'Home\Index@index')->setName('index.home');
             Router::get('/home', 'Home\Index@index');
             Router::get('/lost', 'Home\Lost@index')->setName('lost');
             Router::get('/disconnect', 'Home\Lost@index')->setName('index.home');
-            Router::get('/games/ranking', 'Games\Ranking@index');
+            Router::get('/games/ranking', 'Games\Ranking@index'); 
+            Router::get('/jobs', 'Jobs\Jobs@index');
      
-            Router::get('/profile', 'Home\Profile@profile');
+            Router::get('/profile', 'Home\Proficle@profile');
             Router::get('/profile/{user}', 'Home\Profile@profile', ['defaultParameterRegex' => '[a-zA-Z0-9\d\-_=\?!@:\.,]+']);
           
             Router::post('/profile/search', 'Home\Profile@search');
@@ -65,8 +71,6 @@ class Routes extends Router
                 Router::get('/logout', 'Home\Login@logout');
                 Router::get('/hotel', 'Client\Client@hotel');
                 Router::get('/client', 'Client\Client@client');
-                Router::get('/new', 'Client\Client@new');
-                Router::get('/test', 'Client\Client@test');
 
                 Router::get('/settings', 'Settings\Preferences@index');
                 Router::get('/settings/email', 'Settings\Email@index');
@@ -91,11 +95,13 @@ class Routes extends Router
                 Router::get('/guilds/{group}/thread/{slug}', 'Community\Guilds\Topic@index', ['defaultParameterRegex' => '[\w\-]+'])->addMiddleware(GuildMiddleware::class);
                 Router::get('/guilds/{group}/thread/{slug}/page/{page}', 'Community\Guilds\Topic@index', ['defaultParameterRegex' => '[\w\-]+'])->addMiddleware(GuildMiddleware::class);
 
+                Router::get('/marketplace/my/inventory', 'Community\Value@my');
+                Router::get('/marketplace/all/sell', 'Community\Value@sell');
+              
                 Router::partialGroup('/guilds/post/{controller}/{action}', function ($controller, $action) {
                     Router::post('/', 'Community\Guilds\\' . ucfirst($controller) . '@' . $action)->addMiddleware(GuildMiddleware::class);
                 })->addMiddleware(ValidateMiddleWare::class);
              
-                Router::get('/jobs', 'Jobs\Jobs@index');
                 Router::get('/jobs/my', 'Jobs\Jobs@my');
                 Router::get('/jobs/{id}/apply', 'Jobs\Apply@index');
 

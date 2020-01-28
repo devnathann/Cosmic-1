@@ -2,6 +2,8 @@
 namespace App\Controllers\Admin;
 
 use App\Core;
+
+use App\Models\Permission;
 use App\Models\Admin;
 
 use Core\View;
@@ -22,8 +24,8 @@ class Dashboard
             $row->ip_current  = Core::convertIp($row->ip_current);
             $row->ip_register = Core::convertIp($row->ip_register);
 
-            if (!\App\Models\Core::permission('housekeeping_change_email', request()->player->rank)) {
-                $row->email = '';
+            if (!Permission::exists('housekeeping_change_email', request()->player->rank)) {
+                $row->mail = '';
             }
         }
 
@@ -48,7 +50,7 @@ class Dashboard
   
     public function maintenance()
     {
-        if (!\App\Models\Core::permission('housekeeping_permissions', request()->player->rank)) {
+        if (!Permission::exists('housekeeping_permissions', request()->player->rank)) {
             return Json::encode(["status" => "error", "message" => "You have no permissions to do this!"]);
         }
       

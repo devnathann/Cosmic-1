@@ -10,7 +10,7 @@ use QueryBuilder;
 
 class Log
 {
-    public static function createEmailLog(int $player_id, String $new_email, String $old_email)
+    public static function createEmailLog($player_id, $new_email, $old_email)
     {
         $data = array(
             'player_id' => $player_id,
@@ -23,10 +23,10 @@ class Log
         return QueryBuilder::table('player_logs_email')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->insert($data);
     }
 
-    public static function addStaffLog(int $target_id, String $value, $type)
+    public static function addStaffLog($target_id, $value, $player_id, $type)
     {
         $data = array(
-            'player_id' => Session::get('player_id'),
+            'player_id' => $player_id,
             'type'      => $type,
             'value'     => $value,
             'timestamp'      => time(),

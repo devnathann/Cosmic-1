@@ -12,14 +12,99 @@ class Value
     public static $allItems = array();
     public static $allSubItems = array();
   
+    public static function myItems($user_id)
+    {
+        return QueryBuilder::table('items')->select(QueryBuilder::raw('COUNT(*) as count'))->select('items.item_id')->select('catalog_items.catalog_name')
+                  ->join('items_base', 'items.item_id', '=', 'items_base.id')->join('catalog_items', 'items.item_id', '=', 'catalog_items.id')
+                  ->where('items_base.allow_marketplace_sell', '1')->where('items.user_id', $user_id)->groupBy('items.item_id')->get();
+    }
+  
+    public static function mySales($user_id)
+    {
+        return QueryBuilder::table('website_marketplace')->select('website_marketplace.*')->select('catalog_items.catalog_name')
+                  ->join('catalog_items', 'catalog_items.id', '=', 'website_marketplace.item_id')->where('website_marketplace.user_id', $user_id)->get();
+    }
+  
+    public static function deleteOffer($item_id)
+    {
+        return QueryBuilder::table('website_marketplace')->where('id', $item_id)->delete();
+    }
+  
+    public static function getFirstItem($item_id, $user_id)
+    {
+        return QueryBuilder::table('items')->where('item_id', $item_id)->where('user_id', $user_id)->first();
+    }
+  
+    public static function deleteItem($id)
+    {
+        return QueryBuilder::table('items')->where('id', $id)->delete();
+    }
+  
+    public static function allSellItems()
+    {
+        return QueryBuilder::table('website_marketplace')->select('website_marketplace.*')->select('catalog_items.*')->select('website_marketplace.id')
+                  ->join('catalog_items', 'catalog_items.id', '=', 'website_marketplace.item_id')->get();
+    }
+  
+    public static function ifCurrencyExists($currency) 
+    {
+        return QueryBuilder::table('website_settings_currencys')->find($currency, 'type');
+    }
+  
+    public static function searchFurni($name)
+    {
+        return QueryBuilder::table('website_marketplace')->select('website_marketplace.*')->select('catalog_items.catalog_name')
+                ->join('catalog_items', 'catalog_items.id', '=', 'website_marketplace.item_id')
+                ->where('catalog_items.catalog_name', 'LIKE ', '%' . $name . '%')->get();
+    }
+  
+    public static function sellItem($item_id, $user_id, $currency, $costs)
+    {
+        $data = array(
+            'item_id'           => $item_id,
+            'user_id'           => $user_id,
+            'currency_type'     => $currency,
+            'item_costs'        => $costs,
+            'timestamp_added'   => time(),
+            'timestamp_expire'  => strtotime('+7 days', time())
+        );
+      
+        return QueryBuilder::table('website_marketplace')->insert($data);
+    }
+  
+    public static function ifItemExists($item_id) 
+    {
+        return QueryBuilder::table('items_base')->where('id', $item_id)->count();
+    }
+  
+    public static function ifMyItemExists($item_id, $user_id) 
+    {
+        return QueryBuilder::table('website_marketplace')->where('item_id', $item_id)->where('user_id', $user_id)->count();
+    }
+  
+    public static function getOfferById($id) 
+    {
+        return QueryBuilder::table('website_marketplace')->where('id', $id)->first();
+    }
+  
+    public static function getItem($id)
+    {
+        return QueryBuilder::table('catalog_items')->where('id', $id)->first();
+    }
+  
     public static function getValueCategorys()
     {
         return QueryBuilder::table('website_rare_values')->get();
     }
   
+    public static function getFirstRare()
+    {
+        return QueryBuilder::table('website_rare_values')->first();
+    }
+  
     public static function getValueCategoryById($id)
     {
-        return QueryBuilder::table('website_rare_values')->where('id', $id)->get();
+        return QueryBuilder::table('website_rare_values')->where('id', $id)->first();
     }
  
     public static function ifSubpageExists($id)
@@ -39,11 +124,10 @@ class Value
   
     public static function getValues($values, $transform = false)
     {
-       foreach($values as $row) {
 
             /** Check if page has a subpage */
          
-            foreach(json_decode($row->cat_ids) as $page_id) {
+            foreach(json_decode($values->cat_ids) as $page_id) {
                 (!empty(self::ifSubpageExists($page_id))) ? $pages[] = $page_id : $page[] = $page_id;
             }
          
@@ -75,13 +159,13 @@ class Value
             /** Get related item data */
             
             foreach($itemList as $item) {
-                $getCurrencys = array_flip(Config::currencys);
-              
+
+                $currency = array_column(Core::getCurrencys(), 'currency', 'type');
+
                 if($item->cost_points != 0 && !$transform) {
-                    $item->cost_points = ($item->points_type != 0) ? $item->cost_points . ' (' . ucfirst($getCurrencys[$item->points_type]) . ')' : null;
+                    $item->cost_points = ($item->points_type != 0) ? $item->cost_points . ' (' . ucfirst($currency[$item->points_type]) . ')' : null;
                 }
             }
-        }
         return $itemList ?? null;
     }
 }

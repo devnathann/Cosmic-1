@@ -22,9 +22,12 @@ class Jobs
     public function index()
     {
         $jobs = Community::getJobs();
-        foreach($jobs as $job) {
-            if(Community::getJobApplication($job->id, request()->player->id)) {
-                $job->apply = true;
+      
+        if(request()->player) {
+            foreach($jobs as $job) {
+                if(Community::getJobApplication($job->id, request()->player->id)) {
+                    $job->apply = true;
+                }
             }
         }
         

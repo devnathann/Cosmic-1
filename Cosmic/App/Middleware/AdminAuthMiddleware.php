@@ -1,7 +1,7 @@
 <?php
 namespace App\Middleware;
 
-use App\Models\Core;
+use App\Models\Permission;
 use App\Models\Player;
 
 use Core\Session;
@@ -18,7 +18,8 @@ class AdminAuthMiddleware implements IMiddleware
         }
 
         $request->player = Player::getDataById(Session::get('player_id'));
-        if (!Core::permission('housekeeping', $request->player->rank)) {
+
+        if (!Permission::exists('housekeeping', $request->player->rank)) {
             $request->setRewriteUrl(redirect('/'));
         }
       

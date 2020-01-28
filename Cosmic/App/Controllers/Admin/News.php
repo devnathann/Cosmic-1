@@ -79,13 +79,13 @@ class News
 
         if ($id == 0) {
             Admin::addNews($title, $short_story, $full_story, $category, $imagePath, $images, request()->player->id);
-            Log::addStaffLog('-1', 'News placed: ' . $title, 'news');
+            Log::addStaffLog('-1', 'News placed: ' . $title, request()->player->id, 'news');
           
             return Json::encode(["status" => "success", "message" => "News article is posted!"]);
         }
 
         Admin::editNews($id, $title, $short_story, $full_story, $category, $imagePath, $images, request()->player->id);
-        Log::addStaffLog('-1', 'News edit: ' . $title, 'news');
+        Log::addStaffLog('-1', 'News edit: ' . $title, request()->player->id, 'news');
       
         return Json::encode(["status" => "success", "message" => "News edit successfully"]);
     }
@@ -109,7 +109,7 @@ class News
             return Json::encode(["status" => "error", "message" => "We were unable to find this news item"]);
         }
 
-        Log::addStaffLog('-1', 'News removed: ' . input()->post('post')->value, 'news');  
+        Log::addStaffLog('-1', 'News removed: ' . input()->post('post')->value, request()->player->id, 'news');  
         return Json::encode(["status" => "success", "message" => "News removed succesfully!"]);
     }
 
@@ -124,7 +124,7 @@ class News
         }
 
         Admin::addNewsCategory(input()->post('post')->value);
-        Log::addStaffLog('-1', 'News category added: ' . input()->post('post')->value, 'news');
+        Log::addStaffLog('-1', 'News category added: ' . input()->post('post')->value, request()->player->id, 'news');
       
         return Json::encode(["status" => "success", "message" => "Category successfully added!"]);
     }
@@ -137,7 +137,7 @@ class News
             return Json::encode(["status" => "error", "message" => "Category does not exists!"]);
         }
 
-        Log::addStaffLog('-1', 'News category edit: ' . $category->category . ' to ' .input()->post('post')->value, 'news');
+        Log::addStaffLog('-1', 'News category edit: ' . $category->category . ' to ' .input()->post('post')->value, request()->player->id, 'news');
         Admin::editNewsCategory($category->id, input()->post('value')->value);
       
         return Json::encode(["status" => "success", "message" => "Category edit is successfully!"]);
@@ -150,7 +150,7 @@ class News
             return Json::encode(["status" => "error", "message" => "Category does not exists!"]);
         }
 
-        Log::addStaffLog('-1', 'News category removed: ' . $category->category, 'news');
+        Log::addStaffLog('-1', 'News category removed: ' . $category->category, request()->player->id, 'news');
         Admin::removeNewsCategory($category->id);
       
         return Json::encode(["status" => "success", "message" => "Category removed succesfully!"]);

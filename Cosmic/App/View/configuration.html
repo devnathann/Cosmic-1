@@ -1,11 +1,9 @@
 var Site = {
-    name: "{{sitename}}",
-    domain: "{{domain}}",
-    url: "{{path}}",
-    game_url: "{{cpath}}",
-    figure_url: "{{fpath}}",
-    game_host: "{{clientHost}}",
-    game_port: "{{clientPort}}"
+    name: "{{site.sitename}}",
+    domain: "{{site.domain}}",
+    url: "{{site.path}}",
+    game_url: "{{site.cpath}}",
+    figure_url: "{{site.fpath}}"
 };
 
 {% if player %}
@@ -31,8 +29,8 @@ var User = {
 {% endif %}
 
 var Configuration = {
-    {% if publicKey is not empty %}recaptcha_public: "{{publicKey}}",{% endif %}
-    revision: "{{revision}}2",
-    cache: "3802706481",
+    {% if publicKey is not empty %}recaptcha_public: "{{site.publicKey}}",{% endif %}
+    revision: "{{revision}}2213",
+    cache: "3802706481311",
     debug: {{debug}}
 };

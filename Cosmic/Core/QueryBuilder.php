@@ -10,7 +10,7 @@ use Pixie\Connection;
 class QueryBuilder {
 
     public function __construct() {
-            $config = array(
+            $config = [
                 'driver'    => Config::driver, // Db driver
                 'host'      => Config::host,
                 'database'  => Config::database,
@@ -19,11 +19,11 @@ class QueryBuilder {
                 'charset'   => Config::charset, // Optional
                 'collation' => Config::collation, // Optional
                 'prefix'    => Config::prefix, // Table prefix, optional
-                'options'   => array(
+                'options'   => [
                     PDO::ATTR_TIMEOUT => 5,
                     PDO::ATTR_EMULATE_PREPARES => false,
-                ),
-            );
+                ],
+            ];
   
             try {
                 new Connection('mysql', $config, 'QueryBuilder');

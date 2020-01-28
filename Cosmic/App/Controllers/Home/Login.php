@@ -54,22 +54,22 @@ class Login
         */
 
         if(!$pin_code) {
-            if (!is_null($player->secret_key) || !is_null($player->pincode)) {
+            if (!empty($player->secret_key) || !empty($player->pincode)) {
                 return Json::encode(["status" => "pincode_required"]);
             }
         }
 
-        if ($pin_code && $player->secret_key == null && $player->pincode == null) {
+        if ($pin_code && empty($player->secret_key) && empty($player->pincode)) {
             return Json::encode(["status" => "error", "message" => Locale::get('login/invalid_pincode')]);
         }
       
-        if($player->pincode != NULL && $player->secret_key == NULL) {
+        if(!empty($player->pincode) && empty($player->secret_key)) {
             if($player->pincode !== $pin_code) {
                 return Json::encode(["status" => "error", "message" => Locale::get('login/invalid_pincode')]);
             }
         }
 
-        if($player->secret_key != NULL && $player->pincode == NULL) {
+        if(!empty($player->secret_key) && empty($player->pincode)) {
             $this->googleAuthentication($pin_code, $player->secret_key);
         }
 

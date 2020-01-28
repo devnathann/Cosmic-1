@@ -12,6 +12,14 @@ class Permission
                     select(QueryBuilder::raw('website_permissions_ranks.id as idp'))->setFetchMode(PDO::FETCH_CLASS, get_called_class())
                 ->join('website_permissions', 'website_permissions_ranks.permission_id', '=', 'website_permissions.id')->where('website_permissions_ranks.rank_id', $rank)->get();
     }
+  
+    public static function exists($permission, $rank)
+    {
+        if (!in_array($permission, array_column(self::get($rank), 'permission'))) {
+            return false;
+        }
+        return true;
+    }
 
     public static function permissionExists($role, $permission)
     {
@@ -54,7 +62,7 @@ class Permission
             return QueryBuilder::table('permissions')->orderBy('id', 'desc')->get();
         }
 
-        return QueryBuilder::table('permissions')->where('id', '!=', 1)->where('id', '!=', 2)->orderBy('id', 'desc')->get();
+        return QueryBuilder::table('permissions')->orderBy('id', 'desc')->get();
     }
 
     public static function getRoles($string = null)
@@ -67,6 +75,11 @@ class Permission
         return QueryBuilder::table('website_permissions_ranks')->where('permission_id', $id)->get();
     }
   
+    public static function getPermissionById($id)
+    {
+        return QueryBuilder::table('website_permissions_ranks')->where('id', $id)->first();
+    }
+
     public static function getAllColumns() 
     {
         return QueryBuilder::query("SHOW columns FROM permissions")->get();

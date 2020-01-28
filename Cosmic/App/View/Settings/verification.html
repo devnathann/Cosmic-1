@@ -53,7 +53,7 @@
                             <p style="text-align: center;">
                                 <input type="hidden" id="twosteps_login_data_code" value="{{token}}">
                                  
-                                <img src="https://chart.googleapis.com/chart?chs=200x200&chld=M|0&cht=qr&chl=otpauth%3A%2F%2Ftotp%2F{{shortname}}%3A{{player.username}}%3Fsecret%3D{{token}}%26issuer%3D{{shortname}}" alt="{{shortname}}">
+                                <img src="https://chart.googleapis.com/chart?chs=200x200&chld=M|0&cht=qr&chl=otpauth%3A%2F%2Ftotp%2F{{site.shortname}}%3A{{player.username}}%3Fsecret%3D{{token}}%26issuer%3D{{site.shortname}}" alt="{{site.shortname}}">
                             </p>
                         </div>
                     </div>

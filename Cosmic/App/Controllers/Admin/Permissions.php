@@ -97,11 +97,6 @@ class Permissions
 
     public function search()
     {
-        $permissionsById = Core::getField('permissions', 'id', 'id', input()->post('post')->value);
-        if (empty($permissionsById)) {
-            return Json::encode(["status" => "error", "message" => "There is an error occurred, please try again!"]);
-        }
-
         return Json::encode(["status" => "success", "message" => "Permissions has been loaded!"]);
     }
 
@@ -114,8 +109,7 @@ class Permissions
             return Json::encode(["status" => "error", "message" => "Permission can not be added!"]);
         }
 
-        $permissionExists = Core::getField('website_permissions', 'id', 'id', $permission_id);
-        if (Admin::roleExists($role_id, $permission_id) || empty($permissionExists))  {
+        if (Admin::roleExists($role_id, $permission_id))  {
             return Json::encode(["status" => "error", "message" => "Permissions has already added to this role!"]);
         }
 
@@ -125,12 +119,12 @@ class Permissions
 
     public function delete()
     {
-        $permissionId = Core::getField('website_permissions_ranks', 'id', 'id', input()->post('id')->value);
-        if (empty($permissionId)) {
+        $permission = Permission::getPermissionById(input()->post('id')->value);
+        if (empty($permission)) {
             return Json::encode(["status" => "error", "message" => "No permission found!"]);
         }
 
-        Admin::deletePermission($permissionId);
+        Admin::deletePermission($permission->id);
         return Json::encode(["status" => "success", "message" => "Permissions has been deleted!"]);
     }
 

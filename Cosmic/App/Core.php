@@ -38,12 +38,12 @@ class Core
 
     public static function getIpAddress()
     {
-        return filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP) ? $_SERVER['REMOTE_ADDR'] : false;
+        return filter_var($_SERVER['HTTP_X_FORWARDED_FOR'], FILTER_VALIDATE_IP) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : false;
     }
 
     public static function convertIp($ip_address)
     {
-        if (!in_array('housekeeping_ip_display', array_column(Permission::get(request()->player->rank), 'permission'))) {
+        if(!Permission::exists('housekeeping_ip_display', request()->player->rank)) {
             $regex = array("/[\d]{3}$/", "/[\d]{2}$/", "/[\d]$/");
             $replace = array("xxx", "xxx", "xxx");
             return preg_replace($regex, $replace, $ip_address);

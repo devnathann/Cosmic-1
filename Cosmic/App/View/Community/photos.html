@@ -3,8 +3,8 @@
 {% block body %}
 <header class="page-header flex-container flex-vertical-center">
     <div class="page-header-content">
-        <h1>{{locale.photos_by}} {{shortname}}'s</h1>
-        {{locale.photos_desc}} {{shortname}}'s.
+        <h1>{{locale.photos_by}} {{site.shortname}}'s</h1>
+        {{locale.photos_desc}} {{site.shortname}}'s.
     </div>
 </header>
 
@@ -15,7 +15,7 @@
             <div class="photo-content">
                 <a href="{{photo.url}}" class="photo-picture" target="_blank" style="background-image: url({{photo.url}});" data-id="{{photo.id}}" data-title="{{photo.timestamp|date("d-M H:i")}} {{locale.by}} {{photo.author}}"></a>
                 <a href="#" class="photo-meta flex-container flex-vertical-center">
-                    <div class="photo-meta-left-side"><img src="{{fpath}}/avatarimage?figure={{photo.figure}}&gesture=sml&headonly=1" alt="{{photo.author}}" class="pixelated"></div>
+                    <div class="photo-meta-left-side"><img src="{{site.fpath}}/avatarimage?figure={{photo.figure}}&gesture=sml&headonly=1" alt="{{photo.author}}" class="pixelated"></div>
                     <div class="photo-meta-right-side">
                         <div class="creator-name">{{photo.author}}</div>
                         <div class="published-date">{{photo.timestamp|date("d-M H:i")}}</div>

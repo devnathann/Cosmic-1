@@ -19,7 +19,7 @@
         <aside class="default-section">
             <div class="profile-header">
                 <div class="header-content flex-container flex-vertical-center">
-                    <img src="{{fpath}}/avatarimage?figure={{data.player.look}}&direction=2&gesture=sml&size=l" alt="{{data.player.username}}" class="pixelated">
+                    <img src="{{site.fpath}}/avatarimage?figure={{data.player.look}}&direction=2&gesture=sml&size=l" alt="{{data.player.username}}" class="pixelated">
                     <div class="header-details">
                         <div class="header-title">{{data.player.username}}</div>
                         <div class="header-description">{{data.player.motto}}</div>
@@ -28,7 +28,7 @@
             </div>
             <div class="aside-content">
                 <div class="profile-content">
-                    <div class="details-container register">{{shortname}} {{locale.since}} <b>{{data.player.account_created|date("d-m-Y")}}</b></div>
+                    <div class="details-container register">{{site.shortname}} {{locale.since}} <b>{{data.player.account_created|date("d-m-Y")}}</b></div>
                     {% if data.player.settings.hide_online == 0 or 'housekeeping' in permissions %}
                         <div class="details-container status">{{locale.currently}} <strong class="{% if data.player.online == 0 %}offline{% set status = 'offline' %}{% else %}online{% set status = 'online' %}{% endif %}">{{status}}</strong></div>
                     {% else %}
@@ -66,11 +66,11 @@
                     {% for feed in data.player.feeds %}
                     <div class="feed-item" data-id="{{feed.id}}" id="{{feed.id}}">
                         <div class="fi-avatar logo" style="margin-right: 0;height: 60px; margin-top: -7px;">
-                            <div style="background: url({{fpath}}/avatarimage?figure={{feed.look}}.&amp;direction=3&amp;headonly=1) no-repeat center; width: 48px; height: 87px;"></div>
+                            <div style="background: url({{site.fpath}}/avatarimage?figure={{feed.look}}.&amp;direction=3&amp;headonly=1) no-repeat center; width: 48px; height: 87px;"></div>
                         </div>
                         <div class="fi-content">
                             <div class="fc-user">
-                                <div class="user-style"><span class="user-style black"><span class="user-icon cog"></span><a href="{{path}}/profile/{{feed.username}}">{{feed.username}}</a></span></div>
+                                <div class="user-style"><span class="user-style black"><span class="user-icon cog"></span><a href="{{site.path}}/profile/{{feed.username}}">{{feed.username}}</a></span></div>
                                 -
                                 <span data-toggle="tooltip" data-placement="right" title="" data-original-title="{{feed.timestamp|time_diff}}"><small>{{feed.timestamp|time_diff}}</small></span>
                             </div>
@@ -113,7 +113,7 @@
                     {% if data.player.badges %}
                         {% for row in data.player.badges %}
                         <div class="item-container">
-                            <div class="item-icon pixelated" style="background-image: url({{cpath}}/c_images/album1584/{{row.badge_code}}.gif);"></div>
+                            <div class="item-icon pixelated" style="background-image: url({{site.cpath}}/c_images/album1584/{{row.badge_code}}.gif);"></div>
                         </div>
                         {% endfor %}
                     {% else %}
@@ -133,8 +133,8 @@
                 <div class="items-container">
                     {% if data.player.friends %}
                         {% for row in data.player.friends %}
-                        <a href="{{path}}/profile/{{row.username}}" class="item-container">
-                            <div class="item-icon pixelated" style="background-image: url({{fpath}}/avatarimage?figure={{row.look}}&direction=2);"></div>
+                        <a href="{{site.path}}/profile/{{row.username}}" class="item-container">
+                            <div class="item-icon pixelated" style="background-image: url({{site.fpath}}/avatarimage?figure={{row.look}}&direction=2);"></div>
                             <div class="item-name">{{row.username}}</div>
                         </a>
                         {% endfor %}
@@ -155,8 +155,8 @@
                 <div class="items-container">
                     {% if data.player.groups %}
                         {% for row in data.player.groups %}
-                        <a href="{{path}}/hotel?room={{row.room_id}}" class="item-container">
-                            <div class="item-icon pixelated" style="background-image: url({{cpath}}/c_images/Badgeparts/generated/{{row.badge}}.png);"></div>
+                        <a href="{{site.path}}/hotel?room={{row.room_id}}" class="item-container">
+                            <div class="item-icon pixelated" style="background-image: url({{site.cpath}}/c_images/Badgeparts/generated/{{row.badge}}.png);"></div>
                             <div class="item-name">{{row.name}}</div>
                         </a>
                         {% endfor %}
@@ -177,8 +177,8 @@
                 <div class="items-container">
                     {% if data.player.rooms %}
                         {% for row in data.player.rooms %}
-                        <a href="{{path}}/hotel?room={{row.id}}" class="item-container">
-                            <div class="item-icon pixelated" style="background-image: url({{cpath}}/camera/thumbnails/{{row.id}}.png);"></div>
+                        <a href="{{site.path}}/hotel?room={{row.id}}" class="item-container">
+                            <div class="item-icon pixelated" style="background-image: url({{site.cpath}}/camera/thumbnails/{{row.id}}.png);"></div>
                             <div class="item-name">{{row.name}}</div>
                         </a>
                         {% endfor %}
@@ -199,7 +199,7 @@
                 <div class="items-container">
                     {% if data.player.photos %}
                         {% for row in data.player.photos %}
-                        <a href="{{row.url}}" class="item-container photos" target="_blank" data-title="{{row.timestamp}}" data-player="{{row.user_id}}" data-id="{{row.id}}">
+                        <a href="{{row.url}}" class="item-container photos" target="_blank" data-title="{{row.timestamp|date("d-M H:i")}}" data-player="{{row.user_id}}" data-id="{{row.id}}">
                             <div class="item-icon pixelated" style="background-image: url({{row.url}});"></div>
                         </a>
                         {% endfor %}

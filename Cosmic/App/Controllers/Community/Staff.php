@@ -15,14 +15,15 @@ class Staff
 
         foreach ($ranks as $row) {
           
-            $row->users = Player::getDataByRank($row->id);
+            if(!Permission::exists('website_invisible_staff', $row->id)) {
+                $row->users = Player::getDataByRank($row->id);
 
-            if (!empty($row->users) && is_array($row->users)) {
-                foreach ($row->users as $users) {
-                    $users->settings = Player::getSettings($users->id);
+                if (!empty($row->users) && is_array($row->users)) {
+                    foreach ($row->users as $users) {
+                        $users->settings = Player::getSettings($users->id);
+                    }
                 }
             }
-          
         }
 
         View::renderTemplate('Community/staff.html', [

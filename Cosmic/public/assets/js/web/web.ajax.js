@@ -1,4 +1,23 @@
 function WebAjaxManagerInterface() {
+  
+    this.get =  function(url, callback) {
+        PageLoading.show();
+      
+        // Requests
+        $.ajax({
+            type: "get",
+            url: url,
+            dataType: "json",
+            processData: false,
+            contentType: false
+        }).done(function (result) {
+            PageLoading.hide();
+          
+            if (typeof callback === "function")
+                callback(result);
+        });
+    }
+  
     /*
     * Post method
     * */

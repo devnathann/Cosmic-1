@@ -1,8 +1,6 @@
 <?php
 namespace App\Controllers\Help;
 
-use App\Models\Core;
-
 use Core\Locale;
 use Core\View;
 
@@ -22,7 +20,7 @@ class Help
     public function helpBySlug($slug)
     {
         $slug_id = explode('-', $slug);
-        $article = \App\Models\Help::getById(Core::getField('website_helptool_faq', 'id', 'id', $slug_id[0]));
+        $article = \App\Models\Help::getById($slug_id[0]);
         if ($article == null) {
             (redirect('/help'));
         }

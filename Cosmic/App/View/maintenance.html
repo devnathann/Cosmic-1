@@ -2,18 +2,18 @@
 <html lang="en">
 
 <head>
-    <title>{{shortname}} - Maintenance</title>
+    <title>{{site.shortname}} - Maintenance</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
     <link rel="stylesheet/less" type="text/css" href="/assets/css/login.less" />
-     <link rel="stylesheet" href="{{path}}/assets/css/magnific-popup.css">
-    <script src="{{path}}/assets/js/jquery-3.2.1.min.js"></script>
+     <link rel="stylesheet" href="{{site.path}}/assets/css/magnific-popup.css">
+    <script src="{{site.path}}/assets/js/jquery-3.2.1.min.js"></script>
     <script>
       var Site = {
-    name: "{{sitename}}",
+    name: "{{site.sitename}}",
     domain: "{{domain}}",
-    url: "{{path}}"
+    url: "{{site.path}}"
 };
     var Configuration = {
         revision: "{{revision}}9",
@@ -51,7 +51,7 @@
 <div class="notifications-container"></div>
     <div class="wrapper">
         <div class="container">
-            <img src="https://habbofont.net/font/hma/{{shortname}}.gif">
+            <img src="https://habbofont.net/font/hma/{{site.shortname}}.gif">
 
             <form class="form" method="post">
                 <input type="text" name="username" placeholder="Username">
@@ -77,12 +77,12 @@
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.10.3/less.js"></script>
   
-  <script src="{{path}}/assets/js/js.cookie.js"></script>
-<script src="{{path}}/assets/js/jquery.history.js"></script>
-<script src="{{path}}/assets/js/jquery.magnific-popup.js"></script>
-<script src="{{path}}/assets/js/functions.js"></script>
-<script src="{{path}}/assets/js/web/loading.js?v=5"></script>
-<script src="{{path}}/assets/js/jquery.wysibb.js"></script>
+  <script src="{{site.path}}/assets/js/js.cookie.js"></script>
+<script src="{{site.path}}/assets/js/jquery.history.js"></script>
+<script src="{{site.path}}/assets/js/jquery.magnific-popup.js"></script>
+<script src="{{site.path}}/assets/js/functions.js"></script>
+<script src="{{site.path}}/assets/js/web/loading.js?v=5"></script>
+<script src="{{site.path}}/assets/js/jquery.wysibb.js"></script>
 <script>
  $("#login-button").unbind().click(function () {
     var verification_data = {

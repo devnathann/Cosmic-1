@@ -22,9 +22,9 @@
                 <div class="article-author flex-container flex-vertical-center">
                     <div class="author-image">
                         {% if article.author == "0" %}
-                        <img src="{{path}}/assets/images/web/avatar-frank.png" alt="Hotel Management">
+                        <img src="{{site.path}}/assets/images/web/avatar-frank.png" alt="Hotel Management">
                         {% else %}
-                        <img src="{{fpath}}/avatarimage?figure={{article.author.look}}&direction=2&head_direction=3&gesture=sml&size=b&headonly=1" alt="{{article.author.username}}">
+                        <img src="{{site.fpath}}/avatarimage?figure={{article.author.look}}&direction=2&head_direction=3&gesture=sml&size=b&headonly=1" alt="{{article.author.username}}">
                         {% endif %}
                     </div>
 
@@ -32,7 +32,7 @@
                         {% if article.author == "0" %}
                         <div class="author-name">Hotel Management</div>
                         {% else %}
-                        <div class="author-name"><a href="{{path}}/profile/{{article.author.username}}" class="related-article-container">{{article.author.username}}</a></div>
+                        <div class="author-name"><a href="{{site.path}}/profile/{{article.author.username}}" class="related-article-container">{{article.author.username}}</a></div>
                         {% endif %}
                     </div>
                 </div>
@@ -56,25 +56,18 @@
                     </p>
                     {% endif %}
                     {% for post in posts %}
-                    {% if post.hidden != 1 or player.rank >= 3 %}
+                    {% if post.hidden != 1 or 'housekeeping_moderation_tools' in permissions %}
                     <div class="ac-item" data-id="{{post.id}}" style="margin-bottom: 5px;border-radius: 10px; padding: 10px 8px 2px; {% if post.hidden == 1 %}filter: grayscale(100%);{% endif %}">
                             <div style="float: left; vertical-align: middle; ">
-                                <img style="margin-top: -5px;" src="{{fpath}}/avatarimage?figure={{post.author.look}}&direction=2&head_direction=3&gesture=sml&size=s&headonly=1" alt="">
+                                <img style="margin-top: -5px;" src="{{site.fpath}}/avatarimage?figure={{post.author.look}}&direction=2&head_direction=3&gesture=sml&size=s&headonly=1" alt="">
                             </div>
                         <strong>
-                            <a href="{{path}}/profile/{{post.author.username}}">
+                            <a href="{{site.path}}/profile/{{post.author.username}}">
                                 {{post.author.username}}
                             </a>
                         </strong>: {{post.message|bbcode|raw}}
 
-                        {% if player and player.rank == 1 %}
-                        <div style="float: right">
-                            <a href="#" style="float: right"><i class="fa fa-flag" data-id="{{post.id}}" data-report="articlePost" style="color: #7B7777;"></i></a>
-                        </div>
-                        {% endif %}
-
-                        {% if 'housekeeping_moderation_tools' in permissions %}{% endif %}
-                        {% if player.rank > 2 %}
+                        {% if 'housekeeping_moderation_tools' in permissions %}
                         <div style="float: right">
                             <a href="#" style="float: right">
                                 <i class="fa {% if post.hidden == 0 %}fa-times{% else %}fa-eye{% endif %}" data-id="{{post.id}}" style="color: #7B7777;"></i>
@@ -105,7 +98,7 @@
             <div class="aside-content">
                 <div class="related-articles-container">
                     {% for item in latest_news %}
-                    <a href="{{path}}/article/{{item.id}}-{{item.slug}}" class="related-article-container">
+                    <a href="{{site.path}}/article/{{item.id}}-{{item.slug}}" class="related-article-container">
                         <div class="related-article-thumbnail" style="background-image: url({{item.header}});"></div>
                         <div class="related-article-details">
                             <div class="related-article-title">{{item.title}} </div>

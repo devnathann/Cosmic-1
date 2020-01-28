@@ -29,6 +29,11 @@ class Player
         return  QueryBuilder::table('users')->select(array('id','username','online','look', 'motto'))->setFetchMode(PDO::FETCH_CLASS, get_called_class())
             ->where('rank', $rank)->orderBy('online', 'desc')->get();
     }
+  
+    public static function checkMaxIp($ip_address)
+    { 
+        return QueryBuilder::table('users')->where('ip_register', $ip_address)->count(); 
+    }
 
     public static function getUserCurrencys($user_id, $type)
     {
@@ -74,7 +79,7 @@ class Player
             'password' => Hash::password($data->password),
             'mail' => $data->email,
             'account_created' => time(),
-            'credits' => Config::credits,
+            'credits' => \App\Models\Core::settings()->start_credits,
             'look' => $data->figure,
             'account_day_of_birth' => strtotime($data->birthdate_day . '-' . $data->birthdate_month . '-' . $data->birthdate_year),
             'gender' => $data->gender == 'male' ? 'M' : 'F',
@@ -173,12 +178,9 @@ class Player
     public static function getCurrencys($user_id)
     {
         $data = array();
-        foreach(Config::currencys as $row => $colum) {
-            $data[$colum] = self::getUserCurrencys($user_id, $colum);
-
-            if(isset($data[$colum]))
-                $data[$colum]->name = $row;
-
+        foreach(\App\Models\Core::getCurrencys() as $row) {
+            $data[$row->type] = self::getUserCurrencys($user_id, $row->type);
+            $data[$row->type]->currency = $row->currency;
         }
         return $data;
     }

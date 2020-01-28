@@ -44,14 +44,14 @@ function SiteLoadingInterface()
     this.init = function ()
     {
         console.log(
-            "AsteroidCMS - All rights reserved\n\n" +
+            "Cosmic - All rights reserved\n\n" +
             "Everything you do here falls under your own responsibility. Never give your code if someone asks for it. If you paste a code here, you will never get free credits or other items.\n\n" +
-            "- Asteroid Dev");
+            "- Cosmic Dev");
         this.total_files = this.files.length;
         this.loading_container = $(".loading-container");
 
-        //this.cache_id = (new Date().getTime() + Math.floor((Math.random() * 10000) + 1)).toString(16);
-        this.cache_id = Configuration.cache;
+        this.cache_id = (new Date().getTime() + Math.floor((Math.random() * 10000) + 1)).toString(16);
+        //this.cache_id = Configuration.cache;
     };
 
   

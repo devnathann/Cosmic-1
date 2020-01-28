@@ -1,10 +1,11 @@
 <?php
 namespace App\Controllers\Community;
 
-use App\Controllers\Home\Profile;
 use App\Core;
-use App\Models\Permission;
 
+use App\Controllers\Home\Profile;
+
+use App\Models\Permission;
 use App\Models\Community;
 use App\Models\Player;
 
@@ -54,7 +55,7 @@ class Feeds
         }
 
         Community::addFeedToUser(Core::filterString(Core::tagByUser($reply)), request()->player->id, $user_id);
-        return Json::encode(["status" => "error", "message" => Locale::get('core/notification/message_placed'), "replacepage" => "profile/" . $player->username]);
+        return Json::encode(["status" => "success", "message" => Locale::get('core/notification/message_placed'), "replacepage" => "profile/" . $player->username]);
 
         //$object->feedid = $feed_id;
         //$object->username = $player->username;
@@ -70,7 +71,7 @@ class Feeds
             return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         }
 
-        if ($feed_id->to_user_id != request()->player->id && !in_array('housekeeping_moderation_tools', array_column(Permission::get(request()->player->rank), 'permission'))) {
+        if ($feed_id->to_user_id != request()->player->id && Permission::exists('housekeeping_moderation_tools', request()->player->rank)) {
             return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         }
 

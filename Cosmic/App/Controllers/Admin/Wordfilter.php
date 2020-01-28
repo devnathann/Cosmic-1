@@ -47,7 +47,7 @@ class Wordfilter
             HotelApi::execute('updatewordfilter');
         };
 
-        Log::addStaffLog('-1', 'Added wordfilter: ' . $word, 'wordfilter');
+        Log::addStaffLog('-1', 'Added wordfilter: ' . $word, request()->player->id, 'wordfilter');
         return Json::encode(["status" => "success", "message" => "{$word} is added to the blacklist."]);
     }
 
@@ -74,7 +74,7 @@ class Wordfilter
             HotelApi::execute('updatewordfilter');
         }
 
-        Log::addStaffLog('-1', 'Removed wordfilter: ' . $word, 'wordfilter');
+        Log::addStaffLog('-1', 'Removed wordfilter: ' . $word, request()->player->id, 'wordfilter');
         return Json::encode(["status" => "success", "message" => "{$word} successfully removed"]);
     }
 

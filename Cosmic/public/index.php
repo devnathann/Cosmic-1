@@ -1,4 +1,5 @@
 <?php
+ini_set("display_errors",1);
 use App\Config;
 use Core\Routes;
 use Core\QueryBuilder;
@@ -8,17 +9,12 @@ if (file_exists(__DIR__ . '/../vendor/usmanhalalit/') && file_exists(__DIR__ . '
       
         $createdir = mkdir(__DIR__ . '/uploads/', 0777, true);
         if(!$createdir) {
-            echo 'Cant create upload folder, please CHMOD pu lic folder to 777';
+            echo 'Cant create upload folder, please CHMOD public folder to 777';
             exit;
         }
       
     } elseif (!file_exists(__DIR__ . '/tmp/')) {
-      
-        $createdir = mkdir(__DIR__ . '/tmp/', 0777, true);
-        if(!$createdir) {
-            echo 'Cant create upload folder, please CHMOD pu lic folder to 777';
-            exit;
-        }
+        mkdir(__DIR__ . '/tmp/', 0777, true);
     }
 
 } else {

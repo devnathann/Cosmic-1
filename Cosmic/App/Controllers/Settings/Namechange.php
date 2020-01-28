@@ -4,6 +4,7 @@ namespace App\Controllers\Settings;
 use App\Config;
 use App\Core;
 
+use App\Models\Core as Settings;
 use App\Models\Ban;
 use App\Models\Player;
 use App\Models\Room;
@@ -19,11 +20,11 @@ use stdClass;
 
 class Namechange
 {
-    private $data;
+    private $settings;
 
     public function __construct()
     {
-        $this->data = new stdClass();
+        $this->settings = Settings::settings();
     }
 
     public function validate()
@@ -48,23 +49,14 @@ class Namechange
             return Json::encode(["status" => "error", "message" => Locale::get('settings/user_is_active')]);
         }
 
-        $amount = Player::getCurrencys(request()->player->id)[Config::payCurrency]->amount;
-        if ($amount < 50) {
-            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/not_enough_belcredits')]);
-        }
-
-        Player::updateCurrency(request()->player->id, Config::payCurrency, $amount - 50);
-      
-        foreach(Room::getByPlayerId(request()->player->id) as $room) {
-            HotelApi::execute('changeroomowner', array('room_id' => $room->id, 'user_id' => request()->player->id, 'username' => $username));
+        $amount = Player::getCurrencys(request()->player->id)[$this->settings->namechange_currency_type]->amount;
+        if ($amount < $this->settings->namechange_price) {
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/not_enough_points')]);
         }
       
-        if (request()->player->online) {
-            HotelApi::execute('disconnect', array('user_id' => request()->player->id));
-        }
+        HotelApi::execute('changeusername', array('user_id' => request()->player->id, 'new_name' => $username));
+        HotelApi::execute('givepoints', array('user_id' => request()->player->id, 'points' => - $amount + $amount - $this->settings->namechange_price, 'type' => $this->settings->namechange_currency_type));
       
-        Log::addNamechangeLog(request()->player->id, request()->player->username, $username);
-        Player::update(request()->player->id, ['username' => $username]);
         return Json::encode(["status" => "success", "message" => Locale::get('settings/name_change_saved'), "replacepage" => "settings/namechange"]);
     }
 
@@ -84,13 +76,13 @@ class Namechange
 
     public function index()
     {
-        $currency = array_flip(Config::currencys);
+        $currency = array_column(Settings::getCurrencys(), 'currency', 'type');
 
         View::renderTemplate('Settings/namechange.html', [
             'title' => Locale::get('core/title/settings/namechange'),
             'page'  => 'settings_namechange',
-            'currency' => $currency[Config::payCurrency],
-            'price' => 50
+            'currency' => $currency[$this->settings->namechange_currency_type],
+            'price' => $this->settings->namechange_price
         ]);
     }
 }

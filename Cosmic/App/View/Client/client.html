@@ -3,30 +3,30 @@
 <html lang="en">
 <head>
     <meta name="robots" content="noindex, nofollow">
-    <title>Hotel - {{shortname}}</title>
+    <title>Hotel - {{site.shortname}}</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="{{path}}/assets/css/flaticon.css?v={{revision}}">
-    <link rel="stylesheet" href="{{path}}/assets/css/magnific-popup.css?v={{revision}}">
-    <link rel="stylesheet" href="{{path}}/assets/css/selectric.css?v={{revision}}">
-    <link rel="stylesheet" href="{{path}}/assets/css/circle.css?v={{revision}}">
-    <link rel="stylesheet" href="{{path}}/assets/css/web.css?v={{revision}}">
-    <link rel="stylesheet" href="{{path}}/assets/css/web.responsive.css?v={{revision}}">
-    <link rel="stylesheet" href="{{path}}/assets/css/nanoscroller.css?v={{revision}}">
-    <link rel="stylesheet" href="{{path}}/assets/css/fonts.css?v={{revision}}">
-    <link rel="stylesheet" href="{{path}}/assets/css/hotel/hotel.css?v={{revision}}">
+    <link rel="stylesheet" href="{{site.path}}/assets/css/flaticon.css?v={{revision}}">
+    <link rel="stylesheet" href="{{site.path}}/assets/css/magnific-popup.css?v={{revision}}">
+    <link rel="stylesheet" href="{{site.path}}/assets/css/selectric.css?v={{revision}}">
+    <link rel="stylesheet" href="{{site.path}}/assets/css/circle.css?v={{revision}}">
+    <link rel="stylesheet" href="{{site.path}}/assets/css/web.css?v={{revision}}">
+    <link rel="stylesheet" href="{{site.path}}/assets/css/web.responsive.css?v={{revision}}">
+    <link rel="stylesheet" href="{{site.path}}/assets/css/nanoscroller.css?v={{revision}}">
+    <link rel="stylesheet" href="{{site.path}}/assets/css/fonts.css?v={{revision}}">
+    <link rel="stylesheet" href="{{site.path}}/assets/css/hotel/hotel.css?v={{revision}}">
 
     <!-- Scripts -->
-    <script src="{{path}}/assets/js/jquery-3.2.1.min.js?v={{revision}}"></script>
-    <script src="{{path}}/assets/js/jquery-ui.min.js?v={{revision}}"></script>
-    <script type="text/javascript" src="{{path}}/assets/js/hotel/hotelapi.js?v={{revision}}"></script>
+    <script src="{{site.path}}/assets/js/jquery-3.2.1.min.js?v={{revision}}"></script>
+    <script src="{{site.path}}/assets/js/jquery-ui.min.js?v={{revision}}"></script>
+    <script type="text/javascript" src="{{site.path}}/assets/js/hotel/hotelapi.js?v={{revision}}"></script>
 </head>
 <body>
     <div class="loading-container">
         <div id="loading-background" style="background: linear-gradient(-45deg, #000, #000, #000, #000);"></div>
         <div class="loading-content">
             <div class="loading-bodytext">
-                {{shortname}} is loading...
+                {{site.shortname}} is loading...
             </div>
         </div>
     </div>
@@ -41,7 +41,7 @@
                         }
                     </style>
 
-                    <object width="100%" height="100%" id="flash-container" type="application/x-shockwave-flash" data="{{cpath}}/prodc6.swf?v=150" style="visibility: visible;">
+                    <object width="100%" height="100%" id="flash-container" type="application/x-shockwave-flash" style="visibility: visible;">
                         <param name="base" value="https://images.leet.ws/library/">
                         <param name="allowScriptAccess" value="always">
                         <param name="menu" value="false">
@@ -57,17 +57,17 @@
         var hide_flash_missing = false;
     </script>
     
-    <script src="{{path}}/assets/js/web/web.locale.js?v={{revision}}"></script>
-    <script src="{{path}}/assets/js/web/user_settings.js?v={{revision}}"></script>
-    <script src="{{path}}/assets/js/functions.js?v={{revision}}"></script>
-    <script src="{{path}}/assets/js/hotel/swfobject.js?v={{revision}}"></script>
-    <script src="{{path}}/assets/js/jquery.scrollbar.js?v={{revision}}"></script>
-    <script src="{{path}}/assets/js/selectric.js?v={{revision}}"></script>
-    <script src="{{path}}/assets/js/range-slider.js?v={{revision}}"></script>
-    <script src="{{path}}/assets/js/moment.js?v={{revision}}"></script>
-    <script src="{{path}}/assets/js/functions.js?v={{revision}}"></script>
-    <script src="{{path}}/assets/js/particles.min.js?v={{revision}}"></script>
-    <script src="{{path}}/assets/js/hotel/hotel.js?v={{revision}}2"></script>
+    <script src="{{site.path}}/assets/js/web/web.locale.js?v={{revision}}"></script>
+    <script src="{{site.path}}/assets/js/web/user_settings.js?v={{revision}}"></script>
+    <script src="{{site.path}}/assets/js/functions.js?v={{revision}}"></script>
+    <script src="{{site.path}}/assets/js/hotel/swfobject.js?v={{revision}}"></script>
+    <script src="{{site.path}}/assets/js/jquery.scrollbar.js?v={{revision}}"></script>
+    <script src="{{site.path}}/assets/js/selectric.js?v={{revision}}"></script>
+    <script src="{{site.path}}/assets/js/range-slider.js?v={{revision}}"></script>
+    <script src="{{site.path}}/assets/js/moment.js?v={{revision}}"></script>
+    <script src="{{site.path}}/assets/js/functions.js?v={{revision}}"></script>
+    <script src="{{site.path}}/assets/js/particles.min.js?v={{revision}}"></script>
+    <script src="{{site.path}}/assets/js/hotel/hotel.js?v={{revision}}22"></script>
 </body>
 </html>
 {% endif %}

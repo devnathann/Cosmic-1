@@ -2,6 +2,7 @@
 namespace App\Controllers\Admin;
 
 use App\Models\Admin;
+use App\Models\Core;
 use App\Models\Permission;
 
 use Library\Json;
@@ -16,7 +17,24 @@ class Search
     public function __construct(){
         $this->data = new stdClass();
     }
+  
+    public function emptyString()
+    {
+        echo Json::encode([array('id' => "none", 'text' => 'Select badge')]);
+    }
+  
+    public function currencys()
+    {
+        $string =  input()->get('searchTerm')->value ?? null;
 
+        $currencys = Core::getCurrencys($string);
+        foreach($currencys as $currency) {
+            $this->paths[] = array('id' => $currency->type, 'text' => $currency->currency);
+        }
+
+        echo Json::encode($this->paths);
+    }
+  
     public function playerid()
     {
         $string =  input()->get('searchTerm')->value ?? null;

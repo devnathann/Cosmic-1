@@ -3,7 +3,7 @@
 {% block body %}
 <header class="page-header flex-container flex-vertical-center">
     <div class="page-header-content">
-        <h1>{{shortname}} {{locale.store}}</h1>
+        <h1>{{site.shortname}} {{locale.store}}</h1>
         {{locale.desc}}
     </div>
 </header>
@@ -13,7 +13,7 @@
     <input type="hidden" id="offer-amount" value="{{data.offer.amount}}">
     <input type="hidden" id="offer-country" value="{{data.offer.lang|lower}}">
     <h2>
-        <a href="{{path}}/shop" class="rounded-button">{{locale.back}}</a>
+        <a href="{{site.path}}/shop" class="rounded-button">{{locale.back}}</a>
         {{locale.buymethods}} - {{data.offer.amount}} {{data.offer.currency}} {{locale.for}} €{{data.offer.price}} {{locale.or_lower}}
     </h2>
     <article class="default-section loading-solutions">

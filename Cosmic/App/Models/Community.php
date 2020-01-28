@@ -65,6 +65,11 @@ class Community
         return QueryBuilder::table('website_news_reactions')->where('news_id', $news_id)->where('hidden', '0')->orderBy('timestamp', 'desc')->first();
     }
     
+    public static function isNewsHidden($news_id)
+    {
+        return QueryBuilder::table('website_news_reactions')->select('hidden')->where('news_id', $news_id)->first();
+    }
+  
     public static function hideNewsReaction($reaction_id, $int)
     {
         return QueryBuilder::table('website_news_reactions')->where('id', $reaction_id)->update(array('hidden' => $int));

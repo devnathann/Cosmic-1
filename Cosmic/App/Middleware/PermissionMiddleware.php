@@ -10,7 +10,7 @@ class PermissionMiddleware implements IMiddleware
 {
     public function handle(Request $request) : void
     {
-        if (!in_array(request()->getHeader('http_authorization'), array_column(Permission::get(request()->player->rank), 'permission'))) {
+        if(!Permission::exists(request()->getHeader('http_authorization'), request()->player->rank)) {
             // add friendly message + logging
             exit;
         }

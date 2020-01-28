@@ -6,13 +6,17 @@ use QueryBuilder;
 
 class Ban
 {
-    /* Bans */
+    public static function getBanById($id)
+    {
+        return QueryBuilder::table('bans')->find($id);
+    }
+  
     public static function getBans($user_id, $ip_address)
     {
         return QueryBuilder::table('bans')->where('timestamp', '<', time())->where('user_id', $user_id)->orWhere('ip', $ip_address)->first();
     }
 
-    public static function getBanById($user_id, $ip_address)
+    public static function getBanByUserId($user_id, $ip_address)
     {
         return QueryBuilder::table('bans')->where('ban_expire', '>', time())->where('user_id', $user_id)->orWhere('ip', $ip_address)->first();
     }
