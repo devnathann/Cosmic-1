@@ -9,12 +9,12 @@
 
 > For issues join our Discord https://discord.gg/r59B4Rs or create an issue at Github.
 
-# <img src="https://raw.githubusercontent.com/Wulles/eyethatseeseverything/master/pwrup_pins.gif"> 
+# <img src="https://raw.githubusercontent.com/Wulles/eyethatseeseverything/master/pwrup_pins.gif"> Installation
 
 
-### <a href="https://github.com/devraizer/Cosmic/wiki/Installation---Debian-9,-Morningstar-Arcturus-&-Catalogue---Cosmic">Installation Debian 9, Morningstar Arcturus & Catalogue Cosmic</a>
+<a href="https://github.com/devraizer/Cosmic/wiki/Installation---Debian-9,-Morningstar-Arcturus-&-Catalogue---Cosmic">Installation Debian 9, Morningstar Arcturus & Catalogue Cosmic</a>
 
-### <a href="https://github.com/devraizer/Cosmic/wiki/Installation---Windows,-Morningstar-Arcturus-&-Catalogue---Cosmic">Installation Debian 9, Morningstar Arcturus & Catalogue Cosmic</a>
+<a href="https://github.com/devraizer/Cosmic/wiki/Installation---Windows,-Morningstar-Arcturus-&-Catalogue---Cosmic">Installation Debian 9, Morningstar Arcturus & Catalogue Cosmic</a>
 
 ### Clone
 
