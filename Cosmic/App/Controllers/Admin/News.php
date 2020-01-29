@@ -73,7 +73,7 @@ class News
 
         if (!empty($imagePath)) {
             if ($this->imageUpload()) {
-                $imagePath = Config::path . '/uploads/' . $this->file->getInfo()->filename;
+                $imagePath = Config::site['path'] . '/uploads/' . $this->file->getInfo()->filename;
             }
         }
 

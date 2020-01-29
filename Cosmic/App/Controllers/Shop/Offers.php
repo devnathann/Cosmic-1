@@ -54,21 +54,14 @@ class Offers
 
         $dedipass = file_get_contents('https://api.dedipass.com/v1/pay/?public_key=' . $offer_id . '&private_key=' . $offer->private_key . '&code=' . $code);
         $dedipass = json_decode($dedipass);
+      
         if ($dedipass->status != 'success') {
             return Json::encode(["status" => "error", "message" => Locale::get('shop/offers/invalid_code')]);
         }
-
-        $currencyType =  Config::currencys[$offer->currency];      
-        $amount = Player::getCurrencys(request()->player->id)[$currencyType]->amount;
-  
-        if (Config::apiEnabled) {
-            if(request()->player->online) {
-                HotelApi::execute('givepoints', array('user_id' => request()->player->id, 'points' => $offer->amount, 'type' => $currencyType));
-            } else {
-                Player::updateCurrency(request()->player->id, $currencyType, $amount + $offer->amount);
-            }
-        }
       
+        $amount = Player::getCurrencys(request()->player->id)[$offer->currency_type]->amount;
+  
+        HotelApi::execute('givepoints', array('user_id' => request()->player->id, 'points' => $offer->amount, 'type' => $offer->currency_type));
         Log::addPurchaseLog(request()->player->id, $offer->amount . ' '.Locale::get('core/belcredits').' (' . $code . ')', $offer->lang);
         return Json::encode(["status" => "success", "message" => Locale::get('shop/offers/success_1').' ' . $offer->amount . ' '.Locale::get('shop/offers/success_2')]);
     }

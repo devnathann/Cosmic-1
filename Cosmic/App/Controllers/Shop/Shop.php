@@ -4,6 +4,7 @@ namespace App\Controllers\Shop;
 use App\Config;
 
 use App\Models\Player;
+use App\Models\Core;
 
 use Core\Locale;
 use Core\View;
@@ -22,6 +23,10 @@ class Shop
     public function index()
     {
         $this->data->shop = \App\Models\Shop::getOffers();
+        foreach($this->data->shop as $offers) {
+            $offers->currency_type = Core::getCurrencyByType($offers->currency_type)->currency;
+        }
+      
         $this->data->currencys = Player::getCurrencys(request()->player->id);
 
         View::renderTemplate('Shop/shop.html', [

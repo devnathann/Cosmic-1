@@ -110,7 +110,7 @@ class Marketplace
               if($currency->amount < $costs) {
                   return Json::encode(["status" => "error", "message" => Locale::get('core/notification/not_enough_points')]);
               }
-          
+
               HotelApi::execute('givepoints', ['user_id' => request()->player->id, 'points' => - $costs, 'type' => $item->points_type]);
               HotelApi::execute("sendgift", ["user_id" => request()->player->id, "itemid" => $item->id, "message" => Locale::get('shop/marketplace/regards')]);
               return Json::encode(["status" => "success", "message" => Locale::get('shop/marketplace/purchased'), "replacepage" => "marketplace/all/sell"]);
