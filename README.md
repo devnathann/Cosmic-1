@@ -9,36 +9,14 @@
 
 > For issues join our Discord https://discord.gg/r59B4Rs or create an issue at Github.
 
-# <img src="https://raw.githubusercontent.com/Wulles/eyethatseeseverything/master/pwrup_pins.gif"> INSTALLATION:
+# <img src="https://raw.githubusercontent.com/Wulles/eyethatseeseverything/master/pwrup_pins.gif"> 
 
-## Issues
 
-If you using XAMPP, please add the line below in your ``httpd.conf``
-Otherwise your housekeeping won't work!
+### <a href="https://github.com/devraizer/Cosmic/wiki/Installation---Debian-9,-Morningstar-Arcturus-&-Catalogue---Cosmic">Installation Debian 9, Morningstar Arcturus & Catalogue Cosmic</a>
 
-``` SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1 ```
-
-## Installation
+### <a href="https://github.com/devraizer/Cosmic/wiki/Installation---Windows,-Morningstar-Arcturus-&-Catalogue---Cosmic">Installation Debian 9, Morningstar Arcturus & Catalogue Cosmic</a>
 
 ### Clone
 
 - Clone this repo to your local machine using `https://github.com/devraizer/Cosmic.git`
 
-### Setup
-
-> update and install vendors with composer.phar
-
-```shell
-$ curl -s https://getcomposer.org/installer | php
-$ composer update
-```
-
-## Installer
-
-- Because the htaccess and web.config are already included, you do not need to change/add anything. When the repo is cloned and composer installed/updated you can go to your website and run the installer. Please follow the installation steps to install Cosmic.
-
-![](https://i.gyazo.com/375ef46231c76a490a44142f1475d18b.gif)
-
-## Documentation
-
-- Because Cosmic is still in a beta, we will not have any documentation available. We would like to see all bugs fixed before we leave the beta. Please create an issue when you found bug so that we can solve it. If you have problems with the installation, please add me on discord.
