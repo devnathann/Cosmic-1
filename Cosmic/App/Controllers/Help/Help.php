@@ -38,7 +38,7 @@ class Help
         foreach ($category as $row) {
             $row->faq = \App\Models\Help::getByCategory($row->id);
         }
-
+        print_r($_SERVER);
         $this->data->categories = $category;
     }
 

@@ -94,7 +94,11 @@ function WebPagesManagerInterface()
             $.ajax({
                 type: "get",
                 url: '/' + url,
-                dataType: "json"
+                dataType: "json",
+                error: function (request, status, error) {
+                    PageLoading.hide();
+                    Web.notifications_manager.create("error", error, status);
+                }
             }).done(function (result)
             {
                 PageLoading.hide();

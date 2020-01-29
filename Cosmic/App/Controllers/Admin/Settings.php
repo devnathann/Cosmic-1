@@ -21,6 +21,28 @@ class Settings
         return Json::encode(["status" => "success", "message" => "Saved!"]);
     }
   
+    public function addCurrency()
+    {
+        $currency = input()->post('currency')->value;
+        $type = input()->post('type')->value;
+        $amount = input()->post('amount')->value;
+      
+        Core::addCurrency($currency, $type, $amount);
+        return Json::encode(["status" => "success", "message" => "Currency has been added!"]);
+    }
+  
+    public function deleteCurrency()
+    {
+        if(Core::deleteCurrency(input()->post('type')->value, input()->post('currency')->value)) {
+            return Json::encode(["status" => "success", "message" => "Currency has been deleted"]);
+        }
+    }
+  
+    public function getCurrencys()
+    {
+        return Json::encode(Core::getCurrencys());
+    }
+  
     public function view()
     {
         $settings = Core::settings();

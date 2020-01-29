@@ -1,0 +1,5 @@
+Je moet je config.ini aanpassen en hotel_url naar de URL van je hotel zetten!
+Voorbeeld: habbo.com, krews.org, etc.
+
+Je kan optioneel een account aanmaken op https://hackerman.tech voor extra content en support. Vul dan je email en gebruikersnaam
+in de config.ini

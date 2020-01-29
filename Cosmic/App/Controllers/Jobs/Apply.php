@@ -28,16 +28,15 @@ class Apply
     public function request()
     {
         $validate = request()->validator->validate([
-            'name'              =>   'required',
             'age'               =>   'required|numeric',
             'job_why'           =>   'required',
-            'when_monday'       =>   'required|numeric',
-            'when_tuesday'      =>   'required|numeric',
-            'when_thursday'     =>   'required|numeric',
-            'when_wednesday'    =>   'required|numeric',
-            'when_friday'       =>   'required|numeric',
-            'when_sunday'       =>   'required|numeric',
-            'when_saturday'     =>   'required|numeric'
+            'when_monday'       =>   'required',
+            'when_tuesday'      =>   'required',
+            'when_thursday'     =>   'required',
+            'when_wednesday'    =>   'required',
+            'when_friday'       =>   'required',
+            'when_sunday'       =>   'required',
+            'when_saturday'     =>   'required'
             ]);
 
         if(!$validate->isSuccess()) {

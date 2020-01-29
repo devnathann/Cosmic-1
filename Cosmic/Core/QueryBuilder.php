@@ -26,9 +26,11 @@ class QueryBuilder {
             ];
   
             try {
-                new Connection('mysql', $config, 'QueryBuilder');
+              new Connection('mysql', $config, 'QueryBuilder');
+            } catch (PDOException $e) {
+              echo "Database Error: The user could not be added.<br>".$e->getMessage();
             } catch (Exception $e) {
-                return;
+              echo "General Error: The user could not be added.<br>".$e->getMessage();
             }
     }
 }

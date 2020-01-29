@@ -53,7 +53,7 @@ class Remote
         $this->data->user->username     = $this->user->username;
         $this->data->user->rank_id      = $this->user->rank;
         $this->data->user->mail         = $this->user->mail;
-        $this->data->user->motto        = $this->user->motto;
+        $this->data->user->motto        = Core::filterString($this->user->motto);
         $this->data->user->credits      = $this->user->credits;
       
         $this->data->user->currencys     = Player::getCurrencys($this->user->id);
@@ -153,6 +153,8 @@ class Remote
             return;
         }
 
+        $player = Player::getDataByUsername(input()->post('element')->value, array('id', 'username', 'online'));
+      
         if(!Permission::exists('housekeeping_alert_user', request()->player->rank)) {
             Log::addStaffLog($player->id, 'No permissions to send alert', request()->player->id, 'error');
             return Json::encode(["status" => "error", "message" => "You have no permissions!"]);
@@ -191,14 +193,11 @@ class Remote
             return;
         }
       
-        if(Permission::exists('housekeeping_ban_user', request()->player->rank)) {
-            Log::addStaffLog($player->id, 'No permissions to ban', 'error');
-            return Json::encode(["status" => "error", "message" => "You have no permissions to do this action!"]);
-        }
+        $player = Player::getDataByUsername(input()->post('element')->value, array('id', 'username', 'ip_current'));
 
         $ban_message = Admin::getBanMessagesById(input()->post('reason')->value);
         $ban_time = Admin::getBanTimeById(input()->post('expire')->value);
-
+        
         Ban::insertBan($player->id, $player->ip_current, request()->player->id, time() + $ban_time->seconds, $ban_message->message, (input()->post('type')->value == "ip") ? "ip" : "account");
         
         HotelApi::execute('disconnect', ['user_id' => $player->id]);

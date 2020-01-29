@@ -22,9 +22,19 @@ class Core
         return $inArray;
     }
   
-    public static function getCurrencys($array = false)
+    public static function getCurrencys()
     {
         return QueryBuilder::table('website_settings_currencys')->get();
+    }
+  
+    public static function addCurrency($currency, $type, $amount)
+    {
+        return QueryBuilder::table('website_settings_currencys')->insert(array('currency'=> $currency, 'type' => $type, 'amount' => $amount));
+    }
+  
+    public static function deleteCurrency($type, $currency)
+    {
+        return QueryBuilder::table('website_settings_currencys')->where('type', $type)->where('currency', $currency)->delete();
     }
   
     public static function getCurrencyByType($type)

@@ -53,7 +53,7 @@
                                                             <div class="col-lg-6">
                                                                 <div class="kt-checkbox-inline">
                                                                     <label class="kt-checkbox">
-                                                                        <input type="checkbox" name="krews_api_advanced_stats" {% if settings.krews_api_advanced_stats == 1 %}checked{% endif %}> Yes
+                                                                        <input type="checkbox" name="krews_api_advanced_stats" {% if settings.krews_api_advanced_stats==1 %}checked{% endif %}> Yes
                                                                         <span></span>
                                                                     </label>
                                                                 </div>
@@ -89,119 +89,164 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="accordion accordion-solid accordion-toggle-plus" id="webPerm">
+                                <div class="accordion accordion-solid accordion-toggle-plus" id="otherSettings">
                                     <form method="post" action="settings/save">
-                                    <div class="card">
-                                        <div class="card-header" id="headingOne5">
-                                            <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseOne1" aria-expanded="false" aria-controls="collapseOne1">
-                                                <i class="flaticon-interface-7"></i> VIP Page
+                                        <div class="card">
+                                            <div class="card-header" id="headingOne5">
+                                                <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseOne9" aria-expanded="false" aria-controls="collapseOne9">
+                                                    <i class="flaticon-interface-7"></i> Currency Settings
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div id="collapseOne1" class="collapse" aria-labelledby="headingOne5" data-parent="#webPerm" style="">
-                                            <div class="kt-portlet__body">
-                                                <div class="kt-section kt-section--first">
-                                                    <h3 class="kt-section__title">1. Settings</h3>
-                                                    <div class="kt-section__body">
-                                                        <div class="form-group row">
-                                                            <label class="col-lg-3 col-form-label">Choose rank</label>
-                                                            <div class="col-lg-6">
-                                                                <select name="vip_permission_id" class="form-control targetRole">
-                                                                    {% for rank in settings.ranks %}
-                                                                        {% if settings.vip_permission_id == rank.id %}
-                                                                            <option id="{{rank.id}}">{{rank.rank_name}}</option>
-                                                                        {% endif %}
-                                                                    {% endfor %}
-                                                                </select>
-                                                                <span class="form-text text-muted">When player buy VIP which rank get the user</span>
+                                            <div id="collapseOne9" class="collapse" aria-labelledby="headingOne5" data-parent="#otherSettings" style="">
+                                                <div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile ">
+                                                    <div class="kt-portlet__head kt-portlet__head--lg">
+                                                        <div class="kt-portlet__head-label">
+                                                            <span class="kt-portlet__head-icon">
+                                                      <i class="kt-font-brand flaticon2-user"></i>
+                                                      </span>
+                                                            <h3 class="kt-portlet__head-title">
+                                                         Currencys
+                                                      </h3>
+                                                        </div>
+                                                        <div class="kt-portlet__head-toolbar">
+                                                            <div class="kt-portlet__head-wrapper">
+                                                                <div class="col-md-4 kt-tablet-and-mobile">
+                                                                    <div class="kt-form__group kt-form__group--inline">
+                                                                        <div class="kt-form__label">
+                                                                            <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#editCategoryModal">Add</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                          <div class="form-group row">
-                                                            <label class="col-lg-3 col-form-label">Currency:</label>
-                                                            <div class="col-lg-6">
-                                                                <select name="vip_currency_type" class="form-control targetCurrency">
-                                                                    <option id="{{settings.vip_currency_type.type}}">{{settings.vip_currency_type.currency}}</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-lg-3 col-form-label">Price:</label>
-                                                            <div class="col-lg-2">
-                                                                <input type="number" name="vip_price" value="{{settings.vip_price}}" class="form-control">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-lg-3 col-form-label">Badges:</label>
-                                                            <div class="col-lg-6">
-                                                                 <input name="vip_badges" value="{% for badges in settings.vip_badges %}{{badges.value}},{% endfor %}">
-                                                            </div>
-                                                        </div>
-                                        
-                                                        <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
-
-                                                        <h3 class="kt-section__title">2. Content
-                                                        <textarea name="club_page_content" id="club_page_content" style="font-size: 6px;">{{settings.club_page_content}}</textarea>
-                                                      
+                                                    </div>
+                                                    <div class="kt-portlet__body kt-portlet__body--fit">
+                                                        <!--begin: Datatable -->
+                                                        <div id="kt_datatable_chatlogs"></div>
+                                                        <!--end: Datatable -->
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="kt-portlet__foot">
-                                                <div class="kt-form__actions">
-                                                    <input type="submit" class="btn btn-primary" value="Save">
-                                                </div>
-                                            </div>
                                         </div>
-                                    </div>
                                     </form>
                                 </div>
                                 <div class="accordion accordion-solid accordion-toggle-plus" id="otherSettings">
                                     <form method="post" action="settings/save">
-                                    <div class="card">
-                                        <div class="card-header" id="headingOne5">
-                                            <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseOne3" aria-expanded="false" aria-controls="collapseOne3">
-                                                <i class="flaticon-interface-7"></i>  Other settings
+                                        <div class="card">
+                                            <div class="card-header" id="headingOne5">
+                                                <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseOne3" aria-expanded="false" aria-controls="collapseOne3">
+                                                    <i class="flaticon-interface-7"></i> Other settings
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div id="collapseOne3" class="collapse" aria-labelledby="headingOne5" data-parent="#otherSettings" style="">
-                                            <div class="kt-portlet__body">
-                                                <div class="kt-section kt-section--first">
-                                                    <h3 class="kt-section__title">1. Namechange Settings</h3>
-                                                    <div class="kt-section__body">
-                                                        <div class="form-group row">
-                                                            <label class="col-lg-3 col-form-label">Currency</label>
-                                                            <div class="col-lg-6">
-                                                                <select name="namechange_currency_type" class="form-control targetCurrency">
-                                                                    <option id="{{settings.namechange_currency_type.type}}">{{settings.namechange_currency_type.currency}}</option>
-                                                                </select>
-                                                                <span class="form-text text-muted">Currency for purchase namechange</span>
+                                            <div id="collapseOne3" class="collapse" aria-labelledby="headingOne5" data-parent="#otherSettings" style="">
+                                                <div class="kt-portlet__body">
+                                                    <div class="kt-section kt-section--first">
+                                                        <h3 class="kt-section__title">1. Namechange Settings</h3>
+                                                        <div class="kt-section__body">
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-form-label">Currency</label>
+                                                                <div class="col-lg-6">
+                                                                    <select name="namechange_currency_type" class="form-control targetCurrency">
+                                                                        <option id="{{settings.namechange_currency_type.type}}">{{settings.namechange_currency_type.currency}}</option>
+                                                                    </select>
+                                                                    <span class="form-text text-muted">Currency for purchase namechange</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-form-label">Price:</label>
+                                                                <div class="col-lg-3">
+                                                                    <input type="number" name="namechange_price" value="{{settings.namechange_price}}" class="form-control">
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                          <div class="form-group row">
-                                                            <label class="col-lg-3 col-form-label">Price:</label>
-                                                            <div class="col-lg-3">
-                                                                <input type="number" name="namechange_price" value="{{settings.namechange_price}}" class="form-control">
-                                                            </div>
-                                                        </div>
-                                                  </div>
-                                        
+
                                                         <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
 
-                                                  <h3 class="kt-section__title">2. Settings</h3>
+                                                        <h3 class="kt-section__title">2. Settings</h3>
                                                         <div class="kt-section__body">
-                                                        <div class="form-group row">
-                                                            <label class="col-lg-3 col-form-label">Max regisratrion IP</label>
-                                                            <div class="col-lg-3">
-                                                                <input type="number" name="vip_price" value="{{settings.registration_max_ip}}" class="form-control">
-                                                                <span class="form-text text-muted">Max user registration per IP</span>
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-form-label">Max regisratrion IP</label>
+                                                                <div class="col-lg-3">
+                                                                    <input type="number" name="vip_price" value="{{settings.registration_max_ip}}" class="form-control">
+                                                                    <span class="form-text text-muted">Max user registration per IP</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-form-label">User of the Week:</label>
+                                                                <div class="col-lg-6">
+                                                                    <select name="user_of_the_week" class="form-control remoteControl">
+                                                                        <option value="{{settings.user_of_the_week.id}}">{{settings.user_of_the_week.username}}</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-form-label">Start credits:</label>
+                                                                <div class="col-lg-6">
+                                                                    <input type="text" class="form-control" name="start_credits" value="{{settings.start_credits}}">
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                          <div class="form-group row">
-                                                            <label class="col-lg-3 col-form-label">User of the Week:</label>
-                                                            <div class="col-lg-6">
-                                                               <select name="user_of_the_week" class="form-control remoteControl">
-                                                                  <option value="{{settings.user_of_the_week.id}}">{{settings.user_of_the_week.username}}</option>
-                                                                </select>
+                                                    </div>
+                                                </div>
+                                                <div class="kt-portlet__foot">
+                                                    <div class="kt-form__actions">
+                                                        <input type="submit" class="btn btn-primary" value="Save">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="accordion accordion-solid accordion-toggle-plus" id="webPerm">
+                                    <form method="post" action="settings/save">
+                                        <div class="card">
+                                            <div class="card-header" id="headingOne5">
+                                                <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseOne1" aria-expanded="false" aria-controls="collapseOne1">
+                                                    <i class="flaticon-interface-7"></i> VIP Page
+                                                </div>
+                                            </div>
+                                            <div id="collapseOne1" class="collapse" aria-labelledby="headingOne5" data-parent="#webPerm" style="">
+                                                <div class="kt-portlet__body">
+                                                    <div class="kt-section kt-section--first">
+                                                        <h3 class="kt-section__title">1. Settings</h3>
+                                                        <div class="kt-section__body">
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-form-label">Choose rank</label>
+                                                                <div class="col-lg-6">
+                                                                    <select name="vip_permission_id" class="form-control targetRole">
+                                                                        {% for rank in settings.ranks %} {% if settings.vip_permission_id == rank.id %}
+                                                                        <option id="{{rank.id}}">{{rank.rank_name}}</option>
+                                                                        {% endif %} {% endfor %}
+                                                                    </select>
+                                                                    <span class="form-text text-muted">When player buy VIP which rank get the user</span>
+                                                                </div>
                                                             </div>
-                                                        </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-form-label">Currency:</label>
+                                                                <div class="col-lg-6">
+                                                                    <select name="vip_currency_type" class="form-control targetCurrency">
+                                                                        <option id="{{settings.vip_currency_type.type}}">{{settings.vip_currency_type.currency}}</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-form-label">Price:</label>
+                                                                <div class="col-lg-2">
+                                                                    <input type="number" name="vip_price" value="{{settings.vip_price}}" class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-form-label">Badges:</label>
+                                                                <div class="col-lg-6">
+                                                                    <input name="vip_badges" value="{% for badges in settings.vip_badges %}{{badges.value}},{% endfor %}">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
+
+                                                            <h3 class="kt-section__title">2. Content
+                                                        <textarea name="club_page_content" id="club_page_content" style="font-size: 6px;">{{settings.club_page_content}}</textarea>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -222,7 +267,40 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="editCategoryModal" tabindex="-1" role="dialog" aria-labelledby="editCategoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editCategoryModalLabel">Add Currency</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
 
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="categoryName" class="form-control-label">Currency name:</label>
+                        <input type="text" class="form-control" id="currency_name">
+                    </div>
+                   <div class="form-group">
+                        <label for="categoryName" class="form-control-label">Currency type:</label>
+                        <input type="text" class="form-control" id="currency_type">
+                    </div>
+                   <div class="form-group">
+                        <label for="categoryName" class="form-control-label">Currency amount:</label>
+                        <input type="number" class="form-control" id="currency_amount">
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary saveCurrency">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="https://yaireo.github.io/tagify/dist/tagify.js"></script>
 <link rel="stylesheet" href="https://yaireo.github.io/tagify/dist/tagify.css">
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=ximwo5y97dtfrnc60p0d3bt43tgla29a83es2owf5uwib1v2"></script>

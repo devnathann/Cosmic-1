@@ -5,22 +5,18 @@ use App\Config;
 use Core\Routes;
 use Core\QueryBuilder;
 
-if (file_exists(__DIR__ . '/../vendor/usmanhalalit/') && file_exists(__DIR__ . '/../vendor/twig/')) {
-    if (!file_exists(__DIR__ . '/uploads/')) {
+if (!is_dir(__DIR__ . '/../vendor/')) {
+    if (!is_dir(__DIR__ . '/uploads/') || is_dir(__DIR__ . '/tmp/')) {
       
-        $createdir = mkdir(__DIR__ . '/uploads/', 0777, true);
-        if(!$createdir) {
-            echo 'Cant create upload folder, please CHMOD public folder to 777';
-            exit;
+        $createUploads = mkdir(__DIR__ . '/uploads/', 0777, true);
+        $createTmp = mkdir(__DIR__ . '/tmp/', 0777, true);
+      
+        if(!$createdir || $createTmp) {
+            return 'Cant create upload and tmp folder, please CHMOD public folder to 777';
         }
-      
-    } elseif (!file_exists(__DIR__ . '/tmp/')) {
-        mkdir(__DIR__ . '/tmp/', 0777, true);
+    } else {
+        return 'Please update composer, vendors are missing!';
     }
-
-} else {
-    echo 'Please update composer, vendors are missing!';
-    exit;
 }
 
 require_once __DIR__ . '/../Core/Helper.php';
@@ -31,16 +27,12 @@ require_once __DIR__ . '/../vendor/autoload.php';
  */
 
 if(!file_exists(__DIR__ . '/../App/Config.php')) {
-  
     $copy = copy(__DIR__ . '/../../App/Config.tmp', __DIR__ . '/../../App/Config.php');
-    if($copy) {
-        redirect('/');
+    if(!$copy) {
+        echo 'Cant create config file, please CHMOD App folder to 777 or rename Config.tmp to Config.php';
+        exit;
     }
-  
-    echo 'Cant create config file, please CHMOD App folder to 777 or rename Config.tmp to Config.php';
-    exit;
 }
-
 
 if(Config::debug) {
     ini_set("display_errors", 1);
