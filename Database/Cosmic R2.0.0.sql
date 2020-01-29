@@ -414,12 +414,11 @@ CREATE TABLE `website_permissions_ranks`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `rank_id`(`rank_id`) USING BTREE,
   INDEX `permission_id`(`permission_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 105 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of website_permissions_ranks
 -- ----------------------------
-INSERT INTO `website_permissions_ranks` VALUES (0, 1, 5);
 INSERT INTO `website_permissions_ranks` VALUES (1, 1, 7);
 INSERT INTO `website_permissions_ranks` VALUES (2, 2, 7);
 INSERT INTO `website_permissions_ranks` VALUES (3, 3, 7);
@@ -446,8 +445,8 @@ INSERT INTO `website_permissions_ranks` VALUES (23, 23, 7);
 INSERT INTO `website_permissions_ranks` VALUES (24, 24, 7);
 INSERT INTO `website_permissions_ranks` VALUES (25, 25, 7);
 INSERT INTO `website_permissions_ranks` VALUES (26, 26, 7);
-INSERT INTO `website_permissions_ranks` VALUES (103, 27, 1);
-INSERT INTO `website_permissions_ranks` VALUES (104, 27, 2);
+INSERT INTO `website_permissions_ranks` VALUES (27, 27, 1);
+INSERT INTO `website_permissions_ranks` VALUES (28, 27, 2);
 
 -- ----------------------------
 -- Table structure for website_photos_likes
