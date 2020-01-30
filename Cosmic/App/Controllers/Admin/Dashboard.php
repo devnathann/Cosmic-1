@@ -54,7 +54,7 @@ class Dashboard
             return Json::encode(["status" => "error", "message" => "You have no permissions to do this!"]);
         }
       
-        $maintenance = Admin::setMaintenance();
+        $maintenance = Admin::saveSettings('maintenance', isset(\App\Models\Core::settings()->maintenance) ? "0" : "1");
         return Json::encode(["status" => "success", "message" => "Maintenance updated"]);
     }
 

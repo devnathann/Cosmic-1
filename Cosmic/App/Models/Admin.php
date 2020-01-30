@@ -793,11 +793,6 @@ class Admin
         return QueryBuilder::table('website_jobs_applys')->where('id', $id)->update(array('status' => "closed"));
     }
   
-    public static function setMaintenance()
-    {
-        return QueryBuilder::query('UPDATE website_config SET maintenance = 1 - maintenance');
-    }
-  
     public static function saveSettings($column, $value_id)
     {
         return QueryBuilder::table('website_settings')->where('key', $column)->update(array('value' => $value_id));
