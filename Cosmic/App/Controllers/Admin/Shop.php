@@ -47,40 +47,6 @@ class Shop
         return Json::encode(["status" => "success", "message" => "Shop created successfully!"]);
     }
   
-    public function give()
-    {
-        $validate = request()->validator->validate([
-            'username'      => 'required|max:15|pattern:[^[:space:]]+',
-            'type'          => 'required'
-        ]);
-
-        $username = input()->post('username')->value;
-        $type = input()->post('type')->value;
-
-        if(!$validate->isSuccess()) {
-            return;
-        }
-
-        $player = Player::getDataByUsername($username, array('id', 'online'));
-        if (empty($player)) {
-            return Json::encode(["status" => "error", "message" => "This user does not exists!"]);
-        }
-
-        $offer = \App\Models\Shop::getOfferById($type);
-        if (empty($offer)) {
-            return Json::encode(["status" => "error", "message" => "This offer does not exists!"]);
-        }
-
-        if ($player->online) {
-            HotelApi::execute('givepoints', array('user_id' => $player->id, 'points' => $offer->amount, 'type' => Config::currencys[$offer->currency]));
-        } else {
-            Player::updateCurrency($player->id, Config::currencys[$offer->currency], +$offer->amount);
-        }
-
-        Log::addPurchaseLog($player->id, $offer->amount . ' Bel-Credits', $offer->lang);
-        return Json::encode(["status" => "success", "message" => "User has received the items!"]);
-    }
-  
     public function getOfferById()
     {
        $validate = request()->validator->validate([
@@ -103,6 +69,6 @@ class Shop
 
     public function view()
     {
-        View::renderTemplate('Admin/Management/shop.html', ['permission' => 'housekeeping_shop_control', 'offers' => Admin::getOffers(), 'currency' => Config::currencys]);
+        View::renderTemplate('Admin/Management/shop.html', ['permission' => 'housekeeping_shop_control', 'offers' => Admin::getOffers()]);
     }
 }

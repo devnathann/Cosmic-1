@@ -145,4 +145,29 @@ var shop = function() {
 
 jQuery(document).ready(function() {
     shop.init();
+  
+    $('.targetCurrency').select2({
+        placeholder: 'Select a currency',
+        width: '85%',
+        ajax: {
+            url: '/housekeeping/search/get/currencys',
+            headers: {
+                "Authorization": "housekeeping_permissions"
+            },
+            dataType: 'json',
+            delay: 250,
+            data: function(params) {
+                return {
+                    searchTerm: params.term
+                };
+            },
+            processResults: function(data) {
+                return {
+                    results: data
+                };
+            },
+            cache: true
+        }
+    });
+
 });
