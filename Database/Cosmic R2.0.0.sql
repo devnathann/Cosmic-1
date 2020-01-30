@@ -326,7 +326,7 @@ CREATE TABLE `website_news_reactions`  (
   `player_id` int(11) NULL DEFAULT NULL,
   `message` varchar(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `hidden` int(11) NULL DEFAULT 0,
-  `timestamp` datetime(0) NULL DEFAULT NULL,
+  `timestamp` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
