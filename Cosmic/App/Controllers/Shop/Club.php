@@ -49,10 +49,9 @@ class Club
             return Json::encode(["status" => "error", "message" => Locale::get('shop/club/already_vip')]);
         }
   
-        $vip_badges->vip_badges = (object)json_decode($this->settings->vip_badges, true);
-      
-        foreach($vip_badges as $badge) {
-            HotelApi::execute('givebadge', array('user_id' => request()->player->id, 'badge' => $badge->value));
+        $this->settings->vip_badges = json_decode($this->settings->vip_badges, true);
+        foreach($this->settings->vip_badges as $badge) {
+            HotelApi::execute('givebadge', array('user_id' => request()->player->id, 'badge' => $badge['value']));
         }
       
         HotelApi::execute('givepoints', ['user_id' => request()->player->id, 'points' => - $this->settings->vip_price, 'type' => $this->settings->vip_currency_type]);

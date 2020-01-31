@@ -97,7 +97,7 @@ function WebPagesManagerInterface()
                 dataType: "json",
                 error: function (request, status, error) {
                     PageLoading.hide();
-                    Web.notifications_manager.create("error", error, status);
+                    Web.notifications_manager.create("error", error, request.responseText);
                 }
             }).done(function (result)
             {

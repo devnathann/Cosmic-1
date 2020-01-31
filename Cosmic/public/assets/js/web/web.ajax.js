@@ -9,7 +9,11 @@ function WebAjaxManagerInterface() {
             url: url,
             dataType: "json",
             processData: false,
-            contentType: false
+            contentType: false,
+            error: function (request, status, error) {
+                PageLoading.hide();
+                Web.notifications_manager.create("error", error, request.responseText);
+            }
         }).done(function (result) {
             PageLoading.hide();
           
