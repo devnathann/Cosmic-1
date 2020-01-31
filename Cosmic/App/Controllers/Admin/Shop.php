@@ -6,6 +6,7 @@ use App\Config;
 use App\Models\Admin;
 use App\Models\Log;
 use App\Models\Player;
+use App\Models\Core;
 use App\Models\Shop as Shops;
 
 use Core\View;
@@ -65,9 +66,14 @@ class Shop
     {
         $offers = Admin::getOffers();
         foreach($offers as $offer) {
+<<<<<<< HEAD
             $offer->currency_type = Core::getCurrencyByType($offer->currency_type)->currency;
         }
       
+=======
+            $offer->currency = Core::getCurrencyByType($offer->currency_type)->currency;
+        }
+>>>>>>> 4b26e89ee6ebbec636be84ebf5a0bb90ba9eff76
         Json::filter($offers, 'desc', 'id');
     }
 
