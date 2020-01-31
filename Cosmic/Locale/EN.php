@@ -221,9 +221,9 @@ $GLOBALS['language'] = array (
             'load_more'   => 'View more photos'
         ),
         'community_staff' => array (
-            'title'       => 'How do I become an ' . Config::site['shortname'] . ' Staff?',
-            'desc'        => 'Our staff is to help and guide you within this hotel!',
-            'content_1'   => 'Of course everyone dreams of such a place as an ' . Config::site['shortname'] . ' Staff member, but unfortunately this is not for everyone. To become an ' . Config::site['shortname'] . ' Staff you must apply.',
+            'title'       => 'How do I become staff at ' . Config::site['shortname'] . ' ?',
+            'desc'        => 'Our staff is here to help and guide you within this hotel!',
+            'content_1'   => 'Of course everyone dreams of being staff at ' . Config::site['shortname'] . ' , but unfortunately this is not for everyone. To become staff at ' . Config::site['shortname'] . '  you must apply.',
             'content_2'   => 'This is only possible at times when we have vacancies, when we have this, this is mentioned in the news.'
         ),
         'community_value' => array (
@@ -347,8 +347,8 @@ $GLOBALS['language'] = array (
         ),
         'registration' => array (
             'title'                 => 'Enter your information!',
-            'email'                 => 'E-mailaddress',
-            'email_fill'            => 'Enter your e-mailaddress here...',
+            'email'                 => 'E-mail address',
+            'email_fill'            => 'Enter your e-mail address here...',
             'email_help'            => 'We will need this information to restore your account in case you lose access.',
             'password'              => 'Password',
             'password_fill'         => 'Password...',
@@ -412,10 +412,10 @@ $GLOBALS['language'] = array (
         /*     App/View/Password     */
         'password_claim' => array (
             'title'                 => 'Forgot your password?',
-            'content_1'             => 'Enter your ' . Config::site['shortname'] . 'name and e-mailaddress below and we will send you a link by e-mail to change your password.',
+            'content_1'             => 'Enter your ' . Config::site['shortname'] . 'name and e-mail address below and we will send you a link by e-mail to change your password.',
             'content_2'             => 'Don\'t do this if someone asks you to do this!',
             'username'              =>  Config::site['shortname'] . 'name',
-            'email'                 => 'E-mailadress',
+            'email'                 => 'E-mail address',
             'send'                  => 'Send e-mail',
             'wrong_page'            => 'False alarm!',
             'wrong_page_content_1'  => 'If you remember your password - or ended up here by accident - you can use the link below to return to the homepage.',
@@ -434,14 +434,14 @@ $GLOBALS['language'] = array (
             'preferences'    => 'My preferences',
             'password'       => 'Change password',
             'verification'   => 'Set verification',
-            'email'          => 'Change e-mailadress',
+            'email'          => 'Change e-mail address',
             'namechange'     => 'Change ' . Config::site['shortname'] . 'name',
             'shop_history'   => 'Purchase history'
         ),
         'settings_email' => array (
             'title'           => 'Change e-mail',
-            'email_title'     => 'E-mailadress',
-            'email_label'     => 'Your e-mailaddress is required to restore your account in case you lose access.',
+            'email_title'     => 'E-mail address',
+            'email_label'     => 'Your e-mail address is required to restore your account in case you lose access.',
             'password_title'  => 'Current password',
             'fill_password'   => 'Enter your current password...',
             'save'            => 'Save'
@@ -506,7 +506,7 @@ $GLOBALS['language'] = array (
             'content_2'           => 'Do not hesitate to contact customer service via the',
             'help_tool'           =>  Config::site['shortname'] . ' Help Tool',
             'random_club_users'   => 'Random ' . Config::site['shortname'] . ' Club members',
-            'desc'                => 'Here you can buy a club for real money. With club you can buy exclusive items.'
+            'desc'                => 'Here you can buy ' . Config::site['shortname'] . ' club for real money. With club you can buy exclusive items.'
         ),
         'shop_history' => array (
             'buy_history'         => 'Purchase history',
@@ -543,7 +543,7 @@ $GLOBALS['language'] = array (
             'click_here'        => 'Click here',
             'to_login'          => 'to log in.',
             'store'             => 'Store',
-            'desc'              => 'Here you can buy credits for real money for real money, with this you can buy exclusive items in our catalogue'
+            'desc'              => 'Here you can buy credits for real money, with this you can buy exclusive items in our catalogue'
         ),
         'games_ranking' => array(
             'title'             => 'Highscores',
