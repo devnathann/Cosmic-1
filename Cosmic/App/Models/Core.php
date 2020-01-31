@@ -13,10 +13,8 @@ class Core
         $inArray = new \stdClass();
       
         foreach($settings as $setting) {
-            if(!empty($setting->value) && !is_null($setting->value)) {
-                $key           = $setting->key;
-                $inArray->$key = $setting->value;
-            }
+            $key           = $setting->key;
+            $inArray->$key = $setting->value;
         }
       
         return $inArray;

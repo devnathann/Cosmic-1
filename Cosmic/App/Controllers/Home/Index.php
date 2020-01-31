@@ -20,7 +20,7 @@ class Index
         $news = Community::getNews(6);
         $rooms = Community::getPopularRooms(5);
         $groups = Community::getPopularGroups(7);
-        
+
         if(isset(request()->player->id)) {
             $random = Player::getMyOnlineFriends(request()->player->id);
             $currencys = Player::getCurrencys(request()->player->id);
