@@ -16,12 +16,12 @@
 
 @font-face {
   font-family: "LineAwesome";
-  src: url("../font/line-awesome.eot?v=1.1.");
-  src: url("../font/line-awesome.eot??v=1.1.#iefix") format("embedded-opentype"),
-       url("../font/line-awesome.woff2?v=1.1.") format("woff2"),
-       url("../font/line-awesome.woff?v=1.1.") format("woff"),
-       url("../font/line-awesome.ttf?v=1.1.") format("truetype"),
-       url("../font/line-awesome.svg?v=1.1.#fa") format("svg");
+  src: url("font/line-awesome.eot?v=1.1.");
+  src: url("font/line-awesome.eot??v=1.1.#iefix") format("embedded-opentype"),
+       url("font/line-awesome.woff2?v=1.1.") format("woff2"),
+       url("font/line-awesome.woff?v=1.1.") format("woff"),
+       url("font/line-awesome.ttf?v=1.1.") format("truetype"),
+       url("font/line-awesome.svg?v=1.1.#fa") format("svg");
   font-weight: normal;
   font-style: normal;
 }

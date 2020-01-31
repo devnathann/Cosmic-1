@@ -29,7 +29,7 @@
    <link href="{{site.path}}/assets/admin/vendors/css/bootstrap-select.css" rel="stylesheet" type="text/css" />
    <link href="{{site.path}}/assets/admin/vendors/css/select2.css" rel="stylesheet" type="text/css" />
    <link href="{{site.path}}/assets/admin/vendors/css/toastr.css" rel="stylesheet" type="text/css" />
-   <link href="{{site.path}}/assets/admin/vendors/css/line-awesome.css" rel="stylesheet" type="text/css" />
+   <link href="{{site.path}}/assets/admin/vendors/css/line-awesome.css?v=5" rel="stylesheet" type="text/css" />
    <link href="{{site.path}}/assets/admin/vendors/css/flaticon.css" rel="stylesheet" type="text/css" />
    <link href="{{site.path}}/assets/admin/vendors/css/flaticon2.css" rel="stylesheet" type="text/css" />
    <link href="{{site.path}}/assets/admin/vendors/css/fontawesome.css" rel="stylesheet" type="text/css" />
@@ -233,7 +233,7 @@
    </script>
 
    <script src="{{site.path}}/assets/admin/js/vendors.bundle.js" type="text/javascript"></script>
-   <script src="{{site.path}}/assets/admin/js/scripts.bundle.js?1" type="text/javascript"></script>
+   <script src="{{site.path}}/assets/admin/js/scripts.bundle.js" type="text/javascript"></script>
    <script src="{{site.path}}/assets/admin/js/modal.js" type="text/javascript"></script>
    <script src="{{site.path}}/assets/admin/js/pages/web.wizard.js"></script>
    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -245,10 +245,10 @@
    </script>
 
    {% if block('jsfile') is defined  %}
-   <script src="{{site.path}}/assets/admin/js/pages/web.{{ block('jsfile')|lower }}.js?v=6"></script>
+   <script src="{{site.path}}/assets/admin/js/pages/web.{{ block('jsfile')|lower }}.js"></script>
    {% endif %}
 
-   <script src="{{site.path}}/assets/admin/js/init.js?v={{revision}}232" type="text/javascript"></script>
+   <script src="{{site.path}}/assets/admin/js/init.js" type="text/javascript"></script>
 
    <script>if (window.module) module = window.module;</script>
 </body>
