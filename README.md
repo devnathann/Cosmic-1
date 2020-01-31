@@ -14,7 +14,7 @@
 
 <a href="https://github.com/devraizer/Cosmic/wiki/Installation---Debian-9,-Morningstar-Arcturus-&-Catalogue---Cosmic">Installation Debian 9, Morningstar Arcturus & Catalogue Cosmic</a>
 
-<a href="https://github.com/devraizer/Cosmic/wiki/Installation---Windows,-Morningstar-Arcturus-&-Catalogue---Cosmic">Installation Debian 9, Morningstar Arcturus & Catalogue Cosmic</a>
+<a href="https://github.com/devraizer/Cosmic/wiki/Installation---Windows,-Morningstar-Arcturus-&-Catalogue---Cosmic">Windows, Morningstar Arcturus & Catalogue Cosmic</a>
 
 ### Clone
 
