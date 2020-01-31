@@ -284,19 +284,21 @@ $GLOBALS['language'] = array (
 
         /*     App/View/Home     */
         'home' => array (
-            'to'                     => 'Naar',
-            'friends_online'         => 'Online vrienden',
-            'now_in'                 => 'Nu in',
-            'latest_news'            => 'Laatste nieuws',
-            'latest_facts'           => 'De laatste weetjes binnen '. Config::site['shortname'] . '!',
-            'popular_rooms'          => 'Populaire kamers',
-            'popular_rooms_label'    => 'Weet welke kamers trending zijn binnen '. Config::site['shortname'] . '!',
-            'popular_no_rooms'       => 'Er is nog niemand op ons Hotel!',
-            'goto_room'              => 'Naar deze kamer',
-            'popular_groups'         => 'Populaire groepen',
-            'popular_groups_label'   => 'Bij wie wil jij je aansluiten?',
-            'popular_no_groups'      => 'Er zijn nog geen groepen aangemaakt!',
-            'load_news'              => 'Meer nieuws laden'
+            'to'                      => 'Naar',
+            'friends_online'          => 'Online vrienden',
+            'now_in'                  => 'Nu in',
+            'latest_news'             => 'Laatste nieuws',
+            'latest_facts'            => 'De laatste weetjes binnen '. Config::site['shortname'] . '!',
+            'popular_rooms'           => 'Populaire kamers',
+            'popular_rooms_label'     => 'Weet welke kamers trending zijn binnen '. Config::site['shortname'] . '!',
+            'popular_no_rooms'        => 'Er is nog niemand op ons Hotel!',
+            'goto_room'               => 'Naar deze kamer',
+            'popular_groups'          => 'Populaire groepen',
+            'popular_groups_label'    => 'Bij wie wil jij je aansluiten?',
+            'popular_no_groups'       => 'Er zijn nog geen groepen aangemaakt!',
+            'load_news'               => 'Meer nieuws laden',
+            'user_of_the_week'        =>  Config::site['shortname'] . ' van de week',
+            'user_of_the_week_label'  => 'Speler of de week'
         ),
         'lost' => array (
             'page_not_found'          => 'Pagina niet gevonden!',
