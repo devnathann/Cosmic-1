@@ -506,7 +506,7 @@ $GLOBALS['language'] = array (
             'content_2'           => 'Do not hesitate to contact customer service via the',
             'help_tool'           =>  Config::site['shortname'] . ' Help Tool',
             'random_club_users'   => 'Random ' . Config::site['shortname'] . ' Club members',
-            'desc'                => 'Here you can buy a club for real money. With club you can buy exclusive items.'
+            'desc'                => 'Here you can buy ' . Config::site['shortname'] . ' for real money. With club you can buy exclusive items.'
         ),
         'shop_history' => array (
             'buy_history'         => 'Purchase history',
@@ -543,7 +543,7 @@ $GLOBALS['language'] = array (
             'click_here'        => 'Click here',
             'to_login'          => 'to log in.',
             'store'             => 'Store',
-            'desc'              => 'Here you can buy credits for real money for real money, with this you can buy exclusive items in our catalogue'
+            'desc'              => 'Here you can buy credits for real money, with this you can buy exclusive items in our catalogue'
         ),
         'games_ranking' => array(
             'title'             => 'Highscores',
