@@ -64,6 +64,10 @@ class Shop
     public function getOffers()
     {
         $offers = Admin::getOffers();
+        foreach($offers as $offer) {
+            $offer->currency_type = Core::getCurrencyByType($offer->currency_type)->currency;
+        }
+      
         Json::filter($offers, 'desc', 'id');
     }
 

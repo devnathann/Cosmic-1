@@ -795,7 +795,7 @@ class Admin
   
     public static function setMaintenance()
     {
-        return QueryBuilder::query('UPDATE website_config SET maintenance = 1 - maintenance');
+        return QueryBuilder::query('UPDATE website_settings SET maintenance = "1"');
     }
   
     public static function saveSettings($column, $value_id)
