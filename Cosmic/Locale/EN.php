@@ -286,19 +286,21 @@ $GLOBALS['language'] = array (
 
         /*     App/View/Home     */
         'home' => array (
-            'to'                     => 'To',
-            'friends_online'         => 'Online friends',
-            'now_in'                 => 'Now in',
-            'latest_news'            => 'Latest news',
-            'latest_facts'           => 'The latest facts within ' . Config::site['shortname'] . '!',
-            'popular_rooms'          => 'Popular rooms',
-            'popular_rooms_label'    => 'Know which rooms are trending within '. Config::site['shortname'] . '!',
-            'popular_no_rooms'       => 'There is nobody inside our Hotel!!',
-            'goto_room'              => 'Goto room',
-            'popular_groups'         => 'Popular groups',
-            'popular_groups_label'   => 'Who do you want to join?',
-            'popular_no_groups'      => 'No groups have been created yet!',
-            'load_news'              => 'Load more news'
+            'to'                      => 'To',
+            'friends_online'          => 'Online friends',
+            'now_in'                  => 'Now in',
+            'latest_news'             => 'Latest news',
+            'latest_facts'            => 'The latest facts within ' . Config::site['shortname'] . '!',
+            'popular_rooms'           => 'Popular rooms',
+            'popular_rooms_label'     => 'Know which rooms are trending within '. Config::site['shortname'] . '!',
+            'popular_no_rooms'        => 'There is nobody inside our Hotel!!',
+            'goto_room'               => 'Goto room',
+            'popular_groups'          => 'Popular groups',
+            'popular_groups_label'    => 'Who do you want to join?',
+            'popular_no_groups'       => 'No groups have been created yet!',
+            'load_news'               => 'Load more news',
+            'user_of_the_week'        =>  Config::site['shortname'] . ' of the week',
+            'user_of_the_week_label'  => 'User of the week'
         ),
         'lost' => array (
             'page_not_found'          => 'Page not found!',
