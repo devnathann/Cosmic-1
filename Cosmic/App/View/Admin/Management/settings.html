@@ -148,9 +148,7 @@
                                                             <div class="form-group row">
                                                                 <label class="col-lg-3 col-form-label">Currency</label>
                                                                 <div class="col-lg-6">
-                                                                    <select name="namechange_currency_type" class="form-control targetCurrency">
-                                                                        <option id="{{settings.namechange_currency_type.type}}">{{settings.namechange_currency_type.currency}}</option>
-                                                                    </select>
+                                                                    <select name="namechange_currency_type" class="form-control targetCurrency"></select>
                                                                     <span class="form-text text-muted">Currency for purchase namechange</span>
                                                                 </div>
                                                             </div>
@@ -215,11 +213,7 @@
                                                             <div class="form-group row">
                                                                 <label class="col-lg-3 col-form-label">Choose rank</label>
                                                                 <div class="col-lg-6">
-                                                                    <select name="vip_permission_id" class="form-control targetRole">
-                                                                        {% for rank in settings.ranks %} {% if settings.vip_permission_id == rank.id %}
-                                                                        <option id="{{rank.id}}">{{rank.rank_name}}</option>
-                                                                        {% endif %} {% endfor %}
-                                                                    </select>
+                                                                    <select name="vip_permission_id" class="form-control targetRole"></select>
                                                                     <span class="form-text text-muted">When player buy VIP which rank get the user</span>
                                                                 </div>
                                                             </div>
