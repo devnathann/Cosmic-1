@@ -11,7 +11,7 @@ class Config
   
     const driver = 'mysql';
     const host = 'localhost';
-    const username = '';
+    const username = 'root';
     const password = '';
     const database = '';
     const charset = 'utf8';
@@ -34,7 +34,7 @@ class Config
       'external_figuremap'          => 'gamedata/figuremap.xml',
       'external_productdata'        => 'gamedata/productdata.txt',
       'external_figuredata'         => 'gamedata/furnidata.xml',
-      'external_base'               => '',
+      'external_base'               => 'gordon/PRODUCTION-201904011212-888653470/',
       'client_swf'                  => 'Habbo.swf',
       'client_radio'                => 'https://21253.live.streamtheworld.com/WEB16_AAC.aac',
       'client_host'                 => 'CLIENT-IP-HERE',

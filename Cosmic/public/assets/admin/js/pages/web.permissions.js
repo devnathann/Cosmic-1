@@ -34,20 +34,7 @@ var permissions = function() {
                 $("#manageCommands").hide();
                }
             });
-          
-            $(".commandManagement").unbind().click(function() {  
-               if($('#goBackWizard').css('display') !== 'block'){
-                $(".commandManagement").show();
-                $("#rankWizard").hide();
-                $("#editPermissions").hide();
-                $("#goBackWizard").show();
-                $("#permissionsTable").hide();
-                $("#manageCommands").show();
-                 
-                permissions.rankRequest();
-               }
-            });
-          
+
             $(".roleSearch").unbind().click(function() {
                 var self = this;
                 this.ajax_manager = new WebPostInterface.init();
@@ -457,7 +444,6 @@ var permissions = function() {
                                     type: "success",
                                     confirmButtonClass: "btn btn-secondary"
                                 });
-                                permissions.rankRequest();
                             }
                         });
                     }
