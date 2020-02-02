@@ -595,7 +595,7 @@ CREATE TABLE `website_user_logs_email`  (
 -- ----------------------------
 ALTER TABLE catalog_items ADD rate enum('up','down','none') DEFAULT 'none';
 ALTER TABLE users ADD secret_key int(11) NULL DEFAULT NULL;
-ALTER TABLE users ADD pincode int(11) NULL DEFAULT NULL;
+ALTER TABLE users ADD pincode varchar(11) NULL DEFAULT NULL;
 ALTER TABLE users MODIFY mail VARCHAR(500);
 
 SET FOREIGN_KEY_CHECKS = 1;
