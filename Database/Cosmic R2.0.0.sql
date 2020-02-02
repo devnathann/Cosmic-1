@@ -481,7 +481,7 @@ CREATE TABLE `website_remembered_logins`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `token_hash` varchar(128) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `user_id` int(11) NULL DEFAULT NULL,
-  `expires_at` int(11) NOT NULL DEFAULT 0,
+  `expires_at` varchar(24) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
