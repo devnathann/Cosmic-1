@@ -20,7 +20,7 @@ class Api
     {
         if(isset($this->settings->krews_api_hotel_slug) && isset(request()->player->id))
         {
-            if(!isset($_COOKIE['expires_at_seconds']) || $_COOKIE['expires_at_seconds'] === 0) 
+            if(!isset($_COOKIE['expires_at_seconds']) || $_COOKIE['expires_at_seconds'] < time()) 
             {
                 $this->return_to = "https://list.krews.org";
               
@@ -39,8 +39,7 @@ class Api
                 }
               
                 if($this->krewsList->status == 1) {
-                    setcookie('krews_expires_at_date', $this->krewsList->expires_at_date, '/');
-                    setcookie('expires_at_seconds', $this->krewsList->expires_at_seconds, '/');
+                    setcookie('expires_at_seconds', $this->krewsList->expires_at_seconds + time(), '/');
                 }
             }
         }
