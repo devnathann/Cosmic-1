@@ -33,7 +33,6 @@ if(!file_exists(__DIR__ . '/../App/Config.php')) {
         echo 'Cant create config file, please CHMOD App folder to 777 or rename Config.tmp to Config.php';
         exit;
     }
-
 }
 
 if(Config::debug) {

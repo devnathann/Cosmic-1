@@ -54,12 +54,12 @@ class Dashboard
             return Json::encode(["status" => "error", "message" => "You have no permissions to do this!"]);
         }
       
-        $maintenance = Admin::saveSettings('maintenance', isset(\App\Models\Core::settings()->maintenance) ? "0" : "1");
+        $maintenance = Admin::saveSettings('maintenance', (\App\Models\Core::settings()->maintenance == "1") ? "0" : "1");
         return Json::encode(["status" => "success", "message" => "Maintenance updated"]);
     }
 
     public function view()
     {
-        View::renderTemplate('Admin/home.html', ['permission' => 'housekeeping']);
+        View::renderTemplate('Admin/home.html', ['permission' => 'housekeeping', 'version' => \App\Controllers\Api::version()]);
     }
 }

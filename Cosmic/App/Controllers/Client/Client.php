@@ -76,7 +76,7 @@ class Client
     {
         View::renderTemplate('Home/home.html', [
             'title' => Locale::get('core/title/hotel'),
-            'page'  => 'hotel'
+            'page'  => 'home'
         ]);
     }
 

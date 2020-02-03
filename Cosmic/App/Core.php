@@ -38,7 +38,8 @@ class Core
 
     public static function getIpAddress()
     {
-        return filter_var($_SERVER['HTTP_X_FORWARDED_FOR'], FILTER_VALIDATE_IP) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : false;
+        $ipAddress = ($_SERVER['HTTP_CDN_LOOP'] == "cloudflare") ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
+        return filter_var($ipAddress, FILTER_VALIDATE_IP) ? $ipAddress : false;
     }
 
     public static function convertIp($ip_address)

@@ -15,6 +15,11 @@ class Settings
     public function save()
     {
         foreach(input()->all() as $column => $value) {
+          
+            if($column == "krews_api_hotel_slug") {
+                $value = \App\Core::convertSlug($value);    
+            }
+          
             Admin::saveSettings($column, $value);
         }
       

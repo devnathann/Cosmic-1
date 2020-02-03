@@ -23,8 +23,9 @@ class Shop
     public function index()
     {
         $this->data->shop = \App\Models\Shop::getOffers();
+      
         foreach($this->data->shop as $offers) {
-            $offers->currency_type = Core::getCurrencyByType($offers->currency_type)->currency;
+            $offers->currency = Core::getCurrencyByType($offers->currency)->currency;
         }
       
         $this->data->currencys = Player::getCurrencys(request()->player->id);

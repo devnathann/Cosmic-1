@@ -7,6 +7,11 @@
 {% block body %}
  <div class="row">
     <div class="col-xl-12">
+        {% if version %}
+        <div class="alert alert-danger" role="alert">
+            <strong>New version!</strong>   A new version of Cosmic is available, update your system!
+        </div>
+        {% endif %}
        <div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile ">
           <div class="kt-portlet__head kt-portlet__head--lg">
              <div class="kt-portlet__head-label">

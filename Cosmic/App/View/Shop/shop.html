@@ -19,7 +19,7 @@
                 {% for offer in data.shop %}
                 <div class="offer-container">
                     <a href="{{site.path}}/shop/offers/{{offer.offer_id}}" class="offer-content pixelated">
-                        <div class="offer-label">{{offer.currency_type}}</div>
+                        <div class="offer-label">{{offer.currency}}</div>
                         {% if offer.amount >= 500 %}<div class="offer-label"></div>{% endif %}
                         <div class="offer-value"><br>{{offer.amount}}</div>
                         <div class="offer-amount">€{{offer.price}}</div>

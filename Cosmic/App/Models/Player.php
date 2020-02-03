@@ -179,7 +179,7 @@ class Player
     {
         $data = array();
         foreach(\App\Models\Core::getCurrencys() as $row) {
-            $data[$row->type] = self::getUserCurrencys($user_id, $row->type);
+            $data[$row->type] = self::getUserCurrencys($user_id, $row->type) ?? new \stdClass();
             $data[$row->type]->currency = $row->currency;
         }
         return $data;

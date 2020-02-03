@@ -36,6 +36,130 @@ body{
 	}
 }
 
+/* Inputs */
+.rounded-input,
+.rounded-textarea{
+    background-color: #fff;
+    -webkit-border-radius: 48px;
+    -moz-border-radius: 48px;
+    border-radius: 48px;
+    padding: 11px 24px;
+    display: block;
+    font-family: "Poppins", Arial, sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid #b4b4b4;
+    width: 100%;
+    height: 47px;
+    -webkit-transition: border-color 0.2s;
+    transition: border-color 0.2s;
+}
+
+.rounded-input:not([type = "password"]),
+.rounded-textarea{
+    font-family: "Ubuntu Habbo", "Poppins", Arial, sans-serif;
+}
+
+.rounded-textarea{
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+    height: initial;
+    min-height: 11em;
+    resize: vertical;
+    padding: 16px 20px;
+}
+
+input:-webkit-autofill{
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+    -webkit-text-fill-color: #333 !important;
+    background-color: #fff !important;
+}
+
+.rounded-input:focus,
+.rounded-textarea:focus{
+    border-color: #333;
+}
+
+.rounded-input.blue-active:focus,
+.rounded-textarea.blue-active:focus{
+    border-color: #138cc8;
+}
+
+.rounded-input.purple-active:focus,
+.rounded-textarea.purple-active:focus{
+    border-color: #8c45a9;
+}
+
+.rounded-input.darkblue-active:focus,
+.rounded-textarea.darkblue-active:focus{
+    border-color: #191c3a;
+}
+
+.rounded-input.green-active:focus,
+.rounded-textarea.green-active:focus{
+    border-color: #67ad4d;
+}
+
+.rounded-input.browngrey-active:focus,
+.rounded-textarea.browngrey-active:focus{
+    border-color: #676563;
+}
+
+/* Dialog popup */
+.dialog-popup{
+    -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    color: #000;
+    border-radius: 7px;
+    position: relative;
+    padding: 22px;
+    width: auto;
+    max-width: 450px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.dialog-popup .mfp-close{
+    color: #fff;
+    top: 5px;
+    right: 7px;
+    opacity: 1;
+}
+
+.dialog-popup h3{
+    margin: -22px -22px 22px;
+    color: #fff;
+    padding: 13px 22px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.dialog-popup.confirm-popup h3{
+    background-color: #f46048;
+}
+
+.dialog-popup.cancel-popup h3{
+    background-color: #47aeec;
+}
+
+.dialog-popup.default-popup h3{
+    background-color: #33c8f3;
+}
+
+.dialog-popup .buttons-container{
+    margin-top: 25px;
+    text-align: center;
+}
+
+.dialog-popup .buttons-container .rounded-button{
+    display: inline-block;
+    margin: 0 10px;
+}
+
 /* Loading screen */
 .loading-container{
     color: #fff;

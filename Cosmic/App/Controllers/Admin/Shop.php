@@ -43,6 +43,8 @@ class Shop
             return Json::encode(["status" => "success", "message" => "Shop edited successfully!"]);
         }
       
+        echo $currencys;
+        exit;
         Admin::offerCreate($currencys, $amount, $price, $offer_id, $private_key);
         Log::addStaffLog('-1', 'Shop item created: ' . $offer_id, request()->player->id, 'shop');
         return Json::encode(["status" => "success", "message" => "Shop created successfully!"]);
@@ -66,7 +68,7 @@ class Shop
     {
         $offers = Admin::getOffers();
         foreach($offers as $offer) {
-            $offer->currency = Core::getCurrencyByType($offer->currency_type)->currency;
+            $offer->currency = Core::getCurrencyByType($offer->currency)->currency;
         }
 
         Json::filter($offers, 'desc', 'id');

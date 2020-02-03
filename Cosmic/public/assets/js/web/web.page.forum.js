@@ -14,7 +14,6 @@ function WebPageForumInterface(main_page) {
     ].join("");
   
     this.init = function () {
-        console.log(1)
         if(User.is_logged == false) 
           return;
       
@@ -107,7 +106,6 @@ function WebPageForumInterface(main_page) {
   
     this.like = function (forum_id, guild_id)
     { 
-        console.log(guild_id)
         Web.ajax_manager.post("/guilds/post/topic/like", {id: forum_id, url: Web.pages_manager.current_page_url, guild_id: guild_id}, function (result){
             if(result.status == 'success'){
                 $('.fa-heart[data-id='+ forum_id +']').removeClass("tools-active");
