@@ -50,8 +50,8 @@ function SiteLoadingInterface()
         this.total_files = this.files.length;
         this.loading_container = $(".loading-container");
 
-        //this.cache_id = (new Date().getTime() + Math.floor((Math.random() * 10000) + 1)).toString(16);
-        this.cache_id = Configuration.cache;
+        this.cache_id = (new Date().getTime() + Math.floor((Math.random() * 10000) + 1)).toString(16);
+        //this.cache_id = Configuration.cache;
     };
 
   
@@ -88,7 +88,7 @@ function SiteLoadingInterface()
             console.log("Oops, file \"" + file_name + "\" not found.");
             self.write_bodytext("Oops, something went wrong. <a href=\"javascript:window.location.reload();\">Reload the page</a>.");
         };
-        script.src = Site.url + "/assets/js/web/" + file_name + ".js?" + this.cache_id;
+        script.src = "/assets/js/web/" + file_name + ".js?" + this.cache_id;
     };
 
     this.write_bodytext = function (text)

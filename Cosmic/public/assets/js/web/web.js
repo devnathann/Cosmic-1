@@ -78,7 +78,7 @@ function WebInterface()
 
         }).on("mouseover", "a:not([target])", function (){
             if ($(this).attr("href"))
-                if (!$(this).attr("href").match(new RegExp(Site.domain.replace(".", "\."), "g")) && !$(this).attr("href").match(/^#/))
+                if (!$(this).attr("href") && !$(this).attr("href").match(/^#/))
                     $(this).attr("target", "_blank");
 
         }).on("click", "a:not([target])", function(event)
@@ -89,7 +89,6 @@ function WebInterface()
                 var href = $(this).attr("href").replace(Site.url + "/", "").replace(Site.url, "");
                 if (!href)
                     href = "home";
-
                 if (href.match(/^\#([A-z0-9-_]+)$/i))
                     window.location.hash = href;
                 else if (window.location.pathname + window.location.search !== "/" + href || window.location.hash)

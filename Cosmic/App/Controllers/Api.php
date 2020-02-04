@@ -27,19 +27,23 @@ class Api
                 $this->krewsList = json_decode(@file_get_contents($this->return_to . "/api/votes/". $this->settings->krews_api_hotel_slug . "/validate?ip=" . \App\Core::getIpAddress()));
                 $this->api_param = $this->settings->krews_api_hotel_slug . "?username=" . request()->player->username;
 
-                if($this->krewsList->status == 0 && !request()->isAjax()) {
-                    redirect($this->return_to . "/vote/" . $this->api_param);
-                }
-              
-                if($this->krewsList->status == 0 && request()->isAjax()) {
-                    $this->callback = [
-                        'krews_list' => $this->krewsList,
-                        'krews_api'  => $this->return_to . "/vote/" . $this->api_param
-                    ];
-                }
-              
-                if($this->krewsList->status == 1) {
-                    setcookie('expires_at_seconds', $this->krewsList->expires_at_seconds + time(), '/');
+                if($this->krewsList) {
+                    if($this->krewsList->status == 0 && !request()->isAjax()) {
+                        redirect($this->return_to . "/vote/" . $this->api_param);
+                    }
+
+                    if($this->krewsList->status == 0 && request()->isAjax()) {
+                        $this->callback = [
+                            'krews_list' => $this->krewsList,
+                            'krews_api'  => $this->return_to . "/vote/" . $this->api_param
+                        ];
+                    }
+
+                    if($this->krewsList->status == 1) {
+                        setcookie('expires_at_seconds', $this->krewsList->expires_at_seconds + time(), '/');
+                    }
+                } else {
+                    $this->callback == "not configurated";
                 }
             }
         }

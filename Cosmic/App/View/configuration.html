@@ -1,7 +1,6 @@
 var Site = {
     name: "{{site.sitename}}",
-    domain: "{{site.domain}}",
-    url: "{{site.path}}",
+    url: "{{site.domain}}",
     game_url: "{{site.cpath}}",
     figure_url: "{{site.fpath}}"
 };
@@ -31,6 +30,6 @@ var User = {
 var Configuration = {
     {% if publickey is not empty %}recaptcha_public: "{{publickey}}",{% endif %}
     revision: "{{revision}}2213",
-    cache: "eebab912ha010",
+    cache: "eebab912ha2010",
     debug: {{debug}}
 };

@@ -20,27 +20,25 @@ function WebPagesManagerInterface()
 
         Web.customforms_manager.init_forms();
 
-        web_page = this.current_page_url;
-
         if (this.current_page_url === "") {
             this.current_page_url = "home";
         }
 
         if (this.current_page_url.match(/^hotel/) && User.is_logged) {
-            Web.hotel_manager.open_hotel(this.current_page_url.replace("hotel?", "").replace("hotel", ""));
+            Web.hotel_manager.open_hotel(this.current_page_url);
         }
-
+      
         History.Adapter.bind(window, "statechange", function ()
         {
             var state = History.getState();
-            var url = state.url.replace(Site.url + "/", "");
+            var url = state.url.replace(document.location.origin, "").substring(1);
+
             if (self.current_page_url !== url)
             {
                 if (url === "/") {
                     self.load("home", null, false, null, false);
                 } else {
-                    url = url.replace(/^\/|\/$/g, "");
-                    self.load(url, null, false, null, false);
+                    self.load("/" + url, null, false, null, false);
                 }
             }
             self.current_page_url = url;
@@ -67,6 +65,7 @@ function WebPagesManagerInterface()
     * */
     this.load = function (url, data, scroll, callback, history_push, history_replace)
     {
+      
         if (scroll === undefined) {
             scroll = true
         }
@@ -78,22 +77,22 @@ function WebPagesManagerInterface()
         if (history_replace === undefined) {
             history_replace = false
         }
-
+        
         var self = this;
         var body = $("body");
 
         if (url === "")
             url = "home";
-
+    
         this.last_page_url = this.current_page_url;
 
-        if (!url.match(/^hotel/))
+        if (!url.match(/^\/hotel/))
         {
             PageLoading.show();
 
             $.ajax({
                 type: "get",
-                url: '/' + url,
+                url: url,
                 dataType: "json",
                 error: function (request, status, error) {
                     PageLoading.hide();
@@ -150,14 +149,12 @@ function WebPagesManagerInterface()
                 if (window.location.pathname + window.location.search === "/" + url)
                     return;
 
-                if (history_push)
-                    self.push(url, result.title, history_replace);
-
                 document.title = result.title;
+                self.push(url, result.title, false);
             });
         }
         else if (User.is_logged)
-        {
+        { 
             Web.hotel_manager.open_hotel(url.replace("hotel?", "").replace("hotel", ""));
             self.push(url, "Hotel - " + Site.name, false);
         }

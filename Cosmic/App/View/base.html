@@ -26,23 +26,23 @@
     <meta property="og:site_name" content="{{site.sitename}}">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="{{site.path}}/assets/css/bbeditor.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/bbeditor.css" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{{site.path}}/assets/css/fonts.css">
-    <link rel="stylesheet" href="{{site.path}}/assets/css/flaticon.css">
-    <link rel="stylesheet" href="{{site.path}}/assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="{{site.path}}/assets/css/selectric.css">
-    <link rel="stylesheet" href="{{site.path}}/assets/css/circle.css">
-    <link rel="stylesheet" href="{{site.path}}/assets/css/web.css?v={{revision}}{{ date().timestamp }}2">
-    <link rel="stylesheet" href="{{site.path}}/assets/css/web.responsive.css?v={{revision}}">
+    <link rel="stylesheet" href="/assets/css/fonts.css">
+    <link rel="stylesheet" href="/assets/css/flaticon.css">
+    <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/css/selectric.css">
+    <link rel="stylesheet" href="/assets/css/circle.css">
+    <link rel="stylesheet" href="/assets/css/web.css?v={{revision}}{{ date().timestamp }}2">
+    <link rel="stylesheet" href="/assets/css/web.responsive.css?v={{revision}}">
 
-    <script src="{{site.path}}/assets/js/web/user_settings.js"></script>
+    <script src="/assets/js/web/user_settings.js"></script>
   
     <!-- Scripts -->
     <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 
-    <script src="{{site.path}}/assets/js/jquery-3.2.1.min.js"></script>
-    <script src="{{site.path}}/assets/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="/assets/js/jquery-3.2.1.min.js"></script>
+    <script src="/assets/js/jquery.ui.touch-punch.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 <body class="flex-container flex-direction-column">
@@ -100,7 +100,7 @@
         <div style="float: left; margin-top:-3px">
             <input type="checkbox" name="remember_me"> <small>{{locale_base.login_save_data}}</small>
         </div>
-        <a href="{{site.path}}/password/claim" class="claim-password" data-close-popup="true" style="margin-top:1px">{{locale_base.login_lost_password}}</a>
+        <a href="password/claim" class="claim-password" data-close-popup="true" style="margin-top:1px">{{locale_base.login_lost_password}}</a>
         <button type="submit" class="rounded-button blue plain" id="login-request">Log in</button>
     </div>
 </div>
@@ -124,7 +124,7 @@
 
 <header class="header-container pixelated is-small">
   <div class="header-content">
-      <div class="logo"><a href="{{site.path}}"><img src="https://habbofont.net/font/hma/{{site.shortname}}.gif" style="margin-top: 30px;"></a></div>
+      <div class="logo"><a href="/home"><img src="https://habbofont.net/font/hma/{{site.shortname}}.gif" style="margin-top: 30px;"></a></div>
       <div class="account-container">
           <div class="account-title">
               {{locale_base.header_slogan2}}
@@ -134,9 +134,9 @@
               {% if player is empty %}
               <button class="rounded-button white login-dialog-button">{{locale_base.header_login}}</button>
               <span>of</span>
-              <a href="{{site.path}}/registration" class="rounded-button white plain">{{locale_base.header_register}}</a>
+              <a href="/registration" class="rounded-button white plain">{{locale_base.header_register}}</a>
               {% else %}
-              <a href="{{site.path}}/hotel" class="rounded-button white plain hotel-button">{{locale_base.header_to}} {{site.sitename}}</a>
+              <a href="/hotel" class="rounded-button white plain hotel-button">{{locale_base.header_to}} {{site.sitename}}</a>
               {% endif %}
           </div>
       </div>
@@ -146,46 +146,46 @@
 <nav class="navigation-container">
     <ul class="navigation-menu flex-container">
         <li class="navigation-item main-link-item"></li>
-        <li class="navigation-item {% if "home" in page %}selected {% endif %}" data-category="home"><a href="{{site.path}}/home">{{locale_base.nav_home}}</a></li>
+        <li class="navigation-item {% if "home" in page %}selected {% endif %}" data-category="home"><a href="/home">{{locale_base.nav_home}}</a></li>
         <li class="navigation-item has-items {% if "community" in page %}selected {% endif %}" data-category="community">
-            <a href="{{site.path}}/articles">{{locale_base.nav_community}}</a>
+            <a href="/articles">{{locale_base.nav_community}}</a>
             <ul class="navigation-submenu">
-                <li class="navigation-subitem"><a href="{{site.path}}/articles">{{locale_base.nav_news}}</a></li>
-                <li class="navigation-subitem"><a href="{{site.path}}/jobs">{{locale_base.nav_jobs}}</a></li>
-                <li class="navigation-subitem"><a href="{{site.path}}/community/photos">{{locale_base.nav_photos}}</a></li>
-                <li class="navigation-subitem"><a href="{{site.path}}/community/staff">{{site.shortname}} {{locale_base.nav_staff}}</a></li>
-                <li class="navigation-subitem"><a href="{{site.path}}/marketplace">{{locale_base.nav_exchange}}</a></li>
+                <li class="navigation-subitem"><a href="/articles">{{locale_base.nav_news}}</a></li>
+                <li class="navigation-subitem"><a href="/jobs">{{locale_base.nav_jobs}}</a></li>
+                <li class="navigation-subitem"><a href="/community/photos">{{locale_base.nav_photos}}</a></li>
+                <li class="navigation-subitem"><a href="/community/staff">{{site.shortname}} {{locale_base.nav_staff}}</a></li>
+                <li class="navigation-subitem"><a href="/marketplace">{{locale_base.nav_exchange}}</a></li>
             </ul>
         </li>
 
         {% if player %}
         <li class="navigation-item has-items {% if "shop" in page %}selected {% endif %}" data-category="shop">
-            <a href="{{site.path}}/shop">{{site.shortname}} {{locale_base.nav_shop}}</a>
+            <a href="/shop">{{site.shortname}} {{locale_base.nav_shop}}</a>
             <ul class="navigation-submenu">
-                <li class="navigation-subitem"><a href="{{site.path}}/shop">{{locale_base.nav_buy_points}}</a></li>
-                <li class="navigation-subitem"><a href="{{site.path}}/shop/club">{{locale_base.nav_buy_club}}</a></li>
-                <li class="navigation-subitem"><a href="{{site.path}}/shop/history">{{locale_base.nav_purchasehistory}}</a></li>
-                <li class="navigation-subitem"><a href="{{site.path}}/settings/namechange">{{locale_base.nav_changename}}</a></li>
+                <li class="navigation-subitem"><a href="/shop">{{locale_base.nav_buy_points}}</a></li>
+                <li class="navigation-subitem"><a href="/shop/club">{{locale_base.nav_buy_club}}</a></li>
+                <li class="navigation-subitem"><a href="/shop/history">{{locale_base.nav_purchasehistory}}</a></li>
+                <li class="navigation-subitem"><a href="/settings/namechange">{{locale_base.nav_changename}}</a></li>
             </ul>
         </li>
         {% endif %}
 
-        <li class="navigation-item {% if "games" in page %}selected {% endif %}" data-category="games"><a href="{{site.path}}/games/ranking">{{locale_base.nav_highscores}}</a></li>
-        <li class="navigation-item {% if "forum" in page %}selected {% endif %}" data-category="forum"><a href="{{site.path}}/guilds">{{locale_base.nav_forum}}</a></li>
+        <li class="navigation-item {% if "games" in page %}selected {% endif %}" data-category="games"><a href="/games/ranking">{{locale_base.nav_highscores}}</a></li>
+        <li class="navigation-item {% if "forum" in page %}selected {% endif %}" data-category="forum"><a href="/guilds">{{locale_base.nav_forum}}</a></li>
 
         <li class="navigation-item has-items {% if "help" in page %}selected {% endif %}" data-category="help">
-            <a href="{{site.path}}/help">{{locale_base.nav_helptool}}</a>
+            <a href="/help">{{locale_base.nav_helptool}}</a>
             <ul class="navigation-submenu">
-                <li class="navigation-subitem"><a href="{{site.path}}/help">{{locale_base.nav_helptool}}</a></li>
+                <li class="navigation-subitem"><a href="/help">{{locale_base.nav_helptool}}</a></li>
                 {% if player %}
-                <li class="navigation-subitem"><a href="{{site.path}}/help/requests/view">{{locale_base.nav_helptickets}}</a></li>
+                <li class="navigation-subitem"><a href="/help/requests/view">{{locale_base.nav_helptickets}}</a></li>
                 {% endif %}
             </ul>
         </li>
 
         {% if 'housekeeping' in permissions %}
         <li class="navigation-item">
-            <a href="{{site.path}}/housekeeping" target="_blank">{{locale_base.nav_housekeeping}}</a>
+            <a href="housekeeping" target="_blank">{{locale_base.nav_housekeeping}}</a>
         </li>
         {% endif %}
 
@@ -196,10 +196,10 @@
                 <span>{{player.username}}</span>
             </a>
             <ul class="navigation-submenu">
-                <li class="navigation-subitem"><a href="{{site.path}}/hotel">{{locale_base.user_to}} {{site.sitename}}</a></li>
-                <li class="navigation-subitem"><a href="{{site.path}}/profile/{{player.username}}">{{locale_base.user_profile}}</a></li>
-                <li class="navigation-subitem"><a href="{{site.path}}/settings">{{site.shortname}} ID {{locale_base.user_settings}}</a></li>
-                <li class="navigation-subitem"><a href="{{site.path}}/logout" target="_self">{{locale_base.user_logout}}</a></li>
+                <li class="navigation-subitem"><a href="hotel">{{locale_base.user_to}} {{site.sitename}}</a></li>
+                <li class="navigation-subitem"><a href="profile/{{player.username}}">{{locale_base.user_profile}}</a></li>
+                <li class="navigation-subitem"><a href="settings">{{site.shortname}} ID {{locale_base.user_settings}}</a></li>
+                <li class="navigation-subitem"><a href="logout" target="_self">{{locale_base.user_logout}}</a></li>
             </ul>
         </li>
         {% endif %}
@@ -245,15 +245,15 @@
 </div>
 {% endif %}
 
-<script src="{{site.path}}/assets/js/js.cookie.js"></script>
-<script src="{{site.path}}/assets/js/jquery.history.js"></script>
-<script src="{{site.path}}/assets/js/jquery.fullscreen.min.js"></script>
-<script src="{{site.path}}/assets/js/jquery.magnific-popup.js"></script>
-<script src="{{site.path}}/assets/js/selectric.js?v=3412"></script>
-<script src="{{site.path}}/assets/js/functions.js"></script>
-<script src="{{site.path}}/assets/js/web/loading.js?v=91"></script>
-<script src="{{site.path}}/assets/js/pagination.js"></script>
-<script src="{{site.path}}/assets/js/jquery.wysibb.js"></script>
+<script src="/assets/js/js.cookie.js"></script>
+<script src="/assets/js/jquery.history.js"></script>
+<script src="/assets/js/jquery.fullscreen.min.js"></script>
+<script src="/assets/js/jquery.magnific-popup.js"></script>
+<script src="/assets/js/selectric.js?v=3412"></script>
+<script src="/assets/js/functions.js"></script>
+<script src="/assets/js/web/loading.js?v=666"></script>
+<script src="/assets/js/pagination.js"></script>
+<script src="/assets/js/jquery.wysibb.js"></script>
 
 <script>
 
