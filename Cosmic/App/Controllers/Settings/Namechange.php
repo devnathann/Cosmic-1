@@ -76,11 +76,12 @@ class Namechange
 
     public function index()
     {
-
+        $currency = Settings::getCurrencyByType($this->settings->namechange_currency_type)->currency;
+      
         View::renderTemplate('Settings/namechange.html', [
             'title' => Locale::get('core/title/settings/namechange'),
             'page'  => 'settings_namechange',
-            'currency' => $this->settings->namechange_currency_type,
+            'currency' => $currency,
             'price' => $this->settings->namechange_price
         ]);
     }

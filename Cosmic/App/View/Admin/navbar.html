@@ -6,7 +6,7 @@
        data-ktmenu-scroll="1"
        >
        <ul class="kt-menu__nav ">
-          <li class="kt-menu__item " aria-haspopup="true" ><a href="{{site.path}}/housekeeping" class="kt-menu__link ajaxLoading"><i class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span class="kt-menu__link-text">Dashboard</span></a></li>
+          <li class="kt-menu__item " aria-haspopup="true" ><a href="/housekeeping" class="kt-menu__link ajaxLoading"><i class="kt-menu__link-icon flaticon2-architecture-and-city"></i><span class="kt-menu__link-text">Dashboard</span></a></li>
           {% if 'housekeeping_remote_control' in permissions %}
           <li class="kt-menu__section ">
              <h4 class="kt-menu__section-text">Tools</h4>
@@ -14,37 +14,37 @@
           </li>
           {% if 'housekeeping_permissions' in permissions or 'housekeeping_tools' in permissions %}
           <li class="kt-menu__item ajaxLoading" aria-haspopup="true" >
-              <a  href="{{site.path}}/housekeeping/permissions/manage" class="kt-menu__link ">
+              <a  href="/housekeeping/permissions/manage" class="kt-menu__link ">
               <i class="kt-menu__link-icon flaticon2-avatar"></i><span class="kt-menu__link-text">Permissions</span></a>
           </li>
           {% endif %}
           {% if 'housekeeping_remote_control' in permissions or 'housekeeping_tools' in permissions %}
           <li class="kt-menu__item ajaxLoading" aria-haspopup="true" >
-              <a  href="{{site.path}}/housekeeping/remote/control" class="kt-menu__link ">
+              <a  href="/housekeeping/remote/control" class="kt-menu__link ">
               <i class="kt-menu__link-icon flaticon-technology-2"></i><span class="kt-menu__link-text">Remote control</span></a>
           </li>
           {% endif %}
           {% if 'housekeeping_room_control' in permissions or 'housekeeping_tools' in permissions %}
           <li class="kt-menu__item ajaxLoading" aria-haspopup="true" >
-              <a  href="{{site.path}}/housekeeping/rooms/manage" class="kt-menu__link ">
+              <a  href="/housekeeping/rooms/manage" class="kt-menu__link ">
               <i class="kt-menu__link-icon flaticon-technology-2"></i><span class="kt-menu__link-text">Room control</span></a>
           </li>
           {% endif %}
           {% if 'housekeeping_vpn_control' in permissions in permissions %}
           <li class="kt-menu__item ajaxLoading" aria-haspopup="true" >
-              <a  href="{{site.path}}/housekeeping/vpn/manage" class="kt-menu__link ">
+              <a  href="/housekeeping/vpn/manage" class="kt-menu__link ">
               <i class="kt-menu__link-icon flaticon-technology-2"></i><span class="kt-menu__link-text">VPN control</span></a>
           </li>
           {% endif %}
           {% if 'housekeeping_wordfilter_control' in permissions %}
           <li class="kt-menu__item ajaxLoading" aria-haspopup="true" >
-              <a  href="{{site.path}}/housekeeping/wordfilter/manage" class="kt-menu__link ">
+              <a  href="/housekeeping/wordfilter/manage" class="kt-menu__link ">
               <i class="kt-menu__link-icon flaticon-technology-2"></i><span class="kt-menu__link-text">Wordfilter</span></a>
           </li>
           {% endif %}
           {% if 'housekeeping_config' in permissions %}
           <li class="kt-menu__item ajaxLoading" aria-haspopup="true" >
-              <a  href="{{site.path}}/housekeeping/settings/manage" class="kt-menu__link ">
+              <a  href="/housekeeping/settings/manage" class="kt-menu__link ">
               <i class="kt-menu__link-icon flaticon-technology-2"></i><span class="kt-menu__link-text">Settings</span></a>
           </li>
           {% endif %}
@@ -57,19 +57,19 @@
           </li>
           {% if 'housekeeping_chat_logs' in permissions or 'housekeeping_logs' in permissions %}
           <li class="kt-menu__item ajaxLoading" aria-haspopup="true" >
-              <a  href="{{site.path}}/housekeeping/logs/chatlogs/view" class="kt-menu__link ">
+              <a  href="/housekeeping/logs/chatlogs/view" class="kt-menu__link ">
                 <i class="kt-menu__link-icon flaticon2-rectangular"></i><span class="kt-menu__link-text">Chat logs</span></a>
           </li>
           {% endif %}
           {% if 'housekeeping_ban_logs' in permissions or 'housekeeping_logs' in permissions %}
           <li class="kt-menu__item ajaxLoading" aria-haspopup="true" >
-              <a  href="{{site.path}}/housekeeping/logs/banlogs/view" class="kt-menu__link ">
+              <a  href="/housekeeping/logs/banlogs/view" class="kt-menu__link ">
               <i class="kt-menu__link-icon flaticon2-rectangular"></i><span class="kt-menu__link-text">Ban logs</span></a>
           </li>
           {% endif %}
           {% if 'housekeeping_staff_logs_menu' in permissions or 'housekeeping_logs' in permissions %}
           <li class="kt-menu__item ajaxLoading" aria-haspopup="true" >
-              <a  href="{{site.path}}/housekeeping/logs/stafflogs/view" class="kt-menu__link ">
+              <a  href="/housekeeping/logs/stafflogs/view" class="kt-menu__link ">
               <i class="kt-menu__link-icon flaticon2-rectangular"></i><span class="kt-menu__link-text">Staff logs</span></a>
           </li>
           {% endif %}
@@ -81,43 +81,43 @@
           </li>
           {% if 'housekeeping_website_news' in permissions %}
           <li class="kt-menu__item ajaxLoading" aria-haspopup="true" >
-              <a  href="{{site.path}}/housekeeping/help/manage" class="kt-menu__link ">
+              <a  href="/housekeeping/help/manage" class="kt-menu__link ">
               <i class="kt-menu__link-icon flaticon2-rectangular"></i><span class="kt-menu__link-text">Help tickets</span></a>
           </li>
           {% endif %}
           {% if 'housekeeping_website_faq' in permissions %}
           <li class="kt-menu__item ajaxLoading" aria-haspopup="true" >
-              <a  href="{{site.path}}/housekeeping/faq/manage" class="kt-menu__link ">
+              <a  href="/housekeeping/faq/manage" class="kt-menu__link ">
               <i class="kt-menu__link-icon flaticon2-rectangular"></i><span class="kt-menu__link-text">FAQ manage</span></a>
           </li>
           {% endif %}
           {% if 'housekeeping_website_rarevalue' in permissions %}
           <li class="kt-menu__item ajaxLoading" aria-haspopup="true" >
-              <a  href="{{site.path}}/housekeeping/value/manage" class="kt-menu__link ">
+              <a  href="/housekeeping/value/manage" class="kt-menu__link ">
               <i class="kt-menu__link-icon flaticon2-rectangular"></i><span class="kt-menu__link-text">Value manage</span></a>
           </li>
           {% endif %}
           {% if 'housekeeping_website_feeds' in permissions %}
           <li class="kt-menu__item ajaxLoading" aria-haspopup="true" >
-              <a  href="{{site.path}}/housekeeping/feeds/manage" class="kt-menu__link ">
+              <a  href="/housekeeping/feeds/manage" class="kt-menu__link ">
               <i class="kt-menu__link-icon flaticon2-rectangular"></i><span class="kt-menu__link-text">Feed manage</span></a>
           </li>
           {% endif %}
           {% if 'housekeeping_website_news' in permissions %}
           <li class="kt-menu__item ajaxLoading" aria-haspopup="true" >
-              <a  href="{{site.path}}/housekeeping/news/manage" class="kt-menu__link ">
+              <a  href="/housekeeping/news/manage" class="kt-menu__link ">
               <i class="kt-menu__link-icon flaticon2-rectangular"></i><span class="kt-menu__link-text">News manage</span></a>
           </li>
           {% endif %}
           {% if 'housekeeping_shop_control' in permissions %}
           <li class="kt-menu__item ajaxLoading" aria-haspopup="true" >
-              <a  href="{{site.path}}/housekeeping/shop/manage" class="kt-menu__link ">
+              <a  href="/housekeeping/shop/manage" class="kt-menu__link ">
               <i class="kt-menu__link-icon flaticon2-rectangular"></i><span class="kt-menu__link-text">Shop manage</span></a>
           </li>
           {% endif %}
           {% if 'housekeeping_permissions' in permissions %}
           <li class="kt-menu__item ajaxLoading" aria-haspopup="true" >
-              <a  href="{{site.path}}/housekeeping/vacancies/manage" class="kt-menu__link ">
+              <a  href="/housekeeping/vacancies/manage" class="kt-menu__link ">
               <i class="kt-menu__link-icon flaticon2-rectangular"></i><span class="kt-menu__link-text">Vacancies manage</span></a>
           </li>
           {% endif %}

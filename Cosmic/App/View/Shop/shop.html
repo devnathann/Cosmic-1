@@ -18,7 +18,7 @@
             <div class="offers-container">
                 {% for offer in data.shop %}
                 <div class="offer-container">
-                    <a href="{{site.path}}/shop/offers/{{offer.offer_id}}" class="offer-content pixelated">
+                    <a href="/shop/offers/{{offer.offer_id}}" class="offer-content pixelated">
                         <div class="offer-label">{{offer.currency}}</div>
                         {% if offer.amount >= 500 %}<div class="offer-label"></div>{% endif %}
                         <div class="offer-value"><br>{{offer.amount}}</div>
@@ -48,7 +48,7 @@
         <aside class="default-section">
             <div class="aside-title-content">{{locale.more_information}}</div>
             <div class="aside-content">
-                <p>{{locale.content_1}} {{locale.content_2}} <a href="{{site.path}}/help/requests/new">{{locale.help_tool}}</a>.</p>
+                <p>{{locale.content_1}} {{locale.content_2}} <a href="/help/requests/new">{{locale.help_tool}}</a>.</p>
             </div>
         </aside>
     </div>
@@ -64,7 +64,7 @@
     <div class="right-side">
         <aside class="default-section">
             <h3 class="aside-title">{{locale.more_information}}</h3>
-            <p>{{locale.content_1}} {{locale.content_2}} <a href="{{site.path}}/help/requests/new">{{locale.help_tool}}</a>.</p>
+            <p>{{locale.content_1}} {{locale.content_2}} <a href="/help/requests/new">{{locale.help_tool}}</a>.</p>
         </aside>
     </div>
 </div>

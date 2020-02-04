@@ -19,7 +19,7 @@
                       <div class="members-container">
                           {% for user in employee.users %}
                           <div class="member-container">
-                              <a href="{{site.path}}/profile/{{user.username}}" class="member-content flex-container flex-vertical-center">
+                              <a href="/profile/{{user.username}}" class="member-content flex-container flex-vertical-center">
                                   <div class="member-avatar flex-container flex-vertical-center flex-horizontal-center">
                                       <img src="{{site.fpath}}/avatarimage?figure={{user.look}}&gesture=sml&headonly=1" alt="{{user.username}}" class="pixelated">
                                   </div>
@@ -46,7 +46,7 @@
                     <h3 class="aside-title-content">{{locale.title}}</h3>
                     <div class="aside-content">
                         <div class="sides-container">
-                            <img src="{{site.path}}/assets/images/web/pages/staff/staff.gif" style="float:right">
+                            <img src="/assets/images/web/pages/staff/staff.gif" style="float:right">
                             {{locale.content_1}}<br>{{locale.content_2}}
                         </div>
                   </div>

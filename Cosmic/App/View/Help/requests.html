@@ -14,7 +14,7 @@
              <div class="forum-author">
                 <div class="fpost-user">
                    <strong>
-                      <div class="user-style"><a href="{{site.path}}/profile/{{data.requests.username}}">{{data.requests.author.username}}</a></div>
+                      <div class="user-style"><a href="/profile/{{data.requests.username}}">{{data.requests.author.username}}</a></div>
                    </strong>
                 </div>
                 <div class="hidden-sm hidden-xs">
@@ -42,7 +42,7 @@
              <div class="forum-author">
                 <div class="fpost-user">
                    <strong>
-                      <div class="user-style"><a href="{{site.path}}/profile/{{reaction.username}}">{{reaction.author.username}}</a></div>
+                      <div class="user-style"><a href="/profile/{{reaction.username}}">{{reaction.author.username}}</a></div>
                    </strong>
                 </div>
                 <div class="hidden-sm hidden-xs">
@@ -90,7 +90,7 @@
       <div class="aside-title-content">{{locale.request_contact}}</div>
       <div class="aside-content">
           {{locale.request_contact_help}}
-          <p style="text-align: center; margin-top: 30px;"><a href="{{site.path}}/help/requests/new" class="rounded-button blue">{{locale.request_new_ticket}}</a></p>
+          <p style="text-align: center; margin-top: 30px;"><a href="/help/requests/new" class="rounded-button blue">{{locale.request_new_ticket}}</a></p>
       </div>
    </article>
    {% endif %}
@@ -110,7 +110,7 @@
             {% for request in data.tickets %}
             <tr>
                 <td><img src="{{site.fpath}}/avatarimage?figure={{player.look}}&gesture=sml&headonly=1" alt="{{user.username}}" class="pixelated"></td>
-                <td><a href="{{site.path}}/help/requests/{{request.id}}/view">{{request.subject}}</a></td>
+                <td><a href="/help/requests/{{request.id}}/view">{{request.subject}}</a></td>
                 {% if request.status == "in_treatment" %}
                     <td>{{locale.request_in_treatment}}</td>
                 {% elseif request.status == "open" %}

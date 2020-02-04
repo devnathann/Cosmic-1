@@ -46,8 +46,8 @@
         <aside class="default-section">
             <div class="aside-title-content">{{cat.cat_name}} - {{cat.discount}}% discount</div>
             <div class="aside-content">
-                <img src="{{site.path}}/assets/images/web/pages/shop/discount.png" align="right">
-                At the big marketplace you can buy items that you would normally find in the catalog for a better price!<br /><br /><a href="{{site.path}}/marketplace/my/inventory">Go to my marketplace!</a>
+                <img src="/assets/images/web/pages/shop/discount.png" align="right">
+                At the big marketplace you can buy items that you would normally find in the catalog for a better price!<br /><br /><a href="/marketplace/my/inventory">Go to my marketplace!</a>
             </div>
         </aside>
       
@@ -55,7 +55,7 @@
             <div class="aside-title-content">{{locale.looking_for}}</div>
             <div class="aside-content">
                 {% for category in categories %}
-                <a href="{{site.path}}/marketplace/{{category.id}}-{{category.slug}}" class="values"><button type="button" class="btn btn-{% if cat.id == category.id %}success{% else %}primary{% endif %} btn-lg outline">{{category.cat_name}}</button></a>
+                <a href="/marketplace/{{category.id}}-{{category.slug}}" class="values"><button type="button" class="btn btn-{% if cat.id == category.id %}success{% else %}primary{% endif %} btn-lg outline">{{category.cat_name}}</button></a>
                 {% endfor %}
             </div>
         </aside>

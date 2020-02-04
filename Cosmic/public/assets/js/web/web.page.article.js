@@ -36,7 +36,7 @@ function WebPageArticleInterface(main_page)
             '   <div style="float: left; vertical-align: middle; ">\n' +
             '         <img style="margin-top: -30px; margin-bottom: -60px;" src="' + Site.figure_url + '/avatarimage?figure={{figure}}}&direction=2&head_direction=3&gesture=sml&size=b&headonly=1" alt="">\n' +
             '    </div>\n' +
-            '   <strong> <a href="' + Site.url + '/profile/' + User.username + '">' + User.username + '</a></strong>: {{message}} \n' +
+            '   <strong> <a href="/profile/' + User.username + '">' + User.username + '</a></strong>: {{message}} \n' +
             '</div>'
         ].join("");   
       

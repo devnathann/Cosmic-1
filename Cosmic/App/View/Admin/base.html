@@ -25,20 +25,20 @@
      }
    </style>
 
-   <link href="{{site.path}}/assets/admin/vendors/css/perfect-scrollbar.css" rel="stylesheet" type="text/css" />
-   <link href="{{site.path}}/assets/admin/vendors/css/bootstrap-select.css" rel="stylesheet" type="text/css" />
-   <link href="{{site.path}}/assets/admin/vendors/css/select2.css" rel="stylesheet" type="text/css" />
-   <link href="{{site.path}}/assets/admin/vendors/css/toastr.css" rel="stylesheet" type="text/css" />
-   <link href="{{site.path}}/assets/admin/vendors/css/line-awesome.css?v=5" rel="stylesheet" type="text/css" />
-   <link href="{{site.path}}/assets/admin/vendors/css/flaticon.css" rel="stylesheet" type="text/css" />
-   <link href="{{site.path}}/assets/admin/vendors/css/flaticon2.css" rel="stylesheet" type="text/css" />
-   <link href="{{site.path}}/assets/admin/vendors/css/fontawesome.css" rel="stylesheet" type="text/css" />
-   <link href="{{site.path}}/assets/admin/vendors/css/vendors.bundle.css" rel="stylesheet" type="text/css" />
-   <link href="{{site.path}}/assets/admin/vendors/css/style.bundle.css" rel="stylesheet" type="text/css" />
-   <link href="{{site.path}}/assets/admin/css/wizard.css" rel="stylesheet" type="text/css" />
-   <link href="{{site.path}}/assets/admin/vendors/css/jstree.bundle.css" rel="stylesheet" type="text/css" />
+   <link href="/assets/admin/vendors/css/perfect-scrollbar.css" rel="stylesheet" type="text/css" />
+   <link href="/assets/admin/vendors/css/bootstrap-select.css" rel="stylesheet" type="text/css" />
+   <link href="/assets/admin/vendors/css/select2.css" rel="stylesheet" type="text/css" />
+   <link href="/assets/admin/vendors/css/toastr.css" rel="stylesheet" type="text/css" />
+   <link href="/assets/admin/vendors/css/line-awesome.css?v=5" rel="stylesheet" type="text/css" />
+   <link href="/assets/admin/vendors/css/flaticon.css" rel="stylesheet" type="text/css" />
+   <link href="/assets/admin/vendors/css/flaticon2.css" rel="stylesheet" type="text/css" />
+   <link href="/assets/admin/vendors/css/fontawesome.css" rel="stylesheet" type="text/css" />
+   <link href="/assets/admin/vendors/css/vendors.bundle.css" rel="stylesheet" type="text/css" />
+   <link href="/assets/admin/vendors/css/style.bundle.css" rel="stylesheet" type="text/css" />
+   <link href="/assets/admin/css/wizard.css" rel="stylesheet" type="text/css" />
+   <link href="/assets/admin/vendors/css/jstree.bundle.css" rel="stylesheet" type="text/css" />
 
-    <script src="{{site.path}}/assets/js/web/user_settings.js" type="text/javascript"></script>
+    <script src="/assets/js/web/user_settings.js" type="text/javascript"></script>
   
    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 </head>
@@ -81,8 +81,8 @@
                            <div class="kt-notification">
                               <div class="kt-notification__custom kt-space-between">
                                  <a href="#" class="btn btn-label btn-label-brand btn-sm btn-bold maintenance">Maintenance</a>
-                                 <a href="{{site.path}}/hotel" class="btn btn-label btn-label-brand btn-sm btn-bold">Enter hotel</a>
-                                 <a href="{{site.path}}/logout" class="btn btn-label btn-label-brand btn-sm btn-bold">Sign out</a>
+                                 <a href="/hotel" class="btn btn-label btn-label-brand btn-sm btn-bold">Enter hotel</a>
+                                 <a href="/logout" class="btn btn-label btn-label-brand btn-sm btn-bold">Sign out</a>
                               </div>
                            </div>
                         </div>
@@ -232,12 +232,12 @@
       var KTAppOptions = {"colors":{"state":{"brand":"#5d78ff","light":"#ffffff","dark":"#282a3c","primary":"#5867dd","success":"#34bfa3","info":"#36a3f7","warning":"#ffb822","danger":"#fd3995"},"base":{"label":["#c5cbe3","#a1a8c3","#3d4465","#3e4466"],"shape":["#f0f3ff","#d9dffa","#afb4d4","#646c9a"]}}};
    </script>
 
-   <script src="{{site.path}}/assets/admin/js/vendors.bundle.js" type="text/javascript"></script>
-   <script src="{{site.path}}/assets/admin/js/scripts.bundle.js" type="text/javascript"></script>
-   <script src="{{site.path}}/assets/admin/js/modal.js" type="text/javascript"></script>
-   <script src="{{site.path}}/assets/admin/js/pages/web.wizard.js"></script>
+   <script src="/assets/admin/js/vendors.bundle.js" type="text/javascript"></script>
+   <script src="/assets/admin/js/scripts.bundle.js" type="text/javascript"></script>
+   <script src="/assets/admin/js/modal.js" type="text/javascript"></script>
+   <script src="/assets/admin/js/pages/web.wizard.js"></script>
    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-   <script type="text/javascript" src="{{site.path}}/assets/admin/js/jquery.uploadPreview.min.js"></script>
+   <script type="text/javascript" src="/assets/admin/js/jquery.uploadPreview.min.js"></script>
    <script>
    {% for message in flash_messages %}
      toastr["{{message.type}}"]("{{message.body}}")
@@ -245,10 +245,10 @@
    </script>
 
    {% if block('jsfile') is defined  %}
-   <script src="{{site.path}}/assets/admin/js/pages/web.{{ block('jsfile')|lower }}.js"></script>
+   <script src="/assets/admin/js/pages/web.{{ block('jsfile')|lower }}.js"></script>
    {% endif %}
 
-   <script src="{{site.path}}/assets/admin/js/init.js" type="text/javascript"></script>
+   <script src="/assets/admin/js/init.js" type="text/javascript"></script>
 
    <script>if (window.module) module = window.module;</script>
 </body>

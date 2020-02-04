@@ -7,7 +7,7 @@ function WebPageCommunityPhotosInterface(main_page) {
         '    <div class="photo-content">\n' +
         '        <a href="{story}" class="photo-picture" target="_blank" style="background-image: url({story});" data-title="{photo.date.min} door {creator.username}"></a>\n' +
         '        <a href="#" class="photo-meta flex-container flex-vertical-center">\n' +
-        '            <div class="photo-meta-left-side"><img src="' + Site.url + '/imaging/avatarimage?figure={creator.figure}&gesture=sml&headonly=1" alt="{creator.username}" class="pixelated"></div>\n' +
+        '            <div class="photo-meta-left-side"><img src="/imaging/avatarimage?figure={creator.figure}&gesture=sml&headonly=1" alt="{creator.username}" class="pixelated"></div>\n' +
         '            <div class="photo-meta-right-side">\n' +
         '                <div class="creator-name">{creator.username}</div>\n' +
         '                <div class="published-date">{photo.date.full}</div>\n' +

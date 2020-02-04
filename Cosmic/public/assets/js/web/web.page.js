@@ -83,6 +83,10 @@ function WebPagesManagerInterface()
 
         if (url === "")
             url = "home";
+      
+        if(url.charAt(0)  !== "/") {
+            url = "/" + url;
+        }
     
         this.last_page_url = this.current_page_url;
 

@@ -22,7 +22,7 @@
                 <div class="article-author flex-container flex-vertical-center">
                     <div class="author-image">
                         {% if article.author == "0" %}
-                        <img src="{{site.path}}/assets/images/web/avatar-frank.png" alt="Hotel Management">
+                        <img src="/assets/images/web/avatar-frank.png" alt="Hotel Management">
                         {% else %}
                         <img src="{{site.fpath}}/avatarimage?figure={{article.author.look}}&direction=2&head_direction=3&gesture=sml&size=b&headonly=1" alt="{{article.author.username}}">
                         {% endif %}
@@ -32,7 +32,7 @@
                         {% if article.author == "0" %}
                         <div class="author-name">Hotel Management</div>
                         {% else %}
-                        <div class="author-name"><a href="{{site.path}}/profile/{{article.author.username}}" class="related-article-container">{{article.author.username}}</a></div>
+                        <div class="author-name"><a href="/profile/{{article.author.username}}" class="related-article-container">{{article.author.username}}</a></div>
                         {% endif %}
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                                 <img style="margin-top: -5px;" src="{{site.fpath}}/avatarimage?figure={{post.author.look}}&direction=2&head_direction=3&gesture=sml&size=s&headonly=1" alt="">
                             </div>
                         <strong>
-                            <a href="{{site.path}}/profile/{{post.author.username}}">
+                            <a href="/profile/{{post.author.username}}">
                                 {{post.author.username}}
                             </a>
                         </strong>: {{post.message|bbcode|raw}}
@@ -98,7 +98,7 @@
             <div class="aside-content">
                 <div class="related-articles-container">
                     {% for item in latest_news %}
-                    <a href="{{site.path}}/article/{{item.id}}-{{item.slug}}" class="related-article-container">
+                    <a href="/article/{{item.id}}-{{item.slug}}" class="related-article-container">
                         <div class="related-article-thumbnail" style="background-image: url({{item.header}});"></div>
                         <div class="related-article-details">
                             <div class="related-article-title">{{item.title}} </div>

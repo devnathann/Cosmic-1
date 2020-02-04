@@ -127,13 +127,13 @@ function WebPageShopOffersInterface(main_page)
             '    <div class="success-step">' +
             '        <h3 class="title">'+ Locale.web_page_shop_offers_success +'</h3>' +
             '        '+ Locale.web_page_shop_offers_received +' <span></span> '+ Locale.web_page_shop_offers_received2 +'' +
-            '        <img src="' + Site.url + '/assets/images/web/pages/shop/credits-success.png" alt="'+ Locale.web_page_shop_offers_success +'">' +
+            '        <img src="/assets/images/web/pages/shop/credits-success.png" alt="'+ Locale.web_page_shop_offers_success +'">' +
             '        <button class="rounded-button lightgreen plain">'+ Locale.web_page_shop_offers_close +'</button>' +
             '    </div>' +
             '    <div class="error-step">' +
             '        <h3 class="title">'+ Locale.web_page_shop_offers_failed +'</h3>' +
             '        '+ Locale.web_page_shop_offers_failed_desc +'' +
-            '        <img src="' + Site.url + '/assets/images/web/pages/shop/credits-error.png" alt="'+ Locale.web_page_shop_offers_failed +'">' +
+            '        <img src="/assets/images/web/pages/shop/credits-error.png" alt="'+ Locale.web_page_shop_offers_failed +'">' +
             '        <button class="rounded-button red plain">'+ Locale.web_page_shop_offers_back +'</button>' +
             '    </div>' +
             '</div>'

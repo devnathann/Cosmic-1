@@ -70,7 +70,7 @@
                         </div>
                         <div class="fi-content">
                             <div class="fc-user">
-                                <div class="user-style"><span class="user-style black"><span class="user-icon cog"></span><a href="{{site.path}}/profile/{{feed.username}}">{{feed.username}}</a></span></div>
+                                <div class="user-style"><span class="user-style black"><span class="user-icon cog"></span><a href="/profile/{{feed.username}}">{{feed.username}}</a></span></div>
                                 -
                                 <span data-toggle="tooltip" data-placement="right" title="" data-original-title="{{feed.timestamp|time_diff}}"><small>{{feed.timestamp|time_diff}}</small></span>
                             </div>
@@ -133,7 +133,7 @@
                 <div class="items-container">
                     {% if data.player.friends %}
                         {% for row in data.player.friends %}
-                        <a href="{{site.path}}/profile/{{row.username}}" class="item-container">
+                        <a href="/profile/{{row.username}}" class="item-container">
                             <div class="item-icon pixelated" style="background-image: url({{site.fpath}}/avatarimage?figure={{row.look}}&direction=2);"></div>
                             <div class="item-name">{{row.username}}</div>
                         </a>
@@ -155,7 +155,7 @@
                 <div class="items-container">
                     {% if data.player.groups %}
                         {% for row in data.player.groups %}
-                        <a href="{{site.path}}/hotel?room={{row.room_id}}" class="item-container">
+                        <a href="/hotel?room={{row.room_id}}" class="item-container">
                             <div class="item-icon pixelated" style="background-image: url({{site.cpath}}/c_images/Badgeparts/generated/{{row.badge}}.png);"></div>
                             <div class="item-name">{{row.name}}</div>
                         </a>
@@ -177,7 +177,7 @@
                 <div class="items-container">
                     {% if data.player.rooms %}
                         {% for row in data.player.rooms %}
-                        <a href="{{site.path}}/hotel?room={{row.id}}" class="item-container">
+                        <a href="/hotel?room={{row.id}}" class="item-container">
                             <div class="item-icon pixelated" style="background-image: url({{site.cpath}}/camera/thumbnails/{{row.id}}.png);"></div>
                             <div class="item-name">{{row.name}}</div>
                         </a>

@@ -48,6 +48,10 @@ function WebAjaxManagerInterface() {
         }
 
         PageLoading.show();
+      
+        if(url.charAt(0)  !== "/") {
+            url = "/" + url;
+        }
 
         // Requests
         $.ajax({

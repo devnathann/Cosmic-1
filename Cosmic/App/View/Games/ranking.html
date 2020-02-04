@@ -22,7 +22,7 @@
                     {% for user in currency %}
                     <tr>
                         <td><img src="{{site.fpath}}/avatarimage?figure={{user.player.look}}&gesture=sml&headonly=1" alt="{{user.player.look}}" class="pixelated"></td>
-                        <td><a href="{{site.path}}/profile/{{user.player.username}}">{{user.player.username}}</a></td>
+                        <td><a href="/profile/{{user.player.username}}">{{user.player.username}}</a></td>
                         <td><span>{{user.amount}}</span></td>
                     </tr>
                     {% endfor %}
@@ -43,7 +43,7 @@
                     {% for credits in credits %}
                     <tr>
                         <td><img src="{{site.fpath}}/avatarimage?figure={{credits.player.look}}&gesture=sml&headonly=1" alt="{{credits.player.look}}" class="pixelated"></td>
-                        <td><a href="{{site.path}}/profile/{{credits.player.username}}">{{credits.player.username}}</a></td>
+                        <td><a href="/profile/{{credits.player.username}}">{{credits.player.username}}</a></td>
                         <td><span>{{credits.credits}}</span></td>
                     </tr>
                     {% endfor %}
@@ -63,7 +63,7 @@
                     {% for achievements in achievements %}
                     <tr>
                         <td><img src="{{site.fpath}}/avatarimage?figure={{achievements.player.look}}&gesture=sml&headonly=1" alt="{{achievements.player.look}}" class="pixelated"></td>
-                        <td><a href="{{site.path}}/profile/{{achievements.player.username}}">{{achievements.player.username}}</a></td>
+                        <td><a href="/profile/{{achievements.player.username}}">{{achievements.player.username}}</a></td>
                         <td><span>{{achievements.achievement_score}}</span></td>
                     </tr>
                     {% endfor %}
@@ -83,7 +83,7 @@
                     {% for respects in respects %}
                     <tr>
                         <td><img src="{{site.fpath}}/avatarimage?figure={{respects.player.look}}&gesture=sml&headonly=1" alt="{{respects.player.look}}" class="pixelated"></td>
-                        <td><a href="{{site.path}}/profile/{{respects.player.username}}">{{respects.player.username}}</a></td>
+                        <td><a href="/profile/{{respects.player.username}}">{{respects.player.username}}</a></td>
                         <td><span>{{respects.respects_received}}</span></td>
                     </tr>
                     {% endfor %}

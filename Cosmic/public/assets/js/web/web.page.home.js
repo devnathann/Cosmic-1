@@ -3,7 +3,7 @@ function WebPageHomeInterface(main_page)
     this.main_page = main_page;
     this.article_template = [
         '<div class="article-container" style="display: none;">\n' +
-        '    <a href="' + Site.url + '/article/{article.id}-{article.slug}" class="article-content" style="background-image: url({article.banner});">\n' +
+        '    <a href="/article/{article.id}-{article.slug}" class="article-content" style="background-image: url({article.banner});">\n' +
         '        <div class="article-header">\n' +
         '            <div class="article-category">{article.category}</div>\n' +
         '            <div class="article-separation" style="background-color: {article.color};"></div>\n' +

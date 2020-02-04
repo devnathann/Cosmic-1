@@ -17,7 +17,7 @@
         {% endif %}
       
         {% for category in forums %}
-        <a href="{{site.path}}/guilds/{{category.id}}-{{category.slug}}" style="text-decoration: none">
+        <a href="/guilds/{{category.id}}-{{category.slug}}" style="text-decoration: none">
             <article class="default-section" style="margin-bottom: 15px">
                 <div style="background: url({{site.cpath}}/c_images/Badgeparts/generated/{{category.badge}}.png) 10px 50% no-repeat;background-position: right; margin-right: 22px;">
                     <div class="aside-title-content">{{category.name}}</div>
@@ -41,7 +41,7 @@
       
         {% for category in public %}
         {% if category.user is empty %}
-        <a href="{{site.path}}/guilds/{{category.id}}-{{category.slug}}" style="text-decoration: none">
+        <a href="/guilds/{{category.id}}-{{category.slug}}" style="text-decoration: none">
             <article class="default-section" style="margin-bottom: 15px">
                 <div style="background: url({{site.cpath}}/c_images/Badgeparts/generated/{{category.badge}}.png) 10px 50% no-repeat;background-position: right; margin-right: 22px;">
                     <div class="aside-title-content">{{category.name}}</div>
@@ -61,7 +61,7 @@
             <div class="aside-content">
                 <div class="related-articles-container">
                     {% for post in latestposts %}
-                    <a href="{{site.path}}/guilds/{{post.guild_id}}/thread/{{post.thread_id}}-{{post.slug}}#{{post.id}}" class="related-article-container">
+                    <a href="/guilds/{{post.guild_id}}/thread/{{post.thread_id}}-{{post.slug}}#{{post.id}}" class="related-article-container">
                         <div class="related-article-thumbnail" style="background-image: url({{site.fpath}}/avatarimage?figure={{post.author.look}}&headonly=1&direction=2&head_direction=2&action=&gesture=&size=m); margin-top: -5px;" class="pixelated small-head"></div>
                         <div class="related-article-details">
                             <div class="related-article-title">{{post.subject}}</div>
