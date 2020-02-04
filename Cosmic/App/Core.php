@@ -55,7 +55,7 @@ class Core
 
     public static function getIpAddress()
     {
-        $ipAddress = ($_SERVER['HTTP_CDN_LOOP'] == "cloudflare") ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
+        $ipAddress = (isset($_SERVER['HTTP_CDN_LOOP']) == "cloudflare") ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
         return filter_var($ipAddress, FILTER_VALIDATE_IP) ? $ipAddress : false;
     }
 
