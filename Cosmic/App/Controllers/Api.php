@@ -109,6 +109,11 @@ class Api
       
     }
   
+    public function online()
+    {
+        echo Core::getOnlineCount();
+    }
+  
     public function currencys() 
     {
         response()->json(Core::getCurrencys());

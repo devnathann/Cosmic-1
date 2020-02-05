@@ -17,7 +17,7 @@ function WebHotelManagerInterface()
         this.hotel_container.find(".client-buttons .client-radio").click(this.radio(this));
 
         setInterval(function() {
-            $("body").find(".client-buttons .client-count #count").load("/api/player/count");
+            $("body").find(".client-buttons .client-count #count").load("/api/online");
         }, 120000);
     };
 
@@ -31,7 +31,7 @@ function WebHotelManagerInterface()
 
     this.refresh_count = function ()
     {
-        $("body").find(".client-buttons .client-count #count").load("/api/player/count");
+        $("body").find(".client-buttons .client-count #count").load("/api/online");
     };
 
     this.open_hotel = function (arguments)
