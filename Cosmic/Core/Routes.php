@@ -27,9 +27,9 @@ class Routes extends Router
             Router::get('/assets/js/web/user_settings.js', 'Home\Index@configuration');
           
             Router::partialGroup('/api/{callback}', function ($callback) {
+                Router::all('/{param}', 'Api@' . $callback);
                 Router::all('/', 'Api@' . $callback);
             });
-            
         
             Router::get('/', 'Home\Index@index')->setName('index.home');
             Router::get('/home', 'Home\Index@index');

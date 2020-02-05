@@ -150,7 +150,7 @@
                                     <td style="text-align: center;"><img src="/assets/images/web/pages/community/rooms/room_icon_{{number}}.gif"></td>
                                     <td style="text-align: justify;word-break: break-word;">{{row.name}}<br><i style="font-size: 11px;word-break: break-word;"></i></td>
                                     <td><img src="/assets/images/web/pages/community/rooms/visitors.gif"> <b>{{row.users}}</b></td>
-                                    <td style="width: 150px;padding-left: 20px"><a href="/hotel?room={{row.id}}" class="button">{{locale.goto_room}}</a></td>
+                                    <td style="width: 150px;padding-left: 20px"><a href="/api/room/{{row.id}}" class="button">{{locale.goto_room}}</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>

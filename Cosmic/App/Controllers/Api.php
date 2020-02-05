@@ -4,6 +4,12 @@ namespace App\Controllers;
 use App\Config;
 
 use App\Models\Core;
+use App\Models\Room;
+
+use Library\HotelApi;
+use Library\Json;
+
+use Core\Locale;
 
 class Api
 {
@@ -85,6 +91,24 @@ class Api
         ]);
     }
   
+    public function room($callback, $roomId)
+    {
+        if (!request()->player->online && !request()->isAjax()) {
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
+        }
+
+        $room = \App\Models\Room::getById($roomId);
+        if ($room == null) {
+            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/room_not_exists')]);
+        }
+
+        if(request()->player->online) {
+            HotelApi::execute('forwarduser', array('user_id' => request()->player->id, 'room_id' => $roomId));
+            return Json::encode(["status" => "success",  "replacepage" => "hotel"]);
+        }
+      
+    }
+  
     public function currencys() 
     {
         response()->json(Core::getCurrencys());
@@ -92,9 +116,8 @@ class Api
 
     public function version()
     {
-        $version_cosmic = json_decode(@file_get_contents("https://cosmicproject.online/version.txt"));
-        $version = json_decode(@file_get_contents(Config::site['path'] . "/version.txt"));
-        
+        $version_cosmic = @file_get_contents("https://cosmicproject.online/version.txt");
+        $version = @file_get_contents("/version.txt");
         return ($version_cosmic != $version) ? true : false;
     }
 }
