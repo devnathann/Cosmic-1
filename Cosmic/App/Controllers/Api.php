@@ -117,7 +117,7 @@ class Api
     public function version()
     {
         $version_cosmic = @file_get_contents("https://cosmicproject.online/version.txt");
-        $version = @file_get_contents("/version.txt");
+        $version = @file_get_contents("version.txt");
         return ($version_cosmic != $version) ? true : false;
     }
 }
