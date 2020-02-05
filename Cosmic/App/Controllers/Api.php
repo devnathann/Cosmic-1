@@ -93,8 +93,8 @@ class Api
   
     public function room($callback, $roomId)
     {
-        if (!request()->player->online && !request()->isAjax()) {
-            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
+        if (!request()->player->online || !request()->isAjax()) {
+            return Json::encode(["status" => "error", "message" => Locale::get('core/dialog/logged_in')]);
         }
 
         $room = \App\Models\Room::getById($roomId);

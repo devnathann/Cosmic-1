@@ -182,12 +182,12 @@ class Community
   
     public static function getAchievement($limit = 10)
     {
-        return  QueryBuilder::table('users_settings')->select('user_id')->select('achievement_score')->join('users', 'users_settings.id', '=', 'users.id')->where('users.rank', '<', 4)->orderBy('achievement_score', 'desc')->limit($limit)->get();
+        return  QueryBuilder::table('users_settings')->select('user_id')->select('achievement_score')->orderBy('achievement_score', 'desc')->limit($limit)->get();
     }
   
     public static function getRespectsReceived($limit = 10)
     {
-        return  QueryBuilder::table('users_settings')->select('user_id')->select('respects_received')->join('users', 'users_settings.id', '=', 'users.id')->where('users.rank', '<', 4)->orderBy('respects_received', 'desc')->limit($limit)->get();
+        return  QueryBuilder::table('users_settings')->select('user_id')->select('respects_received')->orderBy('respects_received', 'desc')->limit($limit)->get();
     }
 
     public static function getCredits($limit = 10)
