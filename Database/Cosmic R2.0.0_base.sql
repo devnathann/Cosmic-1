@@ -598,5 +598,7 @@ ALTER TABLE catalog_items ADD rate enum('up','down','none') DEFAULT 'none';
 ALTER TABLE users ADD secret_key int(11) NULL DEFAULT NULL;
 ALTER TABLE users ADD pincode varchar(11) NULL DEFAULT NULL;
 ALTER TABLE users MODIFY mail VARCHAR(500);
+INSERT INTO `website_settings` VALUES ('krews_api_hotel_slug', NULL);
+ALTER TABLE `website_shop_offers` MODIFY currency int(3);
 
 SET FOREIGN_KEY_CHECKS = 1;
