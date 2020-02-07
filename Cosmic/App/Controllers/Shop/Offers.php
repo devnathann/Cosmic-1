@@ -2,6 +2,7 @@
 namespace App\Controllers\Shop;
 
 use App\Config;
+
 use App\Models\Log;
 use App\Models\Core;
 use App\Models\Player;
@@ -26,11 +27,12 @@ class Offers
     public function offerAction($offer_id)
     {
         $offer = \App\Models\Shop::getOfferByOfferId($offer_id);
+      
         if($offer) {
-            return $this->data->offer = $offer;
+            $offer->currency = Core::getCurrencyByType($offer->currency)->currency;
         }
-
-        return null;
+      
+        return $this->data->offer = $offer;
     }
 
     public function validate()

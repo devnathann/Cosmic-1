@@ -29,6 +29,46 @@
                         </div>
                     </div>
                 </article>
+              
+                <aside class="default-section">
+                  
+                    <div class="aside-title-content">{{locale.popular_rooms}}</div>
+                    <div class="aside-desc-content">{{locale.popular_rooms_label}}</div>
+                  
+                    {% if rooms is empty %}
+                        <div class="aside-content">
+                            {{locale.popular_no_rooms}}
+                        </div>
+                    {% endif %}
+                  
+                    {% if rooms is not empty %}
+                    <div class="aside-content">
+                        <table class="rooms table table-striped">
+                            <tbody>
+                                {% for row in rooms %}
+                                    {% if row.users >= 25 %}
+                                        {% set number = 5 %}
+                                    {% elseif row.users >= 15 %}
+                                        {% set number = 4 %}
+                                    {% elseif row.users >= 10 %}
+                                        {% set number = 3 %}
+                                    {% elseif row.users >= 1 %}
+                                        {% set number = 2 %}
+                                    {% else %}
+                                        {% set number = 1 %}
+                                    {% endif %}
+                                <tr>
+                                    <td style="text-align: center;"><img src="/assets/images/web/pages/community/rooms/room_icon_{{number}}.gif"></td>
+                                    <td style="text-align: justify;word-break: break-word;">{{row.name}}<br><i style="font-size: 11px;word-break: break-word;"></i></td>
+                                    <td><img src="/assets/images/web/pages/community/rooms/visitors.gif"> <b>{{row.users}}</b></td>
+                                    <td style="width: 150px;padding-left: 20px"><a href="/api/room/{{row.id}}" class="button">{{locale.goto_room}}</a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% endif %}
+                </aside>
               {% endif %}
                {% if random is not null and random is not empty %}
                 <div class="myfriends-online">
@@ -116,48 +156,6 @@
                         </div>
                     </aside>
                 {% endif %}
-            </div>
-          
-            <div class="left-side">
-                <aside class="default-section">
-                  
-                    <div class="aside-title-content">{{locale.popular_rooms}}</div>
-                    <div class="aside-desc-content">{{locale.popular_rooms_label}}</div>
-                  
-                    {% if rooms is empty %}
-                        <div class="aside-content">
-                            {{locale.popular_no_rooms}}
-                        </div>
-                    {% endif %}
-                  
-                    {% if rooms is not empty %}
-                    <div class="aside-content">
-                        <table class="rooms table table-striped">
-                            <tbody>
-                                {% for row in rooms %}
-                                    {% if row.users >= 25 %}
-                                        {% set number = 5 %}
-                                    {% elseif row.users >= 15 %}
-                                        {% set number = 4 %}
-                                    {% elseif row.users >= 10 %}
-                                        {% set number = 3 %}
-                                    {% elseif row.users >= 1 %}
-                                        {% set number = 2 %}
-                                    {% else %}
-                                        {% set number = 1 %}
-                                    {% endif %}
-                                <tr>
-                                    <td style="text-align: center;"><img src="/assets/images/web/pages/community/rooms/room_icon_{{number}}.gif"></td>
-                                    <td style="text-align: justify;word-break: break-word;">{{row.name}}<br><i style="font-size: 11px;word-break: break-word;"></i></td>
-                                    <td><img src="/assets/images/web/pages/community/rooms/visitors.gif"> <b>{{row.users}}</b></td>
-                                    <td style="width: 150px;padding-left: 20px"><a href="/api/room/{{row.id}}" class="button">{{locale.goto_room}}</a></td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                    {% endif %}
-                </aside>
             </div>
             {% endif %}
 
