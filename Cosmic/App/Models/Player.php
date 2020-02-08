@@ -178,10 +178,8 @@ class Player
     public static function getCurrencys($user_id)
     {
         $currencies = \App\Models\Core::getCurrencys();
-        if(!empty($currencies)) {
-            foreach($currencies as $row) {
-                $row->amount = self::getUserCurrencys($user_id, $row->type)->amount;
-            }
+        foreach($currencies as $row) {
+            $row->amount = self::getUserCurrencys($user_id, $row->type)->amount ?? 0;
         }
         return $currencies;
     }
