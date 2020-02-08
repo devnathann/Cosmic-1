@@ -45,11 +45,11 @@ class Feeds
     {
         $feed_id = Community::getFeedsByFeedId(input()->post('post')->value);
         if (empty($feed_id)) {
-            return Json::encode(["status" => "error", "message" => "No feeds available"]);
+            response()->json(["status" => "error", "message" => "No feeds available"]);
         }
 
         Community::deleteFeedById($feed_id->id);
-        return Json::encode(["status" => "success", "message" => "Feed was successfully deleted"]);
+        response()->json(["status" => "success", "message" => "Feed was successfully deleted"]);
     }
 
     public function view()

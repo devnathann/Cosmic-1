@@ -41,23 +41,23 @@ class Namechange
 
         $user_validate = preg_replace('/[^a-zA-Z0-9\d\-\?!@:\.,]/i', '', $username);
         if ($user_validate != $username) {
-            return Json::encode(["status" => "error", "message" => Locale::get('register/username_invalid')]);
+            response()->json(["status" => "error", "message" => Locale::get('register/username_invalid')]);
         }
 
         $new_player = Player::getDataByUsername($username);
         if (!empty($new_player)) {
-            return Json::encode(["status" => "error", "message" => Locale::get('settings/user_is_active')]);
+            response()->json(["status" => "error", "message" => Locale::get('settings/user_is_active')]);
         }
 
         $amount = Player::getCurrencys(request()->player->id)[$this->settings->namechange_currency_type]->amount;
         if ($amount < $this->settings->namechange_price) {
-            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/not_enough_points')]);
+            response()->json(["status" => "error", "message" => Locale::get('core/notification/not_enough_points')]);
         }
       
         HotelApi::execute('changeusername', array('user_id' => request()->player->id, 'new_name' => $username));
         HotelApi::execute('givepoints', array('user_id' => request()->player->id, 'points' => - $amount + $amount - $this->settings->namechange_price, 'type' => $this->settings->namechange_currency_type));
       
-        return Json::encode(["status" => "success", "message" => Locale::get('settings/name_change_saved'), "replacepage" => "settings/namechange"]);
+        response()->json(["status" => "success", "message" => Locale::get('settings/name_change_saved'), "replacepage" => "settings/namechange"]);
     }
 
     public function availability()
@@ -68,10 +68,10 @@ class Namechange
         $player = Player::getDataByUsername($username, array('id'));
 
         if ($userCheck != $username || !empty($player)) {
-            return Json::encode(["status" => "unavailable"]);
+            response()->json(["status" => "unavailable"]);
         }
     
-        return Json::encode(["status" => "available"]);
+        response()->json(["status" => "available"]);
     }
 
     public function index()

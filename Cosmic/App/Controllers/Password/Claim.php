@@ -28,11 +28,11 @@ class Claim
 
         $player = Player::getDataByUsername($username, array('id', 'username', 'mail'));
         if ($player == null || strtolower($player->mail) != strtolower($email)) {
-            return Json::encode(["status" => "error", "message" => Locale::get('claim/invalid_email'), "replacepage" => "password/claim"]);
+            response()->json(["status" => "error", "message" => Locale::get('claim/invalid_email'), "replacepage" => "password/claim"]);
         }
 
         Password::createToken($player->id, $player->username, $player->mail);
-        return Json::encode(["status" => "success", "message" => Locale::get('claim/send_link'), "replacepage" => "password/claim"]);
+        response()->json(["status" => "success", "message" => Locale::get('claim/send_link'), "replacepage" => "password/claim"]);
     }
 
     public function index()

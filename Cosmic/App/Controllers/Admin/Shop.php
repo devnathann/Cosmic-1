@@ -40,12 +40,12 @@ class Shop
         if (!empty($id)) {
             Admin::offerEdit($id, $currencys, $amount, $price, $offer_id, $private_key);
             Log::addStaffLog('-1', 'Shop edited: ' . $offer_id, request()->player->id, 'shop');
-            return Json::encode(["status" => "success", "message" => "Shop edited successfully!"]);
+            response()->json(["status" => "success", "message" => "Shop edited successfully!"]);
         }
       
         Admin::offerCreate($currencys, $amount, $price, $offer_id, $private_key);
         Log::addStaffLog('-1', 'Shop item created: ' . $offer_id, request()->player->id, 'shop');
-        return Json::encode(["status" => "success", "message" => "Shop created successfully!"]);
+        response()->json(["status" => "success", "message" => "Shop created successfully!"]);
     }
   
     public function getOfferById()
@@ -59,7 +59,7 @@ class Shop
         }
       
         $offer = Shops::getOfferById(input()->post('post')->value);
-        Json::encode($offer);
+        response()->json($offer);
     }
 
     public function getOffers()

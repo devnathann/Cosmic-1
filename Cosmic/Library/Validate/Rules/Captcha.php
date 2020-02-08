@@ -39,7 +39,7 @@ class Captcha extends Rule
         curl_setopt($curl, CURLOPT_POSTFIELDS, array(
             'secret' => Core::settings()->recaptcha_secretkey ?? null,
             'response' => $value,
-            'remoteip' => \App\Core::getIpAddress()
+            'remoteip' => request()->getIp()
         ));
         $curlData = curl_exec($curl);
         curl_close($curl);

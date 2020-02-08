@@ -40,7 +40,7 @@ class Search
         $string =  input()->get('searchTerm')->value ?? null;
 
         if(!isset($string)) {
-            return Json::encode(['id' => "none", 'text' => 'Where are you searching for?']);
+            response()->json(['id' => "none", 'text' => 'Where are you searching for?']);
         }
 
         $userObject = Admin::getPlayersByString($string);
@@ -56,7 +56,7 @@ class Search
         $string =  input()->get('searchTerm')->value ?? null;
 
         if(!isset($string)) {
-            return Json::encode(['id' => "none", 'text' => 'Choose an catalogue page']);
+            response()->json(['id' => "none", 'text' => 'Choose an catalogue page']);
         }
 
         $userObject = Admin::getCataloguePage($string);
@@ -72,7 +72,7 @@ class Search
         $string =  input()->get('searchTerm')->value ?? null;
 
         if(!isset($string)) {
-            return Json::encode(['id' => "none", 'text' => 'Where are you searching for?']);
+            response()->json(['id' => "none", 'text' => 'Where are you searching for?']);
         }
 
         $userObject = Admin::getPlayersByString($string);
@@ -88,7 +88,7 @@ class Search
         $string = input()->get('searchTerm')->value ?? null;
 
         if(!isset($string)) {
-            return Json::encode(['id' => "none", 'text' => 'Where are you searching for?']);
+            response()->json(['id' => "none", 'text' => 'Where are you searching for?']);
         }
 
         $roomObject = Admin::getRoomsByString($string);
@@ -116,7 +116,7 @@ class Search
         $role_id =  input()->get('roleid')->value;
 
         if(!isset($permission_id) && !isset($role_id)) {
-            return Json::encode(['id' => "none", 'text' => 'Where are you searching for?']);
+            response()->json(['id' => "none", 'text' => 'Where are you searching for?']);
         }
 
         $rankObject = Permission::getPermissions($permission_id);
@@ -127,7 +127,7 @@ class Search
         }
 
         if(empty($this->paths)) {
-            return Json::encode(['id' => "none", 'text' => 'This role has all the permissions they can have']);
+            response()->json(['id' => "none", 'text' => 'This role has all the permissions they can have']);
         }
 
         echo Json::encode($this->paths);
@@ -138,7 +138,7 @@ class Search
         $string = input()->get('searchTerm')->value ?? null;
 
         if(!isset($string)) {
-            return Json::encode(['id' => "none", 'text' => 'Where are you searching for?']);
+            response()->json(['id' => "none", 'text' => 'Where are you searching for?']);
         }
 
         $wordObject = Admin::getWordsByString($string);

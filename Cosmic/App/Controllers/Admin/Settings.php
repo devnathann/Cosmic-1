@@ -23,7 +23,7 @@ class Settings
             Admin::saveSettings($column, $value);
         }
       
-        return Json::encode(["status" => "success", "message" => "Saved!"]);
+        response()->json(["status" => "success", "message" => "Saved!"]);
     }
   
     public function addCurrency()
@@ -33,19 +33,19 @@ class Settings
         $amount = input()->post('amount')->value;
       
         Core::addCurrency($currency, $type, $amount);
-        return Json::encode(["status" => "success", "message" => "Currency has been added!"]);
+        response()->json(["status" => "success", "message" => "Currency has been added!"]);
     }
   
     public function deleteCurrency()
     {
         if(Core::deleteCurrency(input()->post('type')->value, input()->post('currency')->value)) {
-            return Json::encode(["status" => "success", "message" => "Currency has been deleted"]);
+            response()->json(["status" => "success", "message" => "Currency has been deleted"]);
         }
     }
   
     public function getCurrencys()
     {
-        return Json::encode(Core::getCurrencys());
+        response()->json(Core::getCurrencys());
     }
   
     public function view()

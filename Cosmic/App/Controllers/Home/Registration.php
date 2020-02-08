@@ -30,7 +30,7 @@ class Registration
         ]);
 
         if(!$validate->isSuccess()) {
-            return;
+            exit;
         }
       
         $username = input()->post('username')->value;
@@ -39,19 +39,19 @@ class Registration
         $playerData->figure = input()->post('figure')->value;
 
         if (Player::exists($username)) {
-            return Json::encode(["status" => "error", "message" => Locale::get('register/username_exists')]);
+            response()->json(["status" => "error", "message" => Locale::get('register/username_exists')]);
         }
 
         if (Player::mailTaken(input()->post('email')->value)) {
-            return Json::encode(["status" => "error", "message" => Locale::get('register/email_exists')]);
+            response()->json(["status" => "error", "message" => Locale::get('register/email_exists')]);
         }
       
-        if (Player::checkMaxIp(Core::getIpAddress()) >= \App\Models\Core::settings()->registration_max_ip) {
-            return Json::encode(["status" => "error", "message" => Locale::get('register/too_many_accounts')]);
+        if (Player::checkMaxIp(request()->getIp()) >= \App\Models\Core::settings()->registration_max_ip) {
+            response()->json(["status" => "error", "message" => Locale::get('register/too_many_accounts')]);
         }
 
         if (!Player::create($playerData)) {
-            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong'), "captcha_error" => "error"]);
+            response()->json(["status" => "error", "message" => Locale::get('core/notification/something_wrong'), "captcha_error" => "error"]);
         }
   
         $player = Player::getDataByUsername($username, array('id', 'password', 'rank'));
@@ -66,7 +66,7 @@ class Registration
         }
 
         Auth::login($player);
-        return Json::encode(["status" => "success", "location" => "/hotel"]);
+        response()->json(["status" => "success", "location" => "/hotel"]);
     }
 
     public function index()

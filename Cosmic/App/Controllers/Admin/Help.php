@@ -29,7 +29,7 @@ class Help
     {
         $request = Admin::getHelpTicketById(input()->post('post')->value);
         if ($request == null) {
-            return Json::encode(["status" => "error", "message" => "No ticket found!"]);
+            response()->json(["status" => "error", "message" => "No ticket found!"]);
         }
 
         $request->user = Player::getDataById($request->player_id, array('username','look','last_online'));
@@ -89,7 +89,7 @@ class Help
         Admin::updateTicketStatus($action, $ticket->id);
         Log::addHelpTicketLog(request()->player->id, $ticket->id, 'CHANGE', $action);
 
-        return Json::encode(["status" => "success", "message" => "Ticket status has been updated!"]);
+        response()->json(["status" => "success", "message" => "Ticket status has been updated!"]);
     }
 
     public function sendmessage()
@@ -116,7 +116,7 @@ class Help
             HotelApi::execute('alertuser', array('user_id' => $ticket->player_id, 'message' => 'Er is gereageerd op je helpdesk ticket!'));
         }
 
-        return Json::encode(["status" => "success", "message" => "Succesfully send a message to user"]);
+        response()->json(["status" => "success", "message" => "Succesfully send a message to user"]);
     }
 
     public function view()

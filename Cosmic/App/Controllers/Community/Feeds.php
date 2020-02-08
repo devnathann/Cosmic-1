@@ -40,22 +40,22 @@ class Feeds
 
         $player = Player::getDataById($user_id, 'username');
         if ($player == null) {
-            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
+            response()->json(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         }
 
         if (empty($reply) || empty($user_id)) {
-            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
+            response()->json(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         }
 
         $userposts = Community::getFeedsByUserid($user_id);
         if(!empty($userposts)) {
             if(end($userposts)->from_user_id == request()->player->id){
-                return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
+                response()->json(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
             }
         }
 
         Community::addFeedToUser(Core::filterString(Core::tagByUser($reply)), request()->player->id, $user_id);
-        return Json::encode(["status" => "success", "message" => Locale::get('core/notification/message_placed'), "replacepage" => "profile/" . $player->username]);
+        response()->json(["status" => "success", "message" => Locale::get('core/notification/message_placed'), "replacepage" => "profile/" . $player->username]);
 
         //$object->feedid = $feed_id;
         //$object->username = $player->username;
@@ -68,15 +68,15 @@ class Feeds
     {
         $feed_id = Community::getFeedsByFeedId(input()->post('feedid')->value);
         if($feed_id == null) {
-            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
+            response()->json(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         }
 
         if ($feed_id->to_user_id != request()->player->id && Permission::exists('housekeeping_moderation_tools', request()->player->rank)) {
-            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
+            response()->json(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         }
 
         Community::deleteFeedById($feed_id->id);
-        return Json::encode(["status" => "error", "success" => Locale::get('core/notification/message_deleted'), "replacepage" => "profile/". Player::getDataById($feed_id->to_user_id, array('username'))->username]);
+        response()->json(["status" => "error", "success" => Locale::get('core/notification/message_deleted'), "replacepage" => "profile/". Player::getDataById($feed_id->to_user_id, array('username'))->username]);
     }
 
     public function like()
@@ -84,11 +84,11 @@ class Feeds
         $post = input()->post('post')->value;
 
         if (Community::userAlreadylikePost($post, request()->player->id)) {
-            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/already_liked')]);
+            response()->json(["status" => "error", "message" => Locale::get('core/notification/already_liked')]);
         }
 
         Community::insertLike($post, request()->player->id);
-        return Json::encode(["status" => "success", "message" => Locale::get('core/notification/liked')]);
+        response()->json(["status" => "success", "message" => Locale::get('core/notification/liked')]);
     }
 
     public function more()

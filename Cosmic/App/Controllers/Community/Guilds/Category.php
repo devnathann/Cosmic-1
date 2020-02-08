@@ -16,7 +16,7 @@ class Category {
     {
         if(!request()->guild->read_forum) {
             if(request()->isAjax()) {
-                return Json::encode(["status" => "error", "message" => Locale::get('core/notification/invisible')]);
+                response()->json(["status" => "error", "message" => Locale::get('core/notification/invisible')]);
             }
           
             redirect('/guilds');
@@ -80,17 +80,17 @@ class Category {
         $forums   = Guild::getGuild($cat_id);
       
         if (request()->player === null || empty($forums)) {
-            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
+            response()->json(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         }
       
         if(!request()->guild->post_threads != false) {
-            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/no_permissions')]);
+            response()->json(["status" => "error", "message" => Locale::get('core/notification/no_permissions')]);
         }
       
         $topic_id = Guild::createTopic($cat_id, Core::FilterString($title), request()->player->id, $slug); 
         $reply_id = Guild::createReply($topic_id, Core::FilterString(Core::tagByUser($message)), request()->player->id);
       
-        return Json::encode(["status" => "success", "message" => Locale::get('core/notification/message_placed'), "replacepage" => "guilds/{$forums->id}/thread/{$topic_id}-{$slug}"]);
+        response()->json(["status" => "success", "message" => Locale::get('core/notification/message_placed'), "replacepage" => "guilds/{$forums->id}/thread/{$topic_id}-{$slug}"]);
     }
   
     private function slug($slug)

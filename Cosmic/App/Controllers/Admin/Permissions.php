@@ -37,7 +37,7 @@ class Permissions
         $minimum_rk = filter_var(input()->post('minimum_rank')->value, FILTER_SANITIZE_NUMBER_INT);
 
         if (Admin::changeMinimumRank($command_id, $minimum_rk)) {
-            return Json::encode(["status" => "success", "message" => "Permission rank has been changed!"]);
+            response()->json(["status" => "success", "message" => "Permission rank has been changed!"]);
         }
     }
 
@@ -60,15 +60,15 @@ class Permissions
         }
 
         if (empty($this->data->rank_name)) {
-            return Json::encode(["status" => "error", "message" => "Rank can not be empty!"]);
+            response()->json(["status" => "error", "message" => "Rank can not be empty!"]);
         }
       
         if (in_array($this->data->rank_name, array_column(Admin::getRanks(true), 'name'))) {
-            return Json::encode(["status" => "error", "message" => "Rank name is already in use!"]);
+            response()->json(["status" => "error", "message" => "Rank name is already in use!"]);
         }
   
         Admin::addRank($this->data, $permissionsArray);
-        return Json::encode(["status" => "success", "message" => "Rank added successfully!"]);
+        response()->json(["status" => "success", "message" => "Rank added successfully!"]);
     }
 
     public function getwebsiteranks()
@@ -97,7 +97,7 @@ class Permissions
 
     public function search()
     {
-        return Json::encode(["status" => "success", "message" => "Permissions has been loaded!"]);
+        response()->json(["status" => "success", "message" => "Permissions has been loaded!"]);
     }
 
     public function addpermission()
@@ -106,26 +106,26 @@ class Permissions
         $permission_id = input()->post('permissionid')->value;
 
         if (empty($role_id) || empty($permission_id)) {
-            return Json::encode(["status" => "error", "message" => "Permission can not be added!"]);
+            response()->json(["status" => "error", "message" => "Permission can not be added!"]);
         }
 
         if (Admin::roleExists($role_id, $permission_id))  {
-            return Json::encode(["status" => "error", "message" => "Permissions has already added to this role!"]);
+            response()->json(["status" => "error", "message" => "Permissions has already added to this role!"]);
         }
 
         Admin::createPermission($role_id, $permission_id);
-        return Json::encode(["status" => "success", "message" => "Permissions has been added!"]);
+        response()->json(["status" => "success", "message" => "Permissions has been added!"]);
     }
 
     public function delete()
     {
         $permission = Permission::getPermissionById(input()->post('id')->value);
         if (empty($permission)) {
-            return Json::encode(["status" => "error", "message" => "No permission found!"]);
+            response()->json(["status" => "error", "message" => "No permission found!"]);
         }
 
         Admin::deletePermission($permission->id);
-        return Json::encode(["status" => "success", "message" => "Permissions has been deleted!"]);
+        response()->json(["status" => "success", "message" => "Permissions has been deleted!"]);
     }
 
     public function view()

@@ -3,7 +3,6 @@ namespace App\Middleware;
 
 use App\Auth;
 use App\Config;
-use App\Core;
 
 use App\Models\Player;
 
@@ -30,7 +29,7 @@ class AuthMiddleware implements IMiddleware
             return;
         }
 
-        if (Session::get('ip_address') != Core::getIpAddress()) {
+        if (Session::get('ip_address') != request()->getIp()) {
             Auth::logout();
         }
     }

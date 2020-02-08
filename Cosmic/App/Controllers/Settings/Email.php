@@ -28,11 +28,11 @@ class Email
         $email = input()->post('email');
 
         if (!Hash::verify($currentPassword, request()->player->password)) {
-            return Json::encode(["status" => "error", "message" => Locale::get('settings/current_password_invalid')]);
+            response()->json(["status" => "error", "message" => Locale::get('settings/current_password_invalid')]);
         }
 
         Player::update(request()->player->id, ['mail' => $email]);
-        return Json::encode(["status" => "success", "message" => Locale::get('settings/email_saved'), "replacepage" => "settings/email"]);
+        response()->json(["status" => "success", "message" => Locale::get('settings/email_saved'), "replacepage" => "settings/email"]);
     }
 
     public function index()

@@ -26,11 +26,11 @@ class Client
     {
         $this->data = new stdClass();
 
-        /*
+    
         $reader = new Reader(__DIR__. Config::vpnLocation);
 
         try {
-            $record = $reader->asn(Core::getIpAddress());
+            $record = $reader->asn(request()->getIp());
         } catch (AddressNotFoundException $e) {
         } catch (InvalidDatabaseException $e) {
 
@@ -42,8 +42,7 @@ class Client
             View::renderTemplate('Client/vpn.html', ['asn' => $asn->asn, 'type' => 'vpn']);
             exit;
         }
-        
-        */
+   
 
         $OS = substr($_SERVER['HTTP_USER_AGENT'], -2);
         if (strpos($_SERVER['HTTP_USER_AGENT'], "Puffin") !== false && ($OS == "WD" || $OS == "LD" || $OS == "MD")) {

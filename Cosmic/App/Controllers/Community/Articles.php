@@ -34,16 +34,16 @@ class Articles
         $news_id = input()->post('post')->value;
 
         if(Permission::exists('housekeeping_moderation_tools', request()->player->id)) {
-            return Json::encode(["status" => "error", "is_hidden" => "show", "message" => Locale::get('core/notification/something_wrong')]);
+            response()->json(["status" => "error", "is_hidden" => "show", "message" => Locale::get('core/notification/something_wrong')]);
         }
 
         if(Community::isNewsHidden($news_id)->hidden == 0) {
             Community::hideNewsReaction($news_id, '1');
-            return Json::encode(["status" => "success", "is_hidden" => "hide", "message" => Locale::get('website/article/reaction_hidden_yes')]);
+            response()->json(["status" => "success", "is_hidden" => "hide", "message" => Locale::get('website/article/reaction_hidden_yes')]);
         }
 
         Community::hideNewsReaction($news_id, '0');
-        return Json::encode(["status" => "success", "is_hidden" => "show", "message" => Locale::get('website/article/reaction_hidden_no')]);
+        response()->json(["status" => "success", "is_hidden" => "show", "message" => Locale::get('website/article/reaction_hidden_no')]);
     }
 
     public function add()
@@ -60,7 +60,7 @@ class Articles
         $article = Community::getArticleById(input()->post('articleid')->value);
 
         if (empty($article)) {
-            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
+            response()->json(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         }
 
         $message = Core::filterString(Core::tagByUser(input()->post('message')->value, $article->id));
@@ -69,13 +69,13 @@ class Articles
 
         foreach ($wordfilter as $word) {
           if (stripos($message, $word->key) !== false) {
-            return Json::encode(["status" => "error", "message" => Locale::get('website/article/forbidden_words')]);
+            response()->json(["status" => "error", "message" => Locale::get('website/article/forbidden_words')]);
           }
         }
 
         Community::addNewsReaction($article->id, request()->player->id, $message);
 
-        return Json::encode(["status" => "success", "message" => Locale::get('core/notification/message_placed'), "bericht" => $message, "figure" => request()->player->look]);
+        response()->json(["status" => "success", "message" => Locale::get('core/notification/message_placed'), "bericht" => $message, "figure" => request()->player->look]);
     }
 
     public function index($slug = null)

@@ -14,7 +14,7 @@ class Log
     {
         $data = array(
             'player_id' => $player_id,
-            'ip_address' => Core::getIpAddress(),
+            'ip_address' => request()->getIp(),
             'new_mail' => $new_email,
             'old_mail' => $old_email,
             'timestamp' => time()

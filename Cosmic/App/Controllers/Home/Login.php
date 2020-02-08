@@ -36,7 +36,7 @@ class Login
         ]);
 
         if (!$validate->isSuccess()) {
-            return;
+            exit;
         }
 
         $username     = input()->post('username')->value;
@@ -47,7 +47,7 @@ class Login
 
         $player = Player::getDataByUsername($username, array('id', 'password', 'rank', 'secret_key', 'pincode'));
         if ($player == null || !Hash::verify($password, $player->password)) {
-            return Json::encode(["status" => "error", "message" => Locale::get('login/invalid_password')]);
+            response()->json(["status" => "error", "message" => Locale::get('login/invalid_password')]);
         }
 
         /*
@@ -56,17 +56,17 @@ class Login
 
         if(!$pin_code) {
             if (!empty($player->secret_key) || !empty($player->pincode)) {
-                return Json::encode(["status" => "pincode_required"]);
+                response()->json(["status" => "pincode_required"]);
             }
         }
 
         if ($pin_code && empty($player->secret_key) && empty($player->pincode)) {
-            return Json::encode(["status" => "error", "message" => Locale::get('login/invalid_pincode')]);
+            response()->json(["status" => "error", "message" => Locale::get('login/invalid_pincode')]);
         }
       
         if(!empty($player->pincode) && empty($player->secret_key)) {
             if($player->pincode !== $pin_code) {
-                return Json::encode(["status" => "error", "message" => Locale::get('login/invalid_pincode')]);
+                response()->json(["status" => "error", "message" => Locale::get('login/invalid_pincode')]);
             }
         }
 
@@ -84,9 +84,9 @@ class Login
     protected function login($user, $remember_me)
     {
         if ($user && Auth::login($user, $remember_me)) {
-            return Json::encode(["status" => "error", "location" => "/home"]);
+            response()->json(["status" => "error", "location" => "/home"]);
         } else {
-            return Json::encode(["status" => "error", "message" => Locale::get('login/invalid_password')]);
+            response()->json(["status" => "error", "message" => Locale::get('login/invalid_password')]);
         }
     }
 
@@ -95,7 +95,7 @@ class Login
         $this->auth = new GoogleAuthenticator();
 
         if (!$this->auth->checkCode($secret_key, $pin_code)) {
-            return Json::encode(["status" => "error", "message" => Locale::get('login/invalid_pincode')]);
+            response()->json(["status" => "error", "message" => Locale::get('login/invalid_pincode')]);
         }
 
         return true;

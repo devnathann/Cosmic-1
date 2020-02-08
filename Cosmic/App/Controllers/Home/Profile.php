@@ -81,10 +81,10 @@ class Profile
     public function search()
     {
         if(!Player::exists(input()->post('search')->value)) {
-            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/profile_notfound')]);
+            response()->json(["status" => "error", "message" => Locale::get('core/notification/profile_notfound')]);
         }
 
-        return Json::encode(["replacepage" => "profile/" . input()->post('search')->value]);
+        response()->json(["replacepage" => "profile/" . input()->post('search')->value]);
     }
 
     public function template()

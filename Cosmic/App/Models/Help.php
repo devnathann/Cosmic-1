@@ -20,12 +20,12 @@ class Help
         return  QueryBuilder::table('website_helptool_faq')->setFetchMode(PDO::FETCH_CLASS, get_called_class())->find($slug);
     }
 
-    public static function createTicket($data, $player_id) {
+    public static function createTicket($data, $player_id, $ip_address) {
         $data = array(
             'subject' => $data->subject,
             'message' => $data->message,
             'player_id' => $player_id,
-            'ip_address' => \App\Core::getIpAddress(),
+            'ip_address' => $ip_address,
             'timestamp' => time()
         );
 

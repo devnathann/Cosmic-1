@@ -26,7 +26,7 @@ class Preferences
         $type   = (int)filter_var(input()->post('type')->value, FILTER_VALIDATE_BOOLEAN);
 
         if (!is_int($type) || !in_array($column, $inArray)) {
-            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong'), "captcha_error" => "error"]);
+            response()->json(["status" => "error", "message" => Locale::get('core/notification/something_wrong'), "captcha_error" => "error"]);
         }
 
         if (request()->player->online) {
@@ -35,7 +35,7 @@ class Preferences
             Player::updateSettings(request()->player->id, $column, $type);
         }
 
-        return Json::encode(["status" => "success", "message" => Locale::get('settings/preferences_saved')]);
+        response()->json(["status" => "success", "message" => Locale::get('settings/preferences_saved')]);
     }
 
     public function index()

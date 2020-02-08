@@ -20,7 +20,7 @@ class Value
     public function reloadCatalog() 
     {
         HotelApi::execute('updatecatalog');
-        return Json::encode(["status" => "success", "message" => "Server catalog reloaded!"]);
+        response()->json(["status" => "success", "message" => "Server catalog reloaded!"]);
     }
 
     public function editItem() 
@@ -45,11 +45,11 @@ class Value
       
         $value = Admin::getValueById($value_id);
         if(!$value) {
-            return Json::encode(["status" => "error", "message" => "This item doesnt exist!"]);
+            response()->json(["status" => "error", "message" => "This item doesnt exist!"]);
         }
       
         Admin::editValueById($value_id, $cost_points, $cost_credits, $points_type, $club_only); 
-        return Json::encode(["status" => "success", "message" => "Item successfuly edited!"]);
+        response()->json(["status" => "success", "message" => "Item successfuly edited!"]);
     }
 
     public function addcategory()
@@ -69,18 +69,18 @@ class Value
         $hidden = input()->post('hidden')->value;
 
         Admin::addValueCategory($cat_ids, $name, $hidden, Core::convertSlug($name));
-        return Json::encode(["status" => "success", "message" => "Category: {$name} is succesfully added!"]);
+        response()->json(["status" => "success", "message" => "Category: {$name} is succesfully added!"]);
     }
 
     public function deleteCategory()
     {
         $category = Admin::getValueCategoryById(input()->post('post')->value);
         if (empty($category)) {
-            return Json::encode(["status" => "error", "message" => "Category item doesnt exist!"]);
+            response()->json(["status" => "error", "message" => "Category item doesnt exist!"]);
         }
 
         Admin::removeValueCategory($category->id);
-        return Json::encode(["status" => "success", "message" => "Category is succesfully deleted!"]);
+        response()->json(["status" => "success", "message" => "Category is succesfully deleted!"]);
     }
   
     public function getValueById()

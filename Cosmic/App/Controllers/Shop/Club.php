@@ -42,11 +42,11 @@ class Club
         $currency = Player::getCurrencys(request()->player->id)[$this->settings->vip_currency_type];
 
         if($currency->amount < $this->settings->vip_price) {
-            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/not_enough_points')]);
+            response()->json(["status" => "error", "message" => Locale::get('core/notification/not_enough_points')]);
         }
       
         if(request()->player->rank >= $this->settings->vip_permission_id) {
-            return Json::encode(["status" => "error", "message" => Locale::get('shop/club/already_vip')]);
+            response()->json(["status" => "error", "message" => Locale::get('shop/club/already_vip')]);
         }
   
         $this->settings->vip_badges = json_decode($this->settings->vip_badges, true);
@@ -58,6 +58,6 @@ class Club
         HotelApi::execute('setrank', ['user_id' => request()->player->id, 'rank' => $this->settings->vip_permission_id]);
         Log::addPurchaseLog(request()->player->id, Config::site['shortname'].' Club ('.$this->settings->vip_price.' '.$currency->name.')', 'NL');
 
-        return Json::encode(["status" => "success", "message" => Locale::get('shop/club/purchase_success'), "replacepage" => "shop/club"]);
+        response()->json(["status" => "success", "message" => Locale::get('shop/club/purchase_success'), "replacepage" => "shop/club"]);
     }
 }

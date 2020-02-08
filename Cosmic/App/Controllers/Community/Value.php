@@ -71,7 +71,7 @@ class Value
           
             if(!empty($cat_id)) {
                 if(request()->isAjax()) {
-                    return Json::encode(["status" => "success", "replacepage" => "marketplace/{$cat_id->id}-{$cat_id->slug}"]); 
+                    response()->json(["status" => "success", "replacepage" => "marketplace/{$cat_id->id}-{$cat_id->slug}"]); 
                 }
 
                 redirect('/marketplace/' . $cat_id->id . '-' . $cat_id->slug);

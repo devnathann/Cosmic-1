@@ -35,13 +35,13 @@ class Password
         $this->data->newpin = input()->post('new_password')->value;
 
         if (!Hash::verify($currentPassword, request()->player->password)) {
-            return Json::encode(["status" => "error", "message" => Locale::get('settings/current_password_invalid')]);
+            response()->json(["status" => "error", "message" => Locale::get('settings/current_password_invalid')]);
         }
       
         Player::resetPassword(request()->player->id, $this->data->newpin);
         Session::destroy();
 
-        return Json::encode(["status" => "success", "message" => Locale::get('settings/password_saved'), "pagetime" => "/home"]);
+        response()->json(["status" => "success", "message" => Locale::get('settings/password_saved'), "pagetime" => "/home"]);
     }
 
     public function index()

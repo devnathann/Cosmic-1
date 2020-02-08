@@ -28,11 +28,11 @@ class Auth
         }
 
         if (in_array('housekeeping', array_column(Permission::get($player->rank), 'permission'))) {
-            Log::addStaffLog('-1', 'Staff logged in: ' . \App\Core::getIpAddress(), $player->id, 'LOGIN');
+            Log::addStaffLog('-1', 'Staff logged in: ' . request()->getIp(), $player->id, 'LOGIN');
         }
 
-        Session::set(['player_id' => $player->id, 'ip_address' => \App\Core::getIpAddress()]);
-        Player::update($player->id, ['ip_current' => \App\Core::getIpAddress(), 'last_online' => time()]);
+        Session::set(['player_id' => $player->id, 'ip_address' => request()->getIp()]);
+        Player::update($player->id, ['ip_current' => request()->getIp(), 'last_online' => time()]);
 
         return $player;
     }
@@ -65,9 +65,9 @@ class Auth
 
     public static function banExists($player)
     {
-        $ban = Ban::getBanByUserId($player->id, \App\Core::getIpAddress());
+        $ban = Ban::getBanByUserId($player->id, request()->getIp());
         if($ban) {
-            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/banned_1').' ' . $ban->ban_reason . '. '.Locale::get('core/notification/banned_2').' ' . \App\Core::timediff($ban->ban_expire, true)]);
+            response()->json(["status" => "error", "message" => Locale::get('core/notification/banned_1').' ' . $ban->ban_reason . '. '.Locale::get('core/notification/banned_2').' ' . \App\Core::timediff($ban->ban_expire, true)]);
         }
     }
 

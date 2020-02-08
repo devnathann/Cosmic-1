@@ -36,12 +36,6 @@ class Core
         return strtolower(strtr($getString, $getCharacters));
     }
 
-    public static function getIpAddress()
-    {
-        $ipAddress = (isset($_SERVER['HTTP_CDN_LOOP']) == "cloudflare") ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
-        return filter_var($ipAddress, FILTER_VALIDATE_IP) ? $ipAddress : false;
-    }
-
     public static function convertIp($ip_address)
     {
         if(!Permission::exists('housekeeping_ip_display', request()->player->rank)) {

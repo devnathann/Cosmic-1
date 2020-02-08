@@ -30,7 +30,7 @@ class Api
             {
                 $this->return_to = "https://list.krews.org";
               
-                $this->krewsList = json_decode(@file_get_contents($this->return_to . "/api/votes/". $this->settings->krews_api_hotel_slug . "/validate?ip=" . \App\Core::getIpAddress()));
+                $this->krewsList = json_decode(@file_get_contents($this->return_to . "/api/votes/". $this->settings->krews_api_hotel_slug . "/validate?ip=" . request()->getIp()));
                 $this->api_param = $this->settings->krews_api_hotel_slug . "?username=" . request()->player->username;
 
                 if($this->krewsList) {
@@ -58,7 +58,7 @@ class Api
   
     public function krews()
     {
-        if (strpos($_SERVER['HTTP_USER_AGENT'], $this->settings->krews_api_useragent) !== false) {
+        if (strpos(request()->getUserAgent(), $this->settings->krews_api_useragent) !== false) {
           
             if($this->settings->krews_api_advanced_stats) {
                 $statistics = [
@@ -78,7 +78,7 @@ class Api
         } else {
             response()->json([
                 'error' => 'User Agent does not Match',
-                'user_agent' => $_SERVER['HTTP_USER_AGENT']
+                'user_agent' => request()->getUserAgent()
             ]);
         }
     }
@@ -87,24 +87,24 @@ class Api
     {
         response()->json([
             'error' => 'User Agent does not Match',
-            'user_agent' => $_SERVER['HTTP_USER_AGENT']
+            'user_agent' => request()->getUserAgent()
         ]);
     }
   
     public function room($callback, $roomId)
     {
         if (!request()->player->online || !request()->isAjax()) {
-            return Json::encode(["status" => "error", "message" => Locale::get('core/dialog/logged_in')]);
+            response()->json(["status" => "error", "message" => Locale::get('core/dialog/logged_in')]);
         }
 
         $room = \App\Models\Room::getById($roomId);
         if ($room == null) {
-            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/room_not_exists')]);
+            response()->json(["status" => "error", "message" => Locale::get('core/notification/room_not_exists')]);
         }
 
         if(request()->player->online) {
             HotelApi::execute('forwarduser', array('user_id' => request()->player->id, 'room_id' => $roomId));
-            return Json::encode(["status" => "success",  "replacepage" => "hotel"]);
+            response()->json(["status" => "success",  "replacepage" => "hotel"]);
         }
       
     }

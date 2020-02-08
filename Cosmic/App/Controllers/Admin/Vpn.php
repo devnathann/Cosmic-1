@@ -40,16 +40,16 @@ class Vpn
 
             $asn = Ban::getNetworkBanByAsn($record->autonomousSystemNumber);
             if ($asn != null) {
-                return Json::encode(["status" => "success", "message" => "AS {$asn->asn} is already banned"]);
+                response()->json(["status" => "success", "message" => "AS {$asn->asn} is already banned"]);
             }
 
             Ban::createNetworkBan($record->autonomousSystemNumber, json_decode($organisation)->asn->name, request()->player->id);
-            return Json::encode(["status" => "success", "message" => "AS {$record->autonomousSystemNumber} is added to our ban list"]);
+            response()->json(["status" => "success", "message" => "AS {$record->autonomousSystemNumber} is added to our ban list"]);
 
         } catch (AddressNotFoundException $e) {
-            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
+            response()->json(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         } catch (InvalidDatabaseException $e) {
-            return Json::encode(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
+            response()->json(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
         }
     }
 
@@ -57,11 +57,11 @@ class Vpn
     {
         $ban = Ban::getNetworkBanById(input()->post('asn')->value);
         if ($ban == null) {
-            return Json::encode(["status" => "error", "message" => "AS {$ban->asn} is not banned"]);
+            response()->json(["status" => "error", "message" => "AS {$ban->asn} is not banned"]);
         }
 
         Ban::removeNetworkBan($ban->asn);
-        return Json::encode(["status" => "success", "message" => "AS {$ban->asn}/{$ban->host} is deleted"]);
+        response()->json(["status" => "success", "message" => "AS {$ban->asn}/{$ban->host} is deleted"]);
     }
 
     public function getasnbans()

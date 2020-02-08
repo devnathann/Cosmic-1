@@ -38,7 +38,7 @@ class Wordfilter
         $word_filter = Admin::getWordFilterByWord($word);
 
         if ($word_filter) {
-            return Json::encode(["status" => "error", "message" => "{$word} is already blacklisted!"]);
+            response()->json(["status" => "error", "message" => "{$word} is already blacklisted!"]);
         }
 
         Admin::addWordFilter($word, request()->player->id);
@@ -48,7 +48,7 @@ class Wordfilter
         };
 
         Log::addStaffLog('-1', 'Added wordfilter: ' . $word, request()->player->id, 'wordfilter');
-        return Json::encode(["status" => "success", "message" => "{$word} is added to the blacklist."]);
+        response()->json(["status" => "success", "message" => "{$word} is added to the blacklist."]);
     }
 
     public function remove()
@@ -65,7 +65,7 @@ class Wordfilter
 
         $word_filter = Admin::getWordFilterByWord($word);
         if (empty($word_filter)) {
-            return Json::encode(["status" => "error", "message" => "{$word} is already removed"]);
+            response()->json(["status" => "error", "message" => "{$word} is already removed"]);
         }
 
         Admin::deleteWordByWord($word);
@@ -75,7 +75,7 @@ class Wordfilter
         }
 
         Log::addStaffLog('-1', 'Removed wordfilter: ' . $word, request()->player->id, 'wordfilter');
-        return Json::encode(["status" => "success", "message" => "{$word} successfully removed"]);
+        response()->json(["status" => "success", "message" => "{$word} successfully removed"]);
     }
 
     public function getwordfilters()

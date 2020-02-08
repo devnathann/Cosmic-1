@@ -57,7 +57,7 @@ class View
             $twig = new Environment($loader, array(
                 'debug' => Config::debug
             ));
-
+          
             $twig->addExtension(new DebugExtension());
             $twig->addExtension(new DateExtension());
             $twig->addExtension(new \Library\Bbcode\Parser(new \Library\Bbcode\Bbcode()));
