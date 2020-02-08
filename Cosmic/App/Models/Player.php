@@ -177,12 +177,13 @@ class Player
 
     public static function getCurrencys($user_id)
     {
-        $data = array();
-        foreach(\App\Models\Core::getCurrencys() as $row) {
-            $data[$row->type] = self::getUserCurrencys($user_id, $row->type) ?? new \stdClass();
-            $data[$row->type]->currency = $row->currency;
+        $currencies = \App\Models\Core::getCurrencys();
+        if(!empty($currencies)) {
+            foreach($currencies as $row) {
+                $row->amount = self::getUserCurrencys($user_id, $row->type)->amount;
+            }
         }
-        return $data;
+        return $currencies;
     }
 
     public static function hasPermission($permission)
