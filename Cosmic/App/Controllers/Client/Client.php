@@ -64,7 +64,7 @@ class Client
 
     public function hotel()
     {
-        View::renderTemplate('Base.html', [
+        View::renderTemplate('base.html', [
             'title' => Locale::get('core/title/hotel'),
             'page'  => 'home'
         ]);
