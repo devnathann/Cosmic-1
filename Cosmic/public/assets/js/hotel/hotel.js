@@ -198,8 +198,8 @@ function HotelLoadingInterface()
                     else if (step === "hotel_end")
                     {
                       
-                        //window.parent.UIServer = new UIServer();
-                        //window.parent.UIServer.init();
+                        window.parent.UIServer = new UIServer();
+                        window.parent.UIServer.init();
 
                         self.write_bodytext(Locale.web_page_hotel_welcome_at + " " + Site.name  + '!');
                         setTimeout(self.close_loading.bind(self), 2000);
