@@ -50,20 +50,11 @@ class Client
             exit;
         }
 
+        $this->data->shuttle_token = bin2hex(openssl_random_pseudo_bytes(48));
         $this->data->auth_ticket = Token::authTicket(request()->player->id);
         $this->data->unique_id = sha1(request()->player->id . '-' . time());
 
-        Player::update(request()->player->id, ['auth_ticket' => $this->data->auth_ticket]);
-
-        if(isset($_GET['room'])) {
-            if(is_numeric($_GET['room'])) {
-                $room = Room::getById($_GET['room']);
-
-                if($room != null) {
-                    $this->data->room = $room->id;
-                }
-            }
-        }
+        Player::update(request()->player->id, ["auth_ticket" => $this->data->auth_ticket, "shuttle_token" => $this->data->shuttle_token]);
 
         View::renderTemplate('Client/client.html', [
             'title' => Locale::get('core/title/hotel'),
@@ -73,7 +64,7 @@ class Client
 
     public function hotel()
     {
-        View::renderTemplate('Home/home.html', [
+        View::renderTemplate('Client/client.html', [
             'title' => Locale::get('core/title/hotel'),
             'page'  => 'home'
         ]);

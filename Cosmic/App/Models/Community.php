@@ -192,7 +192,7 @@ class Community
 
     public static function getCredits($limit = 10)
     {
-        return  QueryBuilder::table('users')->select('id')->select('credits')->where('rank', '<', 4)->orderBy('credits', 'desc')->limit($limit)->get();
+        return  QueryBuilder::table('users')->select('id')->select('credits')->orderBy('credits', 'desc')->limit($limit)->get();
     }
   
     /*

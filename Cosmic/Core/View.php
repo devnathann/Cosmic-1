@@ -51,7 +51,7 @@ class View
     public static function getTemplate($template, $args = [], $cacheTime, $request = false)
     {
         static $twig = null;
-
+        
         if ($twig === null) {
             $loader = new FilesystemLoader(dirname(__DIR__) . '/' . Config::view);
             $twig = new Environment($loader, array(

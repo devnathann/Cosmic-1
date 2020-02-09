@@ -1,5 +1,8 @@
 var HotelLoading;
 var Hotel;
+var tryConnectUIServer;
+var UIServerOpened;
+var UI;
 
 $(function()
 {
@@ -10,6 +13,158 @@ $(function()
     HotelLoading.start_step("load_files");
 });
 
+!function() {
+    "use strict";
+    window.WebSocket = window.WebSocket || window.MozWebSocket;
+}();
+
+
+function UIServer()
+{
+    this.port = 2096 + (window.location.hostname === "cosmicproject.online" ? 10 : 0);
+    this.connection = null;
+    this.event_listener = {};
+    this.hotel_loaded = false;
+
+    /*
+    * Main initiation
+    * */
+    this.init = function ()
+    {
+        var self = this;
+        if (self.connection !== null)
+        {
+            self.connection.onopen = null;
+            self.connection.onmessage = null;
+            self.connection.onerror = null;
+            try
+            {
+                self.connection.close()
+            }
+            catch (b)
+            {}
+            self.connection = null;
+        }
+
+        try
+        {
+            self.connection = new WebSocket("wss://cosmicproject.online:2096/" + User.id + "/" + User.shuttle_token);
+        }
+        catch (e)
+        {}
+
+        self.connection.onopen = function ()
+        {
+            self.send({packet: 1});
+        };
+
+        self.connection.onerror = function (error)
+        {
+        };
+
+        self.connection.onclose = function ()
+        {
+            if (self.connection !== null)
+            {
+                self.connection.onopen = null;
+                self.connection.onmessage = null;
+                self.connection.onerror = null;
+                try
+                {
+                    self.connection.close()
+                }
+                catch (b)
+                {}
+                self.connection = null;
+            }
+
+            if (self.technical_view === null)
+                self.technical_view = Hotel.technical_view("disconnected_interface");
+
+            if (UI)
+                UI.destroy();
+
+            tryConnectUIServer = setTimeout(function ()
+            {
+                self.init();
+            }, 2000);
+        };
+
+        self.connection.onmessage = function (message)
+        {
+            console.log(message);
+            var handler;
+            try
+            {
+                handler = JSON.parse(message.data);
+            }
+            catch (e)
+            {
+                console.log("Le message reçu n'est pas au format JSON", message.data);
+                return;
+            }
+            console.log(handler);
+        };
+    };
+
+    /*
+    * Send message
+    * */
+    this.send = function (data)
+    {
+        var self = this;
+        if (self.connection !== null)
+        {
+            if (typeof data !== "object")
+                return;
+                console.log(data);
+            if (self.connection.readyState === 1)
+                self.connection.send(JSON.stringify(data));
+        }
+    };
+
+    /*
+    * Close connection
+    * */
+    this.close = function ()
+    {
+        var self = this;
+        if (self.connection !== null)
+        {
+            self.connection.onopen = null;
+            self.connection.onmessage = null;
+            self.connection.onerror = null;
+            try
+            {
+                self.connection.close()
+            }
+            catch (b)
+            {}
+            self.connection = null;
+        }
+    };
+
+    /*
+    * Event listener
+    * */
+    this.add_event_listener = function (name, callback)
+    {
+        this.event_listener[name] = callback;
+    };
+
+    this.remove_event_listener = function (name)
+    {
+        delete this.event_listener[name];
+    };
+
+    this.event_try_execute = function (name, handler)
+    {
+        if (this.event_listener.hasOwnProperty(name))
+            this.event_listener[name](handler);
+
+        return null;
+    }
+}
 
 function HotelLoadingInterface()
 {
@@ -42,6 +197,10 @@ function HotelLoadingInterface()
                         self.write_bodytext("...");
                     else if (step === "hotel_end")
                     {
+                      
+                        window.parent.UIServer = new UIServer();
+                        window.parent.UIServer.init();
+
                         self.write_bodytext(Locale.web_page_hotel_welcome_at + " " + Site.name  + '!');
                         setTimeout(self.close_loading.bind(self), 2000);
                     }

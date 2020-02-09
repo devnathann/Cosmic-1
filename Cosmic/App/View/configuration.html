@@ -22,6 +22,7 @@ var User = {
     username: "{{player.username}}",
     is_logged: true,
     ticket: "{{player.auth_ticket}}",
+    shuttle_token: "{{player.shuttle_token}}",
     is_staff: {% if player.rank >= 3 %}true{% else %}false{% endif %}
 
 };
