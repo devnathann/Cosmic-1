@@ -28,7 +28,7 @@ class Index
         }
       
         $oftw_userid = Core::Settings()->user_of_the_week ?? null;
-        $oftw = Player::getDataById($oftw_userid, ['username', 'look', 'motto']);
+        $oftw = Player::getDataByUsername($oftw_userid, ['username', 'look', 'motto']);
         
         View::renderTemplate('Home/home.html', [
             'title'     => !request()->player ? Locale::get('core/title/home') : request()->player->username,

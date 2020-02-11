@@ -12,29 +12,9 @@ $(function ()
 function SiteLoadingInterface()
 {
     this.files = [
-        "web.page",
-        "web.ajax",
-        "web.notifications",
-        "web.dialog",
-        "web.hotel",  
         "web.locale",
-        "web.customforms",
-        "web.page.article",
-        "web.page.settings_preferences",
-        "web.page.settings_namechange",
-        "web.page.settings_verification",
-        "web.page.help_requests",
-        "web.page.profile",
-        "web.page.community_photos",
-        "web.page.community_value",
-        "web.page.home",
-        "web.page.registration",
-        "web.page.jobs",
-        "web.page.shop",
-        "web.page.shop_offers",
-        "web.page.forum",
-        "web.page.password_claim",
-        "web",
+        "web.pages",
+        "web.core",
     ];
     this.loaded_files = 0;
     this.total_files = 0;
@@ -68,7 +48,6 @@ function SiteLoadingInterface()
             var percent = Math.floor(self.loaded_files / self.total_files * 100);
 
             self.loading_container.find(".c100").attr("class", "c100 p" + percent + " center");
-            self.write_bodytext("Loading... " + percent + "%");
 
             if (file_id + 1 < self.total_files)
             {

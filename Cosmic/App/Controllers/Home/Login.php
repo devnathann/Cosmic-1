@@ -14,6 +14,7 @@ use Core\Session;
 use Core\View;
 
 use Library\Json;
+use Library\HotelApi;
 
 use Sonata\GoogleAuthenticator\GoogleAuthenticator;
 
@@ -81,7 +82,7 @@ class Login
         $this->login($player, $remember_me);
     }
 
-    protected function login($user, $remember_me)
+    protected function login(Player $user, $remember_me)
     {
         if ($user && Auth::login($user, $remember_me)) {
             response()->json(["status" => "error", "location" => "/home"]);

@@ -177,11 +177,12 @@ class Player
 
     public static function getCurrencys($user_id)
     {
-        $currencies = \App\Models\Core::getCurrencys();
-        foreach($currencies as $row) {
-            $row->amount = self::getUserCurrencys($user_id, $row->type)->amount ?? 0;
+        $data = array();
+        foreach(\App\Models\Core::getCurrencys() as $row) {
+            $data[$row->type] = self::getUserCurrencys($user_id, $row->type) ?? new \stdClass();
+            $data[$row->type]->currency = $row->currency;
         }
-        return $currencies;
+        return $data;
     }
 
     public static function hasPermission($permission)
@@ -193,5 +194,20 @@ class Player
     public static function mailTaken($mail)
     { 
         return QueryBuilder::table('users')->where('mail', $mail)->first(); 
+    }
+  
+    public function getMembership()
+    {
+        return QueryBuilder::table('website_membership')->where('user_id', $this->id)->where('expires_at', '<', time())->first();
+    }
+  
+    public function deleteMembership()
+    {
+        return QueryBuilder::table('website_membership')->where('user_id', $this->id)->delete();
+    }
+  
+    public static function insertMembership($user_id, $old_rank, $expires_at)
+    {
+        return QueryBuilder::table('website_membership')->insert(array('user_id' => $user_id, 'old_rank' => $old_rank, 'expires_at' => $expires_at));
     }
 }

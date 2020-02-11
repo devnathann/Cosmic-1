@@ -3,9 +3,9 @@ namespace App\Controllers\Home;
 
 use App\Config;
 use App\Auth;
-use App\Core;
 
 use App\Models\Player;
+use App\Models\Core;
 
 use Core\Locale;
 use Core\View;
@@ -35,6 +35,7 @@ class Registration
       
         $username = input()->post('username')->value;
 
+        $settings = Core::settings();
         $playerData = (object)input()->all();
         $playerData->figure = input()->post('figure')->value;
 
@@ -46,7 +47,7 @@ class Registration
             response()->json(["status" => "error", "message" => Locale::get('register/email_exists')]);
         }
       
-        if (Player::checkMaxIp(request()->getIp()) >= \App\Models\Core::settings()->registration_max_ip) {
+        if (Player::checkMaxIp(request()->getIp()) >= $settings->registration_max_ip) {
             response()->json(["status" => "error", "message" => Locale::get('register/too_many_accounts')]);
         }
 
@@ -56,7 +57,7 @@ class Registration
   
         $player = Player::getDataByUsername($username, array('id', 'password', 'rank'));
       
-        $freeCurrencys = \App\Models\Core::getCurrencys();
+        $freeCurrencys = Core::getCurrencys();
       
         if($freeCurrencys) {
             foreach($freeCurrencys as $currency) {
@@ -64,17 +65,26 @@ class Registration
                 Player::updateCurrency($player->id, $currency->type, $currency->amount);
             }
         }
+      
+        $referral = Player::getDataByUser($playerData->referral);
+        $createDate = $referral->account_created + strtotime('+' . $settings->referral_acc_create_days . ' days');
+      
+        if($referral->account_created > $createDate && !isset($_COOKIE['referred_by'])) {
+            setcookie('referred_by', $referral->username, '/');
+            HotelApi::execute('givepoints', ['user_id' => $referral->id, 'points' => $this->settings->referral_points, 'type' => $this->settings->referral_points_type]);
+        }
 
         Auth::login($player);
         response()->json(["status" => "success", "location" => "/hotel"]);
     }
 
-    public function index()
+    public function index($referral = false)
     {
         View::renderTemplate('Home/registration.html', [
             'title' => Locale::get('core/title/registration'),
             'looks' => Config::look,
-            'page'  => 'registration'
+            'page'  => 'registration',
+            'referral' => ($referral) ? Player::getDataByUsername($referral, ['username']) : $referral
         ]);
     }
 }

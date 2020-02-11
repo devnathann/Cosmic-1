@@ -38,7 +38,9 @@
             <div class="aside-title-content">{{locale.club_buy}}</div>
             <div class="aside-content">
                 <form action="shop/club/buy">
-                    <center><button class="rounded-button blue">{{locale.unlimited}} ({{data.vip_price}} {{data.vip_type}})</button></center>
+                    <center><button class="rounded-button blue">
+                      {% if data.vip_membership_days == "lifetime" %}{{locale.unlimited}}{% else %}{{data.vip_membership_days}} DAYS {% endif %} ({{data.vip_price}} {{data.vip_type}})
+                    </button></center>
                 </form>
             </div>
         </aside>

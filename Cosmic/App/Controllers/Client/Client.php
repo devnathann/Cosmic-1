@@ -25,7 +25,6 @@ class Client
     public function client()
     {
         $this->data = new stdClass();
-
     
         $reader = new Reader(__DIR__. Config::vpnLocation);
 
@@ -50,11 +49,18 @@ class Client
             exit;
         }
 
+        $user = Player::getDataById(request()->player->id);
+      
         $this->data->shuttle_token = bin2hex(openssl_random_pseudo_bytes(48));
-        $this->data->auth_ticket = Token::authTicket(request()->player->id);
-        $this->data->unique_id = sha1(request()->player->id . '-' . time());
+        $this->data->auth_ticket = Token::authTicket($user->id);
+        $this->data->unique_id = sha1($user->id . '-' . time());
 
-        Player::update(request()->player->id, ["auth_ticket" => $this->data->auth_ticket, "shuttle_token" => $this->data->shuttle_token]);
+        Player::update($user->id, ["auth_ticket" => $this->data->auth_ticket, "shuttle_token" => $this->data->shuttle_token]);
+      
+        if($user->getMembership()) {
+            HotelApi::execute('setrank', ['user_id' => $user->id, 'rank' => $user->getMembership()->old_rank]);
+            $user->deleteMembership();
+        }
 
         View::renderTemplate('Client/client.html', [
             'title' => Locale::get('core/title/hotel'),

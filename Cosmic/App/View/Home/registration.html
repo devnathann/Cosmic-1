@@ -159,17 +159,12 @@
                             <div class="row space-bottom">
                                 <div class="form-help">{{locale.birthdate_help}}</div>
                             </div>
+                            {% if referral %}
                             <div class="row">
-                                <h5>{{locale.found}}</h5>
-                                <select name="how_know_us" class="selectric">
-                                    <option disabled selected>{{locale.found_choose}}</option>
-                                    <option value="1">{{locale.found_choose_1}}</option>
-                                    <option value="2">{{locale.found_choose_2}}</option>
-                                    <option value="3">{{locale.found_choose_3}}</option>
-                                    <option value="4">{{locale.found_choose_4}}</option>
-                                    <option value="5">{{locale.found_choose_5}}</option>
-                                </select>
+                                <h5>Your referral:</h5>
+                                <input type="text" name="referral" class="rounded-input blue-active" placeholder="{{referral.username}}" readonly>
                             </div>
+                            {% endif %}
                         </div>
                         <div class="content-side" style="padding: 18px;">
                             <div class="aside-title-content" style="padding: 0px;padding-bottom: 15px;">{{locale.create_user}}</div>

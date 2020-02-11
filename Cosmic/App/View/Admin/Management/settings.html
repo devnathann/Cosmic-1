@@ -231,15 +231,22 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-lg-3 col-form-label">Price:</label>
-                                                                <div class="col-lg-2">
-                                                                    <input type="number" name="vip_price" value="{{settings.vip_price}}" class="form-control">
+                                                                <label class="col-lg-3 col-form-label">Badges:</label>
+                                                                <div class="col-lg-5">
+                                                                    <input name="vip_badges" value="{% for badges in settings.vip_badges %}{{badges.value}},{% endfor %}">
+                                                                </div>
+                                                            </div>                                       
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-3 col-form-label">Days:</label>
+                                                                <div class="col-lg-3">
+                                                                    <input type="text" name="vip_membership_days" value="{{settings.vip_membership_days}}" class="form-control">
+                                                                    <span class="form-text text-muted">For unlimited type: lifetime</span>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
-                                                                <label class="col-lg-3 col-form-label">Badges:</label>
-                                                                <div class="col-lg-6">
-                                                                    <input name="vip_badges" value="{% for badges in settings.vip_badges %}{{badges.value}},{% endfor %}">
+                                                                <label class="col-lg-3 col-form-label">Price:</label>
+                                                                <div class="col-lg-2">
+                                                                    <input type="number" name="vip_price" value="{{settings.vip_price}}" class="form-control">
                                                                 </div>
                                                             </div>
 

@@ -28,7 +28,6 @@ class Club
         $this->settings->currencys  = Player::getCurrencys(request()->player->id);
         $this->settings->vip_type   = Core::getCurrencyByType($this->settings->vip_currency_type)->currency;
         
-      
         View::renderTemplate('Shop/club.html', [
             'title'   => Locale::get('core/title/shop/club'),
             'page'    => 'shop_club',
@@ -40,7 +39,10 @@ class Club
     public function buy() 
     {
         $currency = Player::getCurrencys(request()->player->id)[$this->settings->vip_currency_type];
-
+        if(!isset($currency->amount)){
+            response()->json(["status" => "error", "message" => Locale::get('core/notification/something_wrong')]);
+        }
+      
         if($currency->amount < $this->settings->vip_price) {
             response()->json(["status" => "error", "message" => Locale::get('core/notification/not_enough_points')]);
         }
@@ -54,10 +56,14 @@ class Club
             HotelApi::execute('givebadge', array('user_id' => request()->player->id, 'badge' => $badge['value']));
         }
       
+        if($this->settings->vip_membership_days != "lifetime") {
+            Player::insertMembership(request()->player->id, request()->player->rank, strtotime('+' . $this->settings->vip_membership_days . ' days'));
+        }
+      
         HotelApi::execute('givepoints', ['user_id' => request()->player->id, 'points' => - $this->settings->vip_price, 'type' => $this->settings->vip_currency_type]);
         HotelApi::execute('setrank', ['user_id' => request()->player->id, 'rank' => $this->settings->vip_permission_id]);
-        Log::addPurchaseLog(request()->player->id, Config::site['shortname'].' Club ('.$this->settings->vip_price.' '.$currency->name.')', 'NL');
-
+      
+        Log::addPurchaseLog(request()->player->id, Config::site['shortname'].' Club ('.$this->settings->vip_price.' '.$currency->currency.')', 'NL');
         response()->json(["status" => "success", "message" => Locale::get('shop/club/purchase_success'), "replacepage" => "shop/club"]);
     }
 }
