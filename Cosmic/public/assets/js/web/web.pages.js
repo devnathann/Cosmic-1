@@ -1292,7 +1292,8 @@ function WebPageShopOffersInterface(main_page)
     {
         var self = this;
         var page_container = this.main_page.get_page_container();
-
+        var url;
+      
         if (!User.is_logged)
             return;
 
@@ -1300,46 +1301,53 @@ function WebPageShopOffersInterface(main_page)
         this.offer_id = page_container.find("#offer-id").val();
         this.amount = page_container.find("#offer-amount").val();
         this.country = page_container.find("#offer-country").val();
-        $.ajax({
-            type: "get",
-            url: "https://api.dedipass.com/v1/pay/rates?key=" + this.offer_id,
-            dataType: "json"
-        }).done(function (solutions)
-        {
-            if (page_container.find(".loading-solutions").length > 0)
-                page_container.find(".loading-solutions").remove();
-
-            var solutionsSorted = solutions.sort(function (a, b)
+        this.shop_type = page_container.find("#shop-type").val();
+        
+        if(this.shop_type == "selly.io") {
+            //hier komt selly.
+        } else {
+      
+            $.ajax({
+                type: "get",
+                url: "https://api.dedipass.com/v1/pay/rates?key=" + this.offer_id,
+                dataType: "json"
+            }).done(function (solutions)
             {
-                var x = a.ordersolution;
-                var y = b.ordersolution;
-                return x < y ? -1 : x > y ? 1 : 0;
-            });
+                if (page_container.find(".loading-solutions").length > 0)
+                    page_container.find(".loading-solutions").remove();
 
-            for (var i = 0; i < solutionsSorted.length; i++)
-            {
-                var solution = solutionsSorted[i];
-
-                if (!self.payments.hasOwnProperty(solution.solution))
-                    continue;
-
-                if (solution.country.iso !== "all" && solution.country.iso !== self.country)
-                    continue;
-
-                var template = $(self.payment_template);
-                template.attr("data-id", i);
-                template.addClass(self.payments[solution.solution].class);
-                template.find(".payment-description").html("<h4>" + self.payments[solution.solution].name + "</h4>" + self.payments[solution.solution].description);
-
-                page_container.find(".shop-offer").append(template);
-
-                template.find(".payment-button button").click(function ()
+                var solutionsSorted = solutions.sort(function (a, b)
                 {
-                    var solution = solutionsSorted[$(this).closest(".offer-payment").attr("data-id")];
-                    self.open_solution_payment(solution);
+                    var x = a.ordersolution;
+                    var y = b.ordersolution;
+                    return x < y ? -1 : x > y ? 1 : 0;
                 });
-            }
-        });
+
+                for (var i = 0; i < solutionsSorted.length; i++)
+                {
+                    var solution = solutionsSorted[i];
+
+                    if (!self.payments.hasOwnProperty(solution.solution))
+                        continue;
+
+                    if (solution.country.iso !== "all" && solution.country.iso !== self.country)
+                        continue;
+
+                    var template = $(self.payment_template);
+                    template.attr("data-id", i);
+                    template.addClass(self.payments[solution.solution].class);
+                    template.find(".payment-description").html("<h4>" + self.payments[solution.solution].name + "</h4>" + self.payments[solution.solution].description);
+
+                    page_container.find(".shop-offer").append(template);
+
+                    template.find(".payment-button button").click(function ()
+                    {
+                        var solution = solutionsSorted[$(this).closest(".offer-payment").attr("data-id")];
+                        self.open_solution_payment(solution);
+                    });
+                }
+            });
+        }
     };
 
     /*

@@ -48,7 +48,7 @@ function UIServer()
 
         try
         {
-            self.connection = new WebSocket("wss://cosmicproject.online:2096/" + User.id + "/" + User.shuttle_token);
+            self.connection = new WebSocket("wss://" + window.location.hostname + ":" + this.port + "/" + User.id + "/" + User.shuttle_token);
         }
         catch (e)
         {}
@@ -198,8 +198,8 @@ function HotelLoadingInterface()
                     else if (step === "hotel_end")
                     {
                       
-                        window.parent.UIServer = new UIServer();
-                        window.parent.UIServer.init();
+                        //window.parent.UIServer = new UIServer();
+                        //window.parent.UIServer.init();
 
                         self.write_bodytext(Locale.web_page_hotel_welcome_at + " " + Site.name  + '!');
                         setTimeout(self.close_loading.bind(self), 2000);

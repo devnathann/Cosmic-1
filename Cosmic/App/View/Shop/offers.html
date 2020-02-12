@@ -12,6 +12,7 @@
     <input type="hidden" id="offer-id" value="{{data.offer.offer_id}}">
     <input type="hidden" id="offer-amount" value="{{data.offer.amount}}">
     <input type="hidden" id="offer-country" value="{{data.offer.lang|lower}}">
+    <input type="hidden" id="offer-type" value="{{data.offer.type}}">
     <h2>
         <a href="/shop" class="rounded-button">{{locale.back}}</a>
         {{locale.buymethods}} - {{data.offer.amount}} {{data.offer.currency}} {{locale.for}} €{{data.offer.price}} {{locale.or_lower}}

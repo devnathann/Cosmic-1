@@ -13,8 +13,8 @@ function SiteLoadingInterface()
 {
     this.files = [
         "web.locale",
-        "web.pages",
-        "web.core",
+        "web.pages.min",
+        "web.core.min",
     ];
     this.loaded_files = 0;
     this.total_files = 0;
