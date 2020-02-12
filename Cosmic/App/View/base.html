@@ -25,14 +25,11 @@
     <link rel="stylesheet" href="/assets/css/flaticon.css">
     <link rel="stylesheet" href="/assets/css/magnific-popup.css">
     <link rel="stylesheet" href="/assets/css/selectric.css">
-    <link rel="stylesheet" href="/assets/css/circle.css">
-    <link rel="stylesheet" href="/assets/css/web.css?v={{revision}}{{ date().timestamp }}2">
-    <link rel="stylesheet" href="/assets/css/web.responsive.css?v={{revision}}">
+    <link rel="stylesheet" href="/assets/css/circle.css?v=5">
+    <link rel="stylesheet" href="/assets/css/web.css?v=111">
+    <link rel="stylesheet" href="/assets/css/web.responsive.css">
 
     <script src="/assets/js/web/user_settings.js"></script>
-  
-    <!-- Scripts -->
-    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 
     <script src="/assets/js/jquery-3.2.1.min.js"></script>
     <script src="/assets/js/jquery.ui.touch-punch.min.js"></script>
@@ -56,9 +53,7 @@
                 <div class="fill"></div>
             </div>
         </div>
-        <div class="loading-bodytext">
-            Laden.. 0%
-        </div>
+        <div class="loading-bodytext"></div>
     </div>
 </div>
 
@@ -189,10 +184,10 @@
                 <span>{{player.username}}</span>
             </a>
             <ul class="navigation-submenu">
-                <li class="navigation-subitem"><a href="hotel">{{locale_base.user_to}} {{site.sitename}}</a></li>
-                <li class="navigation-subitem"><a href="profile/{{player.username}}">{{locale_base.user_profile}}</a></li>
-                <li class="navigation-subitem"><a href="settings">{{site.shortname}} ID {{locale_base.user_settings}}</a></li>
-                <li class="navigation-subitem"><a href="logout" target="_self">{{locale_base.user_logout}}</a></li>
+                <li class="navigation-subitem"><a href="/hotel">{{locale_base.user_to}} {{site.sitename}}</a></li>
+                <li class="navigation-subitem"><a href="/profile/{{player.username}}">{{locale_base.user_profile}}</a></li>
+                <li class="navigation-subitem"><a href="/settings">{{site.shortname}} ID {{locale_base.user_settings}}</a></li>
+                <li class="navigation-subitem"><a href="/logout" target="_self">{{locale_base.user_logout}}</a></li>
             </ul>
         </li>
         {% endif %}
@@ -244,28 +239,9 @@
 <script src="/assets/js/jquery.magnific-popup.js"></script>
 <script src="/assets/js/selectric.js?v=3412"></script>
 <script src="/assets/js/functions.js"></script>
-<script src="/assets/js/web/loading.js"></script>
+<script src="/assets/js/web/loading.js?v=111"></script>
 <script src="/assets/js/pagination.js"></script>
 <script src="/assets/js/jquery.wysibb.js"></script>
-
-<script>
-
-    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-    if (isMobile) {
-        $(".hotel-button").attr("href", "/client");
-    }
-
-    function openSearch() {
-        document.getElementById("searchOverlay").style.display = "block";
-    }
-
-    function closeSearch() {
-        document.getElementById("searchOverlay").style.display = "none";
-    }
-</script>
-
-<script>if (window.module) module = window.module;</script>
 
 </body>
 </html>

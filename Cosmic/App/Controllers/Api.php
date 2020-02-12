@@ -10,6 +10,7 @@ use Library\HotelApi;
 use Library\Json;
 
 use Core\Locale;
+use \Selly as Selly;
 
 class Api
 {

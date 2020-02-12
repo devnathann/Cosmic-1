@@ -64,7 +64,7 @@
   font-size: 80px;
 }
 .c100 > span {
-  background-image: url(../images/web/loading.png);
+  background-image: url(/assets/images/loading.gif);
   position: absolute;
   top: 0;
   left: 3px;

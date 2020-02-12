@@ -938,8 +938,7 @@ input:-webkit-autofill{
 }
 
 .login-popup:after{
-    background-image: url(../images/web/login-logo.png);
-    background-color: rgba(25, 146, 209, 0.8);
+    background-color: rgba(99, 99, 99, 0.65);
     background-position: 40px center;
     background-repeat: no-repeat;
     left: -94px;

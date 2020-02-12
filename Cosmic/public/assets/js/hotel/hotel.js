@@ -48,7 +48,7 @@ function UIServer()
 
         try
         {
-            self.connection = new WebSocket("wss://cosmicproject.online:2096/" + User.id + "/" + User.shuttle_token);
+            self.connection = new WebSocket("wss://" + window.location.hostname + ":" + this.port + "/" + User.id + "/" + User.shuttle_token);
         }
         catch (e)
         {}
