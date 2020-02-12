@@ -514,7 +514,9 @@ INSERT INTO `website_settings` VALUES ('club_page_content', '<ul>\r\n<li>Je krij
 INSERT INTO `website_settings` VALUES ('namechange_currency_type', '103');
 INSERT INTO `website_settings` VALUES ('namechange_price', '1000');
 INSERT INTO `website_settings` VALUES ('registration_max_ip', '3');
-INSERT INTO `website_settings` VALUES ('user_of_the_week', NULL);
+INSERT INTO `website_settings` VALUES ('vip_membership_days', 31);
+INSERT INTO `website_settings` VALUES ('referral_acc_create_days', 14);
+INSERT INTO `website_settings` VALUES ('referral_points_type', 103);
 
 -- ----------------------------
 -- Table structure for website_settings_currencys
@@ -592,14 +594,24 @@ CREATE TABLE `website_user_logs_email`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Table structure for website_membership
+-- ----------------------------
+DROP TABLE IF EXISTS `website_membership`;
+CREATE TABLE `website_membership`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NULL DEFAULT NULL,
+  `old_rank` int(1) NULL DEFAULT NULL,
+  `expires_at` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
 -- Alter table fixes for Cosmic to work
 -- ----------------------------
 ALTER TABLE catalog_items ADD rate enum('up','down','none') DEFAULT 'none';
 ALTER TABLE users ADD secret_key int(11) NULL DEFAULT NULL;
 ALTER TABLE users ADD pincode varchar(11) NULL DEFAULT NULL;
 ALTER TABLE users MODIFY mail VARCHAR(500);
-INSERT INTO `website_settings` VALUES ('krews_api_hotel_slug', NULL);
-ALTER TABLE `website_shop_offers` MODIFY currency int(3);
 ALTER TABLE users ADD shuttle_token varchar(64) NULL DEFAULT NULL;
 
 SET FOREIGN_KEY_CHECKS = 1;
