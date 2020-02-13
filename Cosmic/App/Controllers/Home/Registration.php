@@ -11,9 +11,15 @@ use Core\Locale;
 use Core\View;
 
 use Library\Json;
+use Library\HotelApi;
 
 class Registration
 {
+    public function __construct()
+    {
+        $this->settings = Core::settings();
+    }
+  
     public function request()
     {
         $validate = request()->validator->validate([
@@ -38,7 +44,7 @@ class Registration
         $settings = Core::settings();
         $playerData = (object)input()->all();
         $playerData->figure = input()->post('figure')->value;
-
+      
         if (Player::exists($username)) {
             response()->json(["status" => "error", "message" => Locale::get('register/username_exists')]);
         }
@@ -66,12 +72,22 @@ class Registration
             }
         }
       
-        $referral = Player::getDataByUser($playerData->referral);
-        $createDate = $referral->account_created + strtotime('+' . $settings->referral_acc_create_days . ' days');
-      
-        if($referral->account_created > $createDate && !isset($_COOKIE['referred_by'])) {
-            setcookie('referred_by', $referral->username, '/');
-            HotelApi::execute('givepoints', ['user_id' => $referral->id, 'points' => $this->settings->referral_points, 'type' => $this->settings->referral_points_type]);
+        if($playerData->referral && isset($_COOKIE['referred_date']) < time()) {
+          
+            $referral = Player::getDataByUsername($playerData->referral);
+            $referral_days = strtotime('-' . $settings->referral_acc_create_days . ' days');
+          
+            $referalId = isset($_COOKIE['referred_by']) ? $_COOKIE['referred_by'] : $playerData->referral;
+            $referralSignup = Player::getReferral($referral->id, request()->getIp());
+
+            if(!empty($referral) && $referral->account_created < $referral_days && $referralSignup == 0) {
+              
+                setcookie('referred_by', $referral->username, '/');
+                setcookie('referred_date', time() + $this->settings->referral_waiting_seconds , '/');
+              
+                Player::insertReferral($player->id, $referral->id, request()->getIp(), time());
+                HotelApi::execute('givepoints', ['user_id' => $referral->id, 'points' => $this->settings->referral_points, 'type' => $this->settings->referral_points_type]);
+            }
         }
 
         Auth::login($player);

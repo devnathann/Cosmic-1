@@ -210,4 +210,21 @@ class Player
     {
         return QueryBuilder::table('website_membership')->insert(array('user_id' => $user_id, 'old_rank' => $old_rank, 'expires_at' => $expires_at));
     }
+  
+    public static function getReferral($user_id, $ip_address) 
+    {
+        return QueryBuilder::table('website_referrals')->where('user_id', $user_id)->where('ip_address', $ip_address)->count();
+    }
+  
+    public static function insertReferral($user_id, $referral_user_id, $ip_address, $timestamp)
+    {
+        $data = [
+            'user_id'           => $user_id,
+            'referral_user_id'  => $referral_user_id,
+            'ip_address'        => $ip_address,
+            'timestamp'         => time()
+        ];
+      
+        return QueryBuilder::table('website_referrals')->insert($data);
+    }
 }
