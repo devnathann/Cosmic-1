@@ -72,7 +72,7 @@ class Registration
             }
         }
       
-        if($playerData->referral && isset($_COOKIE['referred_date']) < time()) {
+        if(isset($playerData->referral) && isset($_COOKIE['referred_date']) < time()) {
           
             $referral = Player::getDataByUsername($playerData->referral);
           
