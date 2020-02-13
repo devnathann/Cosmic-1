@@ -460,6 +460,20 @@ CREATE TABLE `website_photos_likes`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Table structure for website_referrals
+-- ----------------------------
+
+DROP TABLE IF EXISTS `website_referrals`;
+CREATE TABLE `website_referrals`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `referral_user_id` int(11) NULL DEFAULT NULL,
+  `ip_address` varchar(56) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `timestamp` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
 -- Table structure for website_rare_values
 -- ----------------------------
 DROP TABLE IF EXISTS `website_rare_values`;
@@ -517,6 +531,8 @@ INSERT INTO `website_settings` VALUES ('registration_max_ip', '3');
 INSERT INTO `website_settings` VALUES ('vip_membership_days', 31);
 INSERT INTO `website_settings` VALUES ('referral_acc_create_days', 14);
 INSERT INTO `website_settings` VALUES ('referral_points_type', 103);
+INSERT INTO `website_settings` VALUES ('referral_points', 5);
+INSERT INTO `website_settings` VALUES ('referral_waiting_seconds', 3600);
 
 -- ----------------------------
 -- Table structure for website_settings_currencys
@@ -533,7 +549,6 @@ CREATE TABLE `website_settings_currencys`  (
 -- ----------------------------
 INSERT INTO `website_settings_currencys` VALUES ('duckets', 0, 1000);
 INSERT INTO `website_settings_currencys` VALUES ('diamonds', 5, 1000);
-INSERT INTO `website_settings_currencys` VALUES ('belcredits', 103, 1000);
 
 -- ----------------------------
 -- Table structure for website_shop_offers
