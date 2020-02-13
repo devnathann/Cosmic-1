@@ -213,7 +213,7 @@ class Player
   
     public static function getReferral($user_id, $ip_address) 
     {
-        return QueryBuilder::table('website_referrals')->where('user_id', $user_id)->where('ip_address', $ip_address)->count();
+        return QueryBuilder::table('website_referrals')->where('referral_user_id', $user_id)->where('ip_address', $ip_address)->count();
     }
   
     public static function insertReferral($user_id, $referral_user_id, $ip_address, $timestamp)
