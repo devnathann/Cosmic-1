@@ -73,7 +73,7 @@ class Core
             $user = Player::getDataByUsername($row, array('id','username'));
             if(isset($user->id) != null) {
                 $data->user[$user->id]['userid'] = $user->id;
-                $userProfile = '@[url='. Config::path . '/profile/'.$row.']' .$row . '[/url]';
+                $userProfile = '@[url=/profile/'.$row.']' .$row . '[/url]';
                 $message = str_replace("@" . $row, $userProfile, $message);
             }
         }

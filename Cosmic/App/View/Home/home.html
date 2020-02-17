@@ -30,6 +30,11 @@
                     </div>
                 </article>
               
+                <div class="myfriends-online">
+                    <button id="copyReferral" class="form-control" style="width:120px;color: #fff;background-color: #5cb85c;border-color: #4cae4c;margin-right:5px">Referral</button>
+                    <input type="text" value="https://{{site.domain}}/registration/{{player.username}}" id="getReferral" class="form-control" style="width: 450px" autocomplete="off" required>
+                </div>
+              
                 <aside class="default-section">
                   
                     <div class="aside-title-content">{{locale.popular_rooms}}</div>
@@ -70,17 +75,7 @@
                     {% endif %}
                 </aside>
               {% endif %}
-               {% if random is not null and random is not empty %}
-                <div class="myfriends-online">
-                    {% for user in random %}
-                      <div class="tooltip">
-                      <a href="/profile/{{user.username}}">
-                        <img src="{{site.fpath}}/avatarimage?figure={{user.look}}&amp;size=m&amp;direction=3&amp;head_direction=3&amp;gesture=sml&amp;headonly=1">
-                      </a>
-                      </div>
-                    {% endfor %}
-                </div>
-              {% endif %}
+              
               {% if player %}
                 {% if data.friends is not empty %}
                 <article class="default-section">

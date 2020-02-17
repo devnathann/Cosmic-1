@@ -15,7 +15,7 @@ class Mail
         $mailer = new Swift_Mailer($transport);
 
         $message = (new Swift_Message($subject))
-            ->setFrom([Config::mailFrom => Config::siteName])
+            ->setFrom([Config::mailFrom => Config::site['sitename']])
             ->setTo([$to])
             ->setBody($body, 'text/html');
 

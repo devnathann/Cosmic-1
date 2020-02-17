@@ -13,6 +13,8 @@ use App\Models\Room;
 use Core\Locale;
 use Core\View;
 
+use Library\HotelApi;
+
 use GeoIp2\Database\Reader;
 use GeoIp2\Exception\AddressNotFoundException;
 use MaxMind\Db\Reader\InvalidDatabaseException;

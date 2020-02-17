@@ -1014,6 +1014,18 @@ function WebPageHomeInterface(main_page)
                 }
              ).mouseleave();
         }
+      
+        $("#copyReferral").click(function () {
+          console.log(2)
+          var copyText = document.getElementById("getReferral");
+          
+          copyText.select();
+          copyText.setSelectionRange(0, 99999); 
+          document.execCommand("copy");
+          
+          Web.notifications_manager.create("info", "Saved to clickboard!", "Referral copied!");
+        });
+
 
         // Load more articles
         page_container.find(".load-more-button button").click(function ()
